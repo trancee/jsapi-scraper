@@ -1,14 +1,19 @@
 package shop
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
-func XXX_interdiscount() IShop {
+func XXX_interdiscount(isDryRun *bool) IShop {
 	const _name = "Interdiscount"
-	const _url = "https://www.interdiscount.ch/idocc/occ/id/products/search?currentPage=0&pageSize=100&query=%3Aprice-asc%3AcategoryPath%3A%2F1%2F400%2F4100%3AcategoryPath%3A%2F1%2F400%2F4100%2F411000%3AhasPromoLabel%3Atrue&lang=de"
+	const _url = "https://www.interdiscount.ch/idocc/occ/id/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
 
 	type _Product struct {
 		Code string `json:"code"`
@@ -34,11 +39,13 @@ func XXX_interdiscount() IShop {
 				// Discount struct {
 				// 	Value float32 `json:"value"`
 				// } `json:"discount"`
-				FixPrice bool `json:"fixPrice"`
+				FixPrice bool      `json:"fixPrice"`
+				Expires  time.Time `json:"expires"`
 			} `json:"prices"`
 		} `json:"productPriceData"`
 
-		Orderable bool `json:"productOrderable"`
+		Orderable     bool `json:"productOrderable"`
+		MaxOrderValue int  `json:"maxOrderValue"`
 	}
 
 	type _Response struct {
@@ -55,11 +62,42 @@ func XXX_interdiscount() IShop {
 	}
 
 	var _result _Response
+	var _body []byte
+
+	fn := "shop/interdiscount.json"
+
+	if isDryRun != nil && *isDryRun {
+		if body, err := os.ReadFile(fn); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+	} else {
+		resp, err := http.Get(_url)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+
+		os.WriteFile(fn, _body, 0664)
+	}
+	// fmt.Println(string(_body))
+
+	if err := json.Unmarshal(_body, &_result); err != nil {
+		panic(err)
+	}
+	// fmt.Println(_result.Products)
 
 	r := regexp.MustCompile("[^a-z0-9 .-]")
 
-	_parseFn := func() []Product {
-		products := []Product{}
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
@@ -69,8 +107,22 @@ func XXX_interdiscount() IShop {
 			var _discount float32
 
 			for _, price := range product.Price.Prices {
+				_price = price.FinalPrice.Value
+
 				if price.FixPrice {
-					_price = price.FinalPrice.Value
+					_retailPrice = _price
+
+					if !price.Expires.IsZero() {
+						if time.Now().Before(price.Expires) {
+							if _price > 0 {
+								_retailPrice = price.FinalPrice.Value
+							} else {
+								_price = price.FinalPrice.Value
+							}
+						}
+					} else {
+						_price = price.FinalPrice.Value
+					}
 				} else {
 					_retailPrice = price.FinalPrice.Value
 
@@ -87,32 +139,32 @@ func XXX_interdiscount() IShop {
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
 
-			if _price > 0 && _discount >= 10 {
-				_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
-				_productUrl := fmt.Sprintf("https://www.interdiscount.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
+			_productUrl := fmt.Sprintf("https://www.interdiscount.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
 
-				products = append(products, Product{
-					Code: _name + "//" + product.Code,
-					Name: product.Name,
+			product := &Product{
+				Code: _name + "//" + product.Code,
+				Name: product.Name,
 
-					RetailPrice: _retailPrice,
-					Price:       _price,
-					Savings:     _savings,
-					Discount:    _discount,
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
 
-					URL: _productUrl,
-				})
+				URL: _productUrl,
+			}
+
+			if s.IsWorth(product) {
+				products = append(products, product)
 			}
 		}
 
-		return products
+		return &products
 	}
 
 	return NewShop(
 		_name,
 		_url,
-
-		&_result,
 
 		_parseFn,
 	)

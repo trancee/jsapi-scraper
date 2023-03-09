@@ -1,10 +1,16 @@
 package shop
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+)
 
-func XXX_melectronics() IShop {
+func XXX_melectronics(isDryRun *bool) IShop {
 	const _name = "melectronics"
-	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=%3Aprice-asc%3Aspecial%3AAktion&pageSize=20&currentPage=0"
+	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:special:Aktion&pageSize=20&currentPage=0"
 
 	type _Product struct {
 		Code    string `json:"code"`
@@ -55,13 +61,44 @@ func XXX_melectronics() IShop {
 	}
 
 	var _result _Response
+	var _body []byte
 
-	_parseFn := func() []Product {
-		products := []Product{}
+	fn := "shop/melectronics.json"
+
+	if isDryRun != nil && *isDryRun {
+		if body, err := os.ReadFile(fn); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+	} else {
+		resp, err := http.Get(_url)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+
+		os.WriteFile(fn, _body, 0664)
+	}
+	// fmt.Println(string(_body))
+
+	if err := json.Unmarshal(_body, &_result); err != nil {
+		panic(err)
+	}
+	// fmt.Println(_result.Products)
+
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
-			products = append(products, Product{
+			product := Product{
 				Code: _name + "//" + product.Code,
 				Name: product.Brand.Name + " " + product.Name,
 
@@ -71,17 +108,19 @@ func XXX_melectronics() IShop {
 				Discount:    product.PercentageReduction,
 
 				URL: product.URL,
-			})
+			}
+
+			if s.IsWorth(&product) {
+				products = append(products, &product)
+			}
 		}
 
-		return products
+		return &products
 	}
 
 	return NewShop(
 		_name,
 		_url,
-
-		&_result,
 
 		_parseFn,
 	)

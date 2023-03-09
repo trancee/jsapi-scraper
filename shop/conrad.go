@@ -4,15 +4,18 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
+	"os"
 	"regexp"
 	"strings"
 )
 
-func XXX_conrad() IShop {
+func XXX_conrad(isDryRun *bool) IShop {
 	const _name = "Conrad"
 	const _url = "https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w"
+
+	// const _debug = false
 
 	articles := []map[string]any{}
 
@@ -25,7 +28,15 @@ func XXX_conrad() IShop {
 		Savings     float32
 		Discount    float32
 
-		IsBuyable bool `json:"isBuyable"`
+		Quantity int
+
+		IsBuyable      bool `json:"isBuyable"`
+		IsSpecialOffer bool
+
+		TechnicalDetails []struct {
+			Name   string   `json:"name"`
+			Values []string `json:"values"`
+		} `json:"technicalDetails"`
 	}
 
 	type _Response struct {
@@ -37,6 +48,7 @@ func XXX_conrad() IShop {
 	}
 
 	var _result _Response
+	var _body []byte
 
 	var jsonData = []byte(`{
 		"query": "",
@@ -60,20 +72,32 @@ func XXX_conrad() IShop {
 		"partialQuerySize": 6
 	}`)
 
-	resp, err := http.Post("https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w", "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
+	fn := "shop/conrad.json"
 
-	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	if err != nil {
-		panic(err)
-	}
-	// fmt.Println(string(body))
+	if isDryRun != nil && *isDryRun {
+		if body, err := os.ReadFile(fn); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+	} else {
+		resp, err := http.Post(_url, "application/json", bytes.NewBuffer(jsonData))
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
 
-	// var result Response
-	if err := json.Unmarshal(body, &_result); err != nil { // Parse []byte to go struct pointer
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+
+		os.WriteFile(fn, _body, 0664)
+	}
+	// fmt.Println(string(_body))
+
+	if err := json.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}
 	// fmt.Println(_result.Products)
@@ -90,18 +114,24 @@ func XXX_conrad() IShop {
 
 	{
 		type _Product struct {
-			Code string `json:"articleID"`
+			Code string `json:"articleId"`
 
 			Offers struct {
 				Offer struct {
-					Code string `json:"articleID"`
+					Code string `json:"articleId"`
 
 					Price struct {
 						Price           float32 `json:"price"`
 						CrossedOutPrice float32 `json:"crossedOutPrice"`
 						SavedAmount     float32 `json:"savedAmount"`
 						SavedPercentage float32 `json:"savedPercentage"`
+
+						IsSpecialOffer string `json:"isSpecialOffer"`
 					} `json:"price"`
+
+					Availability struct {
+						Quantity float32 `json:"stockQuantity"`
+					} `json:"availability"`
 				} `json:"offer"`
 			} `json:"offers"`
 		}
@@ -115,49 +145,66 @@ func XXX_conrad() IShop {
 			} `json:"priceAndAvailabilityFacadeResponse"`
 		}
 
-		reqData, err := json.Marshal(map[string]any{
-			"ns:inputArticleItemList": map[string]any{
-				"#namespaces": map[string]any{
-					"ns": "http://www.conrad.de/ccp/basit/service/article/priceandavailabilityservice/api",
+		fn := "shop/conrad-articles.json"
+
+		if isDryRun != nil && *isDryRun {
+			if body, err := os.ReadFile(fn); err != nil {
+				panic(err)
+			} else {
+				_body = body
+			}
+		} else {
+			reqData, err := json.Marshal(map[string]any{
+				"ns:inputArticleItemList": map[string]any{
+					"#namespaces": map[string]any{
+						"ns": "http://www.conrad.de/ccp/basit/service/article/priceandavailabilityservice/api",
+					},
+					"articles": articles,
 				},
-				"articles": articles,
-			},
-		})
-		if err != nil {
-			panic(err)
-		}
+			})
+			if err != nil {
+				panic(err)
+			}
 
-		req, err := http.NewRequest("POST", "https://api.conrad.ch/price-availability/4/CQ_CH_B2C/facade?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w&forceStorePrice=false&overrideCalculationSchema=GROSS", bytes.NewBuffer(reqData))
-		if err != nil {
-			panic(err)
-		}
-		req.Header.Set("Accept", "application/json, text/plain, */*")
-		req.Header.Set("Content-Type", "application/json")
+			req, err := http.NewRequest("POST", "https://api.conrad.ch/price-availability/4/CQ_CH_B2C/facade?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w&forceStorePrice=false&overrideCalculationSchema=GROSS", bytes.NewBuffer(reqData))
+			if err != nil {
+				panic(err)
+			}
+			req.Header.Set("Accept", "application/json, text/plain, */*")
+			req.Header.Set("Content-Type", "application/json")
 
-		client := &http.Client{}
-		resp, err := client.Do(req)
-		if err != nil {
-			panic(err)
-		}
-		defer resp.Body.Close()
+			client := &http.Client{}
+			resp, err := client.Do(req)
+			if err != nil {
+				panic(err)
+			}
+			defer resp.Body.Close()
 
-		body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-		if err != nil {
-			panic(err)
+			if body, err := io.ReadAll(resp.Body); err != nil {
+				panic(err)
+			} else {
+				_body = body
+			}
+
+			os.WriteFile(fn, _body, 0664)
 		}
-		// fmt.Println(string(body))
+		// fmt.Println(string(_body))
 
 		var __result _Response
-		if err := json.Unmarshal(body, &__result); err != nil { // Parse []byte to go struct pointer
+		if err := json.Unmarshal(_body, &__result); err != nil {
 			panic(err)
 		}
-		// fmt.Println(_result.PriceAndAvailabilityFacadeResponse.Products)
+		// fmt.Println(__result.PriceAndAvailabilityFacadeResponse.Products.Product)
 
 		for _, _product := range __result.PriceAndAvailabilityFacadeResponse.Products.Product {
 			code := strings.TrimLeft(_product.Code, "0")
 			// fmt.Println(code)
 			for _, product := range *_result.Products {
 				if product.Code == code {
+					isSpecialOffer := false
+					if _product.Offers.Offer.Price.IsSpecialOffer != "false" {
+						isSpecialOffer = true
+					}
 					product.RetailPrice = _product.Offers.Offer.Price.Price
 					if _product.Offers.Offer.Price.CrossedOutPrice > 0 {
 						product.Price = _product.Offers.Offer.Price.CrossedOutPrice
@@ -166,6 +213,11 @@ func XXX_conrad() IShop {
 					}
 					product.Savings = _product.Offers.Offer.Price.SavedAmount
 					product.Discount = _product.Offers.Offer.Price.SavedPercentage
+
+					product.Quantity = int(_product.Offers.Offer.Availability.Quantity)
+
+					product.IsSpecialOffer = isSpecialOffer
+					// fmt.Println(product)
 				}
 			}
 		}
@@ -173,44 +225,71 @@ func XXX_conrad() IShop {
 
 	r := regexp.MustCompile("[^a-z0-9 .-]")
 
-	_parseFn := func() []Product {
-		products := []Product{}
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
 
 		// https://www.conrad.ch/de/p/samsung-galaxy-a04s-smartphone-32-gb-16-5-cm-6-5-zoll-schwarz-android-12-dual-sim-2749363.html
 
 		fmt.Printf("-- %s (%d)\n", _name, len(*_result.Products))
 		for _, product := range *_result.Products {
 			// fmt.Println(product)
+
 			_retailPrice := product.RetailPrice
 			_price := product.Price
 			_savings := product.Savings
 			_discount := product.Discount
 
-			if _price > 0 && _discount >= 10 {
-				_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
-				_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
+			// if _savings == 0 {
+			// _savings = _price - _retailPrice
+			// }
+			// _discount = 100 - ((100 / _retailPrice) * _price)
 
-				products = append(products, Product{
-					Code: _name + "//" + product.Code,
-					Name: product.Name,
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
+			_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
 
-					RetailPrice: _retailPrice,
-					Price:       _price,
-					Savings:     _savings,
-					Discount:    _discount,
+			_title := product.Name
+			for _, detail := range product.TechnicalDetails {
+				switch detail.Name {
+				case "ATT_CALC_DISPLAY-DIAGONAL_CM",
+					"ATT_LOV_SIM_CARD_TECHNOLOGY",
+					"ATT_OPERATINGSYSTEM":
+					for _, value := range detail.Values {
+						_title = strings.ReplaceAll(_title, " "+value, "")
+					}
+				case "ATT_DISPLAY_DIAGONAL":
+					for _, value := range detail.Values {
+						_title = strings.ReplaceAll(_title, " ("+value+")", "")
+					}
 
-					URL: _productUrl,
-				})
+				}
+			}
+
+			product := &Product{
+				Code: _name + "//" + product.Code,
+				Name: _title,
+
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
+
+				Quantity: product.Quantity,
+
+				URL: _productUrl,
+			}
+
+			if s.IsWorth(product) {
+				products = append(products, product)
 			}
 		}
-		return products
+
+		// fmt.Printf("%#v\n", products)
+		return &products
 	}
 
 	return NewShop(
 		_name,
 		_url,
-
-		&_result,
 
 		_parseFn,
 	)

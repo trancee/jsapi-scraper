@@ -1,14 +1,19 @@
 package shop
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"net/http"
 	"net/url"
+	"regexp"
+	"strings"
+
+	"golang.org/x/net/html"
 )
 
 type IShop interface {
-	Fetch() []Product
+	Name() string
+
+	Fetch() *[]*Product
+	IsWorth(product *Product) bool
+
 	ResolveURL(refURL string) *url.URL
 }
 
@@ -18,10 +23,12 @@ type shop struct {
 
 	baseURL *url.URL
 
-	result any
-	// products []Product
-
 	parseFn parseFn
+}
+
+type Action struct {
+	MaxPrice    float32
+	MaxDiscount float32
 }
 
 type Product struct {
@@ -33,12 +40,14 @@ type Product struct {
 	Savings     float32
 	Discount    float32
 
+	Quantity int
+
 	URL string
 }
 
-type parseFn func() []Product
+type parseFn func(s IShop) *[]*Product
 
-func NewShop(_name string, _url string, _response any, _parseFn parseFn) IShop {
+func NewShop(_name string, _url string, _parseFn parseFn) IShop {
 	_baseURL, err := url.Parse(_url)
 	if err != nil {
 		panic(err)
@@ -50,40 +59,48 @@ func NewShop(_name string, _url string, _response any, _parseFn parseFn) IShop {
 
 		baseURL: _baseURL,
 
-		result: _response,
-
 		parseFn: _parseFn,
 	}
 }
 
-func (s shop) Fetch() []Product {
-	resp, err := http.Get(s.url)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
+func (s shop) Name() string {
+	return s.name
+}
 
-	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	if err != nil {
-		panic(err)
-	}
-	// fmt.Println(string(body))
+func (s shop) Fetch() *[]*Product {
+	// if s.result != nil {
+	// 	resp, err := http.Get(s.url)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	defer resp.Body.Close()
 
-	if body[0] != '{' {
-		body = body[2:(len(body) - 2)]
-		// fmt.Println(string(body))
-	}
+	// 	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	// fmt.Println(string(body))
 
-	// var result Response
-	if err := json.Unmarshal(body, &s.result); err != nil { // Parse []byte to go struct pointer
-		panic(err)
-	}
-	// fmt.Printf("%v\n", s.result)
+	// 	if body[0] != '{' {
+	// 		body = body[2:(len(body) - 2)]
+	// 		// fmt.Println(string(body))
+	// 	}
+
+	// 	// var result Response
+	// 	if err := json.Unmarshal(body, &s.result); err != nil { // Parse []byte to go struct pointer
+	// 		panic(err)
+	// 	}
+	// 	// fmt.Printf("%v\n", s.result)
+	// }
 
 	// for _, product := range s.parseFn() {
 	// 	fmt.Printf("%#v\n", product)
 	// }
-	return s.parseFn()
+	return s.parseFn(s)
+}
+
+func (s shop) IsWorth(product *Product) bool {
+	return (product.Price > 0 && product.Price < 150) || (product.Discount >= 75)
 }
 
 func (s shop) ResolveURL(refURL string) *url.URL {
@@ -91,6 +108,60 @@ func (s shop) ResolveURL(refURL string) *url.URL {
 	if err != nil {
 		panic(err)
 	}
-
 	return s.baseURL.ResolveReference(ref)
+}
+
+func text(n *html.Node) (string, bool) {
+	if n.Type == html.TextNode {
+		return strings.TrimSpace(html.UnescapeString(n.Data)), true
+	}
+	n = n.FirstChild
+	if n.Type == html.TextNode {
+		return strings.TrimSpace(html.UnescapeString(n.Data)), true
+	}
+	return "", false
+}
+func attr(s []html.Attribute, key string) (string, bool) {
+	for _, a := range s {
+		if a.Key == key {
+			return a.Val, true
+		}
+	}
+	return "", false
+}
+func contains(s []html.Attribute, key string, val string) bool {
+	for _, a := range s {
+		// fmt.Printf("ATTR [%v] [%v]\n", a.Key, a.Val)
+		if a.Key == key {
+			if val == "" || a.Val == val {
+				return true
+			} else {
+				matched, _ := regexp.Match(`\b`+val+`\b`, []byte(a.Val))
+				return matched
+			}
+		}
+	}
+	return false
+}
+
+func parse(_html string) *html.Node {
+	doc, err := html.Parse(strings.NewReader(_html))
+	if err != nil {
+		panic(err)
+	}
+	return doc
+}
+
+func traverse(n *html.Node, tag string, key string, val string) *html.Node {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		// fmt.Printf("DataAtom[%v] Data[%v] Attr[%v] Tag[%v] Type[%v]\n", c.DataAtom, c.Data, c.Attr, c.Parent.Data, c.Type)
+		if c.Type == html.ElementNode && c.Data == tag && ((key != "" && contains(c.Attr, key, val)) || key == "") {
+			return c
+		}
+
+		if res := traverse(c, tag, key, val); res != nil {
+			return res
+		}
+	}
+	return nil
 }

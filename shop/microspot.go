@@ -1,15 +1,19 @@
 package shop
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"os"
 	"regexp"
 	"strings"
 	"time"
 )
 
-func XXX_microspot() IShop {
+func XXX_microspot(isDryRun *bool) IShop {
 	const _name = "Microspot"
-	const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=%3Aprice-asc%3AcategoryPath%3A%2F1%2F400%2F4100%3AcategoryPath%3A%2F1%2F400%2F4100%2F411000%3AhasPromoLabel%3Atrue&lang=de"
+	const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
 
 	type _Product struct {
 		Code string `json:"code"`
@@ -58,11 +62,42 @@ func XXX_microspot() IShop {
 	}
 
 	var _result _Response
+	var _body []byte
+
+	fn := "shop/microspot.json"
+
+	if isDryRun != nil && *isDryRun {
+		if body, err := os.ReadFile(fn); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+	} else {
+		resp, err := http.Get(_url)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+
+		os.WriteFile(fn, _body, 0664)
+	}
+	// fmt.Println(string(_body))
+
+	if err := json.Unmarshal(_body, &_result); err != nil {
+		panic(err)
+	}
+	// fmt.Println(_result.Products)
 
 	r := regexp.MustCompile("[^a-z0-9 .-]")
 
-	_parseFn := func() []Product {
-		products := []Product{}
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
@@ -77,7 +112,11 @@ func XXX_microspot() IShop {
 			var _discount float32
 
 			for _, price := range product.Price.Prices {
+				_price = price.FinalPrice.Value
+
 				if price.FixPrice {
+					_retailPrice = _price
+
 					if !price.Expires.IsZero() {
 						if time.Now().Before(price.Expires) {
 							if _price > 0 {
@@ -105,32 +144,32 @@ func XXX_microspot() IShop {
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
 
-			if _price > 0 && _discount >= 10 {
-				_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
-				_productUrl := fmt.Sprintf("https://www.microspot.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
+			_productUrl := fmt.Sprintf("https://www.microspot.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
 
-				products = append(products, Product{
-					Code: _name + "//" + product.Code,
-					Name: product.Name,
+			product := &Product{
+				Code: _name + "//" + product.Code,
+				Name: product.Name,
 
-					RetailPrice: _retailPrice,
-					Price:       _price,
-					Savings:     _savings,
-					Discount:    _discount,
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
 
-					URL: _productUrl,
-				})
+				URL: _productUrl,
+			}
+
+			if s.IsWorth(product) {
+				products = append(products, product)
 			}
 		}
 
-		return products
+		return &products
 	}
 
 	return NewShop(
 		_name,
 		_url,
-
-		&_result,
 
 		_parseFn,
 	)

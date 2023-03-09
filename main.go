@@ -5,9 +5,11 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
+	"runtime/debug"
 	"strings"
+	"sync"
 
 	"github.com/recoilme/pudge"
 
@@ -18,11 +20,8 @@ const Token = "6219604147:AAERFP-_PfSELN3-gorzE9czM6WR-3Rum-Q"
 const ChatID = "1912073977"
 
 func main() {
-	isInit := flag.Bool("init", false, "initialize database")
+	isDryRun := flag.Bool("dryrun", false, "dry run (avoid making external calls)")
 	flag.Parse()
-
-	shop.XXX_steg()
-	return
 
 	// r := regexp.MustCompile("[^a-z0-9 .]")
 	// fmt.Println("regexp:", r)
@@ -33,30 +32,131 @@ func main() {
 	// fmt.Println(strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(str), "$1")))
 	// return
 
-	// Close all database on exit
-	defer pudge.CloseAll()
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(err)
+			fmt.Println()
+			fmt.Printf("%s\n", strings.Join(strings.Split(string(debug.Stack()), "\n")[7:], "\n"))
 
-	for _, _shop := range []shop.IShop{shop.XXX_conrad(), shop.XXX_melectronics(), shop.XXX_microspot(), shop.XXX_mobilezone(), shop.XXX_interdiscount()} {
-		for _, product := range _shop.Fetch() {
-			productLine := fmt.Sprintf("%s\n%8.2f %8.2f %8.2f %3.f%%\n%s", product.Name, product.RetailPrice, product.Price, product.Savings, product.Discount, _shop.ResolveURL(product.URL))
-			fmt.Println(strings.ReplaceAll(productLine, "\n", "\t"))
+			if isDryRun != nil && *isDryRun {
+			} else {
+				if _, err := SendMessage(fmt.Sprintf("%v", err)); err != nil {
+					fmt.Println(err)
+				}
+			}
+		}
+	}()
 
-			var oldProduct shop.Product
-			pudge.Get("products", product.Code, &oldProduct)
-			oldProductLine := fmt.Sprintf("%s\n%8.2f %8.2f %8.2f %3.f%%\n%s", oldProduct.Name, oldProduct.RetailPrice, oldProduct.Price, oldProduct.Savings, oldProduct.Discount, _shop.ResolveURL(oldProduct.URL))
-			if productLine != oldProductLine {
-				fmt.Println(strings.ReplaceAll(oldProductLine, "\n", "\t"))
-				fmt.Println()
-				pudge.Set("products", product.Code, product)
+	wg := sync.WaitGroup{}
 
-				if !*isInit {
-					_, err := SendMessage(productLine)
-					if err != nil {
-						panic(err)
+	_products := map[string]*[]*shop.Product{}
+
+	for _, _shop := range []shop.IShop{
+		shop.XXX_alltron(isDryRun),
+		shop.XXX_alternate(isDryRun),
+		shop.XXX_brack(isDryRun),
+		shop.XXX_conrad(isDryRun),
+		shop.XXX_foletti(isDryRun),
+		shop.XXX_fust(isDryRun),
+		shop.XXX_interdiscount(isDryRun),
+		shop.XXX_mediamarkt(isDryRun),
+		shop.XXX_mediamarkt_refurbished(isDryRun),
+		shop.XXX_melectronics(isDryRun),
+		shop.XXX_microspot(isDryRun),
+		shop.XXX_mobilezone(isDryRun),
+		shop.XXX_stegpc(isDryRun),
+	} {
+		wg.Add(1)
+
+		_products[_shop.Name()] = nil
+
+		go func(_shop shop.IShop) {
+			defer wg.Done()
+
+			_products[_shop.Name()] = _shop.Fetch()
+		}(_shop)
+	}
+
+	wg.Wait()
+
+	db, err := pudge.Open("products", nil)
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	ids := map[string]bool{}
+
+	if keys, err := db.Keys(nil, 0, 0, true); err != nil {
+		panic(err)
+	} else {
+		for _, key := range keys {
+			ids[string(key)] = true
+		}
+	}
+	// fmt.Println(ids)
+
+	for name, products := range _products {
+		fmt.Println()
+
+		_num := 0
+		if products != nil {
+			_num = len(*products)
+		}
+		_name := fmt.Sprintf("%s (%d)", name, _num)
+
+		fmt.Printf("%s\n%s\n", _name, strings.Repeat("=", len(_name)))
+
+		if products != nil {
+			for _, product := range *products {
+				id := product.Code
+				delete(ids, id)
+
+				_name := product.Name
+				if product.Quantity > 0 {
+					_name += fmt.Sprintf(" (%d)", product.Quantity)
+				}
+				priceLine := ""
+				if product.Price != product.RetailPrice {
+					priceLine = fmt.Sprintf("%8.2f %8.2f %3d%%", product.Price, product.Savings, int(product.Discount))
+				}
+
+				fmt.Printf("%-69s %8.2f %22s %s\n", _name, product.RetailPrice, priceLine, product.URL)
+
+				notify := false
+
+				var oldProduct shop.Product
+				if ok, _ := db.Has(id); ok {
+					db.Get(id, &oldProduct)
+				}
+
+				if oldProduct != *product {
+					db.Set(id, product)
+
+					notify = true
+				}
+
+				if notify {
+					if isDryRun != nil && !*isDryRun {
+						priceLine := ""
+						if product.Price != product.RetailPrice {
+							priceLine = fmt.Sprintf("%-8.2f %-8.2f %-3d%%", product.Price, product.Savings, int(product.Discount))
+						}
+
+						productLine := fmt.Sprintf("%s\n%-8.2f %s\n\n%s", _name, product.RetailPrice, priceLine, product.URL)
+
+						if _, err := SendMessage(productLine); err != nil {
+							panic(err)
+						}
 					}
 				}
 			}
 		}
+	}
+
+	// fmt.Println(ids)
+	for id := range ids {
+		db.Delete(id)
 	}
 }
 
@@ -88,12 +188,10 @@ func SendMessage(text string) (bool, error) {
 	defer response.Body.Close()
 
 	// Body
-	_, err = ioutil.ReadAll(response.Body)
+	_, err = io.ReadAll(response.Body)
 	if err != nil {
 		return false, err
 	}
-
-	// fmt.Println(string(body))
 
 	// Return
 	return true, nil

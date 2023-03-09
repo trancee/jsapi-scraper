@@ -1,0 +1,1562 @@
+{
+  "freeTextSearch": "",
+  "categoryCode": "MEL_SHOP_CAT_Smartphones_TelefonieNavigation",
+  "products": [
+    {
+      "code": "794648900000",
+      "name": "ACTIVE V50 4G Black",
+      "url": "/de/p/794648900000/emporia-active-v50-4g-black",
+      "summary": "Mobiltelefon",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 69.95,
+        "priceType": "BUY",
+        "formattedValue": "69,95 CHF"
+      },
+      "baseProduct": "b794648900000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/5e738ec5dd0b13bf4530bb3c54319117565fdba1/emporia-active-v50-4g-black-mobiltelefon.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736281005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 16.0,
+      "brand": {
+        "name": "Emporia",
+        "image": {
+          "url": "https://image.migros.ch/original/bd931f7817d1e6c9287b270007051de64cac1bfd/emporia.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 83.95,
+        "priceType": "BUY",
+        "formattedValue": "83,95 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "ratingCount": 29,
+      "ratingAverage": 3.79,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3AMobiltelefon",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794670300000",
+      "name": "SMART.4 32 GB schwarz / silber",
+      "url": "/de/p/794670300000/emporia-smart-4-32-gb-schwarz-silber",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 149.00,
+        "priceType": "BUY",
+        "formattedValue": "149,00 CHF"
+      },
+      "baseProduct": "b794670300000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/70abe3ee476071190acd7944b12013aaa4bd2b6d/emporia-smart4-32-gb-schwarz-silber-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 11.0,
+      "brand": {
+        "name": "Emporia",
+        "image": {
+          "url": "https://image.migros.ch/original/bd931f7817d1e6c9287b270007051de64cac1bfd/emporia.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 169.00,
+        "priceType": "BUY",
+        "formattedValue": "169,00 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 7,
+      "ratingAverage": 4.71,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300169955",
+      "name": "A96 (4G) 128GB - starry black",
+      "url": "/de/p/785300169955/oppo-a96-4g-128gb-starry-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 199.00,
+        "priceType": "BUY",
+        "formattedValue": "199,00 CHF"
+      },
+      "baseProduct": "b785300169955",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/ff2265a6a7c424d581e2c83f3aca3ef63ad2abda/oppo-a96-4g-128gb-starry-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 33.0,
+      "brand": {
+        "name": "Oppo",
+        "image": {
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 299.00,
+        "priceType": "BUY",
+        "formattedValue": "299,00 CHF"
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794677300000",
+      "name": "iPhone 13 128GB Midnight black",
+      "url": "/de/p/794677300000/apple-iphone-13-128gb-midnight-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 749.00,
+        "priceType": "BUY",
+        "formattedValue": "749,00 CHF"
+      },
+      "baseProduct": "b794677300000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/1b15d6ea37ae3fe87879ebda1bd13871a9fb3b64/apple-iphone-13-128gb-midnight-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 5.0,
+      "brand": {
+        "name": "Apple",
+        "image": {
+          "url": "https://image.migros.ch/original/a7d93b7d7b440818807f48b58ca16ffa840a7648/apple.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 789.00,
+        "priceType": "BUY",
+        "formattedValue": "789,00 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 43,
+      "ratingAverage": 4.44,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794698000000",
+      "name": "Galaxy S23 128GB Phantom Black",
+      "url": "/de/p/794698000000/samsung-galaxy-s23-128gb-phantom-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 849.00,
+        "priceType": "BUY",
+        "formattedValue": "849,00 CHF"
+      },
+      "baseProduct": "b794698000000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/ce161add81100fef5a79290dce335fc3f1916b71/samsung-galaxy-s23-128gb-phantom-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 5.0,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 899.00,
+        "priceType": "BUY",
+        "formattedValue": "899,00 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794698100000",
+      "name": "Galaxy S23+ 256GB Phantom Gray",
+      "url": "/de/p/794698100000/samsung-galaxy-s23-256gb-phantom-gray",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 1099.00,
+        "priceType": "BUY",
+        "formattedValue": "1.099,00 CHF"
+      },
+      "baseProduct": "b794698100000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/9b47f311f977ea830cb7ec0d63bfc54db55a7085/samsung-galaxy-s23-256gb-phantom-gray-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 1149.00,
+        "priceType": "BUY",
+        "formattedValue": "1.149,00 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794698200000",
+      "name": "Galaxy S23 Ultra 256GB Phantom Black",
+      "url": "/de/p/794698200000/samsung-galaxy-s23-ultra-256gb-phantom-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 1299.00,
+        "priceType": "BUY",
+        "formattedValue": "1.299,00 CHF"
+      },
+      "baseProduct": "b794698200000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/3aad3d52537bf3e7f65c28b9e4fdabfb70e1f234/samsung-galaxy-s23-ultra-256gb-phantom-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 1349.00,
+        "priceType": "BUY",
+        "formattedValue": "1.349,00 CHF"
+      },
+      "deliveryDays": 1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "nextday",
+        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    }
+  ],
+  "sorts": [
+    {
+      "code": "relevance",
+      "name": "Beliebtheit",
+      "selected": false,
+      "initial": true
+    },
+    {
+      "code": "price-asc",
+      "name": "Günstigste",
+      "selected": true,
+      "initial": false
+    },
+    {
+      "code": "price-desc",
+      "name": "Teuerste",
+      "selected": false,
+      "initial": false
+    },
+    {
+      "code": "discount-desc",
+      "name": "Höchster Rabatt",
+      "selected": false,
+      "initial": false
+    },
+    {
+      "code": "name-asc",
+      "name": "Name A bis Z",
+      "selected": false,
+      "initial": false
+    },
+    {
+      "code": "name-desc",
+      "name": "Name Z bis A",
+      "selected": false,
+      "initial": false
+    },
+    {
+      "code": "rating-desc",
+      "name": "Bewertung",
+      "selected": false,
+      "initial": false
+    }
+  ],
+  "pagination": {
+    "pageSize": 20,
+    "currentPage": 0,
+    "sort": "price-asc",
+    "totalPages": 1,
+    "totalResults": 7
+  },
+  "currentQuery": {
+    "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+    "query": {
+      "value": ":price-asc:special:Aktion",
+      "code": "Aktion"
+    }
+  },
+  "breadcrumbs": [
+    {
+      "facetCode": "special",
+      "facetName": "Angebote",
+      "facetValueCode": "Aktion",
+      "facetValueName": "Aktion",
+      "removeQuery": {
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc",
+        "query": {
+          "value": ":price-asc"
+        }
+      }
+    }
+  ],
+  "facets": [
+    {
+      "name": "Angebote",
+      "priority": 400,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Aktion",
+          "count": 7,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc",
+            "query": {
+              "value": ":price-asc"
+            }
+          },
+          "selected": true
+        }
+      ],
+      "code": "special",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc",
+      "solrFacetName": "special_de_facet_string_mv"
+    },
+    {
+      "name": "Verfügbarkeit",
+      "priority": 375,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Online bestellbar",
+          "count": 7,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:availability:Online+bestellbar:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "availability",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "availability_de_facet_string"
+    },
+    {
+      "name": "Produkttyp",
+      "priority": 500,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Smartphone",
+          "count": 6,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:special:Aktion:summaryAsString:Smartphone",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Mobiltelefon",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion%3AsummaryAsString%3AMobiltelefon",
+            "query": {
+              "value": ":price-asc:special:Aktion:summaryAsString:Mobiltelefon",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "summaryAsString",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "summaryAsString_de_facet_string"
+    },
+    {
+      "name": "Kategorien",
+      "priority": 600,
+      "category": true,
+      "multiSelect": false,
+      "visible": true,
+      "values": [
+        {
+          "name": "Telefonie & Navigation",
+          "count": 7,
+          "query": {
+            "url": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3Aspecial%3AAktion",
+              "code": "3357845301"
+            }
+          },
+          "selected": false,
+          "level": 1
+        },
+        {
+          "name": "Smartphone",
+          "count": 7,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+              "code": "3421317829"
+            }
+          },
+          "selected": false,
+          "level": 2
+        }
+      ],
+      "code": "allCategories",
+      "highestLevel": 0,
+      "crawlingActivated": true,
+      "solrFacetName": "allCategories_facet_string_mv"
+    },
+    {
+      "name": "Rabatt",
+      "priority": 380,
+      "category": false,
+      "multiSelect": false,
+      "visible": true,
+      "values": [],
+      "code": "percentageReductionFacet",
+      "sliderMin": 5,
+      "sliderMax": 33,
+      "slider": true,
+      "currency": "CHF",
+      "query": {
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApercentageReductionFacet%3A%5BMIN+TO+MAX%5D%3Aspecial%3AAktion",
+        "query": {
+          "value": ":price-asc:percentageReductionFacet:%5BMIN+TO+MAX%5D:special:Aktion",
+          "code": "Aktion"
+        }
+      },
+      "sliderUnit": "%",
+      "crawlingActivated": false,
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "percentageReductionFacet_double_mv"
+    },
+    {
+      "name": "Preis",
+      "priority": 350,
+      "category": false,
+      "multiSelect": false,
+      "visible": true,
+      "values": [],
+      "code": "priceValue",
+      "sliderMin": 69,
+      "sliderMax": 1299,
+      "slider": true,
+      "currency": "CHF",
+      "query": {
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5BMIN+TO+MAX%5D%3Aspecial%3AAktion",
+        "query": {
+          "value": ":price-asc:priceValue:%5BMIN+TO+MAX%5D:special:Aktion",
+          "code": "Aktion"
+        }
+      },
+      "sliderUnit": "CHF",
+      "crawlingActivated": false,
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "priceValue_de_double"
+    },
+    {
+      "name": "Marke",
+      "priority": 300,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Apple",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/apple?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:brandName:Apple:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Emporia",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/emporia?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:brandName:Emporia:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Oppo",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/oppo?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:brandName:Oppo:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Samsung",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/samsung?q=%3Aprice-asc%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:brandName:Samsung:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "brandName",
+      "crawlingActivated": true,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone/b/apple?q=%3Aprice-asc%3AbrandName%3AEmporia%3AbrandName%3AOppo%3AbrandName%3ASamsung%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "brandName_de_facet_string"
+    },
+    {
+      "name": "Mobilfunkstandards",
+      "priority": 295,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "4G LTE",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A4G+LTE%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_mobilfunkstandards:4G+LTE:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "5G LTE",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A5G+LTE%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_mobilfunkstandards:5G+LTE:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_mobilfunkstandards",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A4G+LTE%3AMEL_mobilfunkstandards%3A5G+LTE%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_mobilfunkstandards_de_facet_string_mv"
+    },
+    {
+      "name": "Betriebssystem",
+      "priority": 290,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Andere",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_betriebssystem_neu:Andere:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Android",
+          "count": 5,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndroid%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_betriebssystem_neu:Android:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Apple iOS",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AApple+iOS%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_betriebssystem_neu:Apple+iOS:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "mel_betriebssystem_neu",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3Amel_betriebssystem_neu%3AAndroid%3Amel_betriebssystem_neu%3AApple+iOS%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "mel_betriebssystem_neu_de_facet_string_mv"
+    },
+    {
+      "name": "Interner Speicher",
+      "priority": 285,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "0 GB",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A0+GB%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_interner_speicher_neu:0+GB:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "32 GB",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A32+GB%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_interner_speicher_neu:32+GB:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "128 GB",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_interner_speicher_neu:128+GB:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "256 GB",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A256+GB%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_interner_speicher_neu:256+GB:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "mel_interner_speicher_neu",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A0+GB%3Amel_interner_speicher_neu%3A128+GB%3Amel_interner_speicher_neu%3A256+GB%3Amel_interner_speicher_neu%3A32+GB%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "mel_interner_speicher_neu_de_facet_string_mv"
+    },
+    {
+      "name": "Arbeitsspeicher",
+      "priority": 280,
+      "category": false,
+      "multiSelect": false,
+      "visible": true,
+      "values": [],
+      "code": "MEL_arbeitsspeicher",
+      "sliderMin": 3,
+      "sliderMax": 8,
+      "slider": true,
+      "currency": "CHF",
+      "query": {
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_arbeitsspeicher%3A%5BMIN+TO+MAX%5D%3Aspecial%3AAktion",
+        "query": {
+          "value": ":price-asc:MEL_arbeitsspeicher:%5BMIN+TO+MAX%5D:special:Aktion",
+          "code": "Aktion"
+        }
+      },
+      "sliderUnit": "gb",
+      "crawlingActivated": false,
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_arbeitsspeicher_de_double_mv"
+    },
+    {
+      "name": "Display Grösse",
+      "priority": 275,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "2.3 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A2.3+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:2.3+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "5 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A5+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:5+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.1 \"",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.1+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.1+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.59 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.59+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.59+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.6 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.6+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.6+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.8 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.8+%22%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.8+%22:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_display_grösse",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A2.3+%22%3AMEL_display_gr%C3%B6sse%3A5+%22%3AMEL_display_gr%C3%B6sse%3A6.1+%22%3AMEL_display_gr%C3%B6sse%3A6.59+%22%3AMEL_display_gr%C3%B6sse%3A6.6+%22%3AMEL_display_gr%C3%B6sse%3A6.8+%22%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_display_grösse_de_facet_string_mv"
+    },
+    {
+      "name": "Display-Art",
+      "priority": 265,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "AMOLED",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_art:AMOLED:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "LCD",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ALCD%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_art:LCD:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Super Retina XDR display (OLED)",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ASuper+Retina+XDR+display+%28OLED%29%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_art:Super+Retina+XDR+display+%28OLED%29:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "TFT",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ATFT%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_display_art:TFT:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_display_art",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3AMEL_display_art%3ALCD%3AMEL_display_art%3ASuper+Retina+XDR+display+%28OLED%29%3AMEL_display_art%3ATFT%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_display_art_de_facet_string_mv"
+    },
+    {
+      "name": "Rückkamera Auflösung",
+      "priority": 260,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "2 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A2+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:2+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "12 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A12+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:12+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "13 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A13+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:13+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "50 MP",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A50+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:50+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "200 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A200+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:200+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "mel_rueckkamera",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A12+MP%3Amel_rueckkamera%3A13+MP%3Amel_rueckkamera%3A2+MP%3Amel_rueckkamera%3A200+MP%3Amel_rueckkamera%3A50+MP%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "mel_rueckkamera_de_facet_string_mv"
+    },
+    {
+      "name": "Akkukapazität",
+      "priority": 255,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "1400 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A1400+mAh%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:1400+mAh:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "2500 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2500+mAh%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:2500+mAh:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "3900 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3900+mAh%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:3900+mAh:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "4700 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4700+mAh%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:4700+mAh:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "5000 mAh",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5000+mAh%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:5000+mAh:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_akkukapazitaet",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A1400+mAh%3AMEL_akkukapazitaet%3A2500+mAh%3AMEL_akkukapazitaet%3A3900+mAh%3AMEL_akkukapazitaet%3A4700+mAh%3AMEL_akkukapazitaet%3A5000+mAh%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_akkukapazitaet_de_facet_string_mv"
+    },
+    {
+      "name": "Dual-SIM Funktionalität",
+      "priority": 250,
+      "category": false,
+      "multiSelect": false,
+      "visible": true,
+      "values": [
+        {
+          "name": "Ja",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3AJa%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_dual-sim_funktionalität:Ja:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Nein",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3ANein%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_dual-sim_funktionalität:Nein:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_dual-sim_funktionalität",
+      "crawlingActivated": false,
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_dual-sim_funktionalität_de_facet_string_mv"
+    },
+    {
+      "name": "Frontkamera Auflösung",
+      "priority": 245,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "5 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A5+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_frontkamera:5+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "12 MP",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A12+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_frontkamera:12+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "16 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A16+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_frontkamera:16+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_frontkamera",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A12+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A5+MP%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_frontkamera_de_facet_string_mv"
+    },
+    {
+      "name": "Kabellose Übertragung",
+      "priority": 240,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Bluetooth",
+          "count": 6,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_kabellose_uebertragung:Bluetooth:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "GPS",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AGPS%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_kabellose_uebertragung:GPS:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "NFC",
+          "count": 5,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ANFC%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_kabellose_uebertragung:NFC:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "WLAN",
+          "count": 5,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AWLAN%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_kabellose_uebertragung:WLAN:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_kabellose_uebertragung",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3AMEL_kabellose_uebertragung%3AGPS%3AMEL_kabellose_uebertragung%3ANFC%3AMEL_kabellose_uebertragung%3AWLAN%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_kabellose_uebertragung_de_facet_string_mv"
+    },
+    {
+      "name": "Prozessorkerne",
+      "priority": 235,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "4",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A4%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_prozessorkerne:4:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A6%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_prozessorkerne:6:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "8",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A8%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_prozessorkerne:8:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_prozessorkerne",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A4%3AMEL_prozessorkerne%3A6%3AMEL_prozessorkerne%3A8%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_prozessorkerne_de_facet_string_mv"
+    },
+    {
+      "name": "Sensoren",
+      "priority": 230,
+      "category": false,
+      "multiSelect": true,
+      "visible": true,
+      "values": [
+        {
+          "name": "Barometer",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABarometer%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Barometer:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Beschleunigungssensor",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Beschleunigungssensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Face ID",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFace+ID%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Face+ID:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Fingerprintsensor",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFingerprintsensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Fingerprintsensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Gyrosensor",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AGyrosensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Gyrosensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Hall Sensor",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AHall+Sensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Hall+Sensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Kompass",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AKompass%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Kompass:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Näherungssensor",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AN%C3%A4herungssensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:N%C3%A4herungssensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Proximitätssensor",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AProximit%C3%A4tssensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Proximit%C3%A4tssensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        }
+      ],
+      "code": "MEL_sensoren",
+      "crawlingActivated": false,
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABarometer%3AMEL_sensoren%3ABeschleunigungssensor%3AMEL_sensoren%3AFace+ID%3AMEL_sensoren%3AFingerprintsensor%3AMEL_sensoren%3AGyrosensor%3AMEL_sensoren%3AHall+Sensor%3AMEL_sensoren%3AKompass%3AMEL_sensoren%3AN%C3%A4herungssensor%3AMEL_sensoren%3AProximit%C3%A4tssensor%3Aspecial%3AAktion",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
+      "solrFacetName": "MEL_sensoren_de_facet_string_mv"
+    }
+  ],
+  "comparable": {
+    "@defined-in": "de.hybris.platform.commercewebservicescommons.dto.search.facetdata.ProductSearchPageWsDTO",
+    "$": false
+  },
+  "siteSearchFallback": false,
+  "categoryName": "Smartphone",
+  "categorySolrFacetName": "brandAndCategoryCodes_facet_string_mv",
+  "comparable": true
+}

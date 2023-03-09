@@ -1,13 +1,17 @@
 package shop
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"os"
 	"strconv"
 )
 
-func XXX_mobilezone() IShop {
+func XXX_mobilezone(isDryRun *bool) IShop {
 	const _name = "mobilezone"
-	const _url = "https://search.epoq.de/inbound-servletapi/getSearchResult?full&ff=e%3Aalloc_THEME&fv=alle_handys&ff=c%3Aanzeigename&fv=Handys&ff=e%3AisPriceVariant&fv=0&callback=X&tenantId=mobilezone-ch-2019&sessionId=f87cc9415cf968d4d633dd6d15f812ca&orderBy=e%3Asorting_price&order=asc&limit=100&offset=0&style=compact&format=json&query=*"
+	const _url = "https://search.epoq.de/inbound-servletapi/getSearchResult?full&ff=e:alloc_THEME&fv=alle_handys&ff=c:anzeigename&fv=Handys&ff=e:isPriceVariant&fv=0&callback=X&tenantId=mobilezone-ch-2019&sessionId=f87cc9415cf968d4d633dd6d15f812ca&orderBy=e:sorting_price&order=asc&limit=100&offset=0&style=compact&format=json&query="
 
 	type _Product struct {
 		MatchItem struct {
@@ -48,9 +52,40 @@ func XXX_mobilezone() IShop {
 	}
 
 	var _result _Response
+	var _body []byte
 
-	_parseFn := func() []Product {
-		products := []Product{}
+	fn := "shop/mobilezone.json"
+
+	if isDryRun != nil && *isDryRun {
+		if body, err := os.ReadFile(fn); err != nil {
+			panic(err)
+		} else {
+			_body = body
+		}
+	} else {
+		resp, err := http.Get(_url)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+
+		if body, err := io.ReadAll(resp.Body); err != nil {
+			panic(err)
+		} else {
+			_body = body[2:(len(body) - 2)] // remove shitty stuff
+		}
+
+		os.WriteFile(fn, _body, 0664)
+	}
+	// fmt.Println(string(_body))
+
+	if err := json.Unmarshal(_body, &_result); err != nil {
+		panic(err)
+	}
+	// fmt.Println(_result.Products)
+
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Result.Findings.Products))
 		for _, product := range _result.Result.Findings.Products {
@@ -59,41 +94,51 @@ func XXX_mobilezone() IShop {
 			} else if _sale {
 				// fmt.Println(product)
 
-				_retailPrice, err := strconv.ParseFloat(product.MatchItem.OldPrice.Value, 32)
-				if err != nil {
+				var _retailPrice float32
+				var _price float32
+				var _savings float32
+				var _discount float32
+
+				if oldPrice, err := strconv.ParseFloat(product.MatchItem.OldPrice.Value, 32); err != nil {
 					panic(err)
+				} else {
+					_retailPrice = float32(oldPrice)
 				}
-				_price, err := strconv.ParseFloat(product.MatchItem.Price.Value, 32)
-				if err != nil {
+				if price, err := strconv.ParseFloat(product.MatchItem.Price.Value, 32); err != nil {
 					panic(err)
+				} else {
+					_price = float32(price)
 				}
-				_savings := float32(_price - _retailPrice)
-				_discount := float32(100 - ((100 / _retailPrice) * _price))
 
-				if _price > 0 && _discount >= 10 {
-					products = append(products, Product{
-						Code: _name + "//" + product.MatchItem.Code.Value,
-						Name: product.MatchItem.Description.Value,
+				if _savings == 0 {
+					_savings = _price - _retailPrice
+				}
+				_discount = 100 - ((100 / _retailPrice) * _price)
 
-						RetailPrice: float32(_retailPrice),
-						Price:       float32(_price),
-						Savings:     _savings,
-						Discount:    _discount,
+				product := &Product{
+					Code: _name + "//" + product.MatchItem.Code.Value,
+					Name: product.MatchItem.Description.Value,
 
-						URL: product.MatchItem.Link.Value,
-					})
+					RetailPrice: _retailPrice,
+					Price:       _price,
+					Savings:     _savings,
+					Discount:    _discount,
+
+					URL: product.MatchItem.Link.Value,
+				}
+
+				if s.IsWorth(product) {
+					products = append(products, product)
 				}
 			}
 		}
 
-		return products
+		return &products
 	}
 
 	return NewShop(
 		_name,
 		_url,
-
-		&_result,
 
 		_parseFn,
 	)
