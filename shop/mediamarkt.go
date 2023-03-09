@@ -127,6 +127,8 @@ func XXX_mediamarkt(isDryRun *bool) IShop {
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
+			_link := s.ResolveURL(product.link).String()
+
 			product := &Product{
 				Code: _name + "//" + product.code,
 				Name: product.title,
@@ -136,7 +138,7 @@ func XXX_mediamarkt(isDryRun *bool) IShop {
 				Savings:     _savings,
 				Discount:    _discount,
 
-				URL: product.link,
+				URL: _link,
 			}
 
 			if s.IsWorth(product) {

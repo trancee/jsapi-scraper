@@ -107,7 +107,7 @@ func XXX_melectronics(isDryRun *bool) IShop {
 				Savings:     product.Price.Value - product.SuggestedRetailPrice.Value,
 				Discount:    product.PercentageReduction,
 
-				URL: product.URL,
+				URL: s.ResolveURL(product.URL).String(),
 			}
 
 			if s.IsWorth(&product) {
