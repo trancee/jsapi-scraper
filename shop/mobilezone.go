@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func XXX_mobilezone(isDryRun *bool) IShop {
+func XXX_mobilezone(isDryRun bool) IShop {
 	const _name = "mobilezone"
 	const _url = "https://search.epoq.de/inbound-servletapi/getSearchResult?full&ff=e:alloc_THEME&fv=alle_handys&ff=c:anzeigename&fv=Handys&ff=e:isPriceVariant&fv=0&callback=X&tenantId=mobilezone-ch-2019&sessionId=f87cc9415cf968d4d633dd6d15f812ca&orderBy=e:sorting_price&order=asc&limit=100&offset=0&style=compact&format=json&query="
 
@@ -31,7 +31,7 @@ func XXX_mobilezone(isDryRun *bool) IShop {
 				Value string `json:"$"`
 			} `json:"c:action"`
 			Sale struct {
-				Value string `json:"$"`
+				Value *string `json:"$"`
 			} `json:"e:sale"`
 
 			Price struct {
@@ -54,10 +54,16 @@ func XXX_mobilezone(isDryRun *bool) IShop {
 	var _result _Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/mobilezone.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -75,7 +81,7 @@ func XXX_mobilezone(isDryRun *bool) IShop {
 			_body = body[2:(len(body) - 2)] // remove shitty stuff
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 
@@ -89,7 +95,11 @@ func XXX_mobilezone(isDryRun *bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Result.Findings.Products))
 		for _, product := range _result.Result.Findings.Products {
-			if _sale, err := strconv.ParseBool(product.MatchItem.Sale.Value); err != nil {
+			if product.MatchItem.Sale.Value == nil {
+				continue
+			}
+
+			if _sale, err := strconv.ParseBool(*product.MatchItem.Sale.Value); err != nil {
 				panic(err)
 			} else if _sale {
 				// fmt.Println(product)

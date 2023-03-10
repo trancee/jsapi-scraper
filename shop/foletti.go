@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func XXX_foletti(isDryRun *bool) IShop {
+func XXX_foletti(isDryRun bool) IShop {
 	const _name = "Foletti"
 	const _url = "https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?limit=100&sort=price|asc&listStyle=list"
 
@@ -47,10 +47,16 @@ func XXX_foletti(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/foletti.html"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -68,7 +74,7 @@ func XXX_foletti(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-func XXX_interdiscount(isDryRun *bool) IShop {
+func XXX_interdiscount(isDryRun bool) IShop {
 	const _name = "Interdiscount"
 	const _url = "https://www.interdiscount.ch/idocc/occ/id/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
 
@@ -64,10 +64,16 @@ func XXX_interdiscount(isDryRun *bool) IShop {
 	var _result _Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/interdiscount.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -85,7 +91,7 @@ func XXX_interdiscount(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

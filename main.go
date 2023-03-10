@@ -20,17 +20,14 @@ const Token = "6219604147:AAERFP-_PfSELN3-gorzE9czM6WR-3Rum-Q"
 const ChatID = "1912073977"
 
 func main() {
-	isDryRun := flag.Bool("dryrun", false, "dry run (avoid making external calls)")
+	isDryRun := false
+
+	_isDryRun := flag.Bool("dryrun", isDryRun, "dry run (avoid making external calls)")
 	flag.Parse()
 
-	// r := regexp.MustCompile("[^a-z0-9 .]")
-	// fmt.Println("regexp:", r)
-
-	// str := "OPPO Find X3 Lite (5G, 128 GB, 6.44\", 64 MP, Blau)"
-	// fmt.Println(str)
-
-	// fmt.Println(strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(str), "$1")))
-	// return
+	if _isDryRun != nil {
+		isDryRun = *_isDryRun
+	}
 
 	defer func() {
 		if err := recover(); err != nil {
@@ -38,8 +35,7 @@ func main() {
 			fmt.Println()
 			fmt.Printf("%s\n", strings.Join(strings.Split(string(debug.Stack()), "\n")[7:], "\n"))
 
-			if isDryRun != nil && *isDryRun {
-			} else {
+			if !isDryRun {
 				if _, err := SendMessage(fmt.Sprintf("%v", err)); err != nil {
 					fmt.Println(err)
 				}
@@ -137,7 +133,7 @@ func main() {
 				}
 
 				if notify {
-					if isDryRun != nil && !*isDryRun {
+					if !isDryRun {
 						priceLine := ""
 						if product.Price != product.RetailPrice {
 							priceLine = fmt.Sprintf("%-8.2f %-8.2f %-3d%%", product.Price, product.Savings, int(product.Discount))
@@ -175,22 +171,20 @@ func SendMessage(text string) (bool, error) {
 		"chat_id": ChatID,
 		"text":    text,
 	})
-	response, err = http.Post(
+	if response, err = http.Post(
 		url,
 		"application/json",
 		bytes.NewBuffer(body),
-	)
-	if err != nil {
+	); err != nil {
 		return false, err
-	}
+	} else {
+		// Close the request at the end
+		defer response.Body.Close()
 
-	// Close the request at the end
-	defer response.Body.Close()
-
-	// Body
-	_, err = io.ReadAll(response.Body)
-	if err != nil {
-		return false, err
+		// Body
+		if _, err := io.ReadAll(response.Body); err != nil {
+			return false, err
+		}
 	}
 
 	// Return

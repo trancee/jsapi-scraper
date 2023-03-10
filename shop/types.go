@@ -68,34 +68,6 @@ func (s shop) Name() string {
 }
 
 func (s shop) Fetch() *[]*Product {
-	// if s.result != nil {
-	// 	resp, err := http.Get(s.url)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	defer resp.Body.Close()
-
-	// 	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	// fmt.Println(string(body))
-
-	// 	if body[0] != '{' {
-	// 		body = body[2:(len(body) - 2)]
-	// 		// fmt.Println(string(body))
-	// 	}
-
-	// 	// var result Response
-	// 	if err := json.Unmarshal(body, &s.result); err != nil { // Parse []byte to go struct pointer
-	// 		panic(err)
-	// 	}
-	// 	// fmt.Printf("%v\n", s.result)
-	// }
-
-	// for _, product := range s.parseFn() {
-	// 	fmt.Printf("%#v\n", product)
-	// }
 	return s.parseFn(s)
 }
 

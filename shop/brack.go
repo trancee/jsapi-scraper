@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func XXX_brack(isDryRun *bool) IShop {
+func XXX_brack(isDryRun bool) IShop {
 	const _name = "Brack"
 	// const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?filter%5BArt%5D%5B%5D=offer&filter%5BArt%5D%5B%5D=intropromotion&filter%5BArt%5D%5B%5D=occassion&filter%5BArt%5D%5B%5D=new&sortProducts=priceasc&query=*"
 	const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?limit=192&sortProducts=priceasc&query=*"
@@ -44,10 +44,16 @@ func XXX_brack(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/brack.html"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -65,7 +71,7 @@ func XXX_brack(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

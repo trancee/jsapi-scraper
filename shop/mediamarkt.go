@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func XXX_mediamarkt(isDryRun *bool) IShop {
+func XXX_mediamarkt(isDryRun bool) IShop {
 	const _name = "Mediamarkt"
 	// const _url = "https://www.mediamarkt.ch/de/category/_smartphone-680815.html?searchParams=&sort=price&view=PRODUCTGRID"
 	const _url = "https://www.mediamarkt.ch/de/category/_smartphone-680815.html?searchParams=%2FSearch.ff%3FfilterCategoriesROOT%3DHandy%2B%2526%2BNavigation%25C2%25A7MediaCHdec680760%26filterCategoriesROOT%252FHandy%2B%2526%2BNavigation%25C2%25A7MediaCHdec680760%3DSmartphone%25C2%25A7MediaCHdec680815%26filteravailability%3D1%26filterTyp%3D___Smartphone%26channel%3Dmmchde%26followSearch%3D9782%26disableTabbedCategory%3Dtrue%26navigation%3Dtrue&sort=price&view=PRODUCTGRID&page="
@@ -29,10 +29,16 @@ func XXX_mediamarkt(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/mediamarkt.html"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -50,7 +56,7 @@ func XXX_mediamarkt(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

@@ -11,11 +11,9 @@ import (
 	"strings"
 )
 
-func XXX_conrad(isDryRun *bool) IShop {
+func XXX_conrad(isDryRun bool) IShop {
 	const _name = "Conrad"
 	const _url = "https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w"
-
-	// const _debug = false
 
 	articles := []map[string]any{}
 
@@ -72,10 +70,16 @@ func XXX_conrad(isDryRun *bool) IShop {
 		"partialQuerySize": 6
 	}`)
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/conrad.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -93,7 +97,7 @@ func XXX_conrad(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 
@@ -147,8 +151,8 @@ func XXX_conrad(isDryRun *bool) IShop {
 
 		fn := "shop/conrad-articles.json"
 
-		if isDryRun != nil && *isDryRun {
-			if body, err := os.ReadFile(fn); err != nil {
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
 				panic(err)
 			} else {
 				_body = body
@@ -186,7 +190,7 @@ func XXX_conrad(isDryRun *bool) IShop {
 				_body = body
 			}
 
-			os.WriteFile(fn, _body, 0664)
+			os.WriteFile(path+fn, _body, 0664)
 		}
 		// fmt.Println(string(_body))
 

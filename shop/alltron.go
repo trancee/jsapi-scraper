@@ -9,12 +9,10 @@ import (
 	"strings"
 )
 
-func XXX_alltron(isDryRun *bool) IShop {
+func XXX_alltron(isDryRun bool) IShop {
 	const _name = "Alltron"
 	const _url = "https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar&searchEarlyFilter=true&format=json"
 	const _api = "https://alltron.ch/api/v1/products/multiple-tiles/"
-
-	const _debug = false
 
 	type _Product struct {
 		Description struct {
@@ -52,10 +50,16 @@ func XXX_alltron(isDryRun *bool) IShop {
 	var _result _Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/alltron.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -73,7 +77,7 @@ func XXX_alltron(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 
@@ -89,8 +93,8 @@ func XXX_alltron(isDryRun *bool) IShop {
 
 	fn = "shop/alltron-products.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -108,7 +112,7 @@ func XXX_alltron(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

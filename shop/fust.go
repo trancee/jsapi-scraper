@@ -16,7 +16,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 
-func XXX_fust(isDryRun *bool) IShop {
+func XXX_fust(isDryRun bool) IShop {
 	const _name = "Fust"
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
 
@@ -35,6 +35,12 @@ func XXX_fust(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	for _category, _url := range map[string]string{
 		"samsung": "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
 		"huawei":  "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
@@ -44,8 +50,8 @@ func XXX_fust(isDryRun *bool) IShop {
 	} {
 		fn := fmt.Sprintf("shop/fust.%s.html", _category)
 
-		if isDryRun != nil && *isDryRun {
-			if body, err := os.ReadFile(fn); err != nil {
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
 				panic(err)
 			} else {
 				_body = body
@@ -63,7 +69,7 @@ func XXX_fust(isDryRun *bool) IShop {
 				_body = body
 			}
 
-			os.WriteFile(fn, _body, 0664)
+			os.WriteFile(path+fn, _body, 0664)
 		}
 		// fmt.Println(string(_body))
 

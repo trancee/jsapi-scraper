@@ -42,7 +42,7 @@
         "priceType": "BUY",
         "formattedValue": "83,95 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -57,8 +57,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -107,7 +107,7 @@
         "priceType": "BUY",
         "formattedValue": "169,00 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -122,8 +122,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -172,7 +172,7 @@
         "priceType": "BUY",
         "formattedValue": "299,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -186,7 +186,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -235,7 +235,7 @@
         "priceType": "BUY",
         "formattedValue": "789,00 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -250,8 +250,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -300,7 +300,7 @@
         "priceType": "BUY",
         "formattedValue": "899,00 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -313,8 +313,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -332,7 +332,7 @@
         "currencyIso": "CHF",
         "value": 1099.00,
         "priceType": "BUY",
-        "formattedValue": "1.099,00 CHF"
+        "formattedValue": "1 099,00 CHF"
       },
       "baseProduct": "b794698100000",
       "images": [
@@ -360,9 +360,9 @@
         "currencyIso": "CHF",
         "value": 1149.00,
         "priceType": "BUY",
-        "formattedValue": "1.149,00 CHF"
+        "formattedValue": "1 149,00 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -375,8 +375,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -394,7 +394,7 @@
         "currencyIso": "CHF",
         "value": 1299.00,
         "priceType": "BUY",
-        "formattedValue": "1.299,00 CHF"
+        "formattedValue": "1 299,00 CHF"
       },
       "baseProduct": "b794698200000",
       "images": [
@@ -422,9 +422,9 @@
         "currencyIso": "CHF",
         "value": 1349.00,
         "priceType": "BUY",
-        "formattedValue": "1.349,00 CHF"
+        "formattedValue": "1 349,00 CHF"
       },
-      "deliveryDays": 1,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -437,8 +437,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "nextday",
-        "availabilityText": "Heute bis 17 Uhr bestellt, am nächsten Werktag geliefert.",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,

@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func XXX_alternate(isDryRun *bool) IShop {
+func XXX_alternate(isDryRun bool) IShop {
 	const _name = "alternate"
 	// const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&s=price_asc&filter_-2=true&filter_416=177&filter_1653=1"
 	const _url = "https://www.alternate.ch/Alle-Smartphones?t=18352&filter_-2=true&filter_16536=5&s=price_asc&page=%d"
@@ -48,11 +48,17 @@ func XXX_alternate(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	for p := 1; p <= 5; p++ {
 		fn := fmt.Sprintf("shop/alternate.%d.html", p)
 
-		if isDryRun != nil && *isDryRun {
-			if body, err := os.ReadFile(fn); err != nil {
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
 				panic(err)
 			} else {
 				_body = body
@@ -70,7 +76,7 @@ func XXX_alternate(isDryRun *bool) IShop {
 				_body = body
 			}
 
-			os.WriteFile(fn, _body, 0664)
+			os.WriteFile(path+fn, _body, 0664)
 		}
 		// fmt.Println(string(_body))
 

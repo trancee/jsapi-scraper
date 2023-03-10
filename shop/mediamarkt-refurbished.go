@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func XXX_mediamarkt_refurbished(isDryRun *bool) IShop {
+func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	const _name = "Mediamarkt (Refurbished)"
 	const _url = "https://refurbished.mediamarkt.ch/ch_de/unsere-refurbished-smartphones?is_in_stock=1&product_list_order=price&product_list_limit=100"
 
@@ -27,10 +27,16 @@ func XXX_mediamarkt_refurbished(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/mediamarkt-refurbished.html"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -48,7 +54,7 @@ func XXX_mediamarkt_refurbished(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

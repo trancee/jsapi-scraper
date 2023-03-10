@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func XXX_stegpc(isDryRun *bool) IShop {
+func XXX_stegpc(isDryRun bool) IShop {
 	const _name = "Steg Electronics"
 	const _url = "https://www.steg-electronics.ch/de/product/list/11853?sortKey=preisasc&smsc=1000"
 
@@ -53,10 +53,16 @@ func XXX_stegpc(isDryRun *bool) IShop {
 	var _result []_Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/stegpc.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -74,7 +80,7 @@ func XXX_stegpc(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 

@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func XXX_melectronics(isDryRun *bool) IShop {
+func XXX_melectronics(isDryRun bool) IShop {
 	const _name = "melectronics"
 	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:special:Aktion&pageSize=20&currentPage=0"
 
@@ -63,10 +63,16 @@ func XXX_melectronics(isDryRun *bool) IShop {
 	var _result _Response
 	var _body []byte
 
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
 	fn := "shop/melectronics.json"
 
-	if isDryRun != nil && *isDryRun {
-		if body, err := os.ReadFile(fn); err != nil {
+	if isDryRun {
+		if body, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
 		} else {
 			_body = body
@@ -84,7 +90,7 @@ func XXX_melectronics(isDryRun *bool) IShop {
 			_body = body
 		}
 
-		os.WriteFile(fn, _body, 0664)
+		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
 
