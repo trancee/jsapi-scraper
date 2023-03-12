@@ -16,25 +16,6 @@ func XXX_alternate(isDryRun bool) IShop {
 
 	const _debug = false
 
-	skips := map[string]bool{
-		"BEAFON":      true,
-		"CROSSCALL":   true,
-		"CYRUS":       true,
-		"DORO":        true,
-		"FELLOWES":    true,
-		"GIGASET":     true,
-		"JABLOCOM":    true,
-		"KONTAKT":     true,
-		"MAGNETOPLAN": true,
-		"MAUL":        true,
-		"OLYMPIA":     true,
-		"PANASONIC":   true,
-		"RUGGEAR":     true,
-		"SIGEL":       true,
-		"STYRO":       true,
-		"SWISSTONE":   true,
-	}
-
 	type _Response struct {
 		code  string
 		title string
@@ -108,12 +89,15 @@ func XXX_alternate(isDryRun bool) IShop {
 
 			title, _ := attr(productPicture.Attr, "alt")
 			title = strings.Split(strings.ReplaceAll(title, ", Handy", ""), ",")[0]
+			if brand := strings.Split(title, " "); brand[0] == "realme" {
+				title = strings.ReplaceAll(title, "-", "")
+			}
 			if _debug {
 				fmt.Println(title)
 			}
 			_product.title = title
 
-			if skip := skips[strings.ToUpper(strings.ReplaceAll(strings.Split(title, " ")[0], "-", ""))]; skip {
+			if Skip(title) {
 				continue
 			}
 

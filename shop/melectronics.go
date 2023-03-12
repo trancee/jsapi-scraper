@@ -104,6 +104,11 @@ func XXX_melectronics(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
+			if Skip(product.Brand.Name) {
+				// fmt.Println("** SKIP: " + product.Brand.Name)
+				continue
+			}
+
 			product := Product{
 				Code: _name + "//" + product.Code,
 				Name: product.Brand.Name + " " + product.Name,

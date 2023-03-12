@@ -107,6 +107,11 @@ func XXX_microspot(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
+			if Skip(product.Name) {
+				// fmt.Println("** SKIP: " + product.Name)
+				continue
+			}
+
 			// if product.MaxOrderValue == 0 {
 			// 	// No more stock
 			// 	continue

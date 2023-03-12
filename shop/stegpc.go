@@ -17,25 +17,6 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 	const _debug = false
 
-	skips := map[string]bool{
-		"BEAFON":      true,
-		"CROSSCALL":   true,
-		"CYRUS":       true,
-		"DORO":        true,
-		"FELLOWES":    true,
-		"GIGASET":     true,
-		"JABLOCOM":    true,
-		"KONTAKT":     true,
-		"MAGNETOPLAN": true,
-		"MAUL":        true,
-		"OLYMPIA":     true,
-		"PANASONIC":   true,
-		"RUGGEAR":     true,
-		"SIGEL":       true,
-		"STYRO":       true,
-		"SWISSTONE":   true,
-	}
-
 	type _Response struct {
 		code  string
 		title string
@@ -131,7 +112,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 		}
 		_product.title = title
 
-		if skip := skips[strings.ToUpper(strings.ReplaceAll(strings.Split(title, " ")[0], "-", ""))]; skip {
+		if Skip(title) {
 			continue
 		}
 

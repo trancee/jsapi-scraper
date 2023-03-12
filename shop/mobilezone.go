@@ -95,6 +95,11 @@ func XXX_mobilezone(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Result.Findings.Products))
 		for _, product := range _result.Result.Findings.Products {
+			if Skip(product.MatchItem.Description.Value) {
+				// fmt.Println("** SKIP: " + product.MatchItem.Description.Value)
+				continue
+			}
+
 			if product.MatchItem.Sale.Value == nil {
 				continue
 			}

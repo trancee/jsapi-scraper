@@ -121,6 +121,10 @@ func XXX_fust(isDryRun bool) IShop {
 			}
 			_product.title = brand
 
+			if Skip(brand) {
+				continue
+			}
+
 			itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
 			// fmt.Println(itemTitle)
 

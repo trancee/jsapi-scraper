@@ -97,6 +97,10 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 		}
 		_product.title = title
 
+		if Skip(title) {
+			continue
+		}
+
 		currentPrice := traverse(baseInfo, "div", "class", "price")
 		// fmt.Println(currentPrice)
 

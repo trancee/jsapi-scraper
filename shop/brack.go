@@ -119,10 +119,15 @@ func XXX_brack(isDryRun bool) IShop {
 		// fmt.Println(itemImage)
 
 		title, _ := attr(itemImage.Attr, "title")
+		title = strings.ReplaceAll(title, " - ", " ")
 		if _debug {
 			fmt.Println(title)
 		}
-		_product.title = strings.ReplaceAll(title, " - ", " ")
+		_product.title = title
+
+		if Skip(title) {
+			continue
+		}
 
 		imageTitleLink := traverse(item, "a", "class", "product__imageTitleLink")
 		// fmt.Println(imageTitleLink)

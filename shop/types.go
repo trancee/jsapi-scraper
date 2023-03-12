@@ -32,20 +32,48 @@ type Action struct {
 }
 
 type Product struct {
-	Code string
-	Name string
+	Code string `json:"code"`
+	Name string `json:"name"`
 
-	RetailPrice float32
-	Price       float32
-	Savings     float32
-	Discount    float32
+	RetailPrice float32 `json:"oldPrice"`
+	Price       float32 `json:"price"`
+	Savings     float32 `json:"savings"`
+	Discount    float32 `json:"discount"`
 
-	Quantity int
+	Quantity int `json:"quantity"`
 
-	URL string
+	URL string `json:"link"`
 }
 
 type parseFn func(s IShop) *[]*Product
+
+var _skips = map[string]bool{
+	"BEAFON":      true,
+	"CAT":         true,
+	"CATERPILLAR": true,
+	"CROSSCALL":   true,
+	"CYRUS":       true,
+	"DORO":        true,
+	"EMPORIA":     true,
+	"FELLOWES":    true,
+	"GIGASET":     true,
+	"JABLOCOM":    true,
+	"KONTAKT":     true,
+	"MAGNETOPLAN": true,
+	"MAUL":        true,
+	"OLYMPIA":     true,
+	"PANASONIC":   true,
+	"RUGGEAR":     true,
+	"SGW":         true,
+	"SIGEL":       true,
+	"STYRO":       true,
+	"SWISSTONE":   true,
+}
+
+func Skip(brand string) bool {
+	// fmt.Println("** SKIP: " + brand)
+	return _skips[strings.ToUpper(strings.ReplaceAll(strings.Split(brand, " ")[0], "-", ""))]
+}
 
 func NewShop(_name string, _url string, _parseFn parseFn) IShop {
 	_baseURL, err := url.Parse(_url)
@@ -72,7 +100,7 @@ func (s shop) Fetch() *[]*Product {
 }
 
 func (s shop) IsWorth(product *Product) bool {
-	return (product.Price > 0 && product.Price < 150) || (product.Discount >= 75)
+	return (product.Price > 0 && product.Price < 250) || (product.Discount >= 75)
 }
 
 func (s shop) ResolveURL(refURL string) *url.URL {

@@ -15,23 +15,6 @@ func XXX_foletti(isDryRun bool) IShop {
 
 	const _debug = false
 
-	skips := map[string]bool{
-		"BEAFON":      true,
-		"CYRUS":       true,
-		"DORO":        true,
-		"FELLOWES":    true,
-		"GIGASET":     true,
-		"KONTAKT":     true,
-		"MAGNETOPLAN": true,
-		"MAUL":        true,
-		"OLYMPIA":     true,
-		"PANASONIC":   true,
-		"RUGGEAR":     true,
-		"SIGEL":       true,
-		"STYRO":       true,
-		"SWISSTONE":   true,
-	}
-
 	type _Response struct {
 		code  string
 		title string
@@ -115,12 +98,15 @@ func XXX_foletti(isDryRun bool) IShop {
 		if strings.Contains(title, "Wallet") {
 			continue
 		}
-		if skip := skips[strings.ToUpper(strings.ReplaceAll(strings.Split(title, " ")[0], "-", ""))]; skip {
+		if Skip(title) {
 			continue
 		}
 
 		itemBrand := traverse(item, "strong", "", "")
 		brand, _ := text(itemBrand)
+		if Skip(brand) {
+			continue
+		}
 
 		if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
 			_product.title = brand + " " + _product.title

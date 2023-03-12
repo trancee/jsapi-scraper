@@ -204,6 +204,16 @@ func XXX_conrad(isDryRun bool) IShop {
 			code := strings.TrimLeft(_product.Code, "0")
 			// fmt.Println(code)
 			for _, product := range *_result.Products {
+				if Skip(product.Name) {
+					continue
+				}
+
+				if brand := strings.Split(product.Name, " "); strings.EqualFold(brand[0], brand[1]) {
+					product.Name = strings.ReplaceAll(product.Name, " "+brand[1], "")
+				} else if brand[0] == "ZTE" {
+					product.Name = strings.ReplaceAll(product.Name, "ZTE Blade V40 Vita 4 Smartphone", "ZTE Blade V40 Vita Smartphone")
+				}
+
 				if product.Code == code {
 					isSpecialOffer := false
 					if _product.Offers.Offer.Price.IsSpecialOffer != "false" {

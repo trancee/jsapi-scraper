@@ -128,8 +128,12 @@ func XXX_alltron(isDryRun bool) IShop {
 		fmt.Printf("-- %s (%d)\n", _name, len(_products))
 		for _, product := range _products {
 			// fmt.Println(product)
-
 			if product != nil {
+				if Skip(product.Description.Title) {
+					// fmt.Println("** SKIP: " + product.Description.Title)
+					continue
+				}
+
 				_title := product.Description.Title
 				if product.Settings.IsNew {
 					_title += " [N]"

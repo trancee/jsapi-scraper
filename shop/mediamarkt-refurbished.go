@@ -1,11 +1,14 @@
 package shop
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
+	"strings"
 )
 
 func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
@@ -58,6 +61,28 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
+	type _Product struct {
+		Category string  `json:"category"`
+		Name     string  `json:"name"`
+		Price    float32 `json:"price"`
+	}
+
+	type _Products struct {
+		Products map[string]_Product `json:"products"`
+	}
+
+	var _products _Products
+	{
+		r := regexp.MustCompile(`"products": {(.*?)},\n`)
+		body := "{" + strings.TrimSuffix(string(r.Find(_body)), ",\n") + "}"
+		// fmt.Println(body)
+
+		if err := json.Unmarshal([]byte(body), &_products); err != nil {
+			panic(err)
+		}
+		// fmt.Println(_products)
+	}
+
 	doc := parse(string(_body))
 
 	productList := traverse(doc, "ol", "class", "products")
@@ -107,6 +132,9 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 		}
 		_product.code = productId
 
+		item := _products.Products[productId]
+		_product.title = item.Category + " " + _product.title
+
 		priceWrapper := traverse(priceBox, "span", "class", "price-wrapper")
 		// fmt.Println(priceWrapper)
 
@@ -123,6 +151,10 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 
 		if _debug {
 			fmt.Println()
+		}
+
+		if Skip(title) {
+			continue
 		}
 
 		_result = append(_result, _product)
