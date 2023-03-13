@@ -79,6 +79,7 @@ func main() {
 			shop.XXX_conrad(isDryRun),
 			shop.XXX_foletti(isDryRun),
 			shop.XXX_fust(isDryRun),
+			shop.XXX_galaxus(isDryRun),
 			shop.XXX_interdiscount(isDryRun),
 			shop.XXX_mediamarkt(isDryRun),
 			shop.XXX_mediamarkt_refurbished(isDryRun),
@@ -107,7 +108,7 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan)\W*)|(\W*(5G|4G|dual sim|Smartphone|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
+	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan)\W*)|(\W*([2345]G|dual\W*sim|Smartphone|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
 	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[F]?(\/DSN)?\W*)`)
 
 	normalize := func(shop string, text string) string {
@@ -533,17 +534,24 @@ func main() {
 				if oldProduct != *product {
 					db.Set(id, product)
 
-					notify = true
+					if oldProduct.RetailPrice != product.RetailPrice {
+						notify = true
+					}
 				}
 
 				if notify {
 					if !isDryRun {
+						priceDiff := ""
 						priceLine := ""
 						if product.Price != product.RetailPrice {
-							priceLine = fmt.Sprintf("%-8.2f %-8.2f %-3d%%", product.Price, product.Savings, int(product.Discount))
+							priceLine = fmt.Sprintf("%-8.2f %-8.2f %3d%%", product.Price, product.Savings, int(product.Discount))
+						} else {
+							if oldProduct.RetailPrice > 0 {
+								priceDiff = fmt.Sprintf("\n%-8.2f %+8.2f", oldProduct.RetailPrice, product.RetailPrice-oldProduct.RetailPrice)
+							}
 						}
 
-						productLine := fmt.Sprintf("%s\n%-8.2f %s\n\n%s", _name, product.RetailPrice, priceLine, product.URL)
+						productLine := fmt.Sprintf("%s\n%-8.2f %s%s\n\n%s", _name, product.RetailPrice, priceLine, priceDiff, product.URL)
 
 						if _, err := SendMessage(productLine); err != nil {
 							panic(err)

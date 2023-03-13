@@ -48,19 +48,27 @@ type Product struct {
 type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
+	"ALIGATOR":    true,
 	"BEAFON":      true,
+	"BLACKBERRY":  true,
+	"BLAUPUNKT":   true,
+	"BRONDI":      true,
 	"CAT":         true,
 	"CATERPILLAR": true,
 	"CROSSCALL":   true,
 	"CYRUS":       true,
 	"DORO":        true,
 	"EMPORIA":     true,
+	"EVOLVEO":     true,
 	"FELLOWES":    true,
+	"FUNKE":       true,
 	"GIGASET":     true,
 	"JABLOCOM":    true,
 	"KONTAKT":     true,
 	"MAGNETOPLAN": true,
 	"MAUL":        true,
+	"MAXCOM":      true,
+	"MYPHONE":     true,
 	"OLYMPIA":     true,
 	"PANASONIC":   true,
 	"RUGGEAR":     true,
@@ -68,6 +76,7 @@ var _skips = map[string]bool{
 	"SIGEL":       true,
 	"STYRO":       true,
 	"SWISSTONE":   true,
+	"TELEFUNKEN":  true,
 }
 
 func Skip(brand string) bool {
