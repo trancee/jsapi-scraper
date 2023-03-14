@@ -27,6 +27,10 @@ import (
 const Token = "6219604147:AAERFP-_PfSELN3-gorzE9czM6WR-3Rum-Q"
 const ChatID = "1912073977"
 
+// https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
+const sheetId = 238356703
+const spreadsheetId = "1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI"
+
 func main() {
 	isDryRun := false
 
@@ -41,10 +45,12 @@ func main() {
 		if err := recover(); err != nil {
 			fmt.Println(err)
 			fmt.Println()
-			fmt.Printf("%s\n", strings.Join(strings.Split(string(debug.Stack()), "\n")[7:], "\n"))
+
+			stack := strings.Join(strings.Split(string(debug.Stack()), "\n")[7:], "\n")
+			fmt.Printf("%s\n", stack)
 
 			if !isDryRun {
-				if _, err := SendMessage(fmt.Sprintf("%v", err)); err != nil {
+				if _, err := SendMessage(fmt.Sprintf("%v\n\n%s", err, stack)); err != nil {
 					fmt.Println(err)
 				}
 			}
@@ -75,8 +81,10 @@ func main() {
 		for _, _shop := range []shop.IShop{
 			shop.XXX_alltron(isDryRun),
 			shop.XXX_alternate(isDryRun),
+			shop.XXX_bohnettrade(isDryRun),
 			shop.XXX_brack(isDryRun),
 			shop.XXX_conrad(isDryRun),
+			shop.XXX_electronova(isDryRun),
 			shop.XXX_foletti(isDryRun),
 			shop.XXX_fust(isDryRun),
 			shop.XXX_galaxus(isDryRun),
@@ -87,6 +95,7 @@ func main() {
 			shop.XXX_microspot(isDryRun),
 			shop.XXX_mobiledevice(isDryRun),
 			shop.XXX_mobilezone(isDryRun),
+			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
 		} {
 			wg.Add(1)
@@ -109,7 +118,7 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan)\W*)|(\W*([2345]G|dual\W*sim|Smartphone|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
+	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan)\W*)|(\W*([2345]G|LTE|dual\W*sim|Smartphone|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
 	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[F]?(\/DSN)?\W*)`)
 
 	normalize := func(shop string, text string) string {
@@ -203,10 +212,6 @@ func main() {
 		panic(err)
 	}
 
-	// https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
-	sheetId := 238356703
-	spreadsheetId := "1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI"
-
 	rows := []*sheets.RowData{}
 
 	{
@@ -286,177 +291,221 @@ func main() {
 	valueWorth := "100"
 	valueMaximum := "200"
 
+	colorWhite := &sheets.Color{Red: 1.0, Green: 1.0, Blue: 1.0}
+	colorGray := &sheets.Color{Red: color(0x3f), Green: color(0x4d), Blue: color(0x59)}
+	colorLight := &sheets.Color{Red: color(0xbd), Green: color(0xbd), Blue: color(0xbd)}
+	colorGreen := &sheets.Color{Red: color(0x34), Green: color(0xa8), Blue: color(0x53)}
+	colorYellow := &sheets.Color{Red: color(0xfb), Green: color(0xbc), Blue: color(0x04)}
+	colorRed := &sheets.Color{Red: color(0xea), Green: color(0x43), Blue: color(0x35)}
+
+	requests := []*sheets.Request{}
+
+	if res, err := service.Spreadsheets.Get(spreadsheetId).Fields("sheets(properties(sheetId,title),conditionalFormats)").Do(); err != nil || res.HTTPStatusCode != 200 {
+		panic(err)
+	} else {
+		for _, sheet := range res.Sheets {
+			property := sheet.Properties
+
+			if property.SheetId == int64(sheetId) {
+				for i := 0; i < len(sheet.ConditionalFormats); i++ {
+					requests = append(requests, &sheets.Request{
+						DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
+					})
+				}
+				break
+			}
+		}
+	}
+
+	requests = append(requests,
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 0,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 1,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   int64(1 + len(shops)),
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "CUSTOM_FORMULA",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: `=IF(AND(COUNT($B2:2)>1,B2<` + valueWorth + `),(B2=MIN($B2:2))*(B2<>""))`,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorWhite},
+							BackgroundColor: colorGreen,
+						},
+					},
+				},
+			},
+		},
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 1,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 1,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   int64(1 + len(shops)),
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "NUMBER_LESS_THAN_EQ",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: valueWorth,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorWhite},
+							BackgroundColor: colorYellow,
+						},
+					},
+				},
+			},
+		},
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 2,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 1,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   int64(1 + len(shops)),
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "NUMBER_BETWEEN",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: valueWorth,
+								},
+								{
+									UserEnteredValue: valueMaximum,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: false, ForegroundColor: colorLight},
+							BackgroundColor: colorGray,
+						},
+					},
+				},
+			},
+		},
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 3,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 1,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   int64(1 + len(shops)),
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "NUMBER_GREATER_THAN_EQ",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: valueMaximum,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorWhite},
+							BackgroundColor: colorRed,
+						},
+					},
+				},
+			},
+		},
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 4,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 0,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   1,
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "CUSTOM_FORMULA",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: `=MIN($B2:2)<` + valueWorth + ``,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorWhite},
+							BackgroundColor: colorGreen,
+						},
+					},
+				},
+			},
+		},
+		&sheets.Request{
+			AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+				Index: 5,
+				Rule: &sheets.ConditionalFormatRule{
+					Ranges: []*sheets.GridRange{
+						{
+							SheetId:          int64(sheetId),
+							StartRowIndex:    1,
+							StartColumnIndex: 0,
+							EndRowIndex:      int64(1 + len(items)),
+							EndColumnIndex:   1,
+						},
+					},
+					BooleanRule: &sheets.BooleanRule{
+						Condition: &sheets.BooleanCondition{
+							Type: "CUSTOM_FORMULA",
+							Values: []*sheets.ConditionValue{
+								{
+									UserEnteredValue: `=MIN($B2:2)>` + valueMaximum + ``,
+								},
+							},
+						},
+						Format: &sheets.CellFormat{
+							TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorWhite},
+							BackgroundColor: colorRed,
+						},
+					},
+				},
+			},
+		},
+	)
+
 	batchUpdateRequest := sheets.BatchUpdateSpreadsheetRequest{
-		Requests: []*sheets.Request{
-			{
-				DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
-			},
-			{
-				DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
-			},
-			{
-				DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
-			},
-			{
-				DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
-			},
-			{
-				DeleteConditionalFormatRule: &sheets.DeleteConditionalFormatRuleRequest{SheetId: int64(sheetId), Index: 0},
-			},
-			{
-				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
-					Index: 0,
-					Rule: &sheets.ConditionalFormatRule{
-						Ranges: []*sheets.GridRange{
-							{
-								SheetId:          int64(sheetId),
-								StartRowIndex:    1,
-								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
-							},
-						},
-						BooleanRule: &sheets.BooleanRule{
-							Condition: &sheets.BooleanCondition{
-								Type: "CUSTOM_FORMULA",
-								Values: []*sheets.ConditionValue{
-									{
-										UserEnteredValue: `=IF(AND(COUNT($B2:2)>1,B2<` + valueWorth + `),(B2=MIN($B2:2))*(B2<>""))`,
-									},
-								},
-							},
-							Format: &sheets.CellFormat{
-								TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: &sheets.Color{Red: 1.0, Green: 1.0, Blue: 1.0}},
-								BackgroundColor: &sheets.Color{Red: color(0x34), Green: color(0xa8), Blue: color(0x53)},
-							},
-						},
-					},
-				},
-			},
-			{
-				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
-					Index: 1,
-					Rule: &sheets.ConditionalFormatRule{
-						Ranges: []*sheets.GridRange{
-							{
-								SheetId:          int64(sheetId),
-								StartRowIndex:    1,
-								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
-							},
-						},
-						BooleanRule: &sheets.BooleanRule{
-							Condition: &sheets.BooleanCondition{
-								Type: "NUMBER_LESS_THAN_EQ",
-								Values: []*sheets.ConditionValue{
-									{
-										UserEnteredValue: valueWorth,
-									},
-								},
-							},
-							Format: &sheets.CellFormat{
-								TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: &sheets.Color{Red: 1.0, Green: 1.0, Blue: 1.0}},
-								BackgroundColor: &sheets.Color{Red: color(0xfb), Green: color(0xbc), Blue: color(0x04)},
-							},
-						},
-					},
-				},
-			},
-			{
-				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
-					Index: 2,
-					Rule: &sheets.ConditionalFormatRule{
-						Ranges: []*sheets.GridRange{
-							{
-								SheetId:          int64(sheetId),
-								StartRowIndex:    1,
-								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
-							},
-						},
-						BooleanRule: &sheets.BooleanRule{
-							Condition: &sheets.BooleanCondition{
-								Type: "NUMBER_BETWEEN",
-								Values: []*sheets.ConditionValue{
-									{
-										UserEnteredValue: valueWorth,
-									},
-									{
-										UserEnteredValue: valueMaximum,
-									},
-								},
-							},
-							Format: &sheets.CellFormat{
-								TextFormat:      &sheets.TextFormat{Bold: false, ForegroundColor: &sheets.Color{Red: color(0xbd), Green: color(0xbd), Blue: color(0xbd)}},
-								BackgroundColor: &sheets.Color{Red: color(0x3f), Green: color(0x4d), Blue: color(0x59)},
-							},
-						},
-					},
-				},
-			},
-			{
-				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
-					Index: 3,
-					Rule: &sheets.ConditionalFormatRule{
-						Ranges: []*sheets.GridRange{
-							{
-								SheetId:          int64(sheetId),
-								StartRowIndex:    1,
-								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
-							},
-						},
-						BooleanRule: &sheets.BooleanRule{
-							Condition: &sheets.BooleanCondition{
-								Type: "NUMBER_GREATER_THAN_EQ",
-								Values: []*sheets.ConditionValue{
-									{
-										UserEnteredValue: valueMaximum,
-									},
-								},
-							},
-							Format: &sheets.CellFormat{
-								TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: &sheets.Color{Red: 1.0, Green: 1.0, Blue: 1.0}},
-								BackgroundColor: &sheets.Color{Red: color(0xea), Green: color(0x43), Blue: color(0x35)},
-							},
-						},
-					},
-				},
-			},
-			{
-				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
-					Index: 4,
-					Rule: &sheets.ConditionalFormatRule{
-						Ranges: []*sheets.GridRange{
-							{
-								SheetId:          int64(sheetId),
-								StartRowIndex:    1,
-								StartColumnIndex: 0,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   1,
-							},
-						},
-						BooleanRule: &sheets.BooleanRule{
-							Condition: &sheets.BooleanCondition{
-								Type: "CUSTOM_FORMULA",
-								Values: []*sheets.ConditionValue{
-									{
-										UserEnteredValue: `=MIN($B2:2)<` + valueWorth + ``,
-									},
-								},
-							},
-							Format: &sheets.CellFormat{
-								TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: &sheets.Color{Red: 1.0, Green: 1.0, Blue: 1.0}},
-								BackgroundColor: &sheets.Color{Red: color(0x34), Green: color(0xa8), Blue: color(0x53)},
-							},
-						},
-					},
-				},
-			},
-			{
+		Requests: append(requests,
+			&sheets.Request{
 				UpdateCells: &sheets.UpdateCellsRequest{
 					Fields: "userEnteredValue,userEnteredFormat.textFormat.link",
 					Range: &sheets.GridRange{
@@ -469,7 +518,7 @@ func main() {
 					Rows: rows,
 				},
 			},
-		},
+		),
 	}
 
 	// execute the request using spreadsheetId

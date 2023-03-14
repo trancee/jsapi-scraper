@@ -61,10 +61,13 @@ var _skips = map[string]bool{
 	"EMPORIA":     true,
 	"EVOLVEO":     true,
 	"FELLOWES":    true,
+	"FOLIA":       true,
 	"FUNKE":       true,
 	"GIGASET":     true,
 	"JABLOCOM":    true,
+	"KERKMANN":    true,
 	"KONTAKT":     true,
+	"LENOVO":      true,
 	"MAGNETOPLAN": true,
 	"MAUL":        true,
 	"MAXCOM":      true,
@@ -74,6 +77,7 @@ var _skips = map[string]bool{
 	"RUGGEAR":     true,
 	"SGW":         true,
 	"SIGEL":       true,
+	"STOTZ":       true,
 	"STYRO":       true,
 	"SWISSTONE":   true,
 	"TELEFUNKEN":  true,
@@ -145,7 +149,7 @@ func contains(s []html.Attribute, key string, val string) bool {
 			if val == "" || a.Val == val {
 				return true
 			} else {
-				matched, _ := regexp.Match(`\b`+val+`\b`, []byte(a.Val))
+				matched, _ := regexp.Match(`\b`+val+`\b`, []byte(strings.ReplaceAll(a.Val, "-", "_")))
 				return matched
 			}
 		}

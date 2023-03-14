@@ -153,7 +153,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 			product.Description = html.UnescapeString(product.Description)
 
 			if Skip(product.Brand) {
-				fmt.Println("** SKIP: " + product.Brand)
+				// fmt.Println("** SKIP: " + product.Brand)
 				continue
 			}
 

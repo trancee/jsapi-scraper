@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -12,9 +11,9 @@ import (
 	"golang.org/x/net/html"
 )
 
-func XXX_mobiledevice(isDryRun bool) IShop {
-	const _name = "mobiledevice"
-	const _url = "https://www.mobiledevice.ch/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&id_category_layered=28&orderby=price&orderway=asc&n=100"
+func XXX_orderflow(isDryRun bool) IShop {
+	const _name = "orderflow"
+	const _url = "https://www.orderflow.ch/de/categories/elektronik/kommunikation/mobiltelefone?limit=100&sort=price|asc&c300101=[30010104,30010117,30010105,30010103]"
 
 	const _debug = false
 
@@ -39,7 +38,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	fn := "shop/mobiledevice.html"
+	fn := "shop/orderflow.html"
 
 	if isDryRun {
 		if body, err := os.ReadFile(path + fn); err != nil {
@@ -64,31 +63,22 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
-	type _Body struct {
-		Products string `json:"productList"`
-	}
-
-	var body _Body
-	{
-		if err := json.Unmarshal([]byte(_body), &body); err != nil {
-			panic(err)
-		}
-		_body = []byte(body.Products)
-	}
-	// fmt.Println(string(_body))
-
 	doc := parse(string(_body))
 
-	productList := traverse(doc, "ul", "class", "product_list")
+	productList := traverse(doc, "div", "class", "product-list-items")
 	// fmt.Println(productList)
 
-	for item := productList.FirstChild; item != nil; item = item.NextSibling {
-		// item := traverse(items, "li", "class", "ajax_block_product")
+	for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+		// item := traverse(items, "div", "class", "item")
 		// fmt.Println(item)
+
+		if !contains(item.Attr, "class", "item") {
+			continue
+		}
 
 		_product := _Response{}
 
-		imageTitleLink := traverse(item, "a", "class", "product_img_link")
+		imageTitleLink := traverse(item, "a", "class", "")
 		// fmt.Println(imageTitleLink)
 
 		link, _ := attr(imageTitleLink.Attr, "href")
@@ -97,8 +87,11 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		}
 		_product.link = link
 
-		title, _ := attr(imageTitleLink.Attr, "title")
-		title = strings.ReplaceAll(title, "X Cover 5 G525", "XCover 5")
+		itemImage := traverse(item, "img", "class", "img-fluid")
+		// fmt.Println(itemImage)
+
+		title, _ := attr(itemImage.Attr, "alt")
+		title = strings.Split(strings.Split(title, " - ")[0], " 16.")[0]
 		if _debug {
 			fmt.Println(title)
 		}
@@ -108,17 +101,19 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			continue
 		}
 
-		code := strings.Split(link[45:], "-")[0]
+		code := strings.Split(link[54:], "-")[0]
 		if _debug {
 			fmt.Println(code)
 		}
 		_product.code = code
 
-		if itemPrice := traverse(item, "span", "class", "price"); itemPrice != nil {
-			// fmt.Println(itemPrice)
+		itemFirstPrice := traverse(item, "span", "class", "first_price")
+		// fmt.Println(itemFirstPrice)
 
-			price, _ := text(itemPrice)
-			price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+		if itemOldPrice := traverse(itemFirstPrice, "span", "class", "price"); itemOldPrice != nil {
+			// fmt.Println(itemOldPrice)
+
+			price, _ := text(itemOldPrice)
 			if _debug {
 				fmt.Println(price)
 			}
@@ -130,16 +125,18 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			}
 		}
 
-		if itemOldPrice := traverse(item, "span", "class", "old-price"); itemOldPrice != nil {
-			// fmt.Println(itemOldPrice)
+		itemSecondPrice := traverse(item, "span", "class", "second_price")
+		// fmt.Println(itemSecondPrice)
 
-			price, _ := text(itemOldPrice)
-			price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+		if currentPrice := traverse(itemSecondPrice, "span", "class", "price"); currentPrice != nil {
+			// fmt.Println(currentPrice)
+
+			oldPrice, _ := text(currentPrice)
 			if _debug {
-				fmt.Println(price)
+				fmt.Println(oldPrice)
 			}
 
-			if _price, err := strconv.ParseFloat(price, 32); err != nil {
+			if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
 				panic(err)
 			} else {
 				_product.oldPrice = float32(_price)
