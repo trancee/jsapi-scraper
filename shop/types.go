@@ -144,12 +144,12 @@ func attr(s []html.Attribute, key string) (string, bool) {
 }
 func contains(s []html.Attribute, key string, val string) bool {
 	for _, a := range s {
-		// fmt.Printf("ATTR [%v] [%v]\n", a.Key, a.Val)
+		// fmt.Printf("ATTR [%v|%v] [%v|%v]\n", a.Key, key, a.Val, val)
 		if a.Key == key {
 			if val == "" || a.Val == val {
 				return true
 			} else {
-				matched, _ := regexp.Match(`\b`+val+`\b`, []byte(strings.ReplaceAll(a.Val, "-", "_")))
+				matched, _ := regexp.Match(`\b`+strings.ReplaceAll(val, "-", "_")+`\b`, []byte(strings.ReplaceAll(a.Val, "-", "_")))
 				return matched
 			}
 		}
