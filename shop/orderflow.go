@@ -91,7 +91,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 		// fmt.Println(itemImage)
 
 		title, _ := attr(itemImage.Attr, "alt")
-		title = strings.Split(strings.Split(title, " - ")[0], " 16.")[0]
+		title = strings.Split(strings.Split(strings.Split(title, " - ")[0], " 16.")[0], " (")[0]
 		if _debug {
 			fmt.Println(title)
 		}

@@ -17,10 +17,12 @@ import (
 	"sync"
 
 	"github.com/recoilme/pudge"
+
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 
+	helpers "jsapi-scraper/helpers"
 	"jsapi-scraper/shop"
 )
 
@@ -81,10 +83,10 @@ func main() {
 		for _, _shop := range []shop.IShop{
 			shop.XXX_alltron(isDryRun),
 			shop.XXX_alternate(isDryRun),
-			shop.XXX_bohnettrade(isDryRun),
+			// shop.XXX_bohnettrade(isDryRun),
 			shop.XXX_brack(isDryRun),
 			shop.XXX_conrad(isDryRun),
-			shop.XXX_electronova(isDryRun),
+			// shop.XXX_electronova(isDryRun),
 			shop.XXX_foletti(isDryRun),
 			shop.XXX_fust(isDryRun),
 			shop.XXX_galaxus(isDryRun),
@@ -118,14 +120,14 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan)\W*)|(\W*([2345]G|LTE|dual\W*sim|Smartphone|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
-	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[F]?(\/DSN)?\W*)`)
+	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
+	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[A-Z]*(\/DSN)?\W*)`)
 
 	normalize := func(shop string, text string) string {
 		if loc := r.FindStringIndex(text); loc != nil {
 			text = text[:loc[0]]
 		}
-		// text = strings.ToUpper(strings.TrimSpace(text))
+
 		if len(text) > 8 && (strings.ToUpper(text[:8]) == "MOTOROLA" || strings.ToUpper(text[:7]) == "SAMSUNG") {
 			if loc := r2.FindStringIndex(text); loc != nil {
 				// fmt.Printf("%d-%d %d %s\n", loc[0], loc[1], len(text), text)
@@ -133,8 +135,18 @@ func main() {
 					text = r2.ReplaceAllString(text, " ")
 				}
 			}
+
+			// Motorola Moto E 22 -> Motorola Moto E22
+			text = strings.ReplaceAll(text, " E ", " E")
+
+			if s := strings.Split(text, " "); len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
+				if s[1][0] == 'E' || s[1][0] == 'G' {
+					text = s[0] + " Moto " + s[1]
+				}
+			}
 		}
-		return strings.TrimSpace(text)
+
+		return helpers.Lint(helpers.Model(helpers.Title(strings.ToLower(strings.TrimSpace(text)))))
 	}
 
 	type Price struct {

@@ -15,7 +15,7 @@ func XXX_electronova(isDryRun bool) IShop {
 	const _name = "electronova"
 	const _url = "https://www.electronova-luzern.ch/de/categories/telco--ucc/mobiltelefonie-3802/smartphones-380203?limit=100&sort=price|asc&c380203=[38020301]"
 
-	const _debug = true
+	const _debug = false
 
 	type _Response struct {
 		code  string
