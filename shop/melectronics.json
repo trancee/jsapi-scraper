@@ -42,7 +42,7 @@
         "priceType": "BUY",
         "formattedValue": "83,95 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -58,7 +58,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -107,7 +107,7 @@
         "priceType": "BUY",
         "formattedValue": "169,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -123,7 +123,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -172,7 +172,7 @@
         "priceType": "BUY",
         "formattedValue": "299,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -186,7 +186,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -235,7 +235,7 @@
         "priceType": "BUY",
         "formattedValue": "789,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -251,11 +251,72 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794685600000",
+      "name": "Galaxy S22 Ultra 256GB Phantom Black",
+      "url": "/de/p/794685600000/samsung-galaxy-s22-ultra-256gb-phantom-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 799.00,
+        "priceType": "BUY",
+        "formattedValue": "799,00 CHF"
+      },
+      "baseProduct": "b794685600000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/7077659e11bc1161c0a21872429ca38f6936665e/samsung-galaxy-s22-ultra-256gb-phantom-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": false,
+      "showStockEnquiry": true,
+      "percentageReduction": 37.0,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 1269.00,
+        "priceType": "BUY",
+        "formattedValue": "1 269,00 CHF"
+      },
+      "deliveryDays": -1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 3,
+      "ratingAverage": 5.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -300,7 +361,7 @@
         "priceType": "BUY",
         "formattedValue": "899,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -314,7 +375,72 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794690100000",
+      "name": "iPhone 14 128GB Starlight",
+      "url": "/de/p/794690100000/apple-iphone-14-128gb-starlight",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 859.00,
+        "priceType": "BUY",
+        "formattedValue": "859,00 CHF"
+      },
+      "baseProduct": "b794690100000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/e7e4a2f040a9f1752eff1fec370f93eacf280d7b/apple-iphone-14-128gb-starlight-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 7.0,
+      "brand": {
+        "name": "Apple",
+        "image": {
+          "url": "https://image.migros.ch/original/a7d93b7d7b440818807f48b58ca16ffa840a7648/apple.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 929.00,
+        "priceType": "BUY",
+        "formattedValue": "929,00 CHF"
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 1,
+      "ratingAverage": 5.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -332,7 +458,7 @@
         "currencyIso": "CHF",
         "value": 1099.00,
         "priceType": "BUY",
-        "formattedValue": "1.099,00 CHF"
+        "formattedValue": "1 099,00 CHF"
       },
       "baseProduct": "b794698100000",
       "images": [
@@ -360,9 +486,9 @@
         "currencyIso": "CHF",
         "value": 1149.00,
         "priceType": "BUY",
-        "formattedValue": "1.149,00 CHF"
+        "formattedValue": "1 149,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -376,7 +502,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -394,12 +520,12 @@
         "currencyIso": "CHF",
         "value": 1299.00,
         "priceType": "BUY",
-        "formattedValue": "1.299,00 CHF"
+        "formattedValue": "1 299,00 CHF"
       },
       "baseProduct": "b794698200000",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/3aad3d52537bf3e7f65c28b9e4fdabfb70e1f234/samsung-galaxy-s23-ultra-256gb-phantom-black-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/eac6af172b294fd46e812ef6d26a846a21ede740/samsung-galaxy-s23-ultra-256gb-phantom-black-smartphone.jpg"
         }
       ],
       "categories": [
@@ -422,9 +548,9 @@
         "currencyIso": "CHF",
         "value": 1349.00,
         "priceType": "BUY",
-        "formattedValue": "1.349,00 CHF"
+        "formattedValue": "1 349,00 CHF"
       },
-      "deliveryDays": 2,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -438,7 +564,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -497,7 +623,7 @@
     "currentPage": 0,
     "sort": "price-asc",
     "totalPages": 1,
-    "totalResults": 7
+    "totalResults": 9
   },
   "currentQuery": {
     "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
@@ -530,7 +656,7 @@
       "values": [
         {
           "name": "Aktion",
-          "count": 7,
+          "count": 9,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc",
             "query": {
@@ -555,7 +681,7 @@
       "values": [
         {
           "name": "Online bestellbar",
-          "count": 7,
+          "count": 8,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3Aspecial%3AAktion",
             "query": {
@@ -581,7 +707,7 @@
       "values": [
         {
           "name": "Smartphone",
-          "count": 6,
+          "count": 8,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -619,7 +745,7 @@
       "values": [
         {
           "name": "Telefonie & Navigation",
-          "count": 7,
+          "count": 9,
           "query": {
             "url": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3Aspecial%3AAktion",
             "query": {
@@ -632,7 +758,7 @@
         },
         {
           "name": "Smartphone",
-          "count": 7,
+          "count": 9,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
             "query": {
@@ -658,7 +784,7 @@
       "values": [],
       "code": "percentageReductionFacet",
       "sliderMin": 5,
-      "sliderMax": 33,
+      "sliderMax": 37,
       "slider": true,
       "currency": "CHF",
       "query": {
@@ -706,7 +832,7 @@
       "values": [
         {
           "name": "Apple",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/apple?q=%3Aprice-asc%3Aspecial%3AAktion",
             "query": {
@@ -742,7 +868,7 @@
         },
         {
           "name": "Samsung",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/samsung?q=%3Aprice-asc%3Aspecial%3AAktion",
             "query": {
@@ -780,7 +906,7 @@
         },
         {
           "name": "5G LTE",
-          "count": 4,
+          "count": 6,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A5G+LTE%3Aspecial%3AAktion",
             "query": {
@@ -818,7 +944,7 @@
         },
         {
           "name": "Android",
-          "count": 5,
+          "count": 6,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndroid%3Aspecial%3AAktion",
             "query": {
@@ -830,7 +956,7 @@
         },
         {
           "name": "Apple iOS",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AApple+iOS%3Aspecial%3AAktion",
             "query": {
@@ -880,7 +1006,7 @@
         },
         {
           "name": "128 GB",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3Aspecial%3AAktion",
             "query": {
@@ -892,7 +1018,7 @@
         },
         {
           "name": "256 GB",
-          "count": 2,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A256+GB%3Aspecial%3AAktion",
             "query": {
@@ -918,7 +1044,7 @@
       "values": [],
       "code": "MEL_arbeitsspeicher",
       "sliderMin": 3,
-      "sliderMax": 8,
+      "sliderMax": 12,
       "slider": true,
       "currency": "CHF",
       "query": {
@@ -966,7 +1092,7 @@
         },
         {
           "name": "6.1 \"",
-          "count": 2,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.1+%22%3Aspecial%3AAktion",
             "query": {
@@ -1002,7 +1128,7 @@
         },
         {
           "name": "6.8 \"",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.8+%22%3Aspecial%3AAktion",
             "query": {
@@ -1052,7 +1178,7 @@
         },
         {
           "name": "Super Retina XDR display (OLED)",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ASuper+Retina+XDR+display+%28OLED%29%3Aspecial%3AAktion",
             "query": {
@@ -1102,7 +1228,7 @@
         },
         {
           "name": "12 MP",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A12+MP%3Aspecial%3AAktion",
             "query": {
@@ -1137,6 +1263,18 @@
           "selected": false
         },
         {
+          "name": "108 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A108+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:108+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
+        },
+        {
           "name": "200 MP",
           "count": 1,
           "query": {
@@ -1151,7 +1289,7 @@
       ],
       "code": "mel_rueckkamera",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A12+MP%3Amel_rueckkamera%3A13+MP%3Amel_rueckkamera%3A2+MP%3Amel_rueckkamera%3A200+MP%3Amel_rueckkamera%3A50+MP%3Aspecial%3AAktion",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A108+MP%3Amel_rueckkamera%3A12+MP%3Amel_rueckkamera%3A13+MP%3Amel_rueckkamera%3A2+MP%3Amel_rueckkamera%3A200+MP%3Amel_rueckkamera%3A50+MP%3Aspecial%3AAktion",
       "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
       "solrFacetName": "mel_rueckkamera_de_facet_string_mv"
     },
@@ -1212,7 +1350,7 @@
         },
         {
           "name": "5000 mAh",
-          "count": 2,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5000+mAh%3Aspecial%3AAktion",
             "query": {
@@ -1238,7 +1376,7 @@
       "values": [
         {
           "name": "Ja",
-          "count": 4,
+          "count": 6,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3AJa%3Aspecial%3AAktion",
             "query": {
@@ -1287,7 +1425,7 @@
         },
         {
           "name": "12 MP",
-          "count": 4,
+          "count": 5,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A12+MP%3Aspecial%3AAktion",
             "query": {
@@ -1308,11 +1446,23 @@
             }
           },
           "selected": false
+        },
+        {
+          "name": "40 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A40+MP%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_frontkamera:40+MP:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
         }
       ],
       "code": "MEL_frontkamera",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A12+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A5+MP%3Aspecial%3AAktion",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A12+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A40+MP%3AMEL_frontkamera%3A5+MP%3Aspecial%3AAktion",
       "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
       "solrFacetName": "MEL_frontkamera_de_facet_string_mv"
     },
@@ -1325,7 +1475,7 @@
       "values": [
         {
           "name": "Bluetooth",
-          "count": 6,
+          "count": 8,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3Aspecial%3AAktion",
             "query": {
@@ -1349,7 +1499,7 @@
         },
         {
           "name": "NFC",
-          "count": 5,
+          "count": 7,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ANFC%3Aspecial%3AAktion",
             "query": {
@@ -1361,7 +1511,7 @@
         },
         {
           "name": "WLAN",
-          "count": 5,
+          "count": 7,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AWLAN%3Aspecial%3AAktion",
             "query": {
@@ -1399,7 +1549,7 @@
         },
         {
           "name": "6",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A6%3Aspecial%3AAktion",
             "query": {
@@ -1411,7 +1561,7 @@
         },
         {
           "name": "8",
-          "count": 4,
+          "count": 5,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A8%3Aspecial%3AAktion",
             "query": {
@@ -1437,7 +1587,7 @@
       "values": [
         {
           "name": "Barometer",
-          "count": 1,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABarometer%3Aspecial%3AAktion",
             "query": {
@@ -1449,7 +1599,7 @@
         },
         {
           "name": "Beschleunigungssensor",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3Aspecial%3AAktion",
             "query": {
@@ -1461,7 +1611,7 @@
         },
         {
           "name": "Face ID",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFace+ID%3Aspecial%3AAktion",
             "query": {
@@ -1473,7 +1623,7 @@
         },
         {
           "name": "Fingerprintsensor",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFingerprintsensor%3Aspecial%3AAktion",
             "query": {
@@ -1485,7 +1635,7 @@
         },
         {
           "name": "Gyrosensor",
-          "count": 4,
+          "count": 6,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AGyrosensor%3Aspecial%3AAktion",
             "query": {
@@ -1497,7 +1647,7 @@
         },
         {
           "name": "Hall Sensor",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AHall+Sensor%3Aspecial%3AAktion",
             "query": {
@@ -1509,7 +1659,7 @@
         },
         {
           "name": "Kompass",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AKompass%3Aspecial%3AAktion",
             "query": {
@@ -1521,7 +1671,7 @@
         },
         {
           "name": "Näherungssensor",
-          "count": 1,
+          "count": 2,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AN%C3%A4herungssensor%3Aspecial%3AAktion",
             "query": {
@@ -1533,7 +1683,7 @@
         },
         {
           "name": "Proximitätssensor",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AProximit%C3%A4tssensor%3Aspecial%3AAktion",
             "query": {
@@ -1542,11 +1692,23 @@
             }
           },
           "selected": false
+        },
+        {
+          "name": "Umgebungslichtsensor",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AUmgebungslichtsensor%3Aspecial%3AAktion",
+            "query": {
+              "value": ":price-asc:MEL_sensoren:Umgebungslichtsensor:special:Aktion",
+              "code": "Aktion"
+            }
+          },
+          "selected": false
         }
       ],
       "code": "MEL_sensoren",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABarometer%3AMEL_sensoren%3ABeschleunigungssensor%3AMEL_sensoren%3AFace+ID%3AMEL_sensoren%3AFingerprintsensor%3AMEL_sensoren%3AGyrosensor%3AMEL_sensoren%3AHall+Sensor%3AMEL_sensoren%3AKompass%3AMEL_sensoren%3AN%C3%A4herungssensor%3AMEL_sensoren%3AProximit%C3%A4tssensor%3Aspecial%3AAktion",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABarometer%3AMEL_sensoren%3ABeschleunigungssensor%3AMEL_sensoren%3AFace+ID%3AMEL_sensoren%3AFingerprintsensor%3AMEL_sensoren%3AGyrosensor%3AMEL_sensoren%3AHall+Sensor%3AMEL_sensoren%3AKompass%3AMEL_sensoren%3AN%C3%A4herungssensor%3AMEL_sensoren%3AProximit%C3%A4tssensor%3AMEL_sensoren%3AUmgebungslichtsensor%3Aspecial%3AAktion",
       "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aspecial%3AAktion",
       "solrFacetName": "MEL_sensoren_de_facet_string_mv"
     }

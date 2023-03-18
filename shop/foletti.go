@@ -98,6 +98,9 @@ func XXX_foletti(isDryRun bool) IShop {
 		if strings.Contains(title, "Wallet") {
 			continue
 		}
+		if strings.Contains(title, "Tasche") {
+			continue
+		}
 		if Skip(title) {
 			continue
 		}

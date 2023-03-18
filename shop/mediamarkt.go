@@ -91,7 +91,7 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 		_product.link = link
 
 		title, _ := text(imageTitleLink)
-		title = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), " (mit MediaTek CPU)", "")
+		title = strings.TrimSpace(strings.Split(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), "(")[0])
 		if _debug {
 			fmt.Println(title)
 		}

@@ -8,7 +8,7 @@ require (
 	golang.org/x/net v0.8.0
 	golang.org/x/oauth2 v0.6.0
 	golang.org/x/text v0.8.0
-	google.golang.org/api v0.113.0
+	google.golang.org/api v0.114.0
 )
 
 require (

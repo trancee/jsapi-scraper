@@ -121,7 +121,7 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition|Bespoke Edition|Cinemagic)\W*)|(\W*\(.*?\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
+	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition|Bespoke Edition|Cinemagic)\W*)|(\W*\(20[12]\d\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
 	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[A-Z]*(\/DSN)?\W*)`)
 
 	normalize := func(shop string, text string) string {
@@ -179,7 +179,15 @@ func main() {
 			for _, item := range *items {
 				product := normalize(shop, item.Name)
 				productKey := strings.ToUpper(product)
-				// fmt.Printf("%-60s %s\n", item.Name, product)
+
+				if len(strings.Split(product, " ")) == 1 {
+					// Skip products with only brand name
+					continue
+				}
+
+				// if shop == "Amazon" && item.Name != product {
+				// 	fmt.Printf("%-60s %s\n", item.Name, product)
+				// }
 
 				if _, ok := matrix[productKey]; !ok {
 					matrix[productKey] = map[int]Price{}

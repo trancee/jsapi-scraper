@@ -74,6 +74,7 @@ var _skips = map[string]bool{
 	"MYPHONE":     true,
 	"OLYMPIA":     true,
 	"PANASONIC":   true,
+	"PEAQ":        true,
 	"RUGGEAR":     true,
 	"SGW":         true,
 	"SIGEL":       true,

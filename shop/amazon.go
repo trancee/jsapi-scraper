@@ -15,11 +15,11 @@ import (
 // r := regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[(（]?\s*202\d[)）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[(（]?\s*202\d[)）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
-var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|Großer Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?|(SM )?[SG]\d{3}[A-Z]*)`)
+var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|Großer? Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?|(SM )?[SG]\d{3}[A-Z]*)`)
 var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\s*\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
 
 var AmazonCleanFn = func(name string) string {
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "-", " ").Replace(name)
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "-", " ", "Kingkong", "King Kong").Replace(name)
 	name = strings.TrimSpace(AmazonRegex.ReplaceAllString(name, ""))
 	// name = strings.TrimSpace(strings.Split(strings.ReplaceAll(name, "()", "|"), "|")[0])
 	name = strings.ReplaceAll(name, "()", ",")
@@ -151,6 +151,10 @@ func XXX_amazon(isDryRun bool) IShop {
 			}
 			_product.title = title
 
+			if strings.Contains(title, "Outdoor") {
+				continue
+			}
+
 			if Skip(title) {
 				continue
 			}
@@ -230,10 +234,10 @@ func XXX_amazon(isDryRun bool) IShop {
 			// fmt.Println(product)
 
 			_title := product.title
-			fmt.Println(_title)
+			// fmt.Println(_title)
 			// fmt.Println("\"" + strings.ReplaceAll(_title, "\"", "\\\"") + "\",")
 			_title = AmazonCleanFn(_title)
-			fmt.Println("\"" + strings.ReplaceAll(_title, "\"", "\\\"") + "\",")
+			// fmt.Println("\"" + strings.ReplaceAll(_title, "\"", "\\\"") + "\",")
 
 			_retailPrice := product.price
 			_price := _retailPrice

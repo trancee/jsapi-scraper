@@ -118,6 +118,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 		attribute, _ := text(itemAttribute)
 		// fmt.Println(attribute)
 		title += " " + attribute
+		title = strings.TrimSpace(strings.Split(title, "(")[0])
 		if _debug {
 			fmt.Println(title)
 		}
