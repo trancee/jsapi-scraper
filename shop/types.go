@@ -83,6 +83,7 @@ var _skips = map[string]bool{
 	"SWISSTONE":   true,
 	"TELEFUNKEN":  true,
 	"ULEWAY":      true,
+	"XS13":        true,
 }
 
 func Skip(brand string) bool {
