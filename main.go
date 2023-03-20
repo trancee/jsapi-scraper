@@ -122,8 +122,12 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Champagne|Midnight|Ocean|Ice|Charcoal|Cross|Night|Dark|Sandy|Light Silver|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition|Bespoke Edition|Cinemagic)\W*)|(\W*\(20[12]\d\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
+	r := regexp.MustCompile(`(?i)(\W+(Cross|Night|Dark|Sandy|Light Silver|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition|Bespoke Edition|Cinemagic)\W*)|(\W*\(20[12]\d\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
 	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[A-Z]*(\/DSN)?\W*)`)
+
+	lint := func(text string) string {
+		return helpers.Lint(helpers.Model(helpers.Title(strings.ToLower(strings.TrimSpace(text)))))
+	}
 
 	normalize := func(shop string, text string) string {
 		if loc := r.FindStringIndex(text); loc != nil {
@@ -148,7 +152,7 @@ func main() {
 			}
 		}
 
-		return helpers.Lint(helpers.Model(helpers.Title(strings.ToLower(strings.TrimSpace(text)))))
+		return lint(text)
 	}
 
 	type Price struct {
@@ -178,7 +182,10 @@ func main() {
 
 		if items != nil {
 			for _, item := range *items {
-				product := item.Model
+				var product string
+				if item.Model != "" {
+					product = lint(item.Model)
+				}
 				if product == "" {
 					product = normalize(shop, item.Name)
 				}

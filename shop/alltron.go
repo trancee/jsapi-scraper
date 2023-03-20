@@ -6,8 +6,20 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strings"
 )
+
+var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d`)
+
+var AlltronCleanFn = func(name string) string {
+	if loc := AlltronRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(strings.ReplaceAll(name, " Phones ", " "))
+}
 
 func XXX_alltron(isDryRun bool) IShop {
 	const _name = "Alltron"
@@ -135,6 +147,7 @@ func XXX_alltron(isDryRun bool) IShop {
 				}
 
 				_title := product.Description.Title
+				_model := AlltronCleanFn(_title)
 				if product.Settings.IsNew {
 					_title += " [N]"
 				} else if product.Settings.IsSpecialOffer {
@@ -156,8 +169,9 @@ func XXX_alltron(isDryRun bool) IShop {
 				_link := s.ResolveURL("https://alltron.ch/de/product/" + product.SKU).String()
 
 				product := &Product{
-					Code: _name + "//" + product.SKU,
-					Name: _title,
+					Code:  _name + "//" + product.SKU,
+					Name:  _title,
+					Model: _model,
 
 					RetailPrice: _retailPrice,
 					Price:       _price,
