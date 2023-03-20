@@ -18,12 +18,15 @@ var nameMapping = map[string]string{
 	"Gt":      "GT",
 	"IIIF150": "iiiF150",
 	"Iphone":  "iPhone",
+	"Lg":      "LG",
 	"Oneplus": "OnePlus",
 	"Realme":  "realme",
 	"Se":      "SE",
 	"Umidigi": "UMIDIGI",
 	"Xa":      "XA",
 	"Xcover":  "XCover",
+	"Xr":      "XR",
+	"Xs":      "XS",
 	"Zte":     "ZTE",
 }
 

@@ -621,7 +621,7 @@ func main() {
 				if oldProduct != *product {
 					db.Set(id, product)
 
-					if oldProduct.RetailPrice != product.RetailPrice {
+					if oldProduct.RetailPrice != product.RetailPrice && (product.RetailPrice < 100 || product.Discount > 50) {
 						notify = true
 					}
 				}
