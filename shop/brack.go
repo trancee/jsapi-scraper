@@ -5,9 +5,21 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
+
+var BrackRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d`)
+
+var BrackCleanFn = func(name string) string {
+	if loc := BrackRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(strings.ReplaceAll(name, " Phones ", " "))
+}
 
 func XXX_brack(isDryRun bool) IShop {
 	const _name = "Brack"
@@ -30,6 +42,7 @@ func XXX_brack(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -119,7 +132,7 @@ func XXX_brack(isDryRun bool) IShop {
 		// fmt.Println(itemImage)
 
 		title, _ := attr(itemImage.Attr, "title")
-		title = strings.ReplaceAll(title, " - ", " ")
+		title = strings.ReplaceAll(strings.ReplaceAll(title, " - ", " "), "Fairphone Fairphone", "Fairphone")
 		if _debug {
 			fmt.Println(title)
 		}
@@ -128,6 +141,12 @@ func XXX_brack(isDryRun bool) IShop {
 		if Skip(title) {
 			continue
 		}
+
+		model := BrackCleanFn(title)
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
 
 		imageTitleLink := traverse(item, "a", "class", "product__imageTitleLink")
 		// fmt.Println(imageTitleLink)
@@ -248,8 +267,9 @@ func XXX_brack(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: _title,
+				Code:  _name + "//" + product.code,
+				Name:  _title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,
