@@ -5,9 +5,21 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
+
+var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(?20[12]\d\)?|\s+\(SM-A\d+\)`)
+
+var AlternateCleanFn = func(name string) string {
+	if loc := AlternateRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_alternate(isDryRun bool) IShop {
 	const _name = "alternate"
@@ -20,6 +32,7 @@ func XXX_alternate(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -102,6 +115,12 @@ func XXX_alternate(isDryRun bool) IShop {
 				continue
 			}
 
+			model := AlternateCleanFn(title)
+			if _debug {
+				fmt.Println(model)
+			}
+			_product.model = model
+
 			currentPrice := traverse(item, "span", "class", "price")
 			// fmt.Println(currentPrice)
 
@@ -141,8 +160,9 @@ func XXX_alternate(isDryRun bool) IShop {
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
 			product := &Product{
-				Code: _name + "//" + _product.code,
-				Name: _product.title,
+				Code:  _name + "//" + _product.code,
+				Name:  _product.title,
+				Model: _product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,
