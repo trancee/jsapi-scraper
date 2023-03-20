@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -16,6 +17,17 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 
+var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+(Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Frost|Galactic|Ice|Marine|Midnight|Moonlight|Ocean|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+
+var FustCleanFn = func(name string) string {
+	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%s\t%s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_fust(isDryRun bool) IShop {
 	const _name = "Fust"
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
@@ -25,6 +37,7 @@ func XXX_fust(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -132,7 +145,13 @@ func XXX_fust(isDryRun bool) IShop {
 			if _debug {
 				fmt.Println(title)
 			}
-			_product.title = brand + " " + strings.ReplaceAll(title, " - ", " ")
+			_product.title = brand + " " + title
+
+			model := FustCleanFn(title)
+			if _debug {
+				fmt.Println(model)
+			}
+			_product.model = brand + " " + model
 
 			itemPrice := traverse(item, "div", "class", "price-block")
 			// fmt.Println(itemPrice)
@@ -196,8 +215,9 @@ func XXX_fust(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: product.title,
+				Code:  _name + "//" + product.code,
+				Name:  product.title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

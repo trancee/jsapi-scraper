@@ -178,7 +178,10 @@ func main() {
 
 		if items != nil {
 			for _, item := range *items {
-				product := normalize(shop, item.Name)
+				product := item.Model
+				if product == "" {
+					product = normalize(shop, item.Name)
+				}
 				productKey := strings.ToUpper(product)
 
 				if len(strings.Split(product, " ")) == 1 {

@@ -32,8 +32,9 @@ type Action struct {
 }
 
 type Product struct {
-	Code string `json:"code"`
-	Name string `json:"name"`
+	Code  string `json:"code"`
+	Name  string `json:"name"`
+	Model string `json:"model"`
 
 	RetailPrice float32 `json:"oldPrice"`
 	Price       float32 `json:"price"`
@@ -49,6 +50,7 @@ type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
 	"ALIGATOR":    true,
+	"ARTFONE":     true,
 	"BEAFON":      true,
 	"BLACKBERRY":  true,
 	"BLAUPUNKT":   true,
