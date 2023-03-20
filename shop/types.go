@@ -66,6 +66,7 @@ var _skips = map[string]bool{
 	"FOLIA":       true,
 	"FUNKE":       true,
 	"GIGASET":     true,
+	"I.SAFE":      true,
 	"JABLOCOM":    true,
 	"KERKMANN":    true,
 	"KONTAKT":     true,

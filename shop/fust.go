@@ -17,7 +17,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 
-var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+(Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Frost|Galactic|Ice|Marine|Midnight|Moonlight|Ocean|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Frost|Galactic|Ice|Marine|Midnight|Moonlight|Ocean|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {

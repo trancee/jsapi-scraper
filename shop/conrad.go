@@ -11,6 +11,19 @@ import (
 	"strings"
 )
 
+var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|\d+\s*GB|\s*\d+G|\s+\(?(Version )?20[12]\d\)?|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Rot|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|\(PRODUCT\) RED™|Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht)`)
+
+var ConradCleanFn = func(name string) string {
+	name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
+
+	if loc := ConradRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_conrad(isDryRun bool) IShop {
 	const _name = "Conrad"
 	const _url = "https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w"
@@ -277,10 +290,12 @@ func XXX_conrad(isDryRun bool) IShop {
 
 				}
 			}
+			_model := ConradCleanFn(_title)
 
 			product := &Product{
-				Code: _name + "//" + product.Code,
-				Name: _title,
+				Code:  _name + "//" + product.Code,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

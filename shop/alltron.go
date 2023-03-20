@@ -10,15 +10,17 @@ import (
 	"strings"
 )
 
-var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d`)
+var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?)`)
 
 var AlltronCleanFn = func(name string) string {
+	name = strings.ReplaceAll(name, " Phones ", " ")
+
 	if loc := AlltronRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
 
-	return strings.TrimSpace(strings.ReplaceAll(name, " Phones ", " "))
+	return strings.TrimSpace(name)
 }
 
 func XXX_alltron(isDryRun bool) IShop {
