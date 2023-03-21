@@ -14,10 +14,10 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+\+)?\d+\s*GB\)?|\s+\(?20[12]\d\)?`)
+var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(\s*GB)?\+)?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+(EE )?Enterprise Edition( CH)?`)
 
 var GalaxusCleanFn = func(name string) string {
-	name = strings.NewReplacer(" 2G", "", " 3G", "", " 4G", "", " 5G", "", " EU", "").Replace(name)
+	name = strings.NewReplacer(" 2G", "", " 3G", "", " 4G", "", " 5G", "", " EU", "", " I9505", "").Replace(name)
 
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

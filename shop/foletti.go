@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+(Dual\W(SIM|Sim)|LTE|smartphone|Ice,|Charcoal|Dark Green|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|schwarz)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+(Dual\W(SIM|Sim)|LTE|smartphone|Ice|Blue|Charcoal|Dark Green|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|schwarz)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
