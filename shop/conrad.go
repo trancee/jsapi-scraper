@@ -21,6 +21,14 @@ var ConradCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	name = strings.ReplaceAll(name, " E ", " E")
+
+	if s := strings.Split(name, " "); len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
+		if s[1][0] == 'E' || s[1][0] == 'G' {
+			name = s[0] + " Moto " + s[1]
+		}
+	}
+
 	return strings.TrimSpace(name)
 }
 

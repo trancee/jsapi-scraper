@@ -10,7 +10,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"regexp"
 	"runtime/debug"
 	"sort"
 	"strings"
@@ -122,37 +121,8 @@ func main() {
 		}
 	}
 
-	r := regexp.MustCompile(`(?i)(\W+(Cross|Night|Dark|Sandy|Light Silver|black|schwarz|gold|grau|blau|dunkelgrau|denim|lake|blue|bamboo|green|elegant|cyan|gravity)\W*)|(\W*([2345]G|LTE|EU|dual\W*sim|Smartphone|EE Enterprise Edition|Enterprise Edition|Bespoke Edition|Cinemagic)\W*)|(\W*\(20[12]\d\)\W*)|(\W*[\+,]\W*)|(\W*202\d\W*)|(\W*(\d+[\/|\+])?\d{1,3}\W*GB\W*)`)
-	r2 := regexp.MustCompile(`(\W*XT\d*-\d*\W*)|(\W*(SM-)?[A|M]\d{3}[A-Z]*(\/DSN)?\W*)`)
-
 	lint := func(text string) string {
 		return helpers.Lint(helpers.Model(helpers.Title(strings.ToLower(strings.TrimSpace(text)))))
-	}
-
-	normalize := func(shop string, text string) string {
-		if loc := r.FindStringIndex(text); loc != nil {
-			text = text[:loc[0]]
-		}
-
-		if len(text) > 8 && (strings.ToUpper(text[:8]) == "MOTOROLA" || strings.ToUpper(text[:7]) == "SAMSUNG") {
-			if loc := r2.FindStringIndex(text); loc != nil {
-				// fmt.Printf("%d-%d %d %s\n", loc[0], loc[1], len(text), text)
-				if len(text)-(loc[1]-loc[0]) > 7 {
-					text = r2.ReplaceAllString(text, " ")
-				}
-			}
-
-			// Motorola Moto E 22 -> Motorola Moto E22
-			text = strings.ReplaceAll(text, " E ", " E")
-
-			if s := strings.Split(text, " "); len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
-				if s[1][0] == 'E' || s[1][0] == 'G' {
-					text = s[0] + " Moto " + s[1]
-				}
-			}
-		}
-
-		return lint(text)
 	}
 
 	type Price struct {
@@ -182,23 +152,13 @@ func main() {
 
 		if items != nil {
 			for _, item := range *items {
-				var product string
-				if item.Model != "" {
-					product = lint(item.Model)
-				}
-				if product == "" {
-					product = normalize(shop, item.Name)
-				}
+				product := lint(item.Model)
 				productKey := strings.ToUpper(product)
 
 				if len(strings.Split(product, " ")) == 1 {
 					// Skip products with only brand name
 					continue
 				}
-
-				// if shop == "Amazon" && item.Name != product {
-				// 	fmt.Printf("%-60s %s\n", item.Name, product)
-				// }
 
 				if _, ok := matrix[productKey]; !ok {
 					matrix[productKey] = map[int]Price{}

@@ -6,7 +6,20 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 )
+
+var MelectronicsRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?`)
+
+var MelectronicsCleanFn = func(name string) string {
+	if loc := MelectronicsRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_melectronics(isDryRun bool) IShop {
 	const _name = "melectronics"
@@ -109,9 +122,13 @@ func XXX_melectronics(isDryRun bool) IShop {
 				continue
 			}
 
+			_title := product.Brand.Name + " " + product.Name
+			_model := MelectronicsCleanFn(_title)
+
 			product := Product{
-				Code: _name + "//" + product.Code,
-				Name: product.Brand.Name + " " + product.Name,
+				Code:  _name + "//" + product.Code,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: product.SuggestedRetailPrice.Value,
 				Price:       product.Price.Value,

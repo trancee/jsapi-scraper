@@ -17,13 +17,14 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
-var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Telekom |Neu |EU )\s*|(4G )?(Lockfreie |Outdoor |Android )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*cm|Dual\W+SIM|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Cloud Navy|Midnight Gray|\W+\(?20[12]\d\)?`)
+var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Telekom |Neu |EU )\s*|(4G )?(Lockfreie |Outdoor |Android |SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*cm|Dual\W+SIM|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Cloud Navy|Midnight Gray|\W+\(?20[12]\d\)?`)
 var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+\s*[GT]B|\W*4G(\s+|$)|,`)
 
 var AmazonCleanFn = func(name string) string {
 	name = regexp.MustCompile(`(SM-)?S\d{3}B?`).ReplaceAllString(name, "")
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "-", " ", "Kingkong", "King Kong").Replace(name)
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "-", " ", "Kingkong", "King Kong", "KXD Handy,", "KXD").Replace(name)
 	name = AmazonRegex3.ReplaceAllString(name, "|")
+
 	if s := strings.Split(name, "|"); len(s) > 0 {
 		_name := strings.TrimSpace(s[0])
 		if len(strings.Split(_name, " ")) == 1 {
@@ -37,6 +38,7 @@ var AmazonCleanFn = func(name string) string {
 		}
 		name = strings.TrimSpace(_name)
 	}
+
 	name = strings.ReplaceAll(name, "  ", " ")
 	// name = strings.TrimSpace(AmazonRegex.ReplaceAllString(name, ""))
 	// name = strings.TrimSpace(strings.Split(strings.ReplaceAll(name, "()", "|"), "|")[0])
@@ -257,8 +259,8 @@ func XXX_amazon(isDryRun bool) IShop {
 			_title := product.title
 			// fmt.Println(_title)
 			// fmt.Println("\"" + strings.ReplaceAll(_title, "\"", "\\\"") + "\",")
-			_title = AmazonCleanFn(_title)
-			// fmt.Println("\"" + strings.ReplaceAll(_title, "\"", "\\\"") + "\",")
+			_model := AmazonCleanFn(_title)
+			// fmt.Println("\"" + strings.ReplaceAll(_model, "\"", "\\\"") + "\",")
 
 			_retailPrice := product.price
 			_price := _retailPrice
@@ -274,8 +276,9 @@ func XXX_amazon(isDryRun bool) IShop {
 
 			{
 				product := &Product{
-					Code: _name + "//" + product.code,
-					Name: _title,
+					Code:  _name + "//" + product.code,
+					Name:  _title,
+					Model: _model,
 
 					RetailPrice: _retailPrice,
 					Price:       _price,

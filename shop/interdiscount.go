@@ -11,6 +11,17 @@ import (
 	"time"
 )
 
+var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+20[12]\d|\s+[2345]G`)
+
+var InterdiscountCleanFn = func(name string) string {
+	if loc := InterdiscountRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_interdiscount(isDryRun bool) IShop {
 	const _name = "Interdiscount"
 	const _url = "https://www.interdiscount.ch/idocc/occ/id/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
@@ -150,12 +161,16 @@ func XXX_interdiscount(isDryRun bool) IShop {
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
 
-			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
+			_title := product.Name
+			_model := InterdiscountCleanFn(_title)
+
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))
 			_productUrl := fmt.Sprintf("https://www.interdiscount.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
 
 			product := &Product{
-				Code: _name + "//" + product.Code,
-				Name: product.Name,
+				Code:  _name + "//" + product.Code,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

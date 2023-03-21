@@ -5,11 +5,25 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
 )
+
+var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Schwarz`)
+
+var OrderflowCleanFn = func(name string) string {
+	name = strings.NewReplacer(" 4G ", " ").Replace(name)
+
+	if loc := OrderflowRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_orderflow(isDryRun bool) IShop {
 	const _name = "orderflow"
@@ -20,6 +34,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -101,6 +116,12 @@ func XXX_orderflow(isDryRun bool) IShop {
 			continue
 		}
 
+		model := OrderflowCleanFn(html.UnescapeString(_product.title))
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
+
 		code := strings.Split(link[54:], "-")[0]
 		if _debug {
 			fmt.Println(code)
@@ -169,8 +190,9 @@ func XXX_orderflow(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: _title,
+				Code:  _name + "//" + product.code,
+				Name:  _title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

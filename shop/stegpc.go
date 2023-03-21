@@ -7,9 +7,31 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
+
+var StegRegex = regexp.MustCompile(` - |\s+\(?(\d+\/)?\d+\s*[GT]B|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Vegan Leather`)
+
+var StegCleanFn = func(name string) string {
+	name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d`).ReplaceAllString(name, "")
+
+	if loc := StegRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	name = strings.ReplaceAll(name, " E ", " E")
+
+	if s := strings.Split(name, " "); len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
+		if s[1][0] == 'E' || s[1][0] == 'G' {
+			name = s[0] + " Moto " + s[1]
+		}
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_stegpc(isDryRun bool) IShop {
 	const _name = "Steg Electronics"
@@ -20,6 +42,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -116,6 +139,12 @@ func XXX_stegpc(isDryRun bool) IShop {
 			continue
 		}
 
+		model := StegCleanFn(_product.title)
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
+
 		currentPrice := traverse(item, "div", "class", "generalPrice")
 		// fmt.Println(currentPrice)
 
@@ -171,8 +200,9 @@ func XXX_stegpc(isDryRun bool) IShop {
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
 			product := &Product{
-				Code: _name + "//" + _product.code,
-				Name: _product.title,
+				Code:  _name + "//" + _product.code,
+				Name:  _product.title,
+				Model: _product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

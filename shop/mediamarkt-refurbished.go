@@ -11,6 +11,17 @@ import (
 	"strings"
 )
 
+var MediamarktRefurbishedRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+\(?20[12]\d\)?|\s+[2345]G|\s+\((mono|dual) sim\)`)
+
+var MediamarktRefurbishedCleanFn = func(name string) string {
+	if loc := MediamarktRefurbishedRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	const _name = "Mediamarkt (Refurbished)"
 	const _url = "https://refurbished.mediamarkt.ch/ch_de/unsere-refurbished-smartphones?is_in_stock=1&product_list_order=price&product_list_limit=100"
@@ -20,6 +31,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -118,7 +130,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 		attribute, _ := text(itemAttribute)
 		// fmt.Println(attribute)
 		title += " " + attribute
-		title = strings.TrimSpace(strings.Split(title, "(")[0])
+		// title = strings.TrimSpace(strings.Split(title, "(")[0])
 		if _debug {
 			fmt.Println(title)
 		}
@@ -135,6 +147,12 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 
 		item := _products.Products[productId]
 		_product.title = item.Category + " " + _product.title
+
+		model := MediamarktRefurbishedCleanFn(_product.title)
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
 
 		priceWrapper := traverse(priceBox, "span", "class", "price-wrapper")
 		// fmt.Println(priceWrapper)
@@ -177,8 +195,9 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: product.title,
+				Code:  _name + "//" + product.code,
+				Name:  product.title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

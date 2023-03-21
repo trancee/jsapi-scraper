@@ -5,9 +5,21 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
+
+var MediamarktRegex = regexp.MustCompile(` - |\s+20[12]\d|\s+[2345]G`)
+
+var MediamarktCleanFn = func(name string) string {
+	if loc := MediamarktRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_mediamarkt(isDryRun bool) IShop {
 	const _name = "Mediamarkt"
@@ -19,6 +31,7 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -91,7 +104,7 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 		_product.link = link
 
 		title, _ := text(imageTitleLink)
-		title = strings.TrimSpace(strings.Split(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), "(")[0])
+		// title = strings.TrimSpace(strings.Split(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), "(")[0])
 		if _debug {
 			fmt.Println(title)
 		}
@@ -100,6 +113,12 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 		if Skip(title) {
 			continue
 		}
+
+		model := MediamarktCleanFn(_product.title)
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
 
 		currentPrice := traverse(baseInfo, "div", "class", "price")
 		// fmt.Println(currentPrice)
@@ -140,8 +159,9 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: product.title,
+				Code:  _name + "//" + product.code,
+				Name:  product.title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

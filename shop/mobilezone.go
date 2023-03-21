@@ -6,8 +6,21 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
+	"strings"
 )
+
+var MobileZoneRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
+
+var MobileZoneCleanFn = func(name string) string {
+	if loc := MobileZoneRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_mobilezone(isDryRun bool) IShop {
 	const _name = "mobilezone"
@@ -130,9 +143,13 @@ func XXX_mobilezone(isDryRun bool) IShop {
 				}
 				_discount = 100 - ((100 / _retailPrice) * _price)
 
+				_title := product.MatchItem.Description.Value
+				_model := MobileZoneCleanFn(_title)
+
 				product := &Product{
-					Code: _name + "//" + product.MatchItem.Code.Value,
-					Name: product.MatchItem.Description.Value,
+					Code:  _name + "//" + product.MatchItem.Code.Value,
+					Name:  _title,
+					Model: _model,
 
 					RetailPrice: _retailPrice,
 					Price:       _price,

@@ -6,11 +6,26 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
 )
+
+var MobileDeviceRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
+
+var MobileDeviceCleanFn = func(name string) string {
+	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d`).ReplaceAllString(name, "")
+	name = strings.NewReplacer("Nothing Phone 1", "Nothing Phone (1)", "X Cover", "XCover").Replace(name)
+
+	if loc := MobileDeviceRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_mobiledevice(isDryRun bool) IShop {
 	const _name = "mobiledevice"
@@ -21,6 +36,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -126,6 +142,12 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			continue
 		}
 
+		model := MobileDeviceCleanFn(html.UnescapeString(_product.title))
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
+
 		code := strings.Split(link[45:], "-")[0]
 		if _debug {
 			fmt.Println(code)
@@ -190,8 +212,9 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: _title,
+				Code:  _name + "//" + product.code,
+				Name:  _title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

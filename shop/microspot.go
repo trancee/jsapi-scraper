@@ -11,6 +11,17 @@ import (
 	"time"
 )
 
+var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| LTE`)
+
+var MicrospotCleanFn = func(name string) string {
+	if loc := MicrospotRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_microspot(isDryRun bool) IShop {
 	const _name = "Microspot"
 	const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
@@ -155,12 +166,16 @@ func XXX_microspot(isDryRun bool) IShop {
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
 
-			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
+			_title := product.Name
+			_model := MicrospotCleanFn(_title)
+
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))
 			_productUrl := fmt.Sprintf("https://www.microspot.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)
 
 			product := &Product{
-				Code: _name + "//" + product.Code,
-				Name: product.Name,
+				Code:  _name + "//" + product.Code,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,
