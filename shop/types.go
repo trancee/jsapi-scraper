@@ -59,6 +59,7 @@ var _skips = map[string]bool{
 	"CATERPILLAR": true,
 	"CROSSCALL":   true,
 	"CYRUS":       true,
+	"DENVER":      true,
 	"DORO":        true,
 	"EMPORIA":     true,
 	"EVOLVEO":     true,

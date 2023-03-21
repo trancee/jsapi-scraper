@@ -628,6 +628,10 @@ func main() {
 
 				if notify {
 					if !isDryRun {
+						fmt.Println()
+						fmt.Println(oldProduct)
+						fmt.Println(product)
+
 						priceDiff := ""
 						priceLine := ""
 						if product.Price != product.RetailPrice {

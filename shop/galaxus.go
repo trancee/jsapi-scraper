@@ -14,6 +14,19 @@ import (
 	"golang.org/x/net/html"
 )
 
+var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+\+)?\d+\s*GB\)?|\s+\(?20[12]\d\)?`)
+
+var GalaxusCleanFn = func(name string) string {
+	name = strings.NewReplacer(" 2G", "", " 3G", "", " 4G", "", " 5G", "", " EU", "").Replace(name)
+
+	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return strings.TrimSpace(name)
+}
+
 func XXX_galaxus(isDryRun bool) IShop {
 	const _name = "Galaxus"
 	const _url = "https://www.galaxus.ch/api/graphql/product-type-filter-products"
@@ -187,11 +200,18 @@ func XXX_galaxus(isDryRun bool) IShop {
 				_productUrl += fmt.Sprintf("?shid=%d", offer.ShopOfferID)
 			}
 
+			_title := product.Brand + " " + product.Name
+			// fmt.Println(_title)
+			_model := GalaxusCleanFn(_title)
+			// fmt.Println(_model)
+			// fmt.Println()
+
 			{
 				code := strconv.Itoa(product.Code)
 				product := &Product{
-					Code: _name + "//" + code,
-					Name: product.Brand + " " + product.Name,
+					Code:  _name + "//" + code,
+					Name:  _title,
+					Model: _model,
 
 					RetailPrice: _retailPrice,
 					Price:       _price,
