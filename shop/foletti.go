@@ -5,9 +5,26 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
+
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+(Dual\W(SIM|Sim)|LTE|smartphone|Ice,|Charcoal|Dark Green|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|schwarz)`)
+
+var FolettiCleanFn = func(name string) string {
+	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
+	name = regexp.MustCompile(` (SM-)?[AS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d`).ReplaceAllString(name, "")
+
+	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	name = strings.ReplaceAll(name, " E ", " E")
+
+	return strings.TrimSpace(name)
+}
 
 func XXX_foletti(isDryRun bool) IShop {
 	const _name = "Foletti"
@@ -18,6 +35,7 @@ func XXX_foletti(isDryRun bool) IShop {
 	type _Response struct {
 		code  string
 		title string
+		model string
 
 		link string
 
@@ -114,6 +132,12 @@ func XXX_foletti(isDryRun bool) IShop {
 		if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
 			_product.title = brand + " " + _product.title
 		}
+
+		model := FolettiCleanFn(_product.title)
+		if _debug {
+			fmt.Println(model)
+		}
+		_product.model = model
 
 		itemAvailability := traverse(item, "span", "class", "text")
 		// fmt.Println(itemAvailability)
@@ -213,8 +237,9 @@ func XXX_foletti(isDryRun bool) IShop {
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
-				Code: _name + "//" + product.code,
-				Name: _title,
+				Code:  _name + "//" + product.code,
+				Name:  _title,
+				Model: product.model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

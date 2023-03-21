@@ -107,6 +107,7 @@ var amazonNames = []string{
 	"realme 9 Pro+ 5G Smartphone ohne Vertragy,Sony IMX766 Flaggschiff-Kamera,MediaTek Dimensity 920 5G Prozessor,60 W SuperDar...",
 	"realme 9 Pro+ 5G Smartphone ohne Vertragy,Sony IMX766 Flaggschiff-Kamera,MediaTek Dimensity 920 5G Prozessor,60 W SuperDar...",
 	"realme Narzo 50 5G-4+64GB Smartphone ohne Vertragy, Starker 5000 mAh-Akku, Dimensity 810 5G-Prozessor Android Handy, 33W D...",
+	"realme Narzo 50A Prime - 4+64GB Smartphone 16,7 cm (6,6'') FHD+-Vollbildschirm, 50 MP KI-Dreifach-Kamera, Starker 5000-mAh-Akku, Starker Unisoc T612-Prozessor, Flash Black, ohne Netzteil",
 	"Redmi 9A Smartphone 2GB 32GB 6.53\" HD+ DotDrop Display 5000mAh (typ) 13 MP AI Rear Camera [Global Version] Green",
 	"Samsung F936B Galaxy Z Fold 4 256GB/12GB Dual-SIM graygreen",
 	"Samsung Galaxy M52 5G Smartphone Android 128 GB Weiß",
@@ -146,6 +147,7 @@ var amazonNames = []string{
 	"VIVO y76 5G Smartphone, 4.100 (typisch) mAh+ 44 W FlashCharge 50 MP Hauptkamera 8 GB RAM + 4 GB erweiterter RAM+128 GB RO...",
 	"Xiaomi Redmi Note 11S, Smartphone + Kopfhörer, 6 + 64 GB Handy, 6,43'' 90 Hz FHD + AMOLED DotDisplay, MediaTek Helio G96, ...",
 	"ZTE Smartphone Blade V40 S 4G (16,94cm (6,67 Zoll) FHD+ Display, 4G LTE, 4GB RAM und 128GB interner Speicher, 50MP Hauptka...",
+	"ZTE Smartphone Blade V40 (16,94cm (6,67 Zoll) FHD+ Display, 4G LTE, 4GB RAM und 128GB interner Speicher, 48MP Hauptkamera und 8MP Frontkamera, Dual-SIM, Android 11) schwarz 123401201022",
 }
 
 var amazonNamesExpected = []string{
@@ -250,6 +252,7 @@ var amazonNamesExpected = []string{
 	"realme 9 Pro+",
 	"realme 9 Pro+",
 	"realme Narzo 50",
+	"realme Narzo 50A Prime",
 	"Redmi 9A",
 	"Samsung F936B Galaxy Z Fold 4",
 	"Samsung Galaxy M52",
@@ -289,6 +292,7 @@ var amazonNamesExpected = []string{
 	"VIVO y76",
 	"Xiaomi Redmi Note 11S",
 	"ZTE Blade V40 S",
+	"ZTE Blade V40",
 }
 
 func TestLint(t *testing.T) {
