@@ -134,10 +134,6 @@ func XXX_fust(isDryRun bool) IShop {
 			}
 			_product.title = brand
 
-			if Skip(brand) {
-				continue
-			}
-
 			itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
 			// fmt.Println(itemTitle)
 
@@ -146,6 +142,10 @@ func XXX_fust(isDryRun bool) IShop {
 				fmt.Println(title)
 			}
 			_product.title = brand + " " + title
+
+			if Skip(_product.title) {
+				continue
+			}
 
 			model := FustCleanFn(title)
 			if _debug {

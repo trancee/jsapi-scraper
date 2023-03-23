@@ -26,6 +26,10 @@ import (
 	"jsapi-scraper/shop"
 )
 
+const ValueDiscount = 50
+const ValueWorth = 100
+const ValueMaximum = 300
+
 const Token = "6219604147:AAERFP-_PfSELN3-gorzE9czM6WR-3Rum-Q"
 const ChatID = "1912073977"
 
@@ -581,7 +585,7 @@ func main() {
 				if oldProduct != *product {
 					db.Set(id, product)
 
-					if oldProduct.RetailPrice != product.RetailPrice && (product.RetailPrice < 100 || product.Discount > 50) {
+					if oldProduct.RetailPrice != product.RetailPrice && (product.RetailPrice < ValueWorth || product.Discount > ValueDiscount) {
 						notify = true
 					}
 				}
