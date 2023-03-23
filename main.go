@@ -588,9 +588,9 @@ func main() {
 
 				if notify {
 					if !isDryRun {
-						fmt.Println()
-						fmt.Println(oldProduct)
-						fmt.Println(product)
+						// fmt.Println()
+						// fmt.Println(oldProduct)
+						// fmt.Println(product)
 
 						priceDiff := ""
 						priceLine := ""
