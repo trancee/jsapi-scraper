@@ -12,7 +12,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Schwarz`)
+var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Blau| Schwarz`)
 
 var OrderflowCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 4G ", " ").Replace(name)

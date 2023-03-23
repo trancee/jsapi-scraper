@@ -3,6 +3,7 @@ package shop
 import (
 	"net/url"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -92,7 +93,19 @@ var _skips = map[string]bool{
 
 func Skip(brand string) bool {
 	// fmt.Println("** SKIP: " + brand)
-	return _skips[strings.ToUpper(strings.ReplaceAll(strings.Split(brand, " ")[0], "-", ""))]
+	if s := strings.Split(brand, " "); len(s) > 0 {
+		_brand := strings.ToUpper(strings.ReplaceAll(s[0], "-", ""))
+
+		if _brand == "NOKIA" && len(s) > 1 {
+			if _, err := strconv.Atoi(s[1]); err == nil {
+				return true
+			}
+		}
+
+		return _skips[_brand]
+	}
+
+	return false
 }
 
 func NewShop(_name string, _url string, _parseFn parseFn) IShop {
