@@ -6,11 +6,12 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(GB)?\+)?\d+GB\)?|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|LTE|smartphone|Ice|Blue|Charcoal|Dark Green|Dusk|Light|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|schwarz)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?\+)?\d+\s*GB\)?|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|LTE|smartphone|Ice|Blue|Charcoal|Dark Green|Dusk|Light|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|schwarz)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
@@ -31,6 +32,9 @@ func XXX_foletti(isDryRun bool) IShop {
 	const _url = "https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?limit=100&sort=price|asc&listStyle=list"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -138,6 +142,10 @@ func XXX_foletti(isDryRun bool) IShop {
 			fmt.Println(model)
 		}
 		_product.model = model
+
+		if _tests {
+			testCases[_product.title] = _product.model
+		}
 
 		itemAvailability := traverse(item, "span", "class", "text")
 		// fmt.Println(itemAvailability)
@@ -253,6 +261,23 @@ func XXX_foletti(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 

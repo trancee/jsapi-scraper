@@ -26,6 +26,7 @@ var nameMapping = map[string]string{
 	"Umidigi": "UMIDIGI",
 	"Xa":      "XA",
 	"Xcover":  "XCover",
+	"Xgody":   "XGODY",
 	"Xr":      "XR",
 	"Xs":      "XS",
 	"Zte":     "ZTE",

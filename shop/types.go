@@ -59,8 +59,10 @@ var _skips = map[string]bool{
 	"CAT":         true,
 	"CATERPILLAR": true,
 	"CROSSCALL":   true,
+	"CUBOT":       true, // EXCLUDE
 	"CYRUS":       true,
 	"DENVER":      true,
+	"DOOGEE":      true, // EXCLUDE
 	"DORO":        true,
 	"EMPORIA":     true,
 	"EVOLVEO":     true,
@@ -72,12 +74,17 @@ var _skips = map[string]bool{
 	"JABLOCOM":    true,
 	"KERKMANN":    true,
 	"KONTAKT":     true,
+	"KXD":         true, // EXCLUDE
 	"LENOVO":      true,
+	"LG":          true, // EXCLUDE
 	"MAGNETOPLAN": true,
 	"MAUL":        true,
 	"MAXCOM":      true,
+	"MICROSOFT":   true, // EXCLUDE
 	"MYPHONE":     true,
 	"OLYMPIA":     true,
+	"OSCAL":       true, // EXCLUDE
+	"OUKITEL":     true, // EXCLUDE
 	"PANASONIC":   true,
 	"PEAQ":        true,
 	"RUGGEAR":     true,
@@ -87,7 +94,10 @@ var _skips = map[string]bool{
 	"STYRO":       true,
 	"SWISSTONE":   true,
 	"TELEFUNKEN":  true,
+	"ULEFONE":     true, // EXCLUDE
 	"ULEWAY":      true,
+	"UMIDIGI":     true, // EXCLUDE
+	"XGODY":       true, // EXCLUDE
 	"XS13":        true,
 }
 

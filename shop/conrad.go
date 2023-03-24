@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -35,6 +36,10 @@ var ConradCleanFn = func(name string) string {
 func XXX_conrad(isDryRun bool) IShop {
 	const _name = "Conrad"
 	const _url = "https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w"
+
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	articles := []map[string]any{}
 
@@ -300,6 +305,10 @@ func XXX_conrad(isDryRun bool) IShop {
 			}
 			_model := ConradCleanFn(_title)
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			product := &Product{
 				Code:  _name + "//" + product.Code,
 				Name:  _title,
@@ -317,6 +326,23 @@ func XXX_conrad(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
