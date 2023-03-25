@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -14,6 +15,9 @@ import (
 var MobileZoneRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
 
 var MobileZoneCleanFn = func(name string) string {
+	name = strings.ReplaceAll(name, " Phone 1 A063", " Phone (1)")
+	name = strings.ReplaceAll(name, " Xcover5", " XCover 5")
+
 	if loc := MobileZoneRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
@@ -25,6 +29,10 @@ var MobileZoneCleanFn = func(name string) string {
 func XXX_mobilezone(isDryRun bool) IShop {
 	const _name = "mobilezone"
 	const _url = "https://search.epoq.de/inbound-servletapi/getSearchResult?full&ff=e:alloc_THEME&fv=alle_handys&ff=c:anzeigename&fv=Handys&ff=e:isPriceVariant&fv=0&callback=X&tenantId=mobilezone-ch-2019&sessionId=f87cc9415cf968d4d633dd6d15f812ca&orderBy=e:sorting_price&order=asc&limit=100&offset=0&style=compact&format=json&query="
+
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Product struct {
 		MatchItem struct {
@@ -115,6 +123,10 @@ func XXX_mobilezone(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			if product.MatchItem.Sale.Value == nil {
 				continue
 			}
@@ -164,6 +176,24 @@ func XXX_mobilezone(isDryRun bool) IShop {
 			}
 		}
 
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
+			}
+		}
+
+		// fmt.Printf("%#v\n", products)
 		return &products
 	}
 
