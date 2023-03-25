@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -35,9 +36,12 @@ var StegCleanFn = func(name string) string {
 
 func XXX_stegpc(isDryRun bool) IShop {
 	const _name = "Steg Electronics"
-	const _url = "https://www.steg-electronics.ch/de/product/list/11853?sortKey=preisasc&smsc=1000"
+	const _url = "https://www.steg-electronics.ch/de/product/list/11853?sortKey=preisasc&smsc=200"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -198,11 +202,16 @@ func XXX_stegpc(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := _product.oldPrice
 			_price := _retailPrice
 			if _product.price > 0 {
 				_price = _product.price
 			}
+
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
@@ -221,6 +230,23 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
