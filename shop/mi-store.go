@@ -28,7 +28,7 @@ func XXX_mistore(isDryRun bool) IShop {
 	const _url = "https://mi-store.ch/produkt-kategorie/smartphones/?orderby=price"
 
 	const _debug = false
-	const _tests = true
+	const _tests = false
 
 	testCases := map[string]string{}
 
@@ -136,6 +136,11 @@ func XXX_mistore(isDryRun bool) IShop {
 		title, _ := text(contentLink)
 		if _debug {
 			fmt.Println(title)
+		}
+		if s := strings.Split(title, " "); len(s) > 0 {
+			if strings.ToUpper(s[0]) != "XIAOMI" {
+				title = "Xiaomi " + title
+			}
 		}
 		_product.title = title
 

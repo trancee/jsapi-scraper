@@ -100,6 +100,7 @@ func main() {
 			shop.XXX_mediamarkt_refurbished(isDryRun),
 			shop.XXX_melectronics(isDryRun),
 			shop.XXX_microspot(isDryRun),
+			shop.XXX_mistore(isDryRun),
 			shop.XXX_mobiledevice(isDryRun),
 			shop.XXX_mobilezone(isDryRun),
 			shop.XXX_orderflow(isDryRun),
