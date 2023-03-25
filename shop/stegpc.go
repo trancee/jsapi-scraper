@@ -191,6 +191,13 @@ func XXX_stegpc(isDryRun bool) IShop {
 		for _, _product := range _result {
 			// fmt.Println(_product)
 
+			_title := _product.title
+			_model := _product.model
+
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := _product.oldPrice
 			_price := _retailPrice
 			if _product.price > 0 {
@@ -201,8 +208,8 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 			product := &Product{
 				Code:  _name + "//" + _product.code,
-				Name:  _product.title,
-				Model: _product.model,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

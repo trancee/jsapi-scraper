@@ -105,22 +105,6 @@ func XXX_mistore(isDryRun bool) IShop {
 		}
 		_product.code = productId
 
-		// label, _ := attr(buttonsCart.Attr, "aria-label")
-		// if _debug {
-		// 	fmt.Println(label)
-		// }
-		// _product.title = label
-
-		// if Skip(label) {
-		// 	continue
-		// }
-
-		// model := MiStoreCleanFn(_product.title)
-		// if _debug {
-		// 	fmt.Println(model)
-		// }
-		// _product.model = model
-
 		content := traverse(item, "div", "class", "tt-product__content")
 		// fmt.Println(content)
 
@@ -205,6 +189,13 @@ func XXX_mistore(isDryRun bool) IShop {
 		for _, product := range _result {
 			// fmt.Println(product)
 
+			_title := product.title
+			_model := product.model
+
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := product.oldPrice
 			_price := _retailPrice
 			if product.price > 0 {
@@ -217,8 +208,8 @@ func XXX_mistore(isDryRun bool) IShop {
 
 			product := &Product{
 				Code:  _name + "//" + product.code,
-				Name:  product.title,
-				Model: product.model,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

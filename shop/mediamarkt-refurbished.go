@@ -186,6 +186,13 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 		for _, product := range _result {
 			// fmt.Println(product)
 
+			_title := product.title
+			_model := product.model
+
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := product.oldPrice
 			_price := _retailPrice
 			if product.price > 0 {
@@ -196,8 +203,8 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 
 			product := &Product{
 				Code:  _name + "//" + product.code,
-				Name:  product.title,
-				Model: product.model,
+				Name:  _title,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

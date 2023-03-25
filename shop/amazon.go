@@ -271,6 +271,10 @@ func XXX_amazon(isDryRun bool) IShop {
 			_model := AmazonCleanFn(_title)
 			// fmt.Println("\"" + strings.ReplaceAll(_model, "\"", "\\\"") + "\",")
 
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {

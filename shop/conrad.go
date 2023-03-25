@@ -274,20 +274,20 @@ func XXX_conrad(isDryRun bool) IShop {
 		for _, product := range *_result.Products {
 			// fmt.Println(product)
 
+			_title := product.Name
+			_model := ConradCleanFn(_title)
+
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := product.RetailPrice
 			_price := product.Price
 			_savings := product.Savings
 			_discount := product.Discount
 
-			// if _savings == 0 {
-			// _savings = _price - _retailPrice
-			// }
-			// _discount = 100 - ((100 / _retailPrice) * _price)
-
 			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
 			_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
-
-			_title := product.Name
 			for _, detail := range product.TechnicalDetails {
 				switch detail.Name {
 				case "ATT_CALC_DISPLAY-DIAGONAL_CM",
@@ -303,7 +303,6 @@ func XXX_conrad(isDryRun bool) IShop {
 
 				}
 			}
-			_model := ConradCleanFn(_title)
 
 			if _tests {
 				testCases[_title] = _model

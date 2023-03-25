@@ -108,8 +108,10 @@ func XXX_mobilezone(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Result.Findings.Products))
 		for _, product := range _result.Result.Findings.Products {
-			if Skip(product.MatchItem.Description.Value) {
-				// fmt.Println("** SKIP: " + product.MatchItem.Description.Value)
+			_title := product.MatchItem.Description.Value
+			_model := MobileZoneCleanFn(_title)
+
+			if Skip(_model) {
 				continue
 			}
 
@@ -142,9 +144,6 @@ func XXX_mobilezone(isDryRun bool) IShop {
 					_savings = _price - _retailPrice
 				}
 				_discount = 100 - ((100 / _retailPrice) * _price)
-
-				_title := product.MatchItem.Description.Value
-				_model := MobileZoneCleanFn(_title)
 
 				product := &Product{
 					Code:  _name + "//" + product.MatchItem.Code.Value,

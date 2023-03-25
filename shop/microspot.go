@@ -118,15 +118,12 @@ func XXX_microspot(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
-			if Skip(product.Name) {
-				// fmt.Println("** SKIP: " + product.Name)
+			_title := product.Name
+			_model := MicrospotCleanFn(_title)
+
+			if Skip(_model) {
 				continue
 			}
-
-			// if product.MaxOrderValue == 0 {
-			// 	// No more stock
-			// 	continue
-			// }
 
 			var _retailPrice float32
 			var _price float32
@@ -165,9 +162,6 @@ func XXX_microspot(isDryRun bool) IShop {
 				_savings = _price - _retailPrice
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
-
-			_title := product.Name
-			_model := MicrospotCleanFn(_title)
 
 			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))
 			_productUrl := fmt.Sprintf("https://www.microspot.ch/de/telefonie-tablet-smartwatch/smartphone/smartphone--c411000/%s--p%s", _productName, product.Code)

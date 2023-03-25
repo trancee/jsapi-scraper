@@ -165,8 +165,13 @@ func XXX_galaxus(isDryRun bool) IShop {
 			product.Name = html.UnescapeString(product.Name)
 			product.Description = html.UnescapeString(product.Description)
 
-			if Skip(product.Brand + " " + product.Name) {
-				// fmt.Println("** SKIP: " + product.Brand)
+			_title := product.Brand + " " + product.Name
+			// fmt.Println(_title)
+			_model := GalaxusCleanFn(_title)
+			// fmt.Println(_model)
+			// fmt.Println()
+
+			if Skip(_model) {
 				continue
 			}
 
@@ -199,12 +204,6 @@ func XXX_galaxus(isDryRun bool) IShop {
 			if !result.IsDefaultOffer {
 				_productUrl += fmt.Sprintf("?shid=%d", offer.ShopOfferID)
 			}
-
-			_title := product.Brand + " " + product.Name
-			// fmt.Println(_title)
-			_model := GalaxusCleanFn(_title)
-			// fmt.Println(_model)
-			// fmt.Println()
 
 			{
 				code := strconv.Itoa(product.Code)

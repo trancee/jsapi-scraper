@@ -143,13 +143,13 @@ func XXX_alltron(isDryRun bool) IShop {
 		for _, product := range _products {
 			// fmt.Println(product)
 			if product != nil {
-				if Skip(product.Description.Title) {
-					// fmt.Println("** SKIP: " + product.Description.Title)
+				_title := strings.ReplaceAll(product.Description.Title, "Fairphone Fairphone", "Fairphone")
+				_model := AlltronCleanFn(_title)
+
+				if Skip(_model) {
 					continue
 				}
 
-				_title := strings.ReplaceAll(product.Description.Title, "Fairphone Fairphone", "Fairphone")
-				_model := AlltronCleanFn(_title)
 				if product.Settings.IsNew {
 					_title += " [N]"
 				} else if product.Settings.IsSpecialOffer {

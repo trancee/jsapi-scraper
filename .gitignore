@@ -2,3 +2,4 @@ products
 products.idx
 bin/
 scraper-*.json
+.archive/

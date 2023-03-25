@@ -241,6 +241,12 @@ func XXX_brack(isDryRun bool) IShop {
 			// fmt.Println(product)
 
 			_title := product.title
+			_model := product.model
+
+			if Skip(_model) {
+				continue
+			}
+
 			switch product.callout {
 			case New:
 				_title += " [N]"
@@ -271,7 +277,7 @@ func XXX_brack(isDryRun bool) IShop {
 			product := &Product{
 				Code:  _name + "//" + product.code,
 				Name:  _title,
-				Model: product.model,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,

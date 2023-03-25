@@ -200,6 +200,13 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		for _, product := range _result {
 			// fmt.Println(product)
 
+			_title := html.UnescapeString(product.title)
+			_model := product.model
+
+			if Skip(_model) {
+				continue
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {
@@ -208,13 +215,12 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
-			_title := html.UnescapeString(product.title)
 			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
 				Code:  _name + "//" + product.code,
 				Name:  _title,
-				Model: product.model,
+				Model: _model,
 
 				RetailPrice: _retailPrice,
 				Price:       _price,
