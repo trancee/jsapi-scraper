@@ -7,12 +7,16 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 )
 
-var MelectronicsRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?`)
+var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`)
 
 var MelectronicsCleanFn = func(name string) string {
+	name = strings.ReplaceAll(name, " 3th ", " 3rd Gen ")
+	name = strings.ReplaceAll(name, "A53 s", "A53s")
+
 	if loc := MelectronicsRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
@@ -23,7 +27,12 @@ var MelectronicsCleanFn = func(name string) string {
 
 func XXX_melectronics(isDryRun bool) IShop {
 	const _name = "melectronics"
-	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:special:Aktion&pageSize=20&currentPage=0"
+	// const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:special:Aktion&pageSize=20&currentPage=0"
+	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:summaryAsString:Smartphone&pageSize=100"
+
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Product struct {
 		Code    string `json:"code"`
@@ -117,11 +126,18 @@ func XXX_melectronics(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Products))
 		for _, product := range _result.Products {
-			_title := product.Brand.Name + " " + product.Name
+			_title := product.Name
+			if len(product.Brand.Name) > 0 && strings.ToUpper(product.Brand.Name) != strings.ToUpper(strings.Split(_title, " ")[0]) {
+				_title = product.Brand.Name + " " + _title
+			}
 			_model := MelectronicsCleanFn(_title)
 
 			if Skip(_model) {
 				continue
+			}
+
+			if _tests {
+				testCases[_title] = _model
 			}
 
 			product := Product{
@@ -142,6 +158,24 @@ func XXX_melectronics(isDryRun bool) IShop {
 			}
 		}
 
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
+			}
+		}
+
+		// fmt.Printf("%#v\n", products)
 		return &products
 	}
 

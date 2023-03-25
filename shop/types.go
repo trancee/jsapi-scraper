@@ -51,6 +51,7 @@ type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
 	"ALIGATOR":    true,
+	"AMPLICOMMS":  true,
 	"ARTFONE":     true,
 	"BEAFON":      true,
 	"BLACKBERRY":  true,
