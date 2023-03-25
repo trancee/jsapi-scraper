@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -33,6 +34,9 @@ func XXX_fust(isDryRun bool) IShop {
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -138,6 +142,7 @@ func XXX_fust(isDryRun bool) IShop {
 			// fmt.Println(itemTitle)
 
 			title, _ := attr(itemTitle.Attr, "title")
+			title = strings.TrimSpace(title)
 			if _debug {
 				fmt.Println(title)
 			}
@@ -211,11 +216,16 @@ func XXX_fust(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {
 				_retailPrice = product.oldPrice
 			}
+
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
@@ -238,6 +248,23 @@ func XXX_fust(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
