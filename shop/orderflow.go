@@ -6,16 +6,17 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
 )
 
-var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Blau| GREEN| Schwarz|(EE )?Enterprise Edition( CH)?`)
+var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Blau| GREEN| Schwarz|(EE )?Enterprise Edition( CH)?`)
 
 var OrderflowCleanFn = func(name string) string {
-	name = strings.NewReplacer(" 4G ", " ").Replace(name)
+	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen").Replace(name)
 
 	if loc := OrderflowRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -30,6 +31,9 @@ func XXX_orderflow(isDryRun bool) IShop {
 	const _url = "https://www.orderflow.ch/de/categories/elektronik/kommunikation/mobiltelefone?limit=100&sort=price|asc&c300101=[30010104,30010117,30010105,30010103]"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -185,11 +189,16 @@ func XXX_orderflow(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {
 				_retailPrice = product.oldPrice
 			}
+
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
@@ -212,6 +221,23 @@ func XXX_orderflow(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
