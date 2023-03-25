@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -27,6 +28,10 @@ func XXX_alltron(isDryRun bool) IShop {
 	const _name = "Alltron"
 	const _url = "https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar&searchEarlyFilter=true&format=json"
 	const _api = "https://alltron.ch/api/v1/products/multiple-tiles/"
+
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Product struct {
 		Description struct {
@@ -150,6 +155,10 @@ func XXX_alltron(isDryRun bool) IShop {
 					continue
 				}
 
+				if _tests {
+					testCases[_title] = _model
+				}
+
 				if product.Settings.IsNew {
 					_title += " [N]"
 				} else if product.Settings.IsSpecialOffer {
@@ -165,6 +174,7 @@ func XXX_alltron(isDryRun bool) IShop {
 				if product.EffectivePricing.MainPrice > 0 {
 					_retailPrice = product.EffectivePricing.MainPrice
 				}
+
 				_savings := _price - _retailPrice
 				_discount := 100 - ((100 / _retailPrice) * _price)
 
@@ -188,6 +198,23 @@ func XXX_alltron(isDryRun bool) IShop {
 				if s.IsWorth(product) {
 					products = append(products, product)
 				}
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
