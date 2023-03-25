@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -32,6 +33,9 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 	const _url = "https://www.mobiledevice.ch/modules/blocklayered/blocklayered-ajax.php?layered_quantity_1=1&id_category_layered=28&orderby=price&orderway=asc&n=100"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -207,6 +211,10 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {
@@ -234,6 +242,23 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 

@@ -27,7 +27,7 @@ func XXX_microspot(isDryRun bool) IShop {
 	const _name = "Microspot"
 	const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
 
-	const _tests = true
+	const _tests = false
 
 	testCases := map[string]string{}
 
