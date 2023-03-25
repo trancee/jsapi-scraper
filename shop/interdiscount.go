@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 )
@@ -25,6 +26,10 @@ var InterdiscountCleanFn = func(name string) string {
 func XXX_interdiscount(isDryRun bool) IShop {
 	const _name = "Interdiscount"
 	const _url = "https://www.interdiscount.ch/idocc/occ/id/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
+
+	const _tests = true
+
+	testCases := map[string]string{}
 
 	type _Product struct {
 		Code string `json:"code"`
@@ -125,6 +130,10 @@ func XXX_interdiscount(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			var _retailPrice float32
 			var _price float32
 			var _savings float32
@@ -184,6 +193,24 @@ func XXX_interdiscount(isDryRun bool) IShop {
 			}
 		}
 
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
+			}
+		}
+
+		// fmt.Printf("%#v\n", products)
 		return &products
 	}
 
