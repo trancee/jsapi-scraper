@@ -281,13 +281,6 @@ func XXX_conrad(isDryRun bool) IShop {
 				continue
 			}
 
-			_retailPrice := product.RetailPrice
-			_price := product.Price
-			_savings := product.Savings
-			_discount := product.Discount
-
-			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Name), "$1"))
-			_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
 			for _, detail := range product.TechnicalDetails {
 				switch detail.Name {
 				case "ATT_CALC_DISPLAY-DIAGONAL_CM",
@@ -307,6 +300,14 @@ func XXX_conrad(isDryRun bool) IShop {
 			if _tests {
 				testCases[_title] = _model
 			}
+
+			_retailPrice := product.RetailPrice
+			_price := product.Price
+			_savings := product.Savings
+			_discount := product.Discount
+
+			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))
+			_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
 
 			product := &Product{
 				Code:  _name + "//" + product.Code,

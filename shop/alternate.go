@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -28,6 +29,9 @@ func XXX_alternate(isDryRun bool) IShop {
 	const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_-2=true&filter_16536=5&s=price_asc&page=%d"
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -49,7 +53,7 @@ func XXX_alternate(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	for p := 1; p <= 5; p++ {
+	for p := 1; p <= 10; p++ {
 		fn := fmt.Sprintf("shop/alternate.%d.html", p)
 
 		if isDryRun {
@@ -142,6 +146,13 @@ func XXX_alternate(isDryRun bool) IShop {
 
 			_result = append(_result, _product)
 		}
+
+		results := traverse(doc, "div", "class", "col-md-auto")
+		if result, ok := text(results); ok {
+			if x := regexp.MustCompile(`(\d+)-(\d+) von (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
+				break
+			}
+		}
 	}
 
 	_parseFn := func(s IShop) *[]*Product {
@@ -158,11 +169,16 @@ func XXX_alternate(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := _product.oldPrice
 			_price := _retailPrice
 			if _product.price > 0 {
 				_price = _product.price
 			}
+
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
@@ -181,6 +197,23 @@ func XXX_alternate(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
