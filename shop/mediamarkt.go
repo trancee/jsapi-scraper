@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -27,6 +28,9 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 	const _url = "https://www.mediamarkt.ch/de/category/_smartphone-680815.html?searchParams=%2FSearch.ff%3FfilterCategoriesROOT%3DHandy%2B%2526%2BNavigation%25C2%25A7MediaCHdec680760%26filterCategoriesROOT%252FHandy%2B%2526%2BNavigation%25C2%25A7MediaCHdec680760%3DSmartphone%25C2%25A7MediaCHdec680815%26filteravailability%3D1%26filterTyp%3D___Smartphone%26channel%3Dmmchde%26followSearch%3D9782%26disableTabbedCategory%3Dtrue%26navigation%3Dtrue&sort=price&view=PRODUCTGRID&page="
 
 	const _debug = false
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Response struct {
 		code  string
@@ -155,6 +159,10 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			_retailPrice := product.oldPrice
 			_price := _retailPrice
 			if product.price > 0 {
@@ -180,6 +188,23 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 
 			if s.IsWorth(product) {
 				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
 			}
 		}
 
