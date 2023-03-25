@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -30,6 +31,10 @@ var GalaxusCleanFn = func(name string) string {
 func XXX_galaxus(isDryRun bool) IShop {
 	const _name = "Galaxus"
 	const _url = "https://www.galaxus.ch/api/graphql/product-type-filter-products"
+
+	const _tests = false
+
+	testCases := map[string]string{}
 
 	type _Product struct {
 		Code int    `json:"productId"`
@@ -175,6 +180,10 @@ func XXX_galaxus(isDryRun bool) IShop {
 				continue
 			}
 
+			if _tests {
+				testCases[_title] = _model
+			}
+
 			var _retailPrice float32
 			var _price float32
 			var _savings float32
@@ -226,6 +235,24 @@ func XXX_galaxus(isDryRun bool) IShop {
 			}
 		}
 
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
+			}
+		}
+
+		// fmt.Printf("%#v\n", products)
 		return &products
 	}
 
