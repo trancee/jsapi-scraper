@@ -13,6 +13,7 @@ var nameMapping = map[string]string{
 	"2Nd":     "2nd",
 	"2ND":     "2nd",
 	"Ce":      "CE",
+	"Ds":      "DS",
 	"El":      "EL",
 	"Fe":      "FE",
 	"Gt":      "GT",
