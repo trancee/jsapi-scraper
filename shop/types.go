@@ -65,6 +65,7 @@ var _skips = map[string]bool{
 	"DENVER":      true,
 	"DOOGEE":      true, // EXCLUDE
 	"DORO":        true,
+	"EL":          true,
 	"EMPORIA":     true,
 	"EVOLVEO":     true,
 	"FELLOWES":    true,
