@@ -103,6 +103,12 @@ func XXX_fust(isDryRun bool) IShop {
 				continue
 			}
 
+			if available := traverse(item, "div", "class", "stati2"); available == nil {
+				if available := traverse(item, "div", "class", "stati3"); available == nil {
+					continue
+				}
+			}
+
 			_product := _Response{}
 
 			productKey, _ := attr(item.Attr, "data-prj-productkey")

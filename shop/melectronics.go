@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`)
+var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)| DS|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`)
 
 var MelectronicsCleanFn = func(name string) string {
 	name = strings.ReplaceAll(name, " 3th ", " 3rd Gen ")

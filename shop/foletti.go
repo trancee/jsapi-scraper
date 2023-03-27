@@ -133,7 +133,7 @@ func XXX_foletti(isDryRun bool) IShop {
 			continue
 		}
 
-		if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
+		if brand != "o2" && !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
 			_product.title = brand + " " + _product.title
 		}
 
