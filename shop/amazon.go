@@ -192,41 +192,42 @@ func XXX_amazon(isDryRun bool) IShop {
 			}
 			_product.link = link
 
-			itemPrice := traverse(item, "div", "class", "s-price-instructions-style")
-			// fmt.Println(itemPrice)
+			if itemPrice := traverse(item, "div", "class", "s-price-instructions-style"); itemPrice != nil {
+				// fmt.Println(itemPrice)
 
-			if itemOldPrice := traverse(itemPrice, "span", "class", "a-price-whole"); itemOldPrice != nil {
-				// fmt.Println(itemOldPrice)
+				if itemOldPrice := traverse(itemPrice, "span", "class", "a-price-whole"); itemOldPrice != nil {
+					// fmt.Println(itemOldPrice)
 
-				oldPrice, _ := text(itemOldPrice)
-				oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "CHF", "")
-				if _debug {
-					fmt.Println(oldPrice)
-				}
-
-				if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-					panic(err)
-				} else {
-					_product.price = float32(_price)
-				}
-			}
-
-			if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
-				// fmt.Println(currentPrice)
-
-				if currentPrice := traverse(itemPrice, "span", "aria-hidden", "true"); currentPrice != nil {
-					// fmt.Println(currentPrice)
-
-					price, _ := text(currentPrice)
-					price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "CHF", "")
+					oldPrice, _ := text(itemOldPrice)
+					oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "CHF", "")
 					if _debug {
-						fmt.Println(price)
+						fmt.Println(oldPrice)
 					}
 
-					if _price, err := strconv.ParseFloat(price, 32); err != nil {
+					if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
 						panic(err)
 					} else {
-						_product.oldPrice = float32(_price)
+						_product.price = float32(_price)
+					}
+				}
+
+				if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
+					// fmt.Println(currentPrice)
+
+					if currentPrice := traverse(itemPrice, "span", "aria-hidden", "true"); currentPrice != nil {
+						// fmt.Println(currentPrice)
+
+						price, _ := text(currentPrice)
+						price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "CHF", "")
+						if _debug {
+							fmt.Println(price)
+						}
+
+						if _price, err := strconv.ParseFloat(price, 32); err != nil {
+							panic(err)
+						} else {
+							_product.oldPrice = float32(_price)
+						}
 					}
 				}
 			}
