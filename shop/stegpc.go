@@ -16,7 +16,7 @@ import (
 var StegRegex = regexp.MustCompile(` - |\s+\(?(\d+\/)?\d+\s*[GT]B|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Vegan Leather`)
 
 var StegCleanFn = func(name string) string {
-	name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
 
 	if loc := StegRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

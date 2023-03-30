@@ -17,7 +17,7 @@ import (
 var MobileDeviceRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
 
 var MobileDeviceCleanFn = func(name string) string {
-	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
 	name = strings.NewReplacer("Nothing Phone 1", "Nothing Phone (1)", "X Cover", "XCover").Replace(name)
 
 	if loc := MobileDeviceRegex.FindStringSubmatchIndex(name); loc != nil {
