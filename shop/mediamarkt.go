@@ -126,18 +126,49 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 			}
 			_product.model = model
 
-			currentPrice := traverse(baseInfo, "div", "class", "price")
-			// fmt.Println(currentPrice)
+			if oldPrice := traverse(baseInfo, "div", "class", "price-old"); oldPrice != nil {
+				// fmt.Println(oldPrice.FirstChild.Parent.LastChild)
 
-			price, _ := text(currentPrice)
-			if _debug {
-				fmt.Println(price)
-			}
+				price, _ := text(oldPrice.FirstChild.Parent.LastChild)
+				if _debug {
+					fmt.Println(price)
+				}
 
-			if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
-				panic(err)
+				if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
+					panic(err)
+				} else {
+					_product.oldPrice = float32(_price)
+				}
+
+				{
+					currentPrice := oldPrice.Parent.NextSibling.NextSibling
+					// fmt.Println(currentPrice)
+
+					price, _ := text(currentPrice)
+					if _debug {
+						fmt.Println(price)
+					}
+
+					if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
+						panic(err)
+					} else {
+						_product.price = float32(_price)
+					}
+				}
 			} else {
-				_product.oldPrice = float32(_price)
+				currentPrice := traverse(baseInfo, "div", "class", "price")
+				// fmt.Println(currentPrice)
+
+				price, _ := text(currentPrice)
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
+					panic(err)
+				} else {
+					_product.oldPrice = float32(_price)
+				}
 			}
 
 			if _debug {
