@@ -92,119 +92,120 @@ func XXX_fust(isDryRun bool) IShop {
 
 		doc := parse(string(_body))
 
-		productList := traverse(doc, "ul", "id", "productslist")
-		// fmt.Println(productList)
+		if productList := traverse(doc, "ul", "id", "productslist"); productList != nil {
+			// fmt.Println(productList)
 
-		for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-			// item := traverse(productList, "li", "class", "product__list")
-			// fmt.Println(item)
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+				// item := traverse(productList, "li", "class", "product__list")
+				// fmt.Println(item)
 
-			if contains(item.Attr, "class", "rubric-advertising") {
-				continue
-			}
-
-			if available := traverse(item, "div", "class", "stati2"); available == nil {
-				if available := traverse(item, "div", "class", "stati3"); available == nil {
+				if contains(item.Attr, "class", "rubric-advertising") {
 					continue
 				}
-			}
 
-			_product := _Response{}
-
-			productKey, _ := attr(item.Attr, "data-prj-productkey")
-			// fmt.Println(productKey)
-			productId := strings.Split(productKey, "_")[0]
-			if _debug {
-				fmt.Println(productId)
-			}
-
-			_product.code = productId
-
-			product := traverse(item, "div", "class", "product")
-			// fmt.Println(product)
-
-			figure := traverse(product, "figure", "class", "product__overview-img")
-			// fmt.Println(figure)
-
-			imageTitleLink := traverse(figure, "a", "href", "")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			itemProducer := traverse(item, "span", "class", "producer")
-			// fmt.Println(itemTitle)
-
-			brand, _ := text(itemProducer)
-			if _debug {
-				fmt.Println(brand)
-			}
-			_product.title = brand
-
-			itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
-			// fmt.Println(itemTitle)
-
-			title, _ := attr(itemTitle.Attr, "title")
-			title = strings.TrimSpace(title)
-			if _debug {
-				fmt.Println(title)
-			}
-			_product.title = brand + " " + title
-
-			if Skip(_product.title) {
-				continue
-			}
-
-			model := FustCleanFn(title)
-			if _debug {
-				fmt.Println(model)
-			}
-			_product.model = brand + " " + model
-
-			itemPrice := traverse(item, "div", "class", "price-block")
-			// fmt.Println(itemPrice)
-
-			if itemOldPrice := traverse(itemPrice, "span", "class", "oldprice"); itemOldPrice != nil {
-				// fmt.Println(itemOldPrice)
-
-				oldPrice, _ := text(itemOldPrice)
-				if _debug {
-					fmt.Println(oldPrice)
-				}
-
-				if oldPrice := strings.ReplaceAll(strings.ReplaceAll(oldPrice, "–", "00"), "’", ""); oldPrice != "" {
-					if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-						panic(err)
-					} else {
-						_product.oldPrice = float32(_price)
+				if available := traverse(item, "div", "class", "stati2"); available == nil {
+					if available := traverse(item, "div", "class", "stati3"); available == nil {
+						continue
 					}
 				}
-			}
 
-			currentPrice := traverse(itemPrice, "div", "class", "endprice")
-			// fmt.Println(currentPrice)
+				_product := _Response{}
 
-			price, _ := text(currentPrice)
-			if _debug {
-				fmt.Println(price)
-			}
-
-			if price := strings.ReplaceAll(strings.ReplaceAll(price, "–", "00"), "’", ""); price != "" {
-				if _price, err := strconv.ParseFloat(price, 32); err != nil {
-					panic(err)
-				} else {
-					_product.price = float32(_price)
+				productKey, _ := attr(item.Attr, "data-prj-productkey")
+				// fmt.Println(productKey)
+				productId := strings.Split(productKey, "_")[0]
+				if _debug {
+					fmt.Println(productId)
 				}
-			}
 
-			if _debug {
-				fmt.Println()
-			}
+				_product.code = productId
 
-			_result = append(_result, _product)
+				product := traverse(item, "div", "class", "product")
+				// fmt.Println(product)
+
+				figure := traverse(product, "figure", "class", "product__overview-img")
+				// fmt.Println(figure)
+
+				imageTitleLink := traverse(figure, "a", "href", "")
+				// fmt.Println(imageTitleLink)
+
+				link, _ := attr(imageTitleLink.Attr, "href")
+				if _debug {
+					fmt.Println(link)
+				}
+				_product.link = link
+
+				itemProducer := traverse(item, "span", "class", "producer")
+				// fmt.Println(itemTitle)
+
+				brand, _ := text(itemProducer)
+				if _debug {
+					fmt.Println(brand)
+				}
+				_product.title = brand
+
+				itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
+				// fmt.Println(itemTitle)
+
+				title, _ := attr(itemTitle.Attr, "title")
+				title = strings.TrimSpace(title)
+				if _debug {
+					fmt.Println(title)
+				}
+				_product.title = brand + " " + title
+
+				if Skip(_product.title) {
+					continue
+				}
+
+				model := FustCleanFn(title)
+				if _debug {
+					fmt.Println(model)
+				}
+				_product.model = brand + " " + model
+
+				itemPrice := traverse(item, "div", "class", "price-block")
+				// fmt.Println(itemPrice)
+
+				if itemOldPrice := traverse(itemPrice, "span", "class", "oldprice"); itemOldPrice != nil {
+					// fmt.Println(itemOldPrice)
+
+					oldPrice, _ := text(itemOldPrice)
+					if _debug {
+						fmt.Println(oldPrice)
+					}
+
+					if oldPrice := strings.ReplaceAll(strings.ReplaceAll(oldPrice, "–", "00"), "’", ""); oldPrice != "" {
+						if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
+							panic(err)
+						} else {
+							_product.oldPrice = float32(_price)
+						}
+					}
+				}
+
+				currentPrice := traverse(itemPrice, "div", "class", "endprice")
+				// fmt.Println(currentPrice)
+
+				price, _ := text(currentPrice)
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if price := strings.ReplaceAll(strings.ReplaceAll(price, "–", "00"), "’", ""); price != "" {
+					if _price, err := strconv.ParseFloat(price, 32); err != nil {
+						panic(err)
+					} else {
+						_product.price = float32(_price)
+					}
+				}
+
+				if _debug {
+					fmt.Println()
+				}
+
+				_result = append(_result, _product)
+			}
 		}
 	}
 
