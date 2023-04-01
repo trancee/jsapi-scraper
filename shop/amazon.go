@@ -67,7 +67,8 @@ func XXX_amazon(isDryRun bool) IShop {
 	// const _url = "https://www.amazon.de/-/en/s?k=SIM-Free+%26+Unlocked+Mobile+Phones&i=electronics&rh=n%3A15326400031%2Cp_n_free_shipping_eligible%3A20943778031%2Cp_n_condition-type%3A776949031%2Cp_n_deal_type%3A26902994031&dc&language=de_CH&currency=CHF&c=ts&qid=1678974685&rnid=26902991031&ts_id=15326400031&ref=sr_nr_p_ru_1&ds=v1%3AqBW5BcRHmqi2sjFHp4vDX0aNYSc4IsvDBroYiSaiqkA"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_n_condition-type:776949031&language=de_DE&currency=CHF&dc=&c=ts&qid=1678975426&rnid=776942031&page=2"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_n_condition-type:776949031&dc=&c=ts&qid=1678975426&rnid=776942031&s=price-asc-rank&page=%d"
-	const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902993031&s=price-asc-rank&dc&c=ts&qid=1679414936&rnid=26902991031&page=%d"
+	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902993031&s=price-asc-rank&dc&c=ts&qid=1679414936&rnid=26902991031&page=%d"
+	const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_6:A3JWKAKR8XB7XF&s=price-asc-rank&dc&c=ts&qid=1680358125&rnid=26902991031&page=%d"
 
 	const _debug = false
 
