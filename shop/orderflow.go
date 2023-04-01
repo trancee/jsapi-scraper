@@ -13,7 +13,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var OrderflowRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Blau| GREEN| Schwarz|(EE )?Enterprise Edition( CH)?`)
+var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Blau| GREEN| Schwarz|(EE )?Enterprise Edition( CH)?`)
 
 var OrderflowCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen").Replace(name)
