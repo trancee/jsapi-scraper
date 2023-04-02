@@ -107,6 +107,11 @@ func XXX_microspot(isDryRun bool) IShop {
 			_body = body
 		}
 
+		// Maintenance Mode
+		if _body[0] == '<' {
+			return nil
+		}
+
 		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))

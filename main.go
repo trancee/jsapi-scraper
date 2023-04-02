@@ -106,15 +106,17 @@ func main() {
 			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
 		} {
-			wg.Add(1)
+			if _shop != nil {
+				wg.Add(1)
 
-			go func(_shop shop.IShop) {
-				defer wg.Done()
+				go func(_shop shop.IShop) {
+					defer wg.Done()
 
-				_mutex.Lock()
-				_products[_shop.Name()] = _shop.Fetch()
-				_mutex.Unlock()
-			}(_shop)
+					_mutex.Lock()
+					_products[_shop.Name()] = _shop.Fetch()
+					_mutex.Unlock()
+				}(_shop)
+			}
 		}
 
 		wg.Wait()

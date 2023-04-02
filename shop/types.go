@@ -90,13 +90,17 @@ var _skips = map[string]bool{
 	"OUKITEL":         true, // EXCLUDE
 	"PANASONIC":       true,
 	"PEAQ":            true,
+	"PRIMO":           true,
 	"RUGGEAR":         true,
 	"SGW":             true,
 	"SIGEL":           true,
+	"SPC":             true,
 	"STOTZ":           true,
 	"STYRO":           true,
+	"SUUNTO":          true,
 	"SWISSTONE":       true,
 	"TELEFUNKEN":      true,
+	"TELEFONAS":       true,
 	"ULEFONE":         true, // EXCLUDE
 	"ULEWAY":          true,
 	"UMIDIGI":         true, // EXCLUDE
