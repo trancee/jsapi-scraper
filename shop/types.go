@@ -104,6 +104,7 @@ var _skips = map[string]bool{
 	"ULEFONE":         true, // EXCLUDE
 	"ULEWAY":          true,
 	"UMIDIGI":         true, // EXCLUDE
+	"UNIFY":           true,
 	"XGODY":           true, // EXCLUDE
 	"XS13":            true,
 }

@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(GB)?\+)?\d+GB\)?|\s+\(?20[12]\d\)?|\s+X\d{3}F|\s+((EE )?Enterprise Edition( CH)?)| EU`)
+var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(GB)?\+)?\d+GB\)?|\s+\(?20[12]\d\)?|\s+X\d{3}F|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
