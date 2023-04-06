@@ -7,11 +7,13 @@ import (
 
 var folettiNames = []string{
 	"Blackview BV4900 Pro 14.5 cm (5.7) Dual SIM Android 10.0 4G Micro-USB 4 GB 64 GB 5580 mAh Black",
+	"Blackview BV5200 5180 mAh 4/32 GB Green smartphone",
 	"Motorola Moto E 13",
 	"Motorola Moto E 22",
 	"Motorola Moto E20 grau",
 	"MOTOROLA MOTO E22 4/64GB ASTRO BLACK",
 	"Motorola moto g22",
+	"Motorola Moto G31 sterling blue",
 	"Motorola XT2173-3 Moto G31 128GB Grey 6.4 EU (4GB) Android",
 	"Motorola XT2173-3 moto g31 Dual Sim 4+64GB mineral grey DE",
 	"Motorola XT2229-2 moto e32s Dual Sim 3+32GB  slate grey DE",
@@ -46,11 +48,13 @@ var folettiNames = []string{
 
 var folettiNamesExpected = []string{
 	"Blackview BV4900 Pro",
+	"Blackview BV5200",
 	"Motorola Moto E13",
 	"Motorola Moto E22",
 	"Motorola Moto E20",
 	"MOTOROLA MOTO E22",
 	"Motorola moto g22",
+	"Motorola Moto G31",
 	"Motorola Moto G31",
 	"Motorola moto g31",
 	"Motorola moto e32s",

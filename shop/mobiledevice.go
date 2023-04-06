@@ -88,7 +88,9 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		*/
 		resp, err := http.Get(_url)
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return nil
 		}
 		defer resp.Body.Close()
 

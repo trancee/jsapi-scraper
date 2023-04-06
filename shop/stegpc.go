@@ -94,7 +94,9 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 	var body _Body
 	if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
-		panic(err)
+		// panic(err)
+		fmt.Println(err)
+		return nil
 	}
 	// fmt.Println(body.NewProductList)
 
