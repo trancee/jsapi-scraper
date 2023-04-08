@@ -23,6 +23,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	name = strings.ReplaceAll(name, " E ", " E")
+	name = strings.ReplaceAll(name, " Ee", " e")
 
 	return strings.TrimSpace(name)
 }
