@@ -18,6 +18,7 @@ var nameMapping = map[string]string{
 	"Fe":      "FE",
 	"Gt":      "GT",
 	"Htc":     "HTC",
+	"Ii":      "II",
 	"IIIF150": "iiiF150",
 	"Iphone":  "iPhone",
 	"Kxd":     "KXD",

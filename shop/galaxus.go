@@ -24,6 +24,7 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?|\s+I9505`).ReplaceAllString(name, "")
+	name = strings.ReplaceAll(name, "Note9", "Note 9")
 
 	return strings.TrimSpace(name)
 }

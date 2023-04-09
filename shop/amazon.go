@@ -25,6 +25,10 @@ var AmazonCleanFn = func(name string) string {
 	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "-", " ", "Kingkong", "King Kong", "KXD Handy,", "KXD").Replace(name)
 	name = AmazonRegex3.ReplaceAllString(name, "|")
 
+	if strings.HasPrefix(name, "moto") {
+		name = "Motorola " + name
+	}
+
 	if s := strings.Split(name, "|"); len(s) > 0 {
 		_name := strings.TrimSpace(s[0])
 		if len(strings.Split(_name, " ")) == 1 {
