@@ -12,10 +12,12 @@ import (
 	"os"
 	"runtime/debug"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/recoilme/pudge"
 
 	"golang.org/x/oauth2/google"
@@ -30,12 +32,7 @@ const ValueDiscount = 50
 const ValueWorth = 100
 const ValueMaximum = 300
 
-const Token = "6219604147:AAERFP-_PfSELN3-gorzE9czM6WR-3Rum-Q"
-const ChatID = "1912073977"
-
 // https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
-const sheetId = 238356703
-const spreadsheetId = "1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI"
 
 func main() {
 	isDryRun := false
@@ -62,6 +59,17 @@ func main() {
 			}
 		}
 	}()
+
+	err := godotenv.Load()
+	if err != nil {
+		panic(err)
+	}
+
+	sheetId, err := strconv.Atoi(os.Getenv("SHEET_ID"))
+	if err != nil {
+		panic(err)
+	}
+	spreadsheetId := os.Getenv("SPREADSHEET_ID")
 
 	_products := map[string]*[]*shop.Product{}
 
@@ -192,7 +200,7 @@ func main() {
 		ctx := context.Background()
 
 		// get bytes from base64 encoded google service accounts key
-		credBytes, err := base64.StdEncoding.DecodeString(`ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAic2NyYXBlci0zODAzMjAiLAogICJwcml2YXRlX2tleV9pZCI6ICIxMWQ5MjFkZGExMzM1NGZlNTdiY2U4MDgyNTI0Yzg1YmRhYTM3ZmZhIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUlFdmdJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLZ3dnZ1NrQWdFQUFvSUJBUUM4YW83OFRVRFhlOEYwXG5EbU13YnNZMTlHOTVxdHRjU0JyNGRZSkZ2TDhhSDBqYjJaS29vVlV4Vm9Va1NEbmJzbU8vMUpiaDlxbmhHMndDXG5nRVRyZVhFWDMxKzM2Uk44eGJPWUFMeEpVSkpSdDA0ZjMyZ1MxdmsySGlEYlhVRHNXNjBzVGpUcTAyU3BSY1kvXG5CQnJGV29MR2N3Z3ZJU0lrVGZKbkNuVEhJdnlRRG50dWhjaXZLNkFjNTF0dUw0ZndyOEg4ZFZ0TFA0Q1JxdHdsXG52bnJzVXRSNnZsNDN2UDg5Umk1V25ZK1A1aGp4OW45UEVBZlltTnlUYndoOURCb3Y4c3hFUUx6OWFKS3RTSGxTXG53VUdWVU5WamY5d2djUmlSdEtDSWY1ZDBraDE1RStZaHE2OXpNWjJuKytnR3hoM0YrREh3c09YbW43ODh6MVUxXG5qMWprZHNUdEFnTUJBQUVDZ2dFQU1vRi8zWnJad0VsZ3RIcnMxTDFFN1k2ZDJTZlhFRmdWdnJkRkdldDc4SVVsXG5VeVZ4M2prTTdLSk1JMHNuRTBDdzQybVpubTJ2NFBNb1UwMU43QzhNQlVHdjEwMG5sNkVwUUp3bDNLTTM3YWFzXG56dmRrWHZSNExpMEtVck1mSlp4M2diSmZGZmxmZU02RzB6cUc4Sk1RRGlFa3R2bHpQUGNWL00vOU9Lb2t1SHBxXG50a0hKL0ZMV0RaczNEL3BNNi9HREdpV0xsdld6MDY3VlQ2LzNLWGJsOHhWYUJ0Mm8wSFRIQTcrbW9qNjlIbXVuXG5aWG1uQTM3SWx0eitteWRFY2o2aWxWUHJTZDZiY0VJOENDU3FoV0VucmpwR3JUbkYwZFJOR0RhVThFUXMrM3J6XG5jL25ZWkFBVkVSZ2g4NVFUazlTbWowWWRCSHNidTU4bVlJQjFkMnhYUXdLQmdRRDRGajZMWi9UTmNSRG5RRTExXG5GalRvdGg2YWQ3Y3JUb1ZXRHVjNEp1MDNiU2owOERJc09jWllPa0Z2Z1hiWjExVGdweWpTMk40ZDRiQkxDN3JhXG50N0ZMRndicmVDdW12anI5dTEwVlZkRzJZYzF1elBvQmtpcER2d29HcDNYUFRyTUhoWFFwNWlMbWtYMm5CTWMxXG52WkVNeUg5UjBsT3NZWXE2TTVtbHZleGw2d0tCZ1FEQ2JSS3g5dmxaNlREVVJEOFRjS2dGdTVRa3BaeGJ6TGJ5XG40dDFQZ0VXa21oQnFPeFNIemRQNGFBMjRaNWp3cE9QVEhVL2RyQUhFOVZLOHhTbEwzUVhJUXQyanBsVlZSNFRhXG4rQ0prQzRIUTdmc3dNZWZoRi9LS21FKzJNalJscVVTcWJYcWRZdWhGdGxsZTRNanZjNVlyK0g3c25wMi9wdm9OXG5wVzlYMDhlU2h3S0JnR01CTFpDZ3VmZEt5ZjRma1VuS3hPNmh6M0RCbWQyMGhrMmp3TzZOeWxrMlBRUVMzMUw2XG44NGErS09NQS9aZE44ZGQ5bmpNV3pQMkwxYmo5UTJLSnNEMVJRVGV6UzJoTnZta0gzc3ZtNWJ3dEo3aXlJSXVEXG44MDM1N1Z4ZWRBdDVVc1VMb3lJZGI0d29QOGJwaHo2UkdsUEpwOVhWWkFNRklrSFEyZDVrL3ZSbEFvR0JBSWQ4XG5CSXdaWTdlQTVYTDF2OUtuTFo4WkVPbmNzakhTWFNheWFyQXMzZHNQTlNNaDJuT3NQZXNiYjN3eVRRUmNreG9aXG5rZjhTRHdXV1FycWkxZDAwdndQSGZMVytnalowS1NPQnlFMVpLM1JSY2pvcWZNQ0J0SlZhQUNvaG9CdTdzY3JsXG5rWTA5VUVqTUFrazRjUzFUcWJFb2NDSXBnaG44bk1HSHFDaFd2dnJmQW9HQkFLZ1JFRzVVVldrMXcwVWNsN1VFXG5YdnRsbUEwSFU4Mk12ZGNQV1VYeVpubHMvQXpsZ1BmUVVmNDU5RUl0SHYvcXpxVzJvSkNhaFhNZnYya08xMUZnXG54MGhrMlNZTXRYcitCb25oaHhXaEI4VDRGN3phVTlMNWVKMzJzKzJHbHp2dzgrYWIxQ2JDN1JuRmhxSmx0V1ByXG5oWExURUZvY1VjTVhoUTZqQzZQcHFZVGlcbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJzY3JhcGVyQHNjcmFwZXItMzgwMzIwLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwKICAiY2xpZW50X2lkIjogIjEwMzg2Njg5Mjk1MTM0MTY3MjQ0MCIsCiAgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwKICAidG9rZW5fdXJpIjogImh0dHBzOi8vb2F1dGgyLmdvb2dsZWFwaXMuY29tL3Rva2VuIiwKICAiYXV0aF9wcm92aWRlcl94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92MS9jZXJ0cyIsCiAgImNsaWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvc2NyYXBlciU0MHNjcmFwZXItMzgwMzIwLmlhbS5nc2VydmljZWFjY291bnQuY29tIgp9Cg==`) //os.ReadFile("scraper-380320-11d921dda133.json")
+		credBytes, err := base64.StdEncoding.DecodeString(os.Getenv("CREDENTIALS"))
 		if err != nil {
 			panic(err)
 		}
@@ -631,7 +639,7 @@ func color(v float64) float64 {
 }
 
 func getURL() string {
-	return fmt.Sprintf("https://api.telegram.org/bot%s", Token)
+	return fmt.Sprintf("https://api.telegram.org/bot%s", os.Getenv("BOT_TOKEN"))
 }
 
 func SendMessage(text string) (bool, error) {
@@ -642,7 +650,7 @@ func SendMessage(text string) (bool, error) {
 	// Send the message
 	url := fmt.Sprintf("%s/sendMessage", getURL())
 	body, _ := json.Marshal(map[string]string{
-		"chat_id": ChatID,
+		"chat_id": os.Getenv("CHAT_ID"),
 		"text":    text,
 	})
 	if response, err = http.Post(

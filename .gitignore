@@ -3,3 +3,4 @@ products.idx
 bin/
 scraper-*.json
 .archive/
+.env

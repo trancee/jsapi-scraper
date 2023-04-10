@@ -78,6 +78,7 @@ var interdiscountNames = []string{
 	"SAMSUNG Galaxy S23+ (5G, 512 GB, 6.6\", 50 MP, Grün)",
 	"SAMSUNG Galaxy S23+ (5G, 512 GB, 6.6\", 50 MP, Lavender)",
 	"SAMSUNG Galaxy S23+ (5G, 512 GB, 6.6\", 50 MP, Phantom Black)",
+	"XIAOMI Redmi 10 (2022) (128 GB, 6.5\", 50 MP, Carbon Gray)",
 	"XIAOMI Redmi Note 11 (128 GB, 6.43\", 50 MP, Graphite Gray)",
 	"XIAOMI Redmi Note 11 Pro (5G, 128 GB, 6.67\", 108 MP, Graphite Gray)",
 }
@@ -155,6 +156,7 @@ var interdiscountNamesExpected = []string{
 	"SAMSUNG Galaxy S23+",
 	"SAMSUNG Galaxy S23+",
 	"SAMSUNG Galaxy S23+",
+	"XIAOMI Redmi 10",
 	"XIAOMI Redmi Note 11",
 	"XIAOMI Redmi Note 11 Pro",
 }

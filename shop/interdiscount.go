@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+20[12]\d|\s+[2345]G`)
+var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+\(?20[12]\d\)?|\s+[2345]G`)
 
 var InterdiscountCleanFn = func(name string) string {
 	if loc := InterdiscountRegex.FindStringSubmatchIndex(name); loc != nil {
