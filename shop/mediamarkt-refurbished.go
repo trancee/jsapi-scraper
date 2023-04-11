@@ -27,7 +27,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	const _name = "Mediamarkt (Refurbished)"
 	const _url = "https://refurbished.mediamarkt.ch/ch_de/unsere-refurbished-smartphones?is_in_stock=1&product_list_order=price&product_list_limit=100"
 
-	const _debug = false
+	const _debug = true
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -104,7 +104,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	productList := traverse(doc, "ol", "class", "products")
 	// fmt.Println(productList)
 
-	for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+	for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling.NextSibling {
 		// item := traverse(productList, "li", "class", "product")
 		// fmt.Println(item)
 

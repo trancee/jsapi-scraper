@@ -155,8 +155,7 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 						_product.price = float32(_price)
 					}
 				}
-			} else {
-				currentPrice := traverse(baseInfo, "div", "class", "price")
+			} else if currentPrice := traverse(baseInfo, "div", "class", "price"); currentPrice != nil {
 				// fmt.Println(currentPrice)
 
 				price, _ := text(currentPrice)
@@ -169,6 +168,8 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 				} else {
 					_product.oldPrice = float32(_price)
 				}
+			} else {
+				continue
 			}
 
 			if _debug {
