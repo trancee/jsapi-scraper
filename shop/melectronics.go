@@ -116,6 +116,16 @@ func XXX_melectronics(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
+	// Maintenance Mode
+	if _body[0] == '<' {
+		return NewShop(
+			_name,
+			_url,
+
+			nil,
+		)
+	}
+
 	if err := json.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}

@@ -84,95 +84,96 @@ func XXX_orderflow(isDryRun bool) IShop {
 
 	doc := parse(string(_body))
 
-	productList := traverse(doc, "div", "class", "product-list-items")
-	// fmt.Println(productList)
+	if productList := traverse(doc, "div", "class", "product-list-items"); productList != nil {
+		// fmt.Println(productList)
 
-	for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-		// item := traverse(items, "div", "class", "item")
-		// fmt.Println(item)
+		for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+			// item := traverse(items, "div", "class", "item")
+			// fmt.Println(item)
 
-		if !contains(item.Attr, "class", "item") {
-			continue
-		}
+			if !contains(item.Attr, "class", "item") {
+				continue
+			}
 
-		_product := _Response{}
+			_product := _Response{}
 
-		imageTitleLink := traverse(item, "a", "class", "")
-		// fmt.Println(imageTitleLink)
+			imageTitleLink := traverse(item, "a", "class", "")
+			// fmt.Println(imageTitleLink)
 
-		link, _ := attr(imageTitleLink.Attr, "href")
-		if _debug {
-			fmt.Println(link)
-		}
-		_product.link = link
-
-		itemImage := traverse(item, "img", "class", "img-fluid")
-		// fmt.Println(itemImage)
-
-		title, _ := attr(itemImage.Attr, "alt")
-		title = strings.Split(strings.Split(strings.Split(title, " - ")[0], " 16.")[0], " (")[0]
-		if _debug {
-			fmt.Println(title)
-		}
-		_product.title = title
-
-		if Skip(title) {
-			continue
-		}
-
-		model := OrderflowCleanFn(html.UnescapeString(_product.title))
-		if _debug {
-			fmt.Println(model)
-		}
-		_product.model = model
-
-		code := strings.Split(link[54:], "-")[0]
-		if _debug {
-			fmt.Println(code)
-		}
-		_product.code = code
-
-		itemFirstPrice := traverse(item, "span", "class", "first_price")
-		// fmt.Println(itemFirstPrice)
-
-		if itemOldPrice := traverse(itemFirstPrice, "span", "class", "price"); itemOldPrice != nil {
-			// fmt.Println(itemOldPrice)
-
-			price, _ := text(itemOldPrice)
+			link, _ := attr(imageTitleLink.Attr, "href")
 			if _debug {
-				fmt.Println(price)
+				fmt.Println(link)
 			}
+			_product.link = link
 
-			if _price, err := strconv.ParseFloat(price, 32); err != nil {
-				panic(err)
-			} else {
-				_product.price = float32(_price)
-			}
-		}
+			itemImage := traverse(item, "img", "class", "img-fluid")
+			// fmt.Println(itemImage)
 
-		itemSecondPrice := traverse(item, "span", "class", "second_price")
-		// fmt.Println(itemSecondPrice)
-
-		if currentPrice := traverse(itemSecondPrice, "span", "class", "price"); currentPrice != nil {
-			// fmt.Println(currentPrice)
-
-			oldPrice, _ := text(currentPrice)
+			title, _ := attr(itemImage.Attr, "alt")
+			title = strings.Split(strings.Split(strings.Split(title, " - ")[0], " 16.")[0], " (")[0]
 			if _debug {
-				fmt.Println(oldPrice)
+				fmt.Println(title)
+			}
+			_product.title = title
+
+			if Skip(title) {
+				continue
 			}
 
-			if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-				panic(err)
-			} else {
-				_product.oldPrice = float32(_price)
+			model := OrderflowCleanFn(html.UnescapeString(_product.title))
+			if _debug {
+				fmt.Println(model)
 			}
-		}
+			_product.model = model
 
-		if _debug {
-			fmt.Println()
-		}
+			code := strings.Split(link[54:], "-")[0]
+			if _debug {
+				fmt.Println(code)
+			}
+			_product.code = code
 
-		_result = append(_result, _product)
+			itemFirstPrice := traverse(item, "span", "class", "first_price")
+			// fmt.Println(itemFirstPrice)
+
+			if itemOldPrice := traverse(itemFirstPrice, "span", "class", "price"); itemOldPrice != nil {
+				// fmt.Println(itemOldPrice)
+
+				price, _ := text(itemOldPrice)
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(price, 32); err != nil {
+					panic(err)
+				} else {
+					_product.price = float32(_price)
+				}
+			}
+
+			itemSecondPrice := traverse(item, "span", "class", "second_price")
+			// fmt.Println(itemSecondPrice)
+
+			if currentPrice := traverse(itemSecondPrice, "span", "class", "price"); currentPrice != nil {
+				// fmt.Println(currentPrice)
+
+				oldPrice, _ := text(currentPrice)
+				if _debug {
+					fmt.Println(oldPrice)
+				}
+
+				if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
+					panic(err)
+				} else {
+					_product.oldPrice = float32(_price)
+				}
+			}
+
+			if _debug {
+				fmt.Println()
+			}
+
+			_result = append(_result, _product)
+		}
 	}
 
 	_parseFn := func(s IShop) *[]*Product {

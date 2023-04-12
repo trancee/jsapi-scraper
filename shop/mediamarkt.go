@@ -81,67 +81,81 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 
 		doc := parse(string(_body))
 
-		productList := traverse(doc, "ul", "class", "products-grid")
-		// fmt.Println(productList)
+		if productList := traverse(doc, "ul", "class", "products-grid"); productList != nil {
+			// fmt.Println(productList)
 
-		for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-			// fmt.Println(item)
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+				// fmt.Println(item)
 
-			_product := _Response{}
+				_product := _Response{}
 
-			baseInfo := traverse(item, "div", "class", "base-info")
-			// fmt.Println(baseInfo)
+				baseInfo := traverse(item, "div", "class", "base-info")
+				// fmt.Println(baseInfo)
 
-			productKey, _ := attr(baseInfo.Attr, "data-reco-pid")
-			// fmt.Println(productKey)
-			productId := productKey[2:]
-			if _debug {
-				fmt.Println(productId)
-			}
-			_product.code = productId
-
-			imageTitleLink := traverse(baseInfo, "a", "class", "product-link")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			title, _ := text(imageTitleLink)
-			// title = strings.TrimSpace(strings.Split(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), "(")[0])
-			if _debug {
-				fmt.Println(title)
-			}
-			_product.title = title
-
-			if Skip(title) {
-				continue
-			}
-
-			model := MediamarktCleanFn(_product.title)
-			if _debug {
-				fmt.Println(model)
-			}
-			_product.model = model
-
-			if oldPrice := traverse(baseInfo, "div", "class", "price-old"); oldPrice != nil {
-				// fmt.Println(oldPrice.FirstChild.Parent.LastChild)
-
-				price, _ := text(oldPrice.FirstChild.Parent.LastChild)
+				productKey, _ := attr(baseInfo.Attr, "data-reco-pid")
+				// fmt.Println(productKey)
+				productId := productKey[2:]
 				if _debug {
-					fmt.Println(price)
+					fmt.Println(productId)
+				}
+				_product.code = productId
+
+				imageTitleLink := traverse(baseInfo, "a", "class", "product-link")
+				// fmt.Println(imageTitleLink)
+
+				link, _ := attr(imageTitleLink.Attr, "href")
+				if _debug {
+					fmt.Println(link)
+				}
+				_product.link = link
+
+				title, _ := text(imageTitleLink)
+				// title = strings.TrimSpace(strings.Split(strings.ReplaceAll(strings.ReplaceAll(title, " - Smartphone", ""), " \"", "\""), "(")[0])
+				if _debug {
+					fmt.Println(title)
+				}
+				_product.title = title
+
+				if Skip(title) {
+					continue
 				}
 
-				if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
-					panic(err)
-				} else {
-					_product.oldPrice = float32(_price)
+				model := MediamarktCleanFn(_product.title)
+				if _debug {
+					fmt.Println(model)
 				}
+				_product.model = model
 
-				{
-					currentPrice := oldPrice.Parent.NextSibling.NextSibling
+				if oldPrice := traverse(baseInfo, "div", "class", "price-old"); oldPrice != nil {
+					// fmt.Println(oldPrice.FirstChild.Parent.LastChild)
+
+					price, _ := text(oldPrice.FirstChild.Parent.LastChild)
+					if _debug {
+						fmt.Println(price)
+					}
+
+					if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
+						panic(err)
+					} else {
+						_product.oldPrice = float32(_price)
+					}
+
+					{
+						currentPrice := oldPrice.Parent.NextSibling.NextSibling
+						// fmt.Println(currentPrice)
+
+						price, _ := text(currentPrice)
+						if _debug {
+							fmt.Println(price)
+						}
+
+						if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
+							panic(err)
+						} else {
+							_product.price = float32(_price)
+						}
+					}
+				} else if currentPrice := traverse(baseInfo, "div", "class", "price"); currentPrice != nil {
 					// fmt.Println(currentPrice)
 
 					price, _ := text(currentPrice)
@@ -152,39 +166,26 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 					if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
 						panic(err)
 					} else {
-						_product.price = float32(_price)
+						_product.oldPrice = float32(_price)
 					}
-				}
-			} else if currentPrice := traverse(baseInfo, "div", "class", "price"); currentPrice != nil {
-				// fmt.Println(currentPrice)
-
-				price, _ := text(currentPrice)
-				if _debug {
-					fmt.Println(price)
-				}
-
-				if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, ".-", ".00"), 32); err != nil {
-					panic(err)
 				} else {
-					_product.oldPrice = float32(_price)
+					continue
+				}
+
+				if _debug {
+					fmt.Println()
+				}
+
+				_result = append(_result, _product)
+			}
+
+			if results := traverse(doc, "li", "class", "pagination-next"); results != nil {
+				if _, exists := attr(results.Attr, "data-value"); !exists {
+					break
 				}
 			} else {
-				continue
-			}
-
-			if _debug {
-				fmt.Println()
-			}
-
-			_result = append(_result, _product)
-		}
-
-		if results := traverse(doc, "li", "class", "pagination-next"); results != nil {
-			if _, exists := attr(results.Attr, "data-value"); !exists {
 				break
 			}
-		} else {
-			break
 		}
 	}
 

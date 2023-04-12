@@ -127,6 +127,16 @@ func XXX_conrad(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
+	// Maintenance Mode
+	if _body[0] == '<' {
+		return NewShop(
+			_name,
+			_url,
+
+			nil,
+		)
+	}
+
 	if err := json.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}
@@ -219,6 +229,16 @@ func XXX_conrad(isDryRun bool) IShop {
 			os.WriteFile(path+fn, _body, 0664)
 		}
 		// fmt.Println(string(_body))
+
+		// Maintenance Mode
+		if _body[0] == '<' {
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
 
 		var __result _Response
 		if err := json.Unmarshal(_body, &__result); err != nil {

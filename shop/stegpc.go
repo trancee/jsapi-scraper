@@ -92,86 +92,77 @@ func XXX_stegpc(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
+	// Maintenance Mode
+	if _body[0] == '<' {
+		return NewShop(
+			_name,
+			_url,
+
+			nil,
+		)
+	}
+
 	var body _Body
 	if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
-		// panic(err)
-		fmt.Println(err)
-		return nil
+		panic(err)
 	}
 	// fmt.Println(body.NewProductList)
 
 	doc := parse(string(body.NewProductList))
 
-	productList := traverse(doc, "article", "class", "product-element")
-	// fmt.Println(productList)
+	if productList := traverse(doc, "article", "class", "product-element"); productList != nil {
+		// fmt.Println(productList)
 
-	for item := productList; item != nil; item = item.NextSibling.NextSibling {
-		// fmt.Println(item)
+		for item := productList; item != nil; item = item.NextSibling.NextSibling {
+			// fmt.Println(item)
 
-		_product := _Response{}
+			_product := _Response{}
 
-		productId, _ := attr(item.Attr, "data-product-id")
-		if _debug {
-			fmt.Println(productId)
-		}
-		_product.code = productId
+			productId, _ := attr(item.Attr, "data-product-id")
+			if _debug {
+				fmt.Println(productId)
+			}
+			_product.code = productId
 
-		// percentage := traverse(item, "div", "class", "percentage")
-		// // fmt.Println(percentage)
+			// percentage := traverse(item, "div", "class", "percentage")
+			// // fmt.Println(percentage)
 
-		// discount, _ := text(percentage)
-		// discount = strings.TrimSpace(discount)
-		// if _debug {
-		// 	fmt.Println(discount)
-		// }
-		// _product.discount = discount
+			// discount, _ := text(percentage)
+			// discount = strings.TrimSpace(discount)
+			// if _debug {
+			// 	fmt.Println(discount)
+			// }
+			// _product.discount = discount
 
-		imageTitleLink := traverse(item, "a", "class", "link-detail")
-		// fmt.Println(imageTitleLink)
+			imageTitleLink := traverse(item, "a", "class", "link-detail")
+			// fmt.Println(imageTitleLink)
 
-		link, _ := attr(imageTitleLink.Attr, "href")
-		if _debug {
-			fmt.Println(link)
-		}
-		_product.link = link
+			link, _ := attr(imageTitleLink.Attr, "href")
+			if _debug {
+				fmt.Println(link)
+			}
+			_product.link = link
 
-		title, _ := attr(imageTitleLink.Attr, "title")
-		if _debug {
-			fmt.Println(title)
-		}
-		_product.title = title
+			title, _ := attr(imageTitleLink.Attr, "title")
+			if _debug {
+				fmt.Println(title)
+			}
+			_product.title = title
 
-		if Skip(title) {
-			continue
-		}
+			if Skip(title) {
+				continue
+			}
 
-		model := StegCleanFn(_product.title)
-		if _debug {
-			fmt.Println(model)
-		}
-		_product.model = model
+			model := StegCleanFn(_product.title)
+			if _debug {
+				fmt.Println(model)
+			}
+			_product.model = model
 
-		currentPrice := traverse(item, "div", "class", "generalPrice")
-		// fmt.Println(currentPrice)
+			currentPrice := traverse(item, "div", "class", "generalPrice")
+			// fmt.Println(currentPrice)
 
-		price, _ := text(currentPrice)
-		if _debug {
-			fmt.Println(price)
-		}
-
-		if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
-			panic(err)
-		} else {
-			_product.oldPrice = float32(_price)
-		}
-
-		if insteadPrice := traverse(item, "div", "class", "insteadPrice"); insteadPrice != nil {
-			// fmt.Println(insteadPrice)
-
-			itemText := traverse(insteadPrice, "text", "", "")
-
-			price, _ := text(itemText)
-			price = strings.TrimSpace(strings.ReplaceAll(price, "statt", ""))
+			price, _ := text(currentPrice)
 			if _debug {
 				fmt.Println(price)
 			}
@@ -179,15 +170,33 @@ func XXX_stegpc(isDryRun bool) IShop {
 			if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
 				panic(err)
 			} else {
-				_product.price = float32(_price)
+				_product.oldPrice = float32(_price)
 			}
-		}
 
-		if _debug {
-			fmt.Println()
-		}
+			if insteadPrice := traverse(item, "div", "class", "insteadPrice"); insteadPrice != nil {
+				// fmt.Println(insteadPrice)
 
-		_result = append(_result, _product)
+				itemText := traverse(insteadPrice, "text", "", "")
+
+				price, _ := text(itemText)
+				price = strings.TrimSpace(strings.ReplaceAll(price, "statt", ""))
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+					panic(err)
+				} else {
+					_product.price = float32(_price)
+				}
+			}
+
+			if _debug {
+				fmt.Println()
+			}
+
+			_result = append(_result, _product)
+		}
 	}
 
 	_parseFn := func(s IShop) *[]*Product {

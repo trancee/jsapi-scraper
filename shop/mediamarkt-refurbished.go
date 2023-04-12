@@ -27,7 +27,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	const _name = "Mediamarkt (Refurbished)"
 	const _url = "https://refurbished.mediamarkt.ch/ch_de/unsere-refurbished-smartphones?is_in_stock=1&product_list_order=price&product_list_limit=100"
 
-	const _debug = true
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -101,86 +101,87 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 
 	doc := parse(string(_body))
 
-	productList := traverse(doc, "ol", "class", "products")
-	// fmt.Println(productList)
+	if productList := traverse(doc, "ol", "class", "products"); productList != nil {
+		// fmt.Println(productList)
 
-	for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling.NextSibling {
-		// item := traverse(productList, "li", "class", "product")
-		// fmt.Println(item)
+		for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling.NextSibling {
+			// item := traverse(productList, "li", "class", "product")
+			// fmt.Println(item)
 
-		_product := _Response{}
+			_product := _Response{}
 
-		product := traverse(item, "div", "class", "product-item-details")
-		// fmt.Println(product)
+			product := traverse(item, "div", "class", "product-item-details")
+			// fmt.Println(product)
 
-		itemLink := traverse(product, "a", "class", "product-item-link")
-		// fmt.Println(itemLink)
+			itemLink := traverse(product, "a", "class", "product-item-link")
+			// fmt.Println(itemLink)
 
-		link, _ := attr(itemLink.Attr, "href")
-		if _debug {
-			fmt.Println(link)
+			link, _ := attr(itemLink.Attr, "href")
+			if _debug {
+				fmt.Println(link)
+			}
+			_product.link = link
+
+			itemTitle := traverse(itemLink, "span", "class", "is-refurb")
+			// fmt.Println(itemTitle)
+
+			title, _ := text(itemTitle)
+			// fmt.Println(title)
+
+			itemAttribute := traverse(product, "div", "class", "product-item-attribute")
+			// fmt.Println(itemAttribute)
+
+			attribute, _ := text(itemAttribute)
+			// fmt.Println(attribute)
+			title += " " + attribute
+			// title = strings.TrimSpace(strings.Split(title, "(")[0])
+			if _debug {
+				fmt.Println(title)
+			}
+			_product.title = title
+
+			priceBox := traverse(product, "div", "class", "price-box")
+			// fmt.Println(priceBox)
+
+			productId, _ := attr(priceBox.Attr, "data-product-id")
+			if _debug {
+				fmt.Println(productId)
+			}
+			_product.code = productId
+
+			item := _products.Products[productId]
+			_product.title = item.Category + " " + _product.title
+
+			model := MediamarktRefurbishedCleanFn(_product.title)
+			if _debug {
+				fmt.Println(model)
+			}
+			_product.model = model
+
+			priceWrapper := traverse(priceBox, "span", "class", "price-wrapper")
+			// fmt.Println(priceWrapper)
+
+			price, _ := attr(priceWrapper.Attr, "data-price-amount")
+			if _debug {
+				fmt.Println(price)
+			}
+
+			if _price, err := strconv.ParseFloat(price, 32); err != nil {
+				panic(err)
+			} else {
+				_product.oldPrice = float32(_price)
+			}
+
+			if _debug {
+				fmt.Println()
+			}
+
+			if Skip(title) {
+				continue
+			}
+
+			_result = append(_result, _product)
 		}
-		_product.link = link
-
-		itemTitle := traverse(itemLink, "span", "class", "is-refurb")
-		// fmt.Println(itemTitle)
-
-		title, _ := text(itemTitle)
-		// fmt.Println(title)
-
-		itemAttribute := traverse(product, "div", "class", "product-item-attribute")
-		// fmt.Println(itemAttribute)
-
-		attribute, _ := text(itemAttribute)
-		// fmt.Println(attribute)
-		title += " " + attribute
-		// title = strings.TrimSpace(strings.Split(title, "(")[0])
-		if _debug {
-			fmt.Println(title)
-		}
-		_product.title = title
-
-		priceBox := traverse(product, "div", "class", "price-box")
-		// fmt.Println(priceBox)
-
-		productId, _ := attr(priceBox.Attr, "data-product-id")
-		if _debug {
-			fmt.Println(productId)
-		}
-		_product.code = productId
-
-		item := _products.Products[productId]
-		_product.title = item.Category + " " + _product.title
-
-		model := MediamarktRefurbishedCleanFn(_product.title)
-		if _debug {
-			fmt.Println(model)
-		}
-		_product.model = model
-
-		priceWrapper := traverse(priceBox, "span", "class", "price-wrapper")
-		// fmt.Println(priceWrapper)
-
-		price, _ := attr(priceWrapper.Attr, "data-price-amount")
-		if _debug {
-			fmt.Println(price)
-		}
-
-		if _price, err := strconv.ParseFloat(price, 32); err != nil {
-			panic(err)
-		} else {
-			_product.oldPrice = float32(_price)
-		}
-
-		if _debug {
-			fmt.Println()
-		}
-
-		if Skip(title) {
-			continue
-		}
-
-		_result = append(_result, _product)
 	}
 
 	_parseFn := func(s IShop) *[]*Product {

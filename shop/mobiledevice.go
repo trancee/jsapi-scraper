@@ -88,9 +88,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		*/
 		resp, err := http.Get(_url)
 		if err != nil {
-			// panic(err)
-			fmt.Println(err)
-			return nil
+			panic(err)
 		}
 		defer resp.Body.Close()
 
@@ -110,6 +108,16 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 	var body _Body
 	{
+		// Maintenance Mode
+		if _body[0] == '<' {
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+
 		if err := json.Unmarshal([]byte(_body), &body); err != nil {
 			panic(err)
 		}
@@ -119,84 +127,85 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 	doc := parse(string(_body))
 
-	productList := traverse(doc, "ul", "class", "product_list")
-	// fmt.Println(productList)
+	if productList := traverse(doc, "ul", "class", "product_list"); productList != nil {
+		// fmt.Println(productList)
 
-	for item := productList.FirstChild; item != nil; item = item.NextSibling {
-		// item := traverse(items, "li", "class", "ajax_block_product")
-		// fmt.Println(item)
+		for item := productList.FirstChild; item != nil; item = item.NextSibling {
+			// item := traverse(items, "li", "class", "ajax_block_product")
+			// fmt.Println(item)
 
-		_product := _Response{}
+			_product := _Response{}
 
-		imageTitleLink := traverse(item, "a", "class", "product_img_link")
-		// fmt.Println(imageTitleLink)
+			imageTitleLink := traverse(item, "a", "class", "product_img_link")
+			// fmt.Println(imageTitleLink)
 
-		link, _ := attr(imageTitleLink.Attr, "href")
-		if _debug {
-			fmt.Println(link)
-		}
-		_product.link = link
-
-		title, _ := attr(imageTitleLink.Attr, "title")
-		title = strings.ReplaceAll(title, "X Cover 5 G525", "XCover 5")
-		if _debug {
-			fmt.Println(title)
-		}
-		_product.title = title
-
-		if Skip(title) {
-			continue
-		}
-
-		model := MobileDeviceCleanFn(html.UnescapeString(_product.title))
-		if _debug {
-			fmt.Println(model)
-		}
-		_product.model = model
-
-		code := strings.Split(link[45:], "-")[0]
-		if _debug {
-			fmt.Println(code)
-		}
-		_product.code = code
-
-		if itemPrice := traverse(item, "span", "class", "price"); itemPrice != nil {
-			// fmt.Println(itemPrice)
-
-			price, _ := text(itemPrice)
-			price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+			link, _ := attr(imageTitleLink.Attr, "href")
 			if _debug {
-				fmt.Println(price)
+				fmt.Println(link)
 			}
+			_product.link = link
 
-			if _price, err := strconv.ParseFloat(price, 32); err != nil {
-				panic(err)
-			} else {
-				_product.price = float32(_price)
-			}
-		}
-
-		if itemOldPrice := traverse(item, "span", "class", "old-price"); itemOldPrice != nil {
-			// fmt.Println(itemOldPrice)
-
-			price, _ := text(itemOldPrice)
-			price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+			title, _ := attr(imageTitleLink.Attr, "title")
+			title = strings.ReplaceAll(title, "X Cover 5 G525", "XCover 5")
 			if _debug {
-				fmt.Println(price)
+				fmt.Println(title)
+			}
+			_product.title = title
+
+			if Skip(title) {
+				continue
 			}
 
-			if _price, err := strconv.ParseFloat(price, 32); err != nil {
-				panic(err)
-			} else {
-				_product.oldPrice = float32(_price)
+			model := MobileDeviceCleanFn(html.UnescapeString(_product.title))
+			if _debug {
+				fmt.Println(model)
 			}
-		}
+			_product.model = model
 
-		if _debug {
-			fmt.Println()
-		}
+			code := strings.Split(link[45:], "-")[0]
+			if _debug {
+				fmt.Println(code)
+			}
+			_product.code = code
 
-		_result = append(_result, _product)
+			if itemPrice := traverse(item, "span", "class", "price"); itemPrice != nil {
+				// fmt.Println(itemPrice)
+
+				price, _ := text(itemPrice)
+				price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(price, 32); err != nil {
+					panic(err)
+				} else {
+					_product.price = float32(_price)
+				}
+			}
+
+			if itemOldPrice := traverse(item, "span", "class", "old-price"); itemOldPrice != nil {
+				// fmt.Println(itemOldPrice)
+
+				price, _ := text(itemOldPrice)
+				price = strings.ReplaceAll(strings.ReplaceAll(price, " CHF", ""), ",", ".")
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(price, 32); err != nil {
+					panic(err)
+				} else {
+					_product.oldPrice = float32(_price)
+				}
+			}
+
+			if _debug {
+				fmt.Println()
+			}
+
+			_result = append(_result, _product)
+		}
 	}
 
 	_parseFn := func(s IShop) *[]*Product {

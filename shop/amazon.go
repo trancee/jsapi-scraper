@@ -151,106 +151,107 @@ func XXX_amazon(isDryRun bool) IShop {
 
 		doc := parse(string(_body))
 
-		productList := traverse(doc, "div", "class", "s-search-results")
-		// fmt.Println(productList)
+		if productList := traverse(doc, "div", "class", "s-search-results"); productList != nil {
+			// fmt.Println(productList)
 
-		for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-			if !contains(item.Attr, "data-component-type", "s-search-result") {
-				continue
-			}
-
-			// item := traverse(items, "div", "class", "s-result-item")
-			// fmt.Println(item)
-
-			_product := _Response{}
-
-			asin, _ := attr(item.Attr, "data-asin")
-			if _debug {
-				fmt.Println(asin)
-			}
-			_product.code = asin
-
-			itemImage := traverse(item, "img", "class", "s-image")
-			// fmt.Println(itemImage)
-
-			title, _ := attr(itemImage.Attr, "alt")
-			if brand := strings.ToUpper(strings.Split(title, " ")[0]); brand == "POCO" {
-				title = "Xiaomi " + title
-			}
-			if _debug {
-				fmt.Println(title)
-			}
-			_product.title = title
-
-			if strings.Contains(title, "Outdoor") {
-				continue
-			}
-
-			if Skip(title) {
-				continue
-			}
-
-			imageTitleLink := traverse(item, "a", "class", "a-text-normal")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			if itemPrice := traverse(item, "div", "class", "s-price-instructions-style"); itemPrice != nil {
-				// fmt.Println(itemPrice)
-
-				if itemOldPrice := traverse(itemPrice, "span", "class", "a-price-whole"); itemOldPrice != nil {
-					// fmt.Println(itemOldPrice)
-
-					oldPrice, _ := text(itemOldPrice)
-					oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "CHF", "")
-					if _debug {
-						fmt.Println(oldPrice)
-					}
-
-					if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-						panic(err)
-					} else {
-						_product.price = float32(_price)
-					}
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+				if !contains(item.Attr, "data-component-type", "s-search-result") {
+					continue
 				}
 
-				if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
-					// fmt.Println(currentPrice)
+				// item := traverse(items, "div", "class", "s-result-item")
+				// fmt.Println(item)
 
-					if currentPrice := traverse(itemPrice, "span", "aria-hidden", "true"); currentPrice != nil {
-						// fmt.Println(currentPrice)
+				_product := _Response{}
 
-						price, _ := text(currentPrice)
-						price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "CHF", "")
+				asin, _ := attr(item.Attr, "data-asin")
+				if _debug {
+					fmt.Println(asin)
+				}
+				_product.code = asin
+
+				itemImage := traverse(item, "img", "class", "s-image")
+				// fmt.Println(itemImage)
+
+				title, _ := attr(itemImage.Attr, "alt")
+				if brand := strings.ToUpper(strings.Split(title, " ")[0]); brand == "POCO" {
+					title = "Xiaomi " + title
+				}
+				if _debug {
+					fmt.Println(title)
+				}
+				_product.title = title
+
+				if strings.Contains(title, "Outdoor") {
+					continue
+				}
+
+				if Skip(title) {
+					continue
+				}
+
+				imageTitleLink := traverse(item, "a", "class", "a-text-normal")
+				// fmt.Println(imageTitleLink)
+
+				link, _ := attr(imageTitleLink.Attr, "href")
+				if _debug {
+					fmt.Println(link)
+				}
+				_product.link = link
+
+				if itemPrice := traverse(item, "div", "class", "s-price-instructions-style"); itemPrice != nil {
+					// fmt.Println(itemPrice)
+
+					if itemOldPrice := traverse(itemPrice, "span", "class", "a-price-whole"); itemOldPrice != nil {
+						// fmt.Println(itemOldPrice)
+
+						oldPrice, _ := text(itemOldPrice)
+						oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "CHF", "")
 						if _debug {
-							fmt.Println(price)
+							fmt.Println(oldPrice)
 						}
 
-						if _price, err := strconv.ParseFloat(price, 32); err != nil {
+						if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
 							panic(err)
 						} else {
-							_product.oldPrice = float32(_price)
+							_product.price = float32(_price)
+						}
+					}
+
+					if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
+						// fmt.Println(currentPrice)
+
+						if currentPrice := traverse(itemPrice, "span", "aria-hidden", "true"); currentPrice != nil {
+							// fmt.Println(currentPrice)
+
+							price, _ := text(currentPrice)
+							price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "CHF", "")
+							if _debug {
+								fmt.Println(price)
+							}
+
+							if _price, err := strconv.ParseFloat(price, 32); err != nil {
+								panic(err)
+							} else {
+								_product.oldPrice = float32(_price)
+							}
 						}
 					}
 				}
+
+				if _debug {
+					fmt.Println()
+				}
+
+				_result = append(_result, _product)
 			}
 
-			if _debug {
-				fmt.Println()
-			}
-
-			_result = append(_result, _product)
-		}
-
-		resultInfo := traverse(doc, "span", "data-component-type", "s-result-info-bar")
-		results := traverse(resultInfo, "span", "", "")
-		if result, ok := text(results); ok {
-			if x := regexp.MustCompile(`(\d+)-(\d+) von (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
-				break
+			resultInfo := traverse(doc, "span", "data-component-type", "s-result-info-bar")
+			results := traverse(resultInfo, "span", "", "")
+			if result, ok := text(results); ok {
+				if x := regexp.MustCompile(`(\d+)-(\d+) von (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
+					break
+				}
 			}
 		}
 	}

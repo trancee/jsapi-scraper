@@ -81,86 +81,71 @@ func XXX_mistore(isDryRun bool) IShop {
 
 	doc := parse(string(_body))
 
-	productList := traverse(doc, "div", "class", "tt-product-view")
-	// fmt.Println(productList)
+	if productList := traverse(doc, "div", "class", "tt-product-view"); productList != nil {
+		// fmt.Println(productList)
 
-	for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling.NextSibling {
-		// fmt.Println(item)
+		for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling.NextSibling {
+			// fmt.Println(item)
 
-		if contains(item.Attr, "class", "outofstock") {
-			continue
-		}
-
-		_product := _Response{}
-
-		buttons := traverse(item, "div", "class", "tt-product__buttons")
-		// fmt.Println(buttons)
-
-		buttonsCart := traverse(buttons, "a", "class", "tt-product__buttons_cart")
-		// fmt.Println(buttonsCart)
-
-		productId, _ := attr(buttonsCart.Attr, "data-product_id")
-		if _debug {
-			fmt.Println(productId)
-		}
-		_product.code = productId
-
-		content := traverse(item, "div", "class", "tt-product__content")
-		// fmt.Println(content)
-
-		contentLink := traverse(content, "a", "href", "")
-		// fmt.Println(contentLink)
-
-		link, _ := attr(contentLink.Attr, "href")
-		if _debug {
-			fmt.Println(link)
-		}
-		_product.link = link
-
-		title, _ := text(contentLink)
-		if _debug {
-			fmt.Println(title)
-		}
-		if s := strings.Split(title, " "); len(s) > 0 {
-			if strings.ToUpper(s[0]) != "XIAOMI" {
-				title = "Xiaomi " + title
+			if contains(item.Attr, "class", "outofstock") {
+				continue
 			}
-		}
-		_product.title = title
 
-		if Skip(title) {
-			continue
-		}
+			_product := _Response{}
 
-		model := MiStoreCleanFn(_product.title)
-		if _debug {
-			fmt.Println(model)
-		}
-		_product.model = model
+			buttons := traverse(item, "div", "class", "tt-product__buttons")
+			// fmt.Println(buttons)
 
-		if _tests {
-			testCases[_product.title] = _product.model
-		}
+			buttonsCart := traverse(buttons, "a", "class", "tt-product__buttons_cart")
+			// fmt.Println(buttonsCart)
 
-		productPrice := traverse(item, "span", "class", "tt-product__price")
-		// fmt.Println(productPrice)
+			productId, _ := attr(buttonsCart.Attr, "data-product_id")
+			if _debug {
+				fmt.Println(productId)
+			}
+			_product.code = productId
 
-		productAmount := traverse(productPrice, "span", "class", "amount")
-		// fmt.Println(productAmount)
+			content := traverse(item, "div", "class", "tt-product__content")
+			// fmt.Println(content)
 
-		price, _ := text(productAmount.FirstChild.NextSibling)
-		if _debug {
-			fmt.Println(price)
-		}
+			contentLink := traverse(content, "a", "href", "")
+			// fmt.Println(contentLink)
 
-		if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, "'", ""), 32); err != nil {
-			panic(err)
-		} else {
-			_product.oldPrice = float32(_price)
-		}
+			link, _ := attr(contentLink.Attr, "href")
+			if _debug {
+				fmt.Println(link)
+			}
+			_product.link = link
 
-		if ins := traverse(productPrice, "ins", "", ""); ins != nil {
-			productAmount := traverse(ins, "span", "class", "amount")
+			title, _ := text(contentLink)
+			if _debug {
+				fmt.Println(title)
+			}
+			if s := strings.Split(title, " "); len(s) > 0 {
+				if strings.ToUpper(s[0]) != "XIAOMI" {
+					title = "Xiaomi " + title
+				}
+			}
+			_product.title = title
+
+			if Skip(title) {
+				continue
+			}
+
+			model := MiStoreCleanFn(_product.title)
+			if _debug {
+				fmt.Println(model)
+			}
+			_product.model = model
+
+			if _tests {
+				testCases[_product.title] = _product.model
+			}
+
+			productPrice := traverse(item, "span", "class", "tt-product__price")
+			// fmt.Println(productPrice)
+
+			productAmount := traverse(productPrice, "span", "class", "amount")
 			// fmt.Println(productAmount)
 
 			price, _ := text(productAmount.FirstChild.NextSibling)
@@ -171,15 +156,31 @@ func XXX_mistore(isDryRun bool) IShop {
 			if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, "'", ""), 32); err != nil {
 				panic(err)
 			} else {
-				_product.price = float32(_price)
+				_product.oldPrice = float32(_price)
 			}
-		}
 
-		if _debug {
-			fmt.Println()
-		}
+			if ins := traverse(productPrice, "ins", "", ""); ins != nil {
+				productAmount := traverse(ins, "span", "class", "amount")
+				// fmt.Println(productAmount)
 
-		_result = append(_result, _product)
+				price, _ := text(productAmount.FirstChild.NextSibling)
+				if _debug {
+					fmt.Println(price)
+				}
+
+				if _price, err := strconv.ParseFloat(strings.ReplaceAll(price, "'", ""), 32); err != nil {
+					panic(err)
+				} else {
+					_product.price = float32(_price)
+				}
+			}
+
+			if _debug {
+				fmt.Println()
+			}
+
+			_result = append(_result, _product)
+		}
 	}
 
 	_parseFn := func(s IShop) *[]*Product {
