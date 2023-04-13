@@ -78,12 +78,26 @@ func XXX_stegpc(isDryRun bool) IShop {
 	} else {
 		resp, err := http.Post(_url, "application/json", bytes.NewBuffer(nil))
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
 		if body, err := io.ReadAll(resp.Body); err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		} else {
 			_body = body
 		}

@@ -92,12 +92,26 @@ func XXX_mobilezone(isDryRun bool) IShop {
 	} else {
 		resp, err := http.Get(_url)
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
 		if body, err := io.ReadAll(resp.Body); err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		} else {
 			_body = body[2:(len(body) - 2)] // remove shitty stuff
 		}

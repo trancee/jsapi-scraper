@@ -65,12 +65,26 @@ func XXX_mistore(isDryRun bool) IShop {
 
 		resp, err := http.Post(_url, "application/x-www-form-urlencoded", bytes.NewBuffer(formData))
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
 		if body, err := io.ReadAll(resp.Body); err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		} else {
 			_body = body
 		}

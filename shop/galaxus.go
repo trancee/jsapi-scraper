@@ -130,7 +130,14 @@ func XXX_galaxus(isDryRun bool) IShop {
 
 		req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		req.Header.Set("Content-Type", "application/json")
 		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
@@ -138,12 +145,26 @@ func XXX_galaxus(isDryRun bool) IShop {
 		client := &http.Client{}
 		resp, err := client.Do(req)
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
 		if body, err := io.ReadAll(resp.Body); err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		} else {
 			_body = body
 		}

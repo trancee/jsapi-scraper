@@ -113,12 +113,26 @@ func XXX_conrad(isDryRun bool) IShop {
 	} else {
 		resp, err := http.Post(_url, "application/json", bytes.NewBuffer(jsonData))
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
 		if body, err := io.ReadAll(resp.Body); err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Println(err)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		} else {
 			_body = body
 		}
@@ -208,7 +222,14 @@ func XXX_conrad(isDryRun bool) IShop {
 
 			req, err := http.NewRequest("POST", "https://api.conrad.ch/price-availability/4/CQ_CH_B2C/facade?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w&forceStorePrice=false&overrideCalculationSchema=GROSS", bytes.NewBuffer(reqData))
 			if err != nil {
-				panic(err)
+				// panic(err)
+				fmt.Println(err)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
 			}
 			req.Header.Set("Accept", "application/json, text/plain, */*")
 			req.Header.Set("Content-Type", "application/json")
@@ -216,12 +237,26 @@ func XXX_conrad(isDryRun bool) IShop {
 			client := &http.Client{}
 			resp, err := client.Do(req)
 			if err != nil {
-				panic(err)
+				// panic(err)
+				fmt.Println(err)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
 			}
 			defer resp.Body.Close()
 
 			if body, err := io.ReadAll(resp.Body); err != nil {
-				panic(err)
+				// panic(err)
+				fmt.Println(err)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
 			} else {
 				_body = body
 			}
