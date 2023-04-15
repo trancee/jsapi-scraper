@@ -12,7 +12,9 @@ import (
 type IShop interface {
 	Name() string
 
+	CanFetch() bool
 	Fetch() *[]*Product
+
 	IsWorth(product *Product) bool
 
 	ResolveURL(refURL string) *url.URL
@@ -144,6 +146,10 @@ func NewShop(_name string, _url string, _parseFn parseFn) IShop {
 
 func (s shop) Name() string {
 	return s.name
+}
+
+func (s shop) CanFetch() bool {
+	return s.parseFn != nil
 }
 
 func (s shop) Fetch() *[]*Product {

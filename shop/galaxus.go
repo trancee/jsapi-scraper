@@ -131,7 +131,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 		req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
 		if err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -146,7 +146,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 		resp, err := client.Do(req)
 		if err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -156,9 +156,20 @@ func XXX_galaxus(isDryRun bool) IShop {
 		}
 		defer resp.Body.Close()
 
+		if resp.StatusCode != http.StatusOK {
+			// panic(resp.StatusCode)
+			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+
 		if body, err := io.ReadAll(resp.Body); err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -172,16 +183,6 @@ func XXX_galaxus(isDryRun bool) IShop {
 		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
-
-	// Maintenance Mode
-	if _body[0] == '<' {
-		return NewShop(
-			_name,
-			_url,
-
-			nil,
-		)
-	}
 
 	if err := json.Unmarshal(_body, &_result); err != nil {
 		panic(err)

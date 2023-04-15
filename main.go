@@ -114,7 +114,7 @@ func main() {
 			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
 		} {
-			if _shop != nil {
+			if _shop != nil && _shop.CanFetch() {
 				wg.Add(1)
 
 				go func(_shop shop.IShop) {

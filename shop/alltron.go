@@ -90,6 +90,17 @@ func XXX_alltron(isDryRun bool) IShop {
 		}
 		defer resp.Body.Close()
 
+		if resp.StatusCode != http.StatusOK {
+			// panic(resp.StatusCode)
+			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+
 		if body, err := io.ReadAll(resp.Body); err != nil {
 			panic(err)
 		} else {
@@ -99,16 +110,6 @@ func XXX_alltron(isDryRun bool) IShop {
 		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
-
-	// Maintenance Mode
-	if _body[0] == '<' {
-		return NewShop(
-			_name,
-			_url,
-
-			nil,
-		)
-	}
 
 	if err := json.Unmarshal(_body, &_result); err != nil {
 		panic(err)
@@ -132,7 +133,7 @@ func XXX_alltron(isDryRun bool) IShop {
 		resp, err := http.Get(_api + strings.Join(_skus, ","))
 		if err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -142,9 +143,20 @@ func XXX_alltron(isDryRun bool) IShop {
 		}
 		defer resp.Body.Close()
 
+		if resp.StatusCode != http.StatusOK {
+			// panic(resp.StatusCode)
+			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+
 		if body, err := io.ReadAll(resp.Body); err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -158,16 +170,6 @@ func XXX_alltron(isDryRun bool) IShop {
 		os.WriteFile(path+fn, _body, 0664)
 	}
 	// fmt.Println(string(_body))
-
-	// Maintenance Mode
-	if _body[0] == '<' {
-		return NewShop(
-			_name,
-			_url,
-
-			nil,
-		)
-	}
 
 	_products := make(map[string]*_Product)
 	if err := json.Unmarshal(_body, &_products); err != nil {

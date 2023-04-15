@@ -89,7 +89,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		resp, err := http.Get(_url)
 		if err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -99,9 +99,20 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 		}
 		defer resp.Body.Close()
 
+		if resp.StatusCode != http.StatusOK {
+			// panic(resp.StatusCode)
+			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+
 		if body, err := io.ReadAll(resp.Body); err != nil {
 			// panic(err)
-			fmt.Println(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
 			return NewShop(
 				_name,
 				_url,
@@ -122,16 +133,6 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 	var body _Body
 	{
-		// Maintenance Mode
-		if _body[0] == '<' {
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-
 		if err := json.Unmarshal([]byte(_body), &body); err != nil {
 			panic(err)
 		}
