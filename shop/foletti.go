@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+[,.]\d+\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|LTE|smartphone|Ice|Blue|Charcoal|Dark Green|Dusk|Light|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|night|sandy|sterling blue|schwarz)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|LTE|NFC|smartphone|Ice|Blue|Charcoal|Dark Green|Dusk|Light|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|night|sandy|sterling blue|schwarz)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
@@ -71,7 +71,7 @@ func XXX_foletti(isDryRun bool) IShop {
 		resp, err := http.Get(_url)
 		if err != nil {
 			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
 			return NewShop(
 				_name,
 				_url,

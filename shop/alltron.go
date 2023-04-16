@@ -86,7 +86,14 @@ func XXX_alltron(isDryRun bool) IShop {
 	} else {
 		resp, err := http.Get(_url)
 		if err != nil {
-			panic(err)
+			// panic(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
 		}
 		defer resp.Body.Close()
 
@@ -133,7 +140,7 @@ func XXX_alltron(isDryRun bool) IShop {
 		resp, err := http.Get(_api + strings.Join(_skus, ","))
 		if err != nil {
 			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _api+strings.Join(_skus, ","))
 			return NewShop(
 				_name,
 				_url,

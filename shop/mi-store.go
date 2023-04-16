@@ -66,7 +66,7 @@ func XXX_mistore(isDryRun bool) IShop {
 		resp, err := http.Post(_url, "application/x-www-form-urlencoded", bytes.NewBuffer(formData))
 		if err != nil {
 			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
 			return NewShop(
 				_name,
 				_url,

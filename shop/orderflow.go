@@ -69,7 +69,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 		resp, err := http.Get(_url)
 		if err != nil {
 			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
 			return NewShop(
 				_name,
 				_url,

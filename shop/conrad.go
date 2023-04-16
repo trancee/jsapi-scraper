@@ -114,7 +114,7 @@ func XXX_conrad(isDryRun bool) IShop {
 		resp, err := http.Post(_url, "application/json", bytes.NewBuffer(jsonData))
 		if err != nil {
 			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
 			return NewShop(
 				_name,
 				_url,
@@ -239,7 +239,7 @@ func XXX_conrad(isDryRun bool) IShop {
 			resp, err := client.Do(req)
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
 				return NewShop(
 					_name,
 					_url,

@@ -81,6 +81,7 @@ var _skips = map[string]bool{
 	"KONTAKT":         true,
 	"KXD":             true, // EXCLUDE
 	"LENOVO":          true,
+	"LEXIBOOK":        true,
 	"LG":              true, // EXCLUDE
 	"MAGNETOPLAN":     true,
 	"MAUL":            true,
@@ -93,6 +94,7 @@ var _skips = map[string]bool{
 	"PANASONIC":       true,
 	"PEAQ":            true,
 	"PRIMO":           true,
+	"PUNKT.":          true,
 	"RUGGEAR":         true,
 	"SGW":             true,
 	"SIGEL":           true,

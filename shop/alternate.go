@@ -67,7 +67,7 @@ func XXX_alternate(isDryRun bool) IShop {
 			resp, err := http.Get(fmt.Sprintf(_url, p))
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, fmt.Sprintf(_url, p))
 				return NewShop(
 					_name,
 					_url,
