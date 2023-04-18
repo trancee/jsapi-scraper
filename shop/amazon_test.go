@@ -180,6 +180,7 @@ var amazonNames = []string{
 	"ZTE Smartphone Blade V40 S 4G (16,94cm (6,67 Zoll) FHD+ Display, 4G LTE, 4GB RAM und 128GB interner Speicher, 50MP Hauptka...",
 	"ZTE Smartphone Blade V40 (16,94cm (6,67 Zoll) FHD+ Display, 4G LTE, 4GB RAM und 128GB interner Speicher, 48MP Hauptkamera und 8MP Frontkamera, Dual-SIM, Android 11) schwarz 123401201022",
 	"ZTE Smartphone Blade V40 vita Buds Weiss (17,13cm (6,75 Zoll) HD+ Display, 4G LTE, 4GB RAM und 128GB interner Speicher, 48MP Hauptkamera und 8MP Frontkamera, Dual-SIM, Android R) schwarz",
+	"ZTE Smartphone V40 Vita 6,74' 4 GB RAM 128 GB",
 }
 
 var amazonNamesExpected = []string{
@@ -357,6 +358,7 @@ var amazonNamesExpected = []string{
 	"ZTE Blade V40 S",
 	"ZTE Blade V40",
 	"ZTE Blade V40 vita",
+	"ZTE Blade V40 Vita",
 }
 
 func TestLint(t *testing.T) {

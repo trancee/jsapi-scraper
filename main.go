@@ -71,6 +71,8 @@ func main() {
 	}
 	spreadsheetId := os.Getenv("SPREADSHEET_ID")
 
+	_shops := []string{}
+	_items := []string{}
 	_products := map[string]*[]*shop.Product{}
 
 	path, err := os.Getwd()
@@ -114,7 +116,9 @@ func main() {
 			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
 		} {
-			if _shop != nil && _shop.CanFetch() {
+			_shops = append(_shops, _shop.Name())
+
+			if _shop.CanFetch() {
 				wg.Add(1)
 
 				go func(_shop shop.IShop) {
@@ -147,20 +151,20 @@ func main() {
 	}
 	matrix := map[string]map[int]Price{}
 
-	shops := make([]string, 0, len(_products))
-	for k := range _products {
-		shops = append(shops, k)
-	}
+	// shops := make([]string, 0, len(_products))
+	// for k := range _products {
+	// 	shops = append(shops, k)
+	// }
 	// sort.Strings(shops)
-	sort.Slice(shops, func(i, j int) bool { return strings.ToLower(shops[i]) < strings.ToLower(shops[j]) })
+	sort.Slice(_shops, func(i, j int) bool { return strings.ToLower(_shops[i]) < strings.ToLower(_shops[j]) })
 
-	for _, shop := range shops {
+	for _, shop := range _shops {
 		items := _products[shop]
 		// fmt.Println()
 		// fmt.Println(shop)
 		// fmt.Println(strings.Repeat("=", len(shop)))
 
-		shopIndex := indexOf(shop, shops)
+		shopIndex := indexOf(shop, _shops)
 		if shopIndex == -1 {
 			panic("unknown shop")
 		}
@@ -174,6 +178,16 @@ func main() {
 					// Skip products with only brand name
 					continue
 				}
+
+				func() {
+					for _, item := range _items {
+						if item == productKey {
+							return
+						}
+					}
+
+					_items = append(_items, productKey)
+				}()
 
 				if _, ok := matrix[productKey]; !ok {
 					matrix[productKey] = map[int]Price{}
@@ -232,7 +246,7 @@ func main() {
 				},
 			}
 
-			for _, shop := range shops {
+			for _, shop := range _shops {
 				_shop := strings.ReplaceAll(shop, " ", "\n")
 
 				cells = append(
@@ -247,16 +261,16 @@ func main() {
 			rows = append(rows, &sheets.RowData{Values: cells})
 		}
 
-		items := make([]string, 0, len(matrix))
-		for k := range matrix {
-			items = append(items, k)
-		}
-		sort.Strings(items)
+		// items := make([]string, 0, len(matrix))
+		// for k := range matrix {
+		// 	items = append(items, k)
+		// }
+		sort.Strings(_items)
 
-		for _, item := range items {
-			cells := make([]*sheets.CellData, 1+len(shops))
+		for _, item := range _items {
+			cells := make([]*sheets.CellData, 1+len(_shops))
 
-			for i := 0; i < 1+len(shops); i++ {
+			for i := 0; i < 1+len(_shops); i++ {
 				cells[i] = &sheets.CellData{
 					// UserEnteredValue: &sheets.ExtendedValue{},
 				}
@@ -338,8 +352,8 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
+								EndRowIndex:      int64(1 + len(_items)),
+								EndColumnIndex:   int64(1 + len(_shops)),
 							},
 						},
 						BooleanRule: &sheets.BooleanRule{
@@ -368,8 +382,8 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
+								EndRowIndex:      int64(1 + len(_items)),
+								EndColumnIndex:   int64(1 + len(_shops)),
 							},
 						},
 						BooleanRule: &sheets.BooleanRule{
@@ -398,8 +412,8 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
+								EndRowIndex:      int64(1 + len(_items)),
+								EndColumnIndex:   int64(1 + len(_shops)),
 							},
 						},
 						BooleanRule: &sheets.BooleanRule{
@@ -431,8 +445,8 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 1,
-								EndRowIndex:      int64(1 + len(items)),
-								EndColumnIndex:   int64(1 + len(shops)),
+								EndRowIndex:      int64(1 + len(_items)),
+								EndColumnIndex:   int64(1 + len(_shops)),
 							},
 						},
 						BooleanRule: &sheets.BooleanRule{
@@ -461,7 +475,7 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 0,
-								EndRowIndex:      int64(1 + len(items)),
+								EndRowIndex:      int64(1 + len(_items)),
 								EndColumnIndex:   1,
 							},
 						},
@@ -491,7 +505,7 @@ func main() {
 								SheetId:          int64(sheetId),
 								StartRowIndex:    1,
 								StartColumnIndex: 0,
-								EndRowIndex:      int64(1 + len(items)),
+								EndRowIndex:      int64(1 + len(_items)),
 								EndColumnIndex:   1,
 							},
 						},
@@ -523,8 +537,8 @@ func main() {
 							SheetId:          int64(sheetId),
 							StartRowIndex:    0,
 							StartColumnIndex: 0,
-							EndRowIndex:      int64(1 + len(items)),
-							EndColumnIndex:   int64(1 + len(shops)),
+							EndRowIndex:      int64(1 + len(_items)),
+							EndColumnIndex:   int64(1 + len(_shops)),
 						},
 						Rows: rows,
 					},
@@ -537,7 +551,7 @@ func main() {
 			panic(err)
 		}
 
-		if res, err := service.Spreadsheets.Values.Clear(spreadsheetId, fmt.Sprintf("Scraper!%d:%d", 1+len(items)+1, 1+len(items)+100), &sheets.ClearValuesRequest{}).Context(ctx).Do(); err != nil || res.HTTPStatusCode != 200 {
+		if res, err := service.Spreadsheets.Values.Clear(spreadsheetId, fmt.Sprintf("Scraper!%d:%d", 1+len(_items)+1, 1+len(_items)+100), &sheets.ClearValuesRequest{}).Context(ctx).Do(); err != nil || res.HTTPStatusCode != 200 {
 			panic(err)
 		}
 	}
