@@ -26,6 +26,8 @@ var nameMapping = map[string]string{
 	"Oneplus": "OnePlus",
 	"Realme":  "realme",
 	"Se":      "SE",
+	"Tcl":     "TCL",
+	"Tecno":   "TECNO",
 	"Umidigi": "UMIDIGI",
 	"Xa":      "XA",
 	"Xcover":  "XCover",

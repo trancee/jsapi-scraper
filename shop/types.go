@@ -52,6 +52,7 @@ type Product struct {
 type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
+	"ALCATEL":         true,
 	"ALIGATOR":        true,
 	"AMPLICOMMS":      true,
 	"ARTFONE":         true,
@@ -61,6 +62,7 @@ var _skips = map[string]bool{
 	"BRONDI":          true,
 	"CAT":             true,
 	"CATERPILLAR":     true,
+	"CELLULARE":       true,
 	"CROSSCALL":       true,
 	"CUBOT":           true, // EXCLUDE
 	"CYRUS":           true,
@@ -70,15 +72,19 @@ var _skips = map[string]bool{
 	"EL":              true,
 	"EMPORIA":         true,
 	"EMPORIAEUPHORIA": true,
+	"ENERGIZER":       true,
 	"EVOLVEO":         true,
 	"FELLOWES":        true,
 	"FOLIA":           true,
 	"FUNKE":           true,
 	"GIGASET":         true,
+	"HAMMER":          true,
 	"I.SAFE":          true,
 	"JABLOCOM":        true,
 	"KERKMANN":        true,
+	"KONROW":          true,
 	"KONTAKT":         true,
+	"KRÜGER&MATZ":     true,
 	"KXD":             true, // EXCLUDE
 	"LENOVO":          true,
 	"LEXIBOOK":        true,
@@ -87,6 +93,7 @@ var _skips = map[string]bool{
 	"MAUL":            true,
 	"MAXCOM":          true,
 	"MICROSOFT":       true, // EXCLUDE
+	"MP":              true,
 	"MYPHONE":         true,
 	"OLYMPIA":         true,
 	"OSCAL":           true, // EXCLUDE
@@ -95,9 +102,13 @@ var _skips = map[string]bool{
 	"PEAQ":            true,
 	"PRIMO":           true,
 	"PUNKT.":          true,
+	"QUBO":            true,
+	"RUG":             true,
 	"RUGGEAR":         true,
+	"SGIN":            true,
 	"SGW":             true,
 	"SIGEL":           true,
+	"SP":              true,
 	"SPC":             true,
 	"STOTZ":           true,
 	"STYRO":           true,
@@ -105,9 +116,12 @@ var _skips = map[string]bool{
 	"SWISSTONE":       true,
 	"TELEFUNKEN":      true,
 	"TELEFONAS":       true,
+	"TREVI":           true,
+	"TTFONE":          true,
 	"ULEFONE":         true, // EXCLUDE
 	"ULEWAY":          true,
 	"UMIDIGI":         true, // EXCLUDE
+	"UNBEKANNT":       true,
 	"UNIFY":           true,
 	"XGODY":           true, // EXCLUDE
 	"XS13":            true,

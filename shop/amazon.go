@@ -17,16 +17,22 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
-var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU )\s*|(4G )?(Lockfreie |Outdoor |Android |SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\")|(Dual|DUAL)\W+SIM|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Cloud Navy|Midnight Gray|\W+\(?20[12]\d\)?`)
-var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+\s*[GT]B|\W*[45][Gg](\s+|$)|,`)
+var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU |Xia |Smartfon |Marke Modell |Cellulare |Unlocked )\s*|(4G )?(Simlockfreie |Lockfreie |Outdoor |Android |SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\"|'')|(Dual|DUAL)\W+SIM|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Blue|Buds|Cloud Navy|Midnight Gray|\/?BLUE|\/?GREEN|GRIS|\W+\(?20[12]\d\)?`)
+var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+([+/]\d+)?\s*[GT]B?|\W*[45][Gg](\s+|$)| NFC| -|,|\s+\(\d{2}| 32-2`)
 
 var AmazonCleanFn = func(name string) string {
-	name = regexp.MustCompile(`(SM-)?S\d{3}B?|\d{5}[A-Z]{3}`).ReplaceAllString(name, "")
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "-", " ", "Kingkong", "King Kong", "KXD Handy,", "KXD").Replace(name)
+	name = regexp.MustCompile(`\d{5}[A-Z]{3}`).ReplaceAllString(name, "")
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", "8GBRAM128GBROM", " ").Replace(name)
 	name = AmazonRegex3.ReplaceAllString(name, "|")
 
+	if strings.HasPrefix(name, "Motorola") {
+		name = strings.NewReplacer("Light", "Lite").Replace(name)
+	}
 	if strings.HasPrefix(name, "moto") {
 		name = "Motorola " + name
+	}
+	if strings.HasPrefix(name, "Samsung") {
+		name = regexp.MustCompile(`(SM-)?[AFMS]\d{3}[BF]?`).ReplaceAllString(name, "")
 	}
 
 	if s := strings.Split(name, "|"); len(s) > 0 {
@@ -59,7 +65,7 @@ var AmazonCleanFn = func(name string) string {
 		// fmt.Println(_model)
 		// _model = strings.TrimSpace(strings.Split(strings.ReplaceAll(_model, "()", "|"), "|")[0])
 		// fmt.Println(_model)
-		return _model
+		return strings.TrimSpace(_model)
 	}
 
 	return name
@@ -72,7 +78,8 @@ func XXX_amazon(isDryRun bool) IShop {
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_n_condition-type:776949031&language=de_DE&currency=CHF&dc=&c=ts&qid=1678975426&rnid=776942031&page=2"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_n_condition-type:776949031&dc=&c=ts&qid=1678975426&rnid=776942031&s=price-asc-rank&page=%d"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902993031&s=price-asc-rank&dc&c=ts&qid=1679414936&rnid=26902991031&page=%d"
-	const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_6:A3JWKAKR8XB7XF&s=price-asc-rank&dc&c=ts&qid=1680358125&rnid=26902991031&page=%d"
+	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_6:A3JWKAKR8XB7XF&s=price-asc-rank&dc&c=ts&qid=1680358125&rnid=26902991031&page=%d"
+	const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_6:A3JWKAKR8XB7XF&dc=&c=ts&qid=1681744980&rnid=389294011&low-price=50&high-price=300&page=%d"
 
 	const _debug = false
 
@@ -95,7 +102,7 @@ func XXX_amazon(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	for p := 1; p <= 10; p++ {
+	for p := 1; p <= 20; p++ {
 		fn := fmt.Sprintf("shop/amazon.%d.html", p)
 
 		if isDryRun {
