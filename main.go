@@ -28,10 +28,6 @@ import (
 	"jsapi-scraper/shop"
 )
 
-const ValueDiscount = 50
-const ValueWorth = 100
-const ValueMaximum = 300
-
 // https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
 
 func main() {
@@ -322,6 +318,8 @@ func main() {
 		colorGreen := &sheets.Color{Red: color(0x34), Green: color(0xa8), Blue: color(0x53)}
 		colorYellow := &sheets.Color{Red: color(0xfb), Green: color(0xbc), Blue: color(0x04)}
 		colorRed := &sheets.Color{Red: color(0xea), Green: color(0x43), Blue: color(0x35)}
+		colorDarkGray := &sheets.Color{Red: color(0x28), Green: color(0x28), Blue: color(0x28)}
+		colorLightGray := &sheets.Color{Red: color(0xe4), Green: color(0xe4), Blue: color(0xe4)}
 
 		requests := []*sheets.Request{}
 
@@ -526,6 +524,36 @@ func main() {
 					},
 				},
 			},
+			&sheets.Request{
+				AddConditionalFormatRule: &sheets.AddConditionalFormatRuleRequest{
+					Index: 6,
+					Rule: &sheets.ConditionalFormatRule{
+						Ranges: []*sheets.GridRange{
+							{
+								SheetId:          int64(sheetId),
+								StartRowIndex:    0,
+								StartColumnIndex: 1,
+								EndRowIndex:      1,
+								EndColumnIndex:   int64(1 + len(_shops)),
+							},
+						},
+						BooleanRule: &sheets.BooleanRule{
+							Condition: &sheets.BooleanCondition{
+								Type: "CUSTOM_FORMULA",
+								Values: []*sheets.ConditionValue{
+									{
+										UserEnteredValue: `=COUNT(B2:B1000)=0`,
+									},
+								},
+							},
+							Format: &sheets.CellFormat{
+								TextFormat:      &sheets.TextFormat{Bold: true, ForegroundColor: colorLightGray},
+								BackgroundColor: colorDarkGray,
+							},
+						},
+					},
+				},
+			},
 		)
 
 		batchUpdateRequest := sheets.BatchUpdateSpreadsheetRequest{
@@ -610,7 +638,7 @@ func main() {
 				if oldProduct != *product {
 					db.Set(id, product)
 
-					if oldProduct.RetailPrice != product.RetailPrice && ( /*product.RetailPrice < ValueWorth ||*/ product.Discount > ValueDiscount) {
+					if oldProduct.RetailPrice != product.RetailPrice && ( /*product.RetailPrice < ValueWorth ||*/ product.Discount > shop.ValueDiscount) {
 						notify = true
 					}
 				}

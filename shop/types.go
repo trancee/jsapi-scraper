@@ -9,6 +9,12 @@ import (
 	"golang.org/x/net/html"
 )
 
+const ValueDiscount = 50.0
+const ValueWorth = 100.0
+
+const ValueMinimum = 50.0
+const ValueMaximum = 300.0
+
 type IShop interface {
 	Name() string
 
@@ -57,6 +63,7 @@ var _skips = map[string]bool{
 	"AMPLICOMMS":      true,
 	"ARTFONE":         true,
 	"BEAFON":          true,
+	"BLABLOO":         true,
 	"BLACKBERRY":      true,
 	"BLAUPUNKT":       true,
 	"BRONDI":          true,
@@ -123,6 +130,7 @@ var _skips = map[string]bool{
 	"UMIDIGI":         true, // EXCLUDE
 	"UNBEKANNT":       true,
 	"UNIFY":           true,
+	"WEDO":            true,
 	"XGODY":           true, // EXCLUDE
 	"XS13":            true,
 }

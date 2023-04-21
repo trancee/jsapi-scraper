@@ -27,7 +27,8 @@ var BrackCleanFn = func(name string) string {
 func XXX_brack(isDryRun bool) IShop {
 	const _name = "Brack"
 	// const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?filter%5BArt%5D%5B%5D=offer&filter%5BArt%5D%5B%5D=intropromotion&filter%5BArt%5D%5B%5D=occassion&filter%5BArt%5D%5B%5D=new&sortProducts=priceasc&query=*"
-	const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?limit=192&sortProducts=priceasc&query=*"
+	// const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?limit=192&sortProducts=priceasc&query=*"
+	_url := fmt.Sprintf("https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?filter[availability][]=Verfügbar&filter[price_standard][]=%f~~~%f&sortProducts=priceasc&query=*", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false

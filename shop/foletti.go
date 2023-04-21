@@ -11,11 +11,11 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|LTE|NFC|smartphone|Ice|Blue|Charcoal|Dark Green|Dusk|Light|Night|bamboo green|blau|denim black|elegant black|grau|lake blue|night|sandy|sterling blue|schwarz)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Light|Glowing Black|Night|Prism Black|Prism Blue|bamboo green|blau|blue|denim black|elegant black|grau|lake blue|meteorite grey|midnight blue|night|sandy|sterling blue|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d+|SMARTPHONE `).ReplaceAllString(name, "")
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -24,13 +24,15 @@ var FolettiCleanFn = func(name string) string {
 
 	name = strings.ReplaceAll(name, " E ", " E")
 	name = strings.ReplaceAll(name, " Ee", " e")
+	name = strings.ReplaceAll(name, " G ", " G")
 
 	return strings.TrimSpace(name)
 }
 
 func XXX_foletti(isDryRun bool) IShop {
 	const _name = "Foletti"
-	const _url = "https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?limit=100&sort=price|asc&listStyle=list"
+	// const _url = "https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?limit=100&sort=price|asc&listStyle=list"
+	_url := fmt.Sprintf("https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?price-min=%f&price-max=%f&limit=100&sort=price|asc&listStyle=list&page=%%d", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false
@@ -59,197 +61,206 @@ func XXX_foletti(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	fn := "shop/foletti.html"
+	for p := 1; p <= 10; p++ {
+		fn := fmt.Sprintf("shop/foletti.%d.html", p)
 
-	if isDryRun {
-		if body, err := os.ReadFile(path + fn); err != nil {
-			panic(err)
-		} else {
-			_body = body
-		}
-	} else {
-		resp, err := http.Get(_url)
-		if err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-		defer resp.Body.Close()
-
-		if resp.StatusCode != http.StatusOK {
-			// panic(resp.StatusCode)
-			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-
-		if body, err := io.ReadAll(resp.Body); err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		} else {
-			_body = body
-		}
-
-		os.WriteFile(path+fn, _body, 0664)
-	}
-	// fmt.Println(string(_body))
-
-	doc := parse(string(_body))
-
-	if productList := traverse(doc, "div", "class", "product-list-items"); productList != nil {
-		// fmt.Println(productList)
-
-		for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-			// item := traverse(items, "li", "class", "productList__item")
-			// fmt.Println(item)
-
-			if !contains(item.Attr, "class", "item") {
-				continue
-			}
-
-			_product := _Response{}
-
-			imageTitleLink := traverse(item, "a", "class", "")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			itemImage := traverse(item, "img", "class", "img-fluid")
-			// fmt.Println(itemImage)
-
-			title, _ := attr(itemImage.Attr, "alt")
-			title = strings.Split(strings.Split(title, " - ")[0], " 16.")[0]
-			if _debug {
-				fmt.Println(title)
-			}
-			_product.title = title
-
-			if strings.Contains(title, "Wallet") {
-				continue
-			}
-			if strings.Contains(title, "Tasche") {
-				continue
-			}
-			if Skip(title) {
-				continue
-			}
-
-			itemBrand := traverse(item, "strong", "", "")
-			brand, _ := text(itemBrand)
-			if Skip(brand) {
-				continue
-			}
-
-			if brand != "o2" && !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
-				_product.title = brand + " " + _product.title
-			}
-
-			model := FolettiCleanFn(_product.title)
-			if _debug {
-				fmt.Println(model)
-			}
-			_product.model = model
-
-			if _tests {
-				testCases[_product.title] = _product.model
-			}
-
-			itemAvailability := traverse(item, "span", "class", "text")
-			// fmt.Println(itemAvailability)
-
-			amount, _ := text(itemAvailability)
-			amount = strings.Trim(strings.Split(amount, " ")[0], ">")
-			if _debug {
-				fmt.Println(amount)
-			}
-			if amount == "Liefertermin" {
-				continue
-			}
-			if _amount, err := strconv.Atoi(amount); err != nil {
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
 				panic(err)
 			} else {
-				_product.quantity = _amount
+				_body = body
+			}
+		} else {
+			resp, err := http.Get(fmt.Sprintf(_url, p))
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode != http.StatusOK {
+				// panic(resp.StatusCode)
+				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
 			}
 
-			itemArticle := traverse(item, "div", "class", "mpn")
-			// fmt.Println(itemArticle)
+			if body, err := io.ReadAll(resp.Body); err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
 
-			itemValue := traverse(itemArticle, "span", "class", "value")
-			// fmt.Println(itemValue)
-
-			sku, _ := text(itemValue)
-			if _debug {
-				fmt.Println(sku)
+					nil,
+				)
+			} else {
+				_body = body
 			}
-			_product.code = sku
 
-			itemFirstPrice := traverse(item, "span", "class", "first_price")
-			// fmt.Println(itemFirstPrice)
+			os.WriteFile(path+fn, _body, 0664)
+		}
+		// fmt.Println(string(_body))
 
-			if itemOldPrice := traverse(itemFirstPrice, "span", "class", "price"); itemOldPrice != nil {
-				// fmt.Println(itemOldPrice)
+		doc := parse(string(_body))
 
-				price, _ := text(itemOldPrice)
-				if _debug {
-					fmt.Println(price)
+		if productList := traverse(doc, "div", "class", "product-list-items"); productList != nil {
+			// fmt.Println(productList)
+
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+				// item := traverse(items, "li", "class", "productList__item")
+				// fmt.Println(item)
+
+				if !contains(item.Attr, "class", "item") {
+					continue
 				}
 
-				if _price, err := strconv.ParseFloat(price, 32); err != nil {
+				_product := _Response{}
+
+				imageTitleLink := traverse(item, "a", "class", "")
+				// fmt.Println(imageTitleLink)
+
+				link, _ := attr(imageTitleLink.Attr, "href")
+				if _debug {
+					fmt.Println(link)
+				}
+				_product.link = link
+
+				itemImage := traverse(item, "img", "class", "img-fluid")
+				// fmt.Println(itemImage)
+
+				title, _ := attr(itemImage.Attr, "alt")
+				title = strings.Split(strings.Split(title, " - ")[0], " 16.")[0]
+				if _debug {
+					fmt.Println(title)
+				}
+				_product.title = title
+
+				if strings.Contains(title, "Wallet") {
+					continue
+				}
+				if strings.Contains(title, "Tasche") {
+					continue
+				}
+				if Skip(title) {
+					continue
+				}
+
+				itemBrand := traverse(item, "strong", "", "")
+				brand, _ := text(itemBrand)
+				if Skip(brand) {
+					continue
+				}
+
+				model := FolettiCleanFn(_product.title)
+				if _debug {
+					fmt.Println(model)
+				}
+				_product.model = model
+
+				if brand != "o2" && !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
+					_product.title = brand + " " + _product.title
+				}
+
+				if _tests {
+					testCases[_product.title] = _product.model
+				}
+
+				itemAvailability := traverse(item, "span", "class", "text")
+				// fmt.Println(itemAvailability)
+
+				amount, _ := text(itemAvailability)
+				amount = strings.Trim(strings.Split(amount, " ")[0], ">")
+				if _debug {
+					fmt.Println(amount)
+				}
+				if amount == "Liefertermin" {
+					continue
+				}
+				if _amount, err := strconv.Atoi(amount); err != nil {
 					panic(err)
 				} else {
-					_product.price = float32(_price)
+					_product.quantity = _amount
 				}
-			}
 
-			itemSecondPrice := traverse(item, "span", "class", "second_price")
-			// fmt.Println(itemSecondPrice)
+				itemArticle := traverse(item, "div", "class", "mpn")
+				// fmt.Println(itemArticle)
 
-			if currentPrice := traverse(itemSecondPrice, "span", "class", "price"); currentPrice != nil {
-				// fmt.Println(currentPrice)
+				itemValue := traverse(itemArticle, "span", "class", "value")
+				// fmt.Println(itemValue)
 
-				oldPrice, _ := text(currentPrice)
+				sku, _ := text(itemValue)
 				if _debug {
-					fmt.Println(oldPrice)
+					fmt.Println(sku)
+				}
+				_product.code = sku
+
+				itemFirstPrice := traverse(item, "span", "class", "first_price")
+				// fmt.Println(itemFirstPrice)
+
+				if itemOldPrice := traverse(itemFirstPrice, "span", "class", "price"); itemOldPrice != nil {
+					// fmt.Println(itemOldPrice)
+
+					price, _ := text(itemOldPrice)
+					if _debug {
+						fmt.Println(price)
+					}
+
+					if _price, err := strconv.ParseFloat(price, 32); err != nil {
+						panic(err)
+					} else {
+						_product.price = float32(_price)
+					}
 				}
 
-				if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-					panic(err)
-				} else {
-					_product.oldPrice = float32(_price)
+				itemSecondPrice := traverse(item, "span", "class", "second_price")
+				// fmt.Println(itemSecondPrice)
+
+				if currentPrice := traverse(itemSecondPrice, "span", "class", "price"); currentPrice != nil {
+					// fmt.Println(currentPrice)
+
+					oldPrice, _ := text(currentPrice)
+					if _debug {
+						fmt.Println(oldPrice)
+					}
+
+					if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
+						panic(err)
+					} else {
+						_product.oldPrice = float32(_price)
+					}
+				}
+
+				if itemBadge := traverse(item, "span", "class", "badge"); itemBadge != nil {
+					fmt.Println(itemBadge)
+
+					// badge, _ := text(itemBadge)
+					// panic(badge)
+				}
+
+				if _debug {
+					fmt.Println()
+				}
+
+				_result = append(_result, _product)
+			}
+
+			results := traverse(doc, "div", "class", "ps-3")
+			if result, ok := text(results); ok {
+				if x := regexp.MustCompile(`(\d+)‐(\d+) \/ (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
+					break
 				}
 			}
-
-			if itemBadge := traverse(item, "span", "class", "badge"); itemBadge != nil {
-				fmt.Println(itemBadge)
-
-				// badge, _ := text(itemBadge)
-				// panic(badge)
-			}
-
-			if _debug {
-				fmt.Println()
-			}
-
-			_result = append(_result, _product)
 		}
 	}
 

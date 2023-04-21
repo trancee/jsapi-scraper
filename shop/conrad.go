@@ -74,27 +74,40 @@ func XXX_conrad(isDryRun bool) IShop {
 	var _result _Response
 	var _body []byte
 
-	var jsonData = []byte(`{
-		"query": "",
-		"enabledFeatures": ["and_filters", "b2b_results_count", "filters_without_values", "query_relaxation", "show_hero_products"],
-		"disabledFeatures": [],
-		"globalFilter": [{
-			"field": "categoryId",
-			"type": "TERM_OR",
-			"values": "1801015"
-		}],
-		"facetFilter": [],
-		"sort": [{
-			"field": "price",
-			"order": "asc"
-		}],
-		"from": 0,
-		"size": 200,
-		"facets": [],
-		"partialThreshold": 10,
-		"partialQueries": 3,
-		"partialQuerySize": 6
-	}`)
+	var jsonData = []byte(
+		fmt.Sprintf(
+			`{
+				"query": "",
+				"enabledFeatures": ["and_filters", "b2b_results_count", "filters_without_values", "query_relaxation", "show_hero_products"],
+				"disabledFeatures": [],
+				"globalFilter": [{
+					"field": "categoryId",
+					"type": "TERM_OR",
+					"values": "1801015"
+				}],
+				"facetFilter": [{
+					"field": "price",
+					"type": "RANGE",
+					"values": [
+						%f,
+						%f
+					]
+				}],
+				"sort": [{
+					"field": "price",
+					"order": "asc"
+				}],
+				"from": 0,
+				"size": 200,
+				"facets": [],
+				"partialThreshold": 10,
+				"partialQueries": 3,
+				"partialQuerySize": 6
+			}`,
+			ValueMinimum,
+			ValueMaximum,
+		),
+	)
 
 	path, err := os.Getwd()
 	if err != nil {

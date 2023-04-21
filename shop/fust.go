@@ -18,7 +18,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 
-var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Frost|Galactic|Ice|Marine|Midnight|Moonlight|Ocean|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)\b|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -59,177 +59,193 @@ func XXX_fust(isDryRun bool) IShop {
 	path += "/"
 
 	for _category, _url := range map[string]string{
-		"samsung": "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
-		"huawei":  "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
-		"xiaomi":  "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
-		"oppo":    "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
-		"other":   "https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=60",
+		"samsung": fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"huawei":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"xiaomi":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"oppo":    fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"other":   fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
 	} {
-		fn := fmt.Sprintf("shop/fust.%s.html", _category)
+		for p := 1; p <= 3; p++ {
+			fn := fmt.Sprintf("shop/fust.%s.%d.html", _category, p)
 
-		if isDryRun {
-			if body, err := os.ReadFile(path + fn); err != nil {
-				panic(err)
+			if isDryRun {
+				if body, err := os.ReadFile(path + fn); err != nil {
+					panic(err)
+				} else {
+					_body = body
+				}
 			} else {
-				_body = body
-			}
-		} else {
-			resp, err := http.Get(_url)
-			if err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
-				return NewShop(
-					_name,
-					_url,
+				resp, err := http.Get(fmt.Sprintf(_url, p))
+				if err != nil {
+					// panic(err)
+					fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
+					return NewShop(
+						_name,
+						_url,
 
-					nil,
-				)
-			}
-			defer resp.Body.Close()
+						nil,
+					)
+				}
+				defer resp.Body.Close()
 
-			if resp.StatusCode != http.StatusOK {
-				// panic(resp.StatusCode)
-				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
-				return NewShop(
-					_name,
-					_url,
+				if resp.StatusCode != http.StatusOK {
+					// panic(resp.StatusCode)
+					fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+					return NewShop(
+						_name,
+						_url,
 
-					nil,
-				)
-			}
-
-			if body, err := io.ReadAll(resp.Body); err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
-				return NewShop(
-					_name,
-					_url,
-
-					nil,
-				)
-			} else {
-				_body = body
-			}
-
-			os.WriteFile(path+fn, _body, 0664)
-		}
-		// fmt.Println(string(_body))
-
-		doc := parse(string(_body))
-
-		if productList := traverse(doc, "ul", "id", "productslist"); productList != nil {
-			// fmt.Println(productList)
-
-			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
-				// item := traverse(productList, "li", "class", "product__list")
-				// fmt.Println(item)
-
-				if contains(item.Attr, "class", "rubric-advertising") {
-					continue
+						nil,
+					)
 				}
 
-				if available := traverse(item, "div", "class", "stati2"); available == nil {
-					if available := traverse(item, "div", "class", "stati3"); available == nil {
+				if body, err := io.ReadAll(resp.Body); err != nil {
+					// panic(err)
+					fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+					return NewShop(
+						_name,
+						_url,
+
+						nil,
+					)
+				} else {
+					_body = body
+				}
+
+				os.WriteFile(path+fn, _body, 0664)
+			}
+			// fmt.Println(string(_body))
+
+			doc := parse(string(_body))
+
+			if productList := traverse(doc, "ul", "id", "productslist"); productList != nil {
+				// fmt.Println(productList)
+
+				for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+					// item := traverse(productList, "li", "class", "product__list")
+					// fmt.Println(item)
+
+					if contains(item.Attr, "class", "rubric-advertising") {
 						continue
 					}
-				}
 
-				_product := _Response{}
-
-				productKey, _ := attr(item.Attr, "data-prj-productkey")
-				// fmt.Println(productKey)
-				productId := strings.Split(productKey, "_")[0]
-				if _debug {
-					fmt.Println(productId)
-				}
-
-				_product.code = productId
-
-				product := traverse(item, "div", "class", "product")
-				// fmt.Println(product)
-
-				figure := traverse(product, "figure", "class", "product__overview-img")
-				// fmt.Println(figure)
-
-				imageTitleLink := traverse(figure, "a", "href", "")
-				// fmt.Println(imageTitleLink)
-
-				link, _ := attr(imageTitleLink.Attr, "href")
-				if _debug {
-					fmt.Println(link)
-				}
-				_product.link = link
-
-				itemProducer := traverse(item, "span", "class", "producer")
-				// fmt.Println(itemTitle)
-
-				brand, _ := text(itemProducer)
-				if _debug {
-					fmt.Println(brand)
-				}
-				_product.title = brand
-
-				itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
-				// fmt.Println(itemTitle)
-
-				title, _ := attr(itemTitle.Attr, "title")
-				title = strings.TrimSpace(title)
-				if _debug {
-					fmt.Println(title)
-				}
-				_product.title = brand + " " + title
-
-				if Skip(_product.title) {
-					continue
-				}
-
-				model := FustCleanFn(title)
-				if _debug {
-					fmt.Println(model)
-				}
-				_product.model = brand + " " + model
-
-				itemPrice := traverse(item, "div", "class", "price-block")
-				// fmt.Println(itemPrice)
-
-				if itemOldPrice := traverse(itemPrice, "span", "class", "oldprice"); itemOldPrice != nil {
-					// fmt.Println(itemOldPrice)
-
-					oldPrice, _ := text(itemOldPrice)
-					if _debug {
-						fmt.Println(oldPrice)
-					}
-
-					if oldPrice := strings.ReplaceAll(strings.ReplaceAll(oldPrice, "–", "00"), "’", ""); oldPrice != "" {
-						if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-							panic(err)
-						} else {
-							_product.oldPrice = float32(_price)
+					if available := traverse(item, "div", "class", "stati2"); available == nil {
+						if available := traverse(item, "div", "class", "stati3"); available == nil {
+							continue
 						}
 					}
+
+					_product := _Response{}
+
+					productKey, _ := attr(item.Attr, "data-prj-productkey")
+					// fmt.Println(productKey)
+					productId := strings.Split(productKey, "_")[0]
+					if _debug {
+						fmt.Println(productId)
+					}
+
+					_product.code = productId
+
+					product := traverse(item, "div", "class", "product")
+					// fmt.Println(product)
+
+					figure := traverse(product, "figure", "class", "product__overview-img")
+					// fmt.Println(figure)
+
+					imageTitleLink := traverse(figure, "a", "href", "")
+					// fmt.Println(imageTitleLink)
+
+					link, _ := attr(imageTitleLink.Attr, "href")
+					if _debug {
+						fmt.Println(link)
+					}
+					_product.link = link
+
+					itemProducer := traverse(item, "span", "class", "producer")
+					// fmt.Println(itemTitle)
+
+					brand, _ := text(itemProducer)
+					if _debug {
+						fmt.Println(brand)
+					}
+					_product.title = brand
+
+					itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
+					// fmt.Println(itemTitle)
+
+					title, _ := attr(itemTitle.Attr, "title")
+					title = strings.TrimSpace(title)
+					if _debug {
+						fmt.Println(title)
+					}
+					_product.title = brand + " " + title
+
+					if Skip(_product.title) {
+						continue
+					}
+
+					model := FustCleanFn(title)
+					if strings.HasPrefix(model, "Speicherkarte + Motorola ") {
+						model = strings.ReplaceAll(model, "Speicherkarte + Motorola ", "")
+						brand = "Motorola"
+					}
+					if _debug {
+						fmt.Println(model)
+					}
+					_product.model = brand + " " + model
+
+					itemPrice := traverse(item, "div", "class", "price-block")
+					// fmt.Println(itemPrice)
+
+					if itemOldPrice := traverse(itemPrice, "span", "class", "oldprice"); itemOldPrice != nil {
+						// fmt.Println(itemOldPrice)
+
+						oldPrice, _ := text(itemOldPrice)
+						if _debug {
+							fmt.Println(oldPrice)
+						}
+
+						if oldPrice := strings.ReplaceAll(strings.ReplaceAll(oldPrice, "–", "00"), "’", ""); oldPrice != "" {
+							if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
+								panic(err)
+							} else {
+								_product.oldPrice = float32(_price)
+							}
+						}
+					}
+
+					currentPrice := traverse(itemPrice, "div", "class", "endprice")
+					// fmt.Println(currentPrice)
+
+					price, _ := text(currentPrice)
+					if _debug {
+						fmt.Println(price)
+					}
+
+					if price := strings.ReplaceAll(strings.ReplaceAll(price, "–", "00"), "’", ""); price != "" {
+						if _price, err := strconv.ParseFloat(price, 32); err != nil {
+							panic(err)
+						} else {
+							_product.price = float32(_price)
+						}
+					}
+
+					if _debug {
+						fmt.Println()
+					}
+
+					_result = append(_result, _product)
 				}
+			}
 
-				currentPrice := traverse(itemPrice, "div", "class", "endprice")
-				// fmt.Println(currentPrice)
-
-				price, _ := text(currentPrice)
-				if _debug {
-					fmt.Println(price)
-				}
-
-				if price := strings.ReplaceAll(strings.ReplaceAll(price, "–", "00"), "’", ""); price != "" {
-					if _price, err := strconv.ParseFloat(price, 32); err != nil {
-						panic(err)
-					} else {
-						_product.price = float32(_price)
+			results := traverse(doc, "span", "class", "currentPaging")
+			pageAmount := traverse(results, "span", "class", "js-pageAmount")
+			if amount, ok := text(pageAmount); ok {
+				if result, ok := text(results.FirstChild.NextSibling.NextSibling); ok {
+					if x := regexp.MustCompile(`(\d+) von (\d+)`).FindStringSubmatch(amount + " " + result); x != nil && x[1] == x[2] {
+						break
 					}
 				}
-
-				if _debug {
-					fmt.Println()
-				}
-
-				_result = append(_result, _product)
 			}
 		}
 	}
