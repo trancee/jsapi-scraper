@@ -11,11 +11,11 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Light|Glowing Black|Night|Prism Black|Prism Blue|bamboo green|blau|blue|denim black|elegant black|grau|lake blue|meteorite grey|midnight blue|night|sandy|sterling blue|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|Light|Glowing Black|Night|Prism Black|Prism Blue|bamboo green|blau|blue|denim black|elegant black|grau|lake blue|meteorite grey|midnight blue|night|sandy|sterling blue|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d+|SMARTPHONE `).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE |Solutions `).ReplaceAllString(name, "")
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -158,6 +158,9 @@ func XXX_foletti(isDryRun bool) IShop {
 
 				itemBrand := traverse(item, "strong", "", "")
 				brand, _ := text(itemBrand)
+				if _debug {
+					fmt.Println(brand)
+				}
 				if Skip(brand) {
 					continue
 				}
@@ -168,8 +171,13 @@ func XXX_foletti(isDryRun bool) IShop {
 				}
 				_product.model = model
 
-				if brand != "o2" && !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
-					_product.title = brand + " " + _product.title
+				if brand != "o2" && !(brand == "Huawei" && strings.HasPrefix(title, "Honor")) {
+					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
+						_product.title = brand + " " + _product.title
+					}
+					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(model, " ")[0])) {
+						_product.model = brand + " " + _product.model
+					}
 				}
 
 				if _tests {
