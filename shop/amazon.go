@@ -45,6 +45,7 @@ var AmazonCleanFn = func(name string) string {
 	if strings.HasPrefix(name, "Xiaomi") {
 		name = strings.ReplaceAll(name, "Xiaomi 10|", "Xiaomi Redmi 10|")
 		name = strings.ReplaceAll(name, "Xiaomi M5 |", "Xiaomi POCO M5|")
+		name = strings.ReplaceAll(name, "Xiaomi Note ", "Xiaomi Redmi Note ")
 	}
 
 	if s := strings.Split(name, "|"); len(s) > 0 {

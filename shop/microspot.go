@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| LTE`)
+var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| LTE| Enterprise Edition`)
 
 var MicrospotCleanFn = func(name string) string {
 	if loc := MicrospotRegex.FindStringSubmatchIndex(name); loc != nil {

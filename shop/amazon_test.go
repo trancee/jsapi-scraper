@@ -362,7 +362,7 @@ var amazonNamesExpected = []string{
 	"XGODY Y13",
 	"Xiaomi Redmi 10",
 	"Xiaomi POCO M5",
-	"Xiaomi Note 11 Pro",
+	"Xiaomi Redmi Note 11 Pro",
 	"Xiaomi REDMI 9C",
 	"Xiaomi Redmi 9C",
 	"Xiaomi Redmi Note 10 Pro",
