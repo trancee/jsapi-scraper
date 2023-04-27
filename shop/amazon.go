@@ -21,7 +21,7 @@ var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom
 var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+([+/]\d+)?\s*[GT]B?|\W*[45][Gg](\s+|$)| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2`)
 
 var AmazonCleanFn = func(name string) string {
-	name = regexp.MustCompile(`\d{5}[A-Z]{3}`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}`).ReplaceAllString(name, "")
 	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", "8GBRAM128GBROM", " ").Replace(name)
 	name = AmazonRegex3.ReplaceAllString(name, "|")
 

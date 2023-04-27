@@ -26,6 +26,13 @@ var FustCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	name = strings.ReplaceAll(name, "Samsung Speicherkarte + ", "")
+	name = strings.ReplaceAll(name, "Speicherkarte + ", "")
+
+	if strings.HasPrefix(name, "Reno") || strings.HasPrefix(name, "Oppo") {
+		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	}
+
 	return strings.TrimSpace(name)
 }
 
@@ -185,12 +192,12 @@ func XXX_fust(isDryRun bool) IShop {
 					}
 
 					model := FustCleanFn(title)
-					if strings.HasPrefix(model, "Speicherkarte + Motorola ") {
-						model = strings.ReplaceAll(model, "Speicherkarte + Motorola ", "")
-						brand = "Motorola"
-					}
 					if _debug {
 						fmt.Println(model)
+					}
+					if brand == "Samsung" && strings.Split(model, " ")[0] == "Motorola" {
+						model = strings.ReplaceAll(model, "Motorola ", "")
+						brand = "Motorola"
 					}
 					_product.model = brand + " " + model
 
