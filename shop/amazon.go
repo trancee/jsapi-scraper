@@ -38,7 +38,7 @@ var AmazonCleanFn = func(name string) string {
 		name = "Xiaomi " + name
 	}
 	if strings.HasPrefix(name, "Samsung") {
-		name = regexp.MustCompile(`(SM-)?[AFMS]\d{3}[BF]?(\/DSN?)?`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(SM-)?[AFMS]\d{3}[BFR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "  A12", " Galaxy A12")
 		name = strings.ReplaceAll(name, "  M13", " Galaxy M13")
 	}

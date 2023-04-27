@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(?20[12]\d\)?|\s+\(SM-A\d+\)`)
+var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(?20[12]\d\)?|\s+\(SM-A\d+\)| Enterprise Edition`)
 
 var AlternateCleanFn = func(name string) string {
 	if loc := AlternateRegex.FindStringSubmatchIndex(name); loc != nil {

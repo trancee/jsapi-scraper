@@ -103,6 +103,7 @@ var _skips = map[string]bool{
 	"MP":              true,
 	"MYPHONE":         true,
 	"OLYMPIA":         true,
+	"ORDISSIMO":       true,
 	"OSCAL":           true, // EXCLUDE
 	"OUKITEL":         true, // EXCLUDE
 	"PANASONIC":       true,
