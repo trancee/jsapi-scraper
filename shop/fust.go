@@ -180,6 +180,10 @@ func XXX_fust(isDryRun bool) IShop {
 					itemTitle := traverse(imageTitleLink, "img", "class", "product__overview-img")
 					// fmt.Println(itemTitle)
 
+					if itemTitle == nil {
+						continue
+					}
+
 					title, _ := attr(itemTitle.Attr, "title")
 					title = strings.TrimSpace(title)
 					if _debug {

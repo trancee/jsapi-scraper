@@ -14,7 +14,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var MobileDeviceRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
+var MobileDeviceRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim| LTE`)
 
 var MobileDeviceCleanFn = func(name string) string {
 	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
