@@ -95,107 +95,144 @@ func XXX_galaxus(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	fn := "shop/galaxus.json"
+	var _results []_Result
 
-	if isDryRun {
-		if body, err := os.ReadFile(path + fn); err != nil {
-			panic(err)
-		} else {
-			_body = body
-		}
-	} else {
-		jsonData := []byte(`[
-			{
-				"operationName": "PRODUCT_TYPE_FILTER_PRODUCTS",
-				"variables": {
-					"productTypeId": 24,
-					"offset": 0,
-					"limit": 200,
-					"sortOrder": "LOWESTPRICE",
-					"siteId": null,
-					"filters": [
-						{
-							"identifier": "off",
-							"filterType": "TEXTUAL",
-							"options": [
-								"Sale",
-								"Secondhand"
-							]
-						}
-					]
-				},
-				"query": "query PRODUCT_TYPE_FILTER_PRODUCTS($productTypeId: Int!, $filters: [SearchFilter!], $sortOrder: ProductSort, $offset: Int, $siteId: String, $limit: Int, $searchTerm: String) {\n  productType(id: $productTypeId) {\n    filterProducts(\n      offset: $offset\n      limit: $limit\n      sort: $sortOrder\n      siteId: $siteId\n      filters: $filters\n      searchTerm: $searchTerm\n    ) {\n      products {\n        hasMore\n        results {\n          ...ProductWithOffer\n          __typename\n        }\n        __typename\n      }\n      counts {\n        total\n        filteredTotal\n        __typename\n      }\n      filters {\n        identifier\n        name\n        filterType\n        score\n        tooltip {\n          ...FilterTooltipResult\n          __typename\n        }\n        ...CheckboxSearchFilterResult\n        ...RangeSearchFilterResult\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment ProductWithOffer on ProductWithOffer {\n  mandatorSpecificData {\n    ...ProductMandatorSpecific\n    __typename\n  }\n  product {\n    ...ProductMandatorIndependent\n    __typename\n  }\n  offer {\n    ...ProductOffer\n    __typename\n  }\n  isDefaultOffer\n  __typename\n}\n\nfragment FilterTooltipResult on FilterTooltip {\n  text\n  moreInformationLink\n  __typename\n}\n\nfragment CheckboxSearchFilterResult on CheckboxSearchFilter {\n  options {\n    identifier\n    name\n    productCount\n    score\n    referenceValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    preferredValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    tooltip {\n      ...FilterTooltipResult\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment RangeSearchFilterResult on RangeSearchFilter {\n  referenceMin\n  preferredMin\n  referenceMax\n  preferredMax\n  referenceStepSize\n  preferredStepSize\n  rangeMergeInfo {\n    isBottomMerged\n    isTopMerged\n    __typename\n  }\n  referenceUnit {\n    abbreviation\n    __typename\n  }\n  preferredUnit {\n    abbreviation\n    __typename\n  }\n  rangeFilterDataPoint {\n    ...RangeFilterDataPointResult\n    __typename\n  }\n  __typename\n}\n\nfragment ProductMandatorSpecific on MandatorSpecificData {\n  isBestseller\n  isDeleted\n  showroomSites\n  sectorIds\n  hasVariants\n  __typename\n}\n\nfragment ProductMandatorIndependent on ProductV2 {\n  id\n  productId\n  name\n  nameProperties\n  productTypeId\n  productTypeName\n  brandId\n  brandName\n  averageRating\n  totalRatings\n  totalQuestions\n  isProductSet\n  images {\n    url\n    height\n    width\n    __typename\n  }\n  energyEfficiency {\n    energyEfficiencyColorType\n    energyEfficiencyLabelText\n    energyEfficiencyLabelSigns\n    energyEfficiencyImage {\n      url\n      height\n      width\n      __typename\n    }\n    __typename\n  }\n  seo {\n    seoProductTypeName\n    seoNameProperties\n    productGroups {\n      productGroup1\n      productGroup2\n      productGroup3\n      productGroup4\n      __typename\n    }\n    gtin\n    __typename\n  }\n  smallDimensions\n  basePrice {\n    priceFactor\n    value\n    __typename\n  }\n  productDataSheet {\n    name\n    languages\n    url\n    size\n    __typename\n  }\n  __typename\n}\n\nfragment ProductOffer on OfferV2 {\n  id\n  productId\n  offerId\n  shopOfferId\n  price {\n    amountIncl\n    amountExcl\n    currency\n    __typename\n  }\n  deliveryOptions {\n    mail {\n      classification\n      futureReleaseDate\n      __typename\n    }\n    pickup {\n      siteId\n      classification\n      futureReleaseDate\n      __typename\n    }\n    detailsProvider {\n      productId\n      offerId\n      quantity\n      type\n      __typename\n    }\n    __typename\n  }\n  label\n  labelType\n  type\n  volumeDiscountPrices {\n    minAmount\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    isDefault\n    __typename\n  }\n  salesInformation {\n    numberOfItems\n    numberOfItemsSold\n    isEndingSoon\n    validFrom\n    __typename\n  }\n  incentiveText\n  isIncentiveCashback\n  isNew\n  isSalesPromotion\n  hideInProductDiscovery\n  canAddToBasket\n  hidePrice\n  insteadOfPrice {\n    type\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    __typename\n  }\n  minOrderQuantity\n  __typename\n}\n\nfragment RangeFilterDataPointResult on RangeFilterDataPoint {\n  count\n  referenceValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  preferredValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n"
+	for p := 1; p <= 5; p++ {
+		fn := fmt.Sprintf("shop/galaxus.%d.json", p)
+
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
+				panic(err)
+			} else {
+				_body = body
 			}
-		]`)
-
-		req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
-		if err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
-
-		client := &http.Client{}
-		resp, err := client.Do(req)
-		if err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-		defer resp.Body.Close()
-
-		if resp.StatusCode != http.StatusOK {
-			// panic(resp.StatusCode)
-			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-
-		if body, err := io.ReadAll(resp.Body); err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
 		} else {
-			_body = body
+			/*
+				// 4G, 5G
+				{
+					"identifier": "8279",
+					"filterType": "TEXTUAL",
+					"options": ["6395", "476832"]
+				},
+				{
+					"identifier": "pr",
+					"filterType": "NUMERICRANGE",
+					"options": [],
+					"greaterThanOrEquals": 50,
+					"lessThanOrEquals": 300
+				},
+				{
+					"identifier": "off",
+					"filterType": "TEXTUAL",
+					"options": [
+						"InStock",
+						"Sale",
+						"Secondhand"
+					]
+			*/
+			jsonData := []byte(fmt.Sprintf(`[
+				{
+					"operationName": "PRODUCT_TYPE_FILTER_PRODUCTS",
+					"variables": {
+						"productTypeId": 24,
+						"offset": %d,
+						"limit": 200,
+						"sortOrder": "LOWESTPRICE",
+						"siteId": null,
+						"filters": [
+							{
+								"identifier": "8279",
+								"filterType": "TEXTUAL",
+								"options": ["6395", "476832"]
+							},
+							{
+								"identifier": "pr",
+								"filterType": "NUMERICRANGE",
+								"options": [],
+								"greaterThanOrEquals": %f,
+								"lessThanOrEquals": %f
+							}
+						]
+					},
+					"query": "query PRODUCT_TYPE_FILTER_PRODUCTS($productTypeId: Int!, $filters: [SearchFilter!], $sortOrder: ProductSort, $offset: Int, $siteId: String, $limit: Int, $searchTerm: String) {\n  productType(id: $productTypeId) {\n    filterProducts(\n      offset: $offset\n      limit: $limit\n      sort: $sortOrder\n      siteId: $siteId\n      filters: $filters\n      searchTerm: $searchTerm\n    ) {\n      products {\n        hasMore\n        results {\n          ...ProductWithOffer\n          __typename\n        }\n        __typename\n      }\n      counts {\n        total\n        filteredTotal\n        __typename\n      }\n      filters {\n        identifier\n        name\n        filterType\n        score\n        tooltip {\n          ...FilterTooltipResult\n          __typename\n        }\n        ...CheckboxSearchFilterResult\n        ...RangeSearchFilterResult\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment ProductWithOffer on ProductWithOffer {\n  mandatorSpecificData {\n    ...ProductMandatorSpecific\n    __typename\n  }\n  product {\n    ...ProductMandatorIndependent\n    __typename\n  }\n  offer {\n    ...ProductOffer\n    __typename\n  }\n  isDefaultOffer\n  __typename\n}\n\nfragment FilterTooltipResult on FilterTooltip {\n  text\n  moreInformationLink\n  __typename\n}\n\nfragment CheckboxSearchFilterResult on CheckboxSearchFilter {\n  options {\n    identifier\n    name\n    productCount\n    score\n    referenceValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    preferredValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    tooltip {\n      ...FilterTooltipResult\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment RangeSearchFilterResult on RangeSearchFilter {\n  referenceMin\n  preferredMin\n  referenceMax\n  preferredMax\n  referenceStepSize\n  preferredStepSize\n  rangeMergeInfo {\n    isBottomMerged\n    isTopMerged\n    __typename\n  }\n  referenceUnit {\n    abbreviation\n    __typename\n  }\n  preferredUnit {\n    abbreviation\n    __typename\n  }\n  rangeFilterDataPoint {\n    ...RangeFilterDataPointResult\n    __typename\n  }\n  __typename\n}\n\nfragment ProductMandatorSpecific on MandatorSpecificData {\n  isBestseller\n  isDeleted\n  showroomSites\n  sectorIds\n  hasVariants\n  __typename\n}\n\nfragment ProductMandatorIndependent on ProductV2 {\n  id\n  productId\n  name\n  nameProperties\n  productTypeId\n  productTypeName\n  brandId\n  brandName\n  averageRating\n  totalRatings\n  totalQuestions\n  isProductSet\n  images {\n    url\n    height\n    width\n    __typename\n  }\n  energyEfficiency {\n    energyEfficiencyColorType\n    energyEfficiencyLabelText\n    energyEfficiencyLabelSigns\n    energyEfficiencyImage {\n      url\n      height\n      width\n      __typename\n    }\n    __typename\n  }\n  seo {\n    seoProductTypeName\n    seoNameProperties\n    productGroups {\n      productGroup1\n      productGroup2\n      productGroup3\n      productGroup4\n      __typename\n    }\n    gtin\n    __typename\n  }\n  smallDimensions\n  basePrice {\n    priceFactor\n    value\n    __typename\n  }\n  productDataSheet {\n    name\n    languages\n    url\n    size\n    __typename\n  }\n  __typename\n}\n\nfragment ProductOffer on OfferV2 {\n  id\n  productId\n  offerId\n  shopOfferId\n  price {\n    amountIncl\n    amountExcl\n    currency\n    __typename\n  }\n  deliveryOptions {\n    mail {\n      classification\n      futureReleaseDate\n      __typename\n    }\n    pickup {\n      siteId\n      classification\n      futureReleaseDate\n      __typename\n    }\n    detailsProvider {\n      productId\n      offerId\n      quantity\n      type\n      __typename\n    }\n    __typename\n  }\n  label\n  labelType\n  type\n  volumeDiscountPrices {\n    minAmount\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    isDefault\n    __typename\n  }\n  salesInformation {\n    numberOfItems\n    numberOfItemsSold\n    isEndingSoon\n    validFrom\n    __typename\n  }\n  incentiveText\n  isIncentiveCashback\n  isNew\n  isSalesPromotion\n  hideInProductDiscovery\n  canAddToBasket\n  hidePrice\n  insteadOfPrice {\n    type\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    __typename\n  }\n  minOrderQuantity\n  __typename\n}\n\nfragment RangeFilterDataPointResult on RangeFilterDataPoint {\n  count\n  referenceValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  preferredValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n"
+				}
+			]`, len(_results), ValueMinimum, ValueMaximum))
+
+			req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			req.Header.Set("Content-Type", "application/json")
+			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+
+			client := &http.Client{}
+			resp, err := client.Do(req)
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode != http.StatusOK {
+				// panic(resp.StatusCode)
+				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+
+			if body, err := io.ReadAll(resp.Body); err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			} else {
+				_body = body
+			}
+
+			os.WriteFile(path+fn, _body, 0664)
 		}
+		// fmt.Println(string(_body))
 
-		os.WriteFile(path+fn, _body, 0664)
-	}
-	// fmt.Println(string(_body))
+		if err := json.Unmarshal(_body, &_result); err != nil {
+			panic(err)
+		}
+		// fmt.Println(_result[0].Data.ProductType.FilterProducts.Products.Results)
 
-	if err := json.Unmarshal(_body, &_result); err != nil {
-		panic(err)
+		_results = append(_results, _result[0].Data.ProductType.FilterProducts.Products.Results...)
+
+		if len(_result[0].Data.ProductType.FilterProducts.Products.Results) < 200 {
+			break
+		}
 	}
-	// fmt.Println(_result[0].Data.ProductType.FilterProducts.Products.Results)
 
 	r := regexp.MustCompile("[^a-z0-9  -]")
 
 	_parseFn := func(s IShop) *[]*Product {
 		products := []*Product{}
 
-		fmt.Printf("-- %s (%d)\n", _name, len(_result[0].Data.ProductType.FilterProducts.Products.Results))
-		for _, result := range _result[0].Data.ProductType.FilterProducts.Products.Results {
+		fmt.Printf("-- %s (%d)\n", _name, len(_results))
+		for _, result := range _results {
 			product := result.Product
 			offer := result.Offer
 
