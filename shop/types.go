@@ -122,8 +122,10 @@ var _skips = map[string]bool{
 	"STYRO":           true,
 	"SUUNTO":          true,
 	"SWISSTONE":       true,
+	"SWISSVOICE":      true,
 	"TELEFUNKEN":      true,
 	"TELEFONAS":       true,
+	"TELEKOM":         true,
 	"TREVI":           true,
 	"TTFONE":          true,
 	"ULEFONE":         true, // EXCLUDE

@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(GB)?\+)?\d+GB\)?|\s+\(?20[12]\d\)?|\s+X\d{3}F|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE`)
+var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(GB)?[+\/])?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm)\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| bamboo green| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -23,8 +23,21 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?|\s+I9505`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?|\s+I9505| Smartphone`).ReplaceAllString(name, "")
 	name = strings.ReplaceAll(name, "Note9", "Note 9")
+	name = strings.ReplaceAll(name, "Nokia Nokia ", "Nokia ")
+
+	if strings.HasPrefix(name, "OPPO") || strings.HasPrefix(name, "Oppo") {
+		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	}
+
+	if strings.HasPrefix(name, "POCO") {
+		name = "Xiaomi " + name
+	}
+
+	if name == "Xiaomi M5s" {
+		name = "Xiaomi Poco M5s"
+	}
 
 	return strings.TrimSpace(name)
 }
