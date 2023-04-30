@@ -28,7 +28,8 @@ var MelectronicsCleanFn = func(name string) string {
 func XXX_melectronics(isDryRun bool) IShop {
 	const _name = "melectronics"
 	// const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:special:Aktion&pageSize=20&currentPage=0"
-	const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:summaryAsString:Smartphone&pageSize=100"
+	// const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:summaryAsString:Smartphone&pageSize=100"
+	_url := fmt.Sprintf("https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:priceValue:%%5B%.f+TO+%.f%%5D:summaryAsString:Smartphone&pageSize=100", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 
