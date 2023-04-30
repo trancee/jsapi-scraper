@@ -138,7 +138,7 @@
           "url": "https://image.migros.ch/original/7a149c3c1189caa07be039dc4cecb6e41bafef94/motorola.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -151,8 +151,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -253,7 +253,7 @@
           "url": "https://image.migros.ch/original/bd931f7817d1e6c9287b270007051de64cac1bfd/emporia.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -269,7 +269,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -365,7 +365,7 @@
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -378,64 +378,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300181109",
-      "name": "NOKIA G22 DS 64GB - lagoon blue",
-      "url": "/de/p/785300181109/nokia-nokia-g22-ds-64gb-lagoon-blue",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 179.00,
-        "priceType": "BUY",
-        "formattedValue": "179,00 CHF"
-      },
-      "baseProduct": "b785300181109",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/161c77fd6369300e46480ced8e8e8ddbd607ae4e/nokia-nokia-g22-ds-64gb-lagoon-blue-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Nokia",
-        "image": {
-          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
-        }
-      },
-      "deliveryDays": 4,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": false,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -477,7 +421,7 @@
           "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -491,9 +435,65 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300181109",
+      "name": "NOKIA G22 DS 64GB - lagoon blue",
+      "url": "/de/p/785300181109/nokia-nokia-g22-ds-64gb-lagoon-blue",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 179.00,
+        "priceType": "BUY",
+        "formattedValue": "179,00 CHF"
+      },
+      "baseProduct": "b785300181109",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/161c77fd6369300e46480ced8e8e8ddbd607ae4e/nokia-nokia-g22-ds-64gb-lagoon-blue-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -553,62 +553,6 @@
       "sustainable": false
     },
     {
-      "code": "785300173362",
-      "name": "A57s 128GB - sky blue",
-      "url": "/de/p/785300173362/oppo-a57s-128gb-sky-blue",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 189.00,
-        "priceType": "BUY",
-        "formattedValue": "189,00 CHF"
-      },
-      "baseProduct": "b785300173362",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/87ce1f81e2f6b4ade74bfdcb98ac76999ef7373e/oppo-a57s-128gb-sky-blue-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "deliveryDays": 4,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": false,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
       "code": "794667700000",
       "name": "M50",
       "url": "/de/p/794667700000/amplicomms-m50",
@@ -641,7 +585,7 @@
           "url": "https://image.migros.ch/original/9704330258769948c3467c63fe95fea4b2898e87/amplicomms.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -657,7 +601,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -667,20 +611,20 @@
       "sustainable": false
     },
     {
-      "code": "785300164716",
-      "name": "Galaxy A13 128GB White",
-      "url": "/de/p/785300164716/samsung-galaxy-a13-128gb-white",
+      "code": "785300173362",
+      "name": "A57s 128GB - sky blue",
+      "url": "/de/p/785300173362/oppo-a57s-128gb-sky-blue",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 199.00,
+        "value": 189.00,
         "priceType": "BUY",
-        "formattedValue": "199,00 CHF"
+        "formattedValue": "189,00 CHF"
       },
-      "baseProduct": "b785300164716",
+      "baseProduct": "b785300173362",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/7ada423b48323741dd784dc33b07acea81b0dad8/samsung-galaxy-a13-128gb-white-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/87ce1f81e2f6b4ade74bfdcb98ac76999ef7373e/oppo-a57s-128gb-sky-blue-smartphone.jpg"
         }
       ],
       "categories": [
@@ -694,12 +638,12 @@
       "orderable": true,
       "showStockEnquiry": false,
       "brand": {
-        "name": "Samsung",
+        "name": "Oppo",
         "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -707,71 +651,13 @@
       "returnable": false,
       "hasHazard": false,
       "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 5,
-      "ratingAverage": 4.6,
+      "containsServiceItems": false,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300164172",
-      "name": "G21 128 GB Dusk",
-      "url": "/de/p/785300164172/nokia-g21-128-gb-dusk",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 199.00,
-        "priceType": "BUY",
-        "formattedValue": "199,00 CHF"
-      },
-      "baseProduct": "b785300164172",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/6f2aba968eda1f4ec7ce2c99e0a3a830a69430a9/nokia-g21-128-gb-dusk-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Nokia",
-        "image": {
-          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
-        }
-      },
-      "deliveryDays": 4,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -813,7 +699,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -827,7 +713,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -876,7 +762,7 @@
         "priceType": "BUY",
         "formattedValue": "299,00 CHF"
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -892,9 +778,123 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300164716",
+      "name": "Galaxy A13 128GB White",
+      "url": "/de/p/785300164716/samsung-galaxy-a13-128gb-white",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 199.00,
+        "priceType": "BUY",
+        "formattedValue": "199,00 CHF"
+      },
+      "baseProduct": "b785300164716",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/7ada423b48323741dd784dc33b07acea81b0dad8/samsung-galaxy-a13-128gb-white-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 5,
+      "ratingAverage": 4.6,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300164172",
+      "name": "G21 128 GB Dusk",
+      "url": "/de/p/785300164172/nokia-g21-128-gb-dusk",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 199.00,
+        "priceType": "BUY",
+        "formattedValue": "199,00 CHF"
+      },
+      "baseProduct": "b785300164172",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/6f2aba968eda1f4ec7ce2c99e0a3a830a69430a9/nokia-g21-128-gb-dusk-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -988,7 +988,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 23,
+      "deliveryDays": 22,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1046,7 +1046,7 @@
           "url": "https://image.migros.ch/original/7a149c3c1189caa07be039dc4cecb6e41bafef94/motorola.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1059,66 +1059,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300162682",
-      "name": "A94 5G 128 GB cosmo blue",
-      "url": "/de/p/785300162682/oppo-a94-5g-128-gb-cosmo-blue",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 209.00,
-        "priceType": "BUY",
-        "formattedValue": "209,00 CHF"
-      },
-      "baseProduct": "b785300162682",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/ec780aacb6c79f47ef3f9eef40b23d6c323141db/oppo-a94-5g-128-gb-cosmo-blue-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "deliveryDays": 4,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 1,
-      "ratingAverage": 4.0,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1160,7 +1102,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1173,8 +1115,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1184,20 +1126,20 @@
       "sustainable": false
     },
     {
-      "code": "785300182763",
-      "name": "Galaxy A14 Green 128GB",
-      "url": "/de/p/785300182763/samsung-galaxy-a14-green-128gb",
+      "code": "785300162682",
+      "name": "A94 5G 128 GB cosmo blue",
+      "url": "/de/p/785300162682/oppo-a94-5g-128-gb-cosmo-blue",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 219.00,
+        "value": 209.00,
         "priceType": "BUY",
-        "formattedValue": "219,00 CHF"
+        "formattedValue": "209,00 CHF"
       },
-      "baseProduct": "b785300182763",
+      "baseProduct": "b785300162682",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/de0bff82e460c06233b9d15c41ee90514496e1a8/samsung-galaxy-a14-green-128gb-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/ec780aacb6c79f47ef3f9eef40b23d6c323141db/oppo-a94-5g-128-gb-cosmo-blue-smartphone.jpg"
         }
       ],
       "categories": [
@@ -1211,12 +1153,12 @@
       "orderable": true,
       "showStockEnquiry": false,
       "brand": {
-        "name": "Samsung",
+        "name": "Oppo",
         "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1224,13 +1166,15 @@
       "returnable": false,
       "hasHazard": false,
       "configuratorProduct": false,
-      "containsServiceItems": false,
+      "containsServiceItems": true,
+      "ratingCount": 1,
+      "ratingAverage": 4.0,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1272,7 +1216,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1287,8 +1231,64 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300182763",
+      "name": "Galaxy A14 Green 128GB",
+      "url": "/de/p/785300182763/samsung-galaxy-a14-green-128gb",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 219.00,
+        "priceType": "BUY",
+        "formattedValue": "219,00 CHF"
+      },
+      "baseProduct": "b785300182763",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/de0bff82e460c06233b9d15c41ee90514496e1a8/samsung-galaxy-a14-green-128gb-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1330,7 +1330,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1343,8 +1343,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1386,7 +1386,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1401,8 +1401,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1444,7 +1444,7 @@
           "url": "https://image.migros.ch/original/9704330258769948c3467c63fe95fea4b2898e87/amplicomms.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1458,7 +1458,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -1507,7 +1507,7 @@
         "priceType": "BUY",
         "formattedValue": "259,00 CHF"
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1523,7 +1523,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -1572,7 +1572,7 @@
         "priceType": "BUY",
         "formattedValue": "299,00 CHF"
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1588,7 +1588,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -1630,7 +1630,7 @@
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1646,7 +1646,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -1688,7 +1688,7 @@
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1701,8 +1701,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1744,7 +1744,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1757,8 +1757,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1800,7 +1800,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1813,8 +1813,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1915,7 +1915,7 @@
         "priceType": "BUY",
         "formattedValue": "329,00 CHF"
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1929,7 +1929,7 @@
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
@@ -1971,7 +1971,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1986,8 +1986,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -2077,7 +2077,7 @@
       "reservable": false,
       "orderable": true,
       "showStockEnquiry": false,
-      "deliveryDays": 4,
+      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2090,8 +2090,395 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.halfcircle",
-        "availabilityText": "lieferbar in 4 Tagen",
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300148780",
+      "name": "Reno2 Luminous Ocean Blue",
+      "url": "/de/p/785300148780/oppo-reno2-luminous-ocean-blue",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 324.00,
+        "priceType": "BUY",
+        "formattedValue": "324,00 CHF"
+      },
+      "baseProduct": "b785300148780",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/c5133373c8f6df253df724b41b11f7373f0fb64b/oppo-reno2-luminous-ocean-blue-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Oppo",
+        "image": {
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "ratingCount": 1,
+      "ratingAverage": 5.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300169120",
+      "name": "G60 (5G) 128GB - black",
+      "url": "/de/p/785300169120/nokia-g60-5g-128gb-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b785300169120",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/df502fa9c7e6d0714114f62eb1079df8916f3823/nokia-g60-5g-128gb-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300164711",
+      "name": "Galaxy A33 5G 128GB Awesome Blue",
+      "url": "/de/p/785300164711/samsung-galaxy-a33-5g-128gb-awesome-blue",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b785300164711",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/79ce96decd98c347b1f8c0790ef8381c9a6534a6/samsung-galaxy-a33-5g-128gb-awesome-blue-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 2,
+      "ratingAverage": 2.5,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300164710",
+      "name": "Galaxy A33 5G 128GB Awesome Peach",
+      "url": "/de/p/785300164710/samsung-galaxy-a33-5g-128gb-awesome-peach",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b785300164710",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/092e1c14752889b26446e2a5fcb335d5e7f6b637/samsung-galaxy-a33-5g-128gb-awesome-peach-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": false,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": -1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "notorderable",
+        "availabilityText": "Nicht lieferbar"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300186136",
+      "name": "Nord CE 3 128 GB Lite Chromatic",
+      "url": "/de/p/785300186136/oneplus-nord-ce-3-128-gb-lite-chromatic",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 343.00,
+        "priceType": "BUY",
+        "formattedValue": "343,00 CHF"
+      },
+      "baseProduct": "b785300186136",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/689f977a0c3888e3390d13d760a22a68a4a57b7a/oneplus-nord-ce-3-128-gb-lite-chromatic-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "OnePlus",
+        "image": {
+          "url": "https://image.migros.ch/original/06ad7aecd175d760f8f76ec5dd6cec0939a87158/oneplus.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": true,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300186137",
+      "name": "Nord CE 3 128 GB Lite Lime",
+      "url": "/de/p/785300186137/oneplus-nord-ce-3-128-gb-lite-lime",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 343.00,
+        "priceType": "BUY",
+        "formattedValue": "343,00 CHF"
+      },
+      "baseProduct": "b785300186137",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/4b51277d873a69b691571121e720ea1fcb44ae65/oneplus-nord-ce-3-128-gb-lite-lime-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": false,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "OnePlus",
+        "image": {
+          "url": "https://image.migros.ch/original/06ad7aecd175d760f8f76ec5dd6cec0939a87158/oneplus.jpg"
+        }
+      },
+      "preorder": false,
+      "newProduct": true,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "notorderable",
+        "availabilityText": "Nicht lieferbar"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300183594",
+      "name": "Pixel 6a 128 GB - Charcoal",
+      "url": "/de/p/785300183594/google-pixel-6a-128-gb-charcoal",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 350.00,
+        "priceType": "BUY",
+        "formattedValue": "350,00 CHF"
+      },
+      "baseProduct": "b785300183594",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/5702ad5e66ef3b82fa052f372c354f1a48f3a95b/google-pixel-6a-128-gb-charcoal-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Google",
+        "image": {
+          "url": "https://image.migros.ch/original/3139f7ab48c0ab937dd536fa53f597184198eca7/google.jpg"
+        }
+      },
+      "deliveryDays": 3,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 3 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -2150,21 +2537,21 @@
     "currentPage": 0,
     "sort": "price-asc",
     "totalPages": 1,
-    "totalResults": 37
+    "totalResults": 44
   },
   "currentQuery": {
-    "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+    "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
     "query": {
-      "value": ":price-asc:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-      "code": "[50 TO 300]"
+      "value": ":price-asc:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+      "code": "[50 TO 350]"
     }
   },
   "breadcrumbs": [
     {
       "facetCode": "priceValue",
       "facetName": "Preis",
-      "facetValueCode": "[50 TO 300]",
-      "facetValueName": "50 bis 300 CHF",
+      "facetValueCode": "[50 TO 350]",
+      "facetValueName": "50 bis 350 CHF",
       "removeQuery": {
         "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AsummaryAsString%3ASmartphone",
         "query": {
@@ -2173,10 +2560,10 @@
         }
       },
       "truncateQuery": {
-        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D",
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D",
         "query": {
-          "value": ":price-asc:priceValue:%5B50+TO+300%5D",
-          "code": "[50 TO 300]"
+          "value": ":price-asc:priceValue:%5B50+TO+350%5D",
+          "code": "[50 TO 350]"
         }
       }
     },
@@ -2186,10 +2573,10 @@
       "facetValueCode": "Smartphone",
       "facetValueName": "Smartphone",
       "removeQuery": {
-        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D",
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D",
         "query": {
-          "value": ":price-asc:priceValue:%5B50+TO+300%5D",
-          "code": "[50 TO 300]"
+          "value": ":price-asc:priceValue:%5B50+TO+350%5D",
+          "code": "[50 TO 350]"
         }
       }
     }
@@ -2206,10 +2593,22 @@
           "name": "Aktion",
           "count": 5,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:priceValue:%5B50+TO+300%5D:special:Aktion:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:priceValue:%5B50+TO+350%5D:special:Aktion:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Neu",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3Aspecial%3ANeu%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:priceValue:%5B50+TO+350%5D:special:Neu:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2217,8 +2616,8 @@
       ],
       "code": "special",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3Aspecial%3AAktion%3Aspecial%3ANeu%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "special_de_facet_string_mv"
     },
     {
@@ -2230,12 +2629,12 @@
       "values": [
         {
           "name": "Online bestellbar",
-          "count": 29,
+          "count": 34,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:availability:Online+bestellbar:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:availability:Online+bestellbar:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2243,8 +2642,8 @@
       ],
       "code": "availability",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "availability_de_facet_string"
     },
     {
@@ -2256,12 +2655,12 @@
       "values": [
         {
           "name": "Smartphone",
-          "count": 37,
+          "count": 44,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D",
             "query": {
-              "value": ":price-asc:priceValue:%5B50+TO+300%5D",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:priceValue:%5B50+TO+350%5D",
+              "code": "[50 TO 350]"
             }
           },
           "selected": true
@@ -2270,10 +2669,10 @@
           "name": "Mobiltelefon",
           "count": 9,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:priceValue:%5B50+TO+300%5D:summaryAsString:Mobiltelefon:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:priceValue:%5B50+TO+350%5D:summaryAsString:Mobiltelefon:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2281,8 +2680,8 @@
       ],
       "code": "summaryAsString",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D",
       "solrFacetName": "summaryAsString_de_facet_string"
     },
     {
@@ -2294,11 +2693,11 @@
       "values": [
         {
           "name": "Telefonie & Navigation",
-          "count": 37,
+          "count": 44,
           "query": {
-            "url": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+              "value": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
               "code": "3357845301"
             }
           },
@@ -2307,11 +2706,11 @@
         },
         {
           "name": "Smartphone",
-          "count": 37,
+          "count": 44,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+              "value": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
               "code": "3421317829"
             }
           },
@@ -2333,16 +2732,16 @@
       "values": [],
       "code": "priceValue",
       "selectedMin": 50,
-      "selectedMax": 300,
+      "selectedMax": 350,
       "sliderMin": 111,
       "sliderMax": 1899,
       "slider": true,
       "currency": "CHF",
       "query": {
-        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
         "query": {
-          "value": ":price-asc:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-          "code": "[50 TO 300]"
+          "value": ":price-asc:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+          "code": "[50 TO 350]"
         }
       },
       "sliderUnit": "CHF",
@@ -2361,10 +2760,10 @@
           "name": "Amplicomms",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Amplicomms:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Amplicomms:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2373,10 +2772,22 @@
           "name": "Emporia",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/emporia?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/emporia?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Emporia:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Emporia:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Google",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/google?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:brandName:Google:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2385,46 +2796,58 @@
           "name": "Motorola",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/motorola?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/motorola?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Motorola:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Motorola:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Nokia",
-          "count": 6,
+          "count": 7,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/nokia?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/nokia?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Nokia:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Nokia:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "OnePlus",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/oneplus?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:brandName:OnePlus:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Oppo",
-          "count": 7,
+          "count": 8,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/oppo?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/oppo?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Oppo:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Oppo:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Samsung",
-          "count": 12,
+          "count": 14,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/samsung?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/samsung?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:Samsung:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:Samsung:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2433,10 +2856,10 @@
           "name": "xiaomi",
           "count": 6,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/xiaomi?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/xiaomi?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:brandName:xiaomi:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:brandName:xiaomi:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2444,8 +2867,8 @@
       ],
       "code": "brandName",
       "crawlingActivated": true,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3AbrandName%3AEmporia%3AbrandName%3AMotorola%3AbrandName%3ANokia%3AbrandName%3AOppo%3AbrandName%3ASamsung%3AbrandName%3Axiaomi%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3AbrandName%3AEmporia%3AbrandName%3AGoogle%3AbrandName%3AMotorola%3AbrandName%3ANokia%3AbrandName%3AOnePlus%3AbrandName%3AOppo%3AbrandName%3ASamsung%3AbrandName%3Axiaomi%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "brandName_de_facet_string"
     },
     {
@@ -2459,34 +2882,34 @@
           "name": "2G GSM",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A2G+GSM%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A2G+GSM%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_mobilfunkstandards:2G+GSM:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_mobilfunkstandards:2G+GSM:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "4G LTE",
-          "count": 18,
+          "count": 19,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A4G+LTE%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A4G+LTE%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_mobilfunkstandards:4G+LTE:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_mobilfunkstandards:4G+LTE:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "5G LTE",
-          "count": 9,
+          "count": 13,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A5G+LTE%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A5G+LTE%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_mobilfunkstandards:5G+LTE:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_mobilfunkstandards:5G+LTE:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2494,8 +2917,8 @@
       ],
       "code": "MEL_mobilfunkstandards",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A2G+GSM%3AMEL_mobilfunkstandards%3A4G+LTE%3AMEL_mobilfunkstandards%3A5G+LTE%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A2G+GSM%3AMEL_mobilfunkstandards%3A4G+LTE%3AMEL_mobilfunkstandards%3A5G+LTE%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_mobilfunkstandards_de_facet_string_mv"
     },
     {
@@ -2509,22 +2932,22 @@
           "name": "Andere",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_betriebssystem_neu:Andere:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_betriebssystem_neu:Andere:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Android",
-          "count": 36,
+          "count": 43,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndroid%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndroid%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_betriebssystem_neu:Android:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_betriebssystem_neu:Android:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2532,8 +2955,8 @@
       ],
       "code": "mel_betriebssystem_neu",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3Amel_betriebssystem_neu%3AAndroid%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3Amel_betriebssystem_neu%3AAndroid%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "mel_betriebssystem_neu_de_facet_string_mv"
     },
     {
@@ -2547,10 +2970,10 @@
           "name": "4 GB",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A4+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A4+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:4+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:4+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2559,10 +2982,10 @@
           "name": "8 GB",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A8+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A8+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:8+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:8+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2571,10 +2994,10 @@
           "name": "16 GB",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A16+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A16+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:16+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:16+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2583,10 +3006,10 @@
           "name": "32 GB",
           "count": 4,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A32+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A32+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:32+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:32+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2595,22 +3018,34 @@
           "name": "64 GB",
           "count": 5,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A64+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A64+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:64+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:64+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "128 GB",
-          "count": 25,
+          "count": 31,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_interner_speicher_neu:128+GB:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_interner_speicher_neu:128+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "256 GB",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A256+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:mel_interner_speicher_neu:256+GB:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2618,8 +3053,8 @@
       ],
       "code": "mel_interner_speicher_neu",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3Amel_interner_speicher_neu%3A16+GB%3Amel_interner_speicher_neu%3A32+GB%3Amel_interner_speicher_neu%3A4+GB%3Amel_interner_speicher_neu%3A64+GB%3Amel_interner_speicher_neu%3A8+GB%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3Amel_interner_speicher_neu%3A16+GB%3Amel_interner_speicher_neu%3A256+GB%3Amel_interner_speicher_neu%3A32+GB%3Amel_interner_speicher_neu%3A4+GB%3Amel_interner_speicher_neu%3A64+GB%3Amel_interner_speicher_neu%3A8+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "mel_interner_speicher_neu_de_facet_string_mv"
     },
     {
@@ -2635,15 +3070,15 @@
       "slider": true,
       "currency": "CHF",
       "query": {
-        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_arbeitsspeicher%3A%5BMIN+TO+MAX%5D%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+        "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_arbeitsspeicher%3A%5BMIN+TO+MAX%5D%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
         "query": {
-          "value": ":price-asc:MEL_arbeitsspeicher:%5BMIN+TO+MAX%5D:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-          "code": "[50 TO 300]"
+          "value": ":price-asc:MEL_arbeitsspeicher:%5BMIN+TO+MAX%5D:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+          "code": "[50 TO 350]"
         }
       },
       "sliderUnit": "gb",
       "crawlingActivated": false,
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_arbeitsspeicher_de_double_mv"
     },
     {
@@ -2657,10 +3092,10 @@
           "name": "2.4 \"",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A2.4+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A2.4+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:2.4+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:2.4+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2669,10 +3104,10 @@
           "name": "5 \"",
           "count": 3,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A5+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A5+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:5+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:5+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2681,10 +3116,34 @@
           "name": "5.3 \"",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A5.3+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A5.3+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:5.3+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:5.3+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.1 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.1+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.1+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.4 \"",
+          "count": 4,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.4+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.4+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2693,34 +3152,22 @@
           "name": "6.43 \"",
           "count": 3,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.43+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.43+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.43+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
-            }
-          },
-          "selected": false
-        },
-        {
-          "name": "6.4 \"",
-          "count": 2,
-          "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.4+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-            "query": {
-              "value": ":price-asc:MEL_display_grösse:6.4+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.43+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "6.5 \"",
-          "count": 6,
+          "count": 7,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.5+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.5+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.5+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.5+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2729,10 +3176,10 @@
           "name": "6.52 \"",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.52+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.52+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.52+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.52+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2741,10 +3188,22 @@
           "name": "6.56 \"",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.56+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.56+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.56+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.56+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.58 \"",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.58+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.58+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2753,10 +3212,10 @@
           "name": "6.59 \"",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.59+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.59+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.59+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.59+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2765,10 +3224,10 @@
           "name": "6.53 \"",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.53+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.53+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.53+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.53+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2777,22 +3236,10 @@
           "name": "6.55 \"",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.55+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.55+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.55+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
-            }
-          },
-          "selected": false
-        },
-        {
-          "name": "6.58 \"",
-          "count": 1,
-          "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.58+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-            "query": {
-              "value": ":price-asc:MEL_display_grösse:6.58+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.55+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2801,10 +3248,10 @@
           "name": "6.6 \"",
           "count": 8,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.6+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.6+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.6+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.6+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2813,10 +3260,22 @@
           "name": "6.67 \"",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.67+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.67+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.67+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.67+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.7 \"",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.7+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.7+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2825,10 +3284,10 @@
           "name": "6.71 \"",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.71+%22%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.71+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_grösse:6.71+%22:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_grösse:6.71+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2836,7 +3295,7 @@
       ],
       "code": "MEL_display_grösse",
       "crawlingActivated": false,
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_display_grösse_de_facet_string_mv"
     },
     {
@@ -2848,24 +3307,24 @@
       "values": [
         {
           "name": "AMOLED",
-          "count": 8,
+          "count": 10,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_art:AMOLED:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_art:AMOLED:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "IPS",
-          "count": 5,
+          "count": 8,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AIPS%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AIPS%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_art:IPS:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_art:IPS:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2874,10 +3333,22 @@
           "name": "LCD",
           "count": 13,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ALCD%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ALCD%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_art:LCD:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_art:LCD:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "OLED",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AOLED%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_art:OLED:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2886,10 +3357,10 @@
           "name": "TFT",
           "count": 4,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ATFT%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3ATFT%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_display_art:TFT:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_display_art:TFT:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2897,8 +3368,8 @@
       ],
       "code": "MEL_display_art",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3AMEL_display_art%3AIPS%3AMEL_display_art%3ALCD%3AMEL_display_art%3ATFT%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3AMEL_display_art%3AIPS%3AMEL_display_art%3ALCD%3AMEL_display_art%3AOLED%3AMEL_display_art%3ATFT%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_display_art_de_facet_string_mv"
     },
     {
@@ -2912,10 +3383,10 @@
           "name": "2 MP",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A2+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A2+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:2+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:2+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2924,10 +3395,10 @@
           "name": "5 MP",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A5+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A5+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:5+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:5+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2936,10 +3407,22 @@
           "name": "8 MP",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A8+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:8+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:8+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "12 MP",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A12+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:12+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2948,10 +3431,10 @@
           "name": "13 MP",
           "count": 3,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A13+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A13+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:13+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:13+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2960,34 +3443,34 @@
           "name": "16 MP",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A16+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A16+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:16+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:16+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "48 MP",
-          "count": 6,
+          "count": 9,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A48+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A48+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:48+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:48+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "50 MP",
-          "count": 21,
+          "count": 22,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A50+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A50+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:50+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:50+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -2996,10 +3479,22 @@
           "name": "64 MP",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A64+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A64+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:mel_rueckkamera:64+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:mel_rueckkamera:64+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "108 MP",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A108+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:mel_rueckkamera:108+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3007,8 +3502,8 @@
       ],
       "code": "mel_rueckkamera",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A13+MP%3Amel_rueckkamera%3A16+MP%3Amel_rueckkamera%3A2+MP%3Amel_rueckkamera%3A48+MP%3Amel_rueckkamera%3A5+MP%3Amel_rueckkamera%3A50+MP%3Amel_rueckkamera%3A64+MP%3Amel_rueckkamera%3A8+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A108+MP%3Amel_rueckkamera%3A12+MP%3Amel_rueckkamera%3A13+MP%3Amel_rueckkamera%3A16+MP%3Amel_rueckkamera%3A2+MP%3Amel_rueckkamera%3A48+MP%3Amel_rueckkamera%3A5+MP%3Amel_rueckkamera%3A50+MP%3Amel_rueckkamera%3A64+MP%3Amel_rueckkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "mel_rueckkamera_de_facet_string_mv"
     },
     {
@@ -3022,10 +3517,10 @@
           "name": "2100 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2100+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2100+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:2100+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:2100+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3034,10 +3529,10 @@
           "name": "2500 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2500+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2500+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:2500+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:2500+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3046,10 +3541,10 @@
           "name": "2700 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2700+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A2700+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:2700+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:2700+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3058,10 +3553,10 @@
           "name": "3000 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3000+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3000+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:3000+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:3000+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3070,10 +3565,22 @@
           "name": "3200 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3200+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3200+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:3200+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:3200+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "4000 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4000+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:4000+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3082,10 +3589,10 @@
           "name": "4020 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4020+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4020+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:4020+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:4020+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3094,10 +3601,10 @@
           "name": "4250 mAh",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4250+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4250+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:4250+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:4250+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3106,34 +3613,46 @@
           "name": "4310 mAh",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4310+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4310+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:4310+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:4310+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "4410 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4410+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:4410+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "4500 mAh",
-          "count": 1,
+          "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4500+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4500+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:4500+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:4500+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "5000 mAh",
-          "count": 25,
+          "count": 29,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5000+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5000+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:5000+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:5000+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3142,10 +3661,10 @@
           "name": "5050 mAh",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5050+mAh%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5050+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_akkukapazitaet:5050+mAh:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_akkukapazitaet:5050+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3153,7 +3672,7 @@
       ],
       "code": "MEL_akkukapazitaet",
       "crawlingActivated": false,
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_akkukapazitaet_de_facet_string_mv"
     },
     {
@@ -3165,12 +3684,12 @@
       "values": [
         {
           "name": "Ja",
-          "count": 21,
+          "count": 25,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3AJa%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3AJa%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_dual-sim_funktionalität:Ja:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_dual-sim_funktionalität:Ja:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3179,10 +3698,10 @@
           "name": "Nein",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3ANein%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3ANein%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_dual-sim_funktionalität:Nein:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_dual-sim_funktionalität:Nein:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3190,7 +3709,7 @@
       ],
       "code": "MEL_dual-sim_funktionalität",
       "crawlingActivated": false,
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_dual-sim_funktionalität_de_facet_string_mv"
     },
     {
@@ -3204,10 +3723,10 @@
           "name": "2 MP",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A2+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A2+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_frontkamera:2+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_frontkamera:2+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3216,46 +3735,46 @@
           "name": "5 MP",
           "count": 5,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A5+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A5+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_frontkamera:5+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_frontkamera:5+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "8 MP",
-          "count": 11,
+          "count": 13,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_frontkamera:8+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_frontkamera:8+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "13 MP",
-          "count": 11,
+          "count": 13,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_frontkamera:13+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_frontkamera:13+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "16 MP",
-          "count": 5,
+          "count": 8,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A16+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A16+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_frontkamera:16+MP:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_frontkamera:16+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3263,8 +3782,8 @@
       ],
       "code": "MEL_frontkamera",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A2+MP%3AMEL_frontkamera%3A5+MP%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A2+MP%3AMEL_frontkamera%3A5+MP%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_frontkamera_de_facet_string_mv"
     },
     {
@@ -3275,49 +3794,61 @@
       "visible": true,
       "values": [
         {
-          "name": "Bluetooth",
-          "count": 23,
+          "name": "4G",
+          "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3A4G%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_kabellose_uebertragung:Bluetooth:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_kabellose_uebertragung:4G:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Bluetooth",
+          "count": 27,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_kabellose_uebertragung:Bluetooth:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "GPS",
-          "count": 9,
+          "count": 11,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AGPS%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AGPS%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_kabellose_uebertragung:GPS:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_kabellose_uebertragung:GPS:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "NFC",
-          "count": 16,
+          "count": 20,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ANFC%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ANFC%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_kabellose_uebertragung:NFC:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_kabellose_uebertragung:NFC:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "WLAN",
-          "count": 22,
+          "count": 26,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AWLAN%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AWLAN%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_kabellose_uebertragung:WLAN:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_kabellose_uebertragung:WLAN:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3325,8 +3856,8 @@
       ],
       "code": "MEL_kabellose_uebertragung",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3AMEL_kabellose_uebertragung%3AGPS%3AMEL_kabellose_uebertragung%3ANFC%3AMEL_kabellose_uebertragung%3AWLAN%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3A4G%3AMEL_kabellose_uebertragung%3ABluetooth%3AMEL_kabellose_uebertragung%3AGPS%3AMEL_kabellose_uebertragung%3ANFC%3AMEL_kabellose_uebertragung%3AWLAN%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_kabellose_uebertragung_de_facet_string_mv"
     },
     {
@@ -3340,10 +3871,10 @@
           "name": "2",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A2%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A2%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_prozessorkerne:2:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_prozessorkerne:2:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3352,22 +3883,22 @@
           "name": "4",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A4%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A4%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_prozessorkerne:4:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_prozessorkerne:4:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "8",
-          "count": 32,
+          "count": 39,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A8%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A8%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_prozessorkerne:8:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_prozessorkerne:8:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3375,8 +3906,8 @@
       ],
       "code": "MEL_prozessorkerne",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A2%3AMEL_prozessorkerne%3A4%3AMEL_prozessorkerne%3A8%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A2%3AMEL_prozessorkerne%3A4%3AMEL_prozessorkerne%3A8%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_prozessorkerne_de_facet_string_mv"
     },
     {
@@ -3388,36 +3919,36 @@
       "values": [
         {
           "name": "Beschleunigungssensor",
-          "count": 12,
+          "count": 16,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Beschleunigungssensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Beschleunigungssensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Fingerprintsensor",
-          "count": 13,
+          "count": 16,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFingerprintsensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFingerprintsensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Fingerprintsensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Fingerprintsensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Gyrosensor",
-          "count": 8,
+          "count": 12,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AGyrosensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AGyrosensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Gyrosensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Gyrosensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3426,22 +3957,22 @@
           "name": "Kompass",
           "count": 3,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AKompass%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AKompass%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Kompass:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Kompass:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Näherungssensor",
-          "count": 6,
+          "count": 8,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AN%C3%A4herungssensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AN%C3%A4herungssensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:N%C3%A4herungssensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:N%C3%A4herungssensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3450,22 +3981,22 @@
           "name": "Proximitätssensor",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AProximit%C3%A4tssensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AProximit%C3%A4tssensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Proximit%C3%A4tssensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Proximit%C3%A4tssensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Umgebungslichtsensor",
-          "count": 4,
+          "count": 6,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AUmgebungslichtsensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AUmgebungslichtsensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_sensoren:Umgebungslichtsensor:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_sensoren:Umgebungslichtsensor:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3473,8 +4004,8 @@
       ],
       "code": "MEL_sensoren",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3AMEL_sensoren%3AFingerprintsensor%3AMEL_sensoren%3AGyrosensor%3AMEL_sensoren%3AKompass%3AMEL_sensoren%3AN%C3%A4herungssensor%3AMEL_sensoren%3AProximit%C3%A4tssensor%3AMEL_sensoren%3AUmgebungslichtsensor%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3AMEL_sensoren%3AFingerprintsensor%3AMEL_sensoren%3AGyrosensor%3AMEL_sensoren%3AKompass%3AMEL_sensoren%3AN%C3%A4herungssensor%3AMEL_sensoren%3AProximit%C3%A4tssensor%3AMEL_sensoren%3AUmgebungslichtsensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_sensoren_de_facet_string_mv"
     },
     {
@@ -3486,36 +4017,36 @@
       "values": [
         {
           "name": "Schwarz",
-          "count": 16,
+          "count": 17,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ASchwarz%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ASchwarz%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Schwarz:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Schwarz:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Grau",
-          "count": 8,
+          "count": 9,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AGrau%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AGrau%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Grau:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Grau:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
         },
         {
           "name": "Blau",
-          "count": 2,
+          "count": 4,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABlau%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABlau%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Blau:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Blau:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3524,10 +4055,10 @@
           "name": "Grün",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AGr%C3%BCn%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AGr%C3%BCn%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Gr%C3%BCn:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Gr%C3%BCn:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3536,10 +4067,10 @@
           "name": "Silber",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ASilber%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ASilber%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Silber:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Silber:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3548,10 +4079,10 @@
           "name": "Weiss",
           "count": 2,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AWeiss%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AWeiss%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Weiss:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Weiss:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3560,10 +4091,22 @@
           "name": "Braun",
           "count": 1,
           "query": {
-            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABraun%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABraun%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
-              "value": ":price-asc:MEL_primaerfarbe:Braun:priceValue:%5B50+TO+300%5D:summaryAsString:Smartphone",
-              "code": "[50 TO 300]"
+              "value": ":price-asc:MEL_primaerfarbe:Braun:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "Orange",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3AOrange%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_primaerfarbe:Orange:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
             }
           },
           "selected": false
@@ -3571,8 +4114,8 @@
       ],
       "code": "MEL_primaerfarbe",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABlau%3AMEL_primaerfarbe%3ABraun%3AMEL_primaerfarbe%3AGrau%3AMEL_primaerfarbe%3AGr%C3%BCn%3AMEL_primaerfarbe%3ASchwarz%3AMEL_primaerfarbe%3ASilber%3AMEL_primaerfarbe%3AWeiss%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
-      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+300%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABlau%3AMEL_primaerfarbe%3ABraun%3AMEL_primaerfarbe%3AGrau%3AMEL_primaerfarbe%3AGr%C3%BCn%3AMEL_primaerfarbe%3AOrange%3AMEL_primaerfarbe%3ASchwarz%3AMEL_primaerfarbe%3ASilber%3AMEL_primaerfarbe%3AWeiss%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_primaerfarbe_de_facet_string_mv"
     }
   ],

@@ -238,7 +238,6 @@ func XXX_manor(isDryRun bool) IShop {
 
 				URL: _link,
 			}
-			fmt.Println(product)
 
 			if s.IsWorth(product) {
 				products = append(products, product)

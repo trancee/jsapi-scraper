@@ -89,8 +89,8 @@ func XXX_conrad(isDryRun bool) IShop {
 					"field": "price",
 					"type": "RANGE",
 					"values": [
-						%f,
-						%f
+						%.f,
+						%.f
 					]
 				}],
 				"sort": [{

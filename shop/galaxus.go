@@ -162,8 +162,8 @@ func XXX_galaxus(isDryRun bool) IShop {
 								"identifier": "pr",
 								"filterType": "NUMERICRANGE",
 								"options": [],
-								"greaterThanOrEquals": %f,
-								"lessThanOrEquals": %f
+								"greaterThanOrEquals": %.f,
+								"lessThanOrEquals": %.f
 							}
 						]
 					},

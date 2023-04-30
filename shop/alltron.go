@@ -27,7 +27,7 @@ var AlltronCleanFn = func(name string) string {
 func XXX_alltron(isDryRun bool) IShop {
 	const _name = "Alltron"
 	// const _url =     "https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar&searchEarlyFilter=true&format=json"
-	_url := fmt.Sprintf("https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar|||price_standard:::%f~~~%f&searchEarlyFilter=true&format=json", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar|||price_standard:::%.f~~~%.f&searchEarlyFilter=true&format=json", ValueMinimum, ValueMaximum)
 
 	const _api = "https://alltron.ch/api/v1/products/multiple-tiles/"
 

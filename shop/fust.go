@@ -66,11 +66,11 @@ func XXX_fust(isDryRun bool) IShop {
 	path += "/"
 
 	for _category, _url := range map[string]string{
-		"samsung": fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
-		"huawei":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
-		"xiaomi":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
-		"oppo":    fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
-		"other":   fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%f,"to":%f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"samsung": fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"huawei":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"xiaomi":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"oppo":    fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
+		"other":   fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
 	} {
 		for p := 1; p <= 3; p++ {
 			fn := fmt.Sprintf("shop/fust.%s.%d.html", _category, p)

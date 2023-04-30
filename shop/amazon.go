@@ -96,7 +96,7 @@ func XXX_amazon(isDryRun bool) IShop {
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_n_condition-type:776949031&dc=&c=ts&qid=1678975426&rnid=776942031&s=price-asc-rank&page=%d"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902993031&s=price-asc-rank&dc&c=ts&qid=1679414936&rnid=26902991031&page=%d"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_6:A3JWKAKR8XB7XF&s=price-asc-rank&dc&c=ts&qid=1680358125&rnid=26902991031&page=%d"
-	_url := fmt.Sprintf("https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_6:A3JWKAKR8XB7XF&dc=&c=ts&qid=1681744980&rnid=389294011&low-price=%f&high-price=%f&page=%%d", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_6:A3JWKAKR8XB7XF&dc=&c=ts&qid=1681744980&rnid=389294011&low-price=%.f&high-price=%.f&page=%%d", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 

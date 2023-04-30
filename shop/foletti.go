@@ -32,7 +32,7 @@ var FolettiCleanFn = func(name string) string {
 func XXX_foletti(isDryRun bool) IShop {
 	const _name = "Foletti"
 	// const _url = "https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?limit=100&sort=price|asc&listStyle=list"
-	_url := fmt.Sprintf("https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?price-min=%f&price-max=%f&limit=100&sort=price|asc&listStyle=list&page=%%d", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://superstore.foletti.com/de/categories/it--multimedia/telekommunikation/mobiltelefone/smartphone?price-min=%.f&price-max=%.f&limit=100&sort=price|asc&listStyle=list&page=%%d", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false

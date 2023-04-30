@@ -207,6 +207,92 @@ func main() {
 		}
 	}
 
+	{
+		fmt.Printf("\n%s\n%s\n", "Discounts", strings.Repeat("=", len("Discounts")))
+
+		db, err := pudge.Open("discounts", nil)
+		if err != nil {
+			panic(err)
+		}
+		defer db.Close()
+
+		ids := map[string]bool{}
+
+		if keys, err := db.Keys(nil, 0, 0, true); err != nil {
+			panic(err)
+		} else {
+			for _, key := range keys {
+				ids[string(key)] = true
+			}
+		}
+		// fmt.Println(ids)
+
+		for _, item := range _items {
+			min := Price{}
+			max := Price{}
+			// fmt.Printf("%s", item)
+
+			for _, price := range matrix[item] {
+				// fmt.Printf(" %v", price.Price)
+				if min.Price > price.Price || min.Price == 0 {
+					min = price
+				}
+				if max.Price < price.Price || max.Price == 0 {
+					max = price
+				}
+			}
+
+			// fmt.Printf(" [%v/%v]", min.Price, max.Price)
+			// fmt.Println()
+
+			delete(ids, min.Name)
+
+			notify := false
+
+			if max.Price-min.Price >= shop.ValueWorth {
+				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
+
+				var oldPrice Price
+				if ok, _ := db.Has(min.Name); ok {
+					db.Get(min.Name, &oldPrice)
+				}
+
+				if oldPrice != min {
+					db.Set(min.Name, min)
+
+					notify = true
+				}
+			}
+			if 100-((100/max.Price)*min.Price) >= shop.ValueDiscount {
+				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
+
+				var oldPrice Price
+				if ok, _ := db.Has(min.Name); ok {
+					db.Get(min.Name, &oldPrice)
+				}
+
+				if oldPrice != min {
+					db.Set(min.Name, min)
+
+					notify = true
+				}
+			}
+
+			if notify {
+				productLine := fmt.Sprintf("%s\n%-8.2f ±%.2f %5.f%%\n\n%s", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
+
+				if _, err := SendMessage(productLine); err != nil {
+					panic(err)
+				}
+			}
+		}
+
+		// fmt.Println(ids)
+		for id := range ids {
+			db.Delete(id)
+		}
+	}
+
 	if !isDryRun {
 		ctx := context.Background()
 
