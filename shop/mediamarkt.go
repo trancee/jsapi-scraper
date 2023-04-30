@@ -14,6 +14,8 @@ import (
 var MediamarktRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+[2345]G|\s+((EE )?Enterprise Edition( CH)?)`)
 
 var MediamarktCleanFn = func(name string) string {
+	name = strings.NewReplacer("ONE PLUS", "ONEPLUS").Replace(name)
+
 	if loc := MediamarktRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]

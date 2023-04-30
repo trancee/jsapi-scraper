@@ -14,12 +14,15 @@ import (
 var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)| DS|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`)
 
 var MelectronicsCleanFn = func(name string) string {
-	name = strings.ReplaceAll(name, " 3th ", " 3rd Gen ")
-	name = strings.ReplaceAll(name, "A53 s", "A53s")
+	name = strings.NewReplacer(" 3th ", " 3rd Gen ", "A53 s", "A53s").Replace(name)
 
 	if loc := MelectronicsRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	if strings.Split(name, " ")[0] == "Redmi" {
+		name = "Xiaomi " + name
 	}
 
 	return strings.TrimSpace(name)

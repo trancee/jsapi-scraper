@@ -11,20 +11,22 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|Light|Glowing Black|Night|Prism Black|Prism Blue|bamboo green|blau|blue|denim black|elegant black|grau|lake blue|meteorite grey|midnight blue|night|sandy|sterling blue|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`(\s*[-,]\s+)|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|Light|Glowing Black|Night|Prism Black|Prism Blue|bamboo green|blau|blue|denim black|electric graphite|elegant black|grau|lake blue|meteorite grey|midnight blue|night|sandy|sterling blue|sunburst gold|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE |Smartfon |Solutions |TIM `).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE |Smartfon |Solutions |TIM `).ReplaceAllString(name, "")
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
 
-	name = strings.ReplaceAll(name, " E ", " E")
-	name = strings.ReplaceAll(name, " Ee", " e")
-	name = strings.ReplaceAll(name, " G ", " G")
+	if strings.HasPrefix(name, "Reno") || strings.HasPrefix(name, "OPPO") {
+		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	}
+
+	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G").Replace(name)
 
 	return strings.TrimSpace(name)
 }

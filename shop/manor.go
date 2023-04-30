@@ -14,7 +14,7 @@ import (
 var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d\.\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
 
 var ManorCleanFn = func(name string) string {
-	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " G ", " ").Replace(name)
+	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", " G ", " ").Replace(name)
 
 	name = regexp.MustCompile(`\s{2,}`).ReplaceAllString(name, " ")
 

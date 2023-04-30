@@ -31,6 +31,10 @@ var StegCleanFn = func(name string) string {
 		}
 	}
 
+	if strings.Split(name, " ")[0] == "iPhone" {
+		name = "Apple " + name
+	}
+
 	return strings.TrimSpace(name)
 }
 

@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`\s*\(?(\d+(GB)?[+\/])?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm)\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| bamboo green| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\(?(\d+(GB)?[+\/])?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm)\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| Force Touch| Grey| bamboo green| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -23,9 +23,8 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?|\s+I9505| Smartphone`).ReplaceAllString(name, "")
-	name = strings.ReplaceAll(name, "Note9", "Note 9")
-	name = strings.ReplaceAll(name, "Nokia Nokia ", "Nokia ")
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone`).ReplaceAllString(name, "")
+	name = strings.NewReplacer("Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone").Replace(name)
 
 	if strings.HasPrefix(name, "OPPO") || strings.HasPrefix(name, "Oppo") {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")

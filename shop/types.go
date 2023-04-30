@@ -184,7 +184,7 @@ func (s shop) Fetch() *[]*Product {
 }
 
 func (s shop) IsWorth(product *Product) bool {
-	return (product.Price > 0 && product.Price < 250) || (product.Discount >= 75)
+	return (product.Price > 0 && product.Price < ValueMaximum) || (product.Discount >= ValueDiscount)
 }
 
 func (s shop) ResolveURL(refURL string) *url.URL {
