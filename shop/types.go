@@ -13,7 +13,7 @@ const ValueDiscount = 50.0
 const ValueWorth = 100.0
 
 const ValueMinimum = 50.0
-const ValueMaximum = 300.0
+const ValueMaximum = 350.0
 
 type IShop interface {
 	Name() string
