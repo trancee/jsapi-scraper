@@ -34,9 +34,18 @@ var StegCleanFn = func(name string) string {
 	return strings.TrimSpace(name)
 }
 
+// POST https://www.steg-electronics.ch/de/Filter/SetCheckboxFilter
+// application/x-www-form-urlencoded; charset=UTF-8
+// [Android]	id=22917&sectionId=7145&mainId=29123&isRadioButton=False&productListCacheId=11853&productListType=0&queryString=
+// [Apple iOS]	id=22918&sectionId=7145&mainId=29123&isRadioButton=False&productListCacheId=11853&productListType=0&queryString=
+
+// POST https://www.steg-electronics.ch/de/Filter/SetSlidableFilter
+// application/x-www-form-urlencoded; charset=UTF-8
+// [Preis]		id=2&sectionId=0&minValue=50.00&maxValue=300.00&fromSetIndex=0&toSetIndex=475&productListCacheId=11853&productListType=0&queryString=
+
 func XXX_stegpc(isDryRun bool) IShop {
 	const _name = "Steg Electronics"
-	const _url = "https://www.steg-electronics.ch/de/product/list/11853?sortKey=preisasc&smsc=200"
+	const _url = "https://www.steg-electronics.ch/de/product/list/11853?sortKey=preisasc&smsc=200&p=%d"
 
 	const _debug = false
 	const _tests = false
@@ -56,6 +65,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 	type _Body struct {
 		NewProductList string `json:"newProductList"`
+		PagesCount     int    `json:"pagesCount"`
 	}
 
 	var _result []_Response
@@ -67,134 +77,118 @@ func XXX_stegpc(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	fn := "shop/stegpc.json"
+	for p := 1; p <= 5; p++ {
+		fn := fmt.Sprintf("shop/stegpc.%d.json", p)
 
-	if isDryRun {
-		if body, err := os.ReadFile(path + fn); err != nil {
-			panic(err)
-		} else {
-			_body = body
-		}
-	} else {
-		resp, err := http.Post(_url, "application/json", bytes.NewBuffer(nil))
-		if err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-		defer resp.Body.Close()
-
-		if resp.StatusCode != http.StatusOK {
-			// panic(resp.StatusCode)
-			fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		}
-
-		if body, err := io.ReadAll(resp.Body); err != nil {
-			// panic(err)
-			fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
-			return NewShop(
-				_name,
-				_url,
-
-				nil,
-			)
-		} else {
-			_body = body
-		}
-
-		os.WriteFile(path+fn, _body, 0664)
-	}
-	// fmt.Println(string(_body))
-
-	var body _Body
-	if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
-		panic(err)
-	}
-	// fmt.Println(body.NewProductList)
-
-	doc := parse(string(body.NewProductList))
-
-	if productList := traverse(doc, "article", "class", "product-element"); productList != nil {
-		// fmt.Println(productList)
-
-		for item := productList; item != nil; item = item.NextSibling.NextSibling {
-			// fmt.Println(item)
-
-			_product := _Response{}
-
-			productId, _ := attr(item.Attr, "data-product-id")
-			if _debug {
-				fmt.Println(productId)
-			}
-			_product.code = productId
-
-			// percentage := traverse(item, "div", "class", "percentage")
-			// // fmt.Println(percentage)
-
-			// discount, _ := text(percentage)
-			// discount = strings.TrimSpace(discount)
-			// if _debug {
-			// 	fmt.Println(discount)
-			// }
-			// _product.discount = discount
-
-			imageTitleLink := traverse(item, "a", "class", "link-detail")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			title, _ := attr(imageTitleLink.Attr, "title")
-			if _debug {
-				fmt.Println(title)
-			}
-			_product.title = title
-
-			if Skip(title) {
-				continue
-			}
-
-			model := StegCleanFn(_product.title)
-			if _debug {
-				fmt.Println(model)
-			}
-			_product.model = model
-
-			currentPrice := traverse(item, "div", "class", "generalPrice")
-			// fmt.Println(currentPrice)
-
-			price, _ := text(currentPrice)
-			if _debug {
-				fmt.Println(price)
-			}
-
-			if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
 				panic(err)
 			} else {
-				_product.oldPrice = float32(_price)
+				_body = body
+			}
+		} else {
+			resp, err := http.Post(_url, "application/json", bytes.NewBuffer(nil))
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode != http.StatusOK {
+				// panic(resp.StatusCode)
+				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
 			}
 
-			if insteadPrice := traverse(item, "div", "class", "insteadPrice"); insteadPrice != nil {
-				// fmt.Println(insteadPrice)
+			if body, err := io.ReadAll(resp.Body); err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
 
-				itemText := traverse(insteadPrice, "text", "", "")
+					nil,
+				)
+			} else {
+				_body = body
+			}
 
-				price, _ := text(itemText)
-				price = strings.TrimSpace(strings.ReplaceAll(price, "statt", ""))
+			os.WriteFile(path+fn, _body, 0664)
+		}
+		// fmt.Println(string(_body))
+
+		var body _Body
+		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+			panic(err)
+		}
+		// fmt.Println(body.NewProductList)
+
+		doc := parse(string(body.NewProductList))
+
+		if productList := traverse(doc, "article", "class", "product-element"); productList != nil {
+			// fmt.Println(productList)
+
+			for item := productList; item != nil; item = item.NextSibling.NextSibling {
+				// fmt.Println(item)
+
+				_product := _Response{}
+
+				productId, _ := attr(item.Attr, "data-product-id")
+				if _debug {
+					fmt.Println(productId)
+				}
+				_product.code = productId
+
+				// percentage := traverse(item, "div", "class", "percentage")
+				// // fmt.Println(percentage)
+
+				// discount, _ := text(percentage)
+				// discount = strings.TrimSpace(discount)
+				// if _debug {
+				// 	fmt.Println(discount)
+				// }
+				// _product.discount = discount
+
+				imageTitleLink := traverse(item, "a", "class", "link-detail")
+				// fmt.Println(imageTitleLink)
+
+				link, _ := attr(imageTitleLink.Attr, "href")
+				if _debug {
+					fmt.Println(link)
+				}
+				_product.link = link
+
+				title, _ := attr(imageTitleLink.Attr, "title")
+				if _debug {
+					fmt.Println(title)
+				}
+				_product.title = title
+
+				if Skip(title) {
+					continue
+				}
+
+				model := StegCleanFn(_product.title)
+				if _debug {
+					fmt.Println(model)
+				}
+				_product.model = model
+
+				currentPrice := traverse(item, "div", "class", "generalPrice")
+				// fmt.Println(currentPrice)
+
+				price, _ := text(currentPrice)
 				if _debug {
 					fmt.Println(price)
 				}
@@ -202,15 +196,37 @@ func XXX_stegpc(isDryRun bool) IShop {
 				if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
 					panic(err)
 				} else {
-					_product.price = float32(_price)
+					_product.oldPrice = float32(_price)
 				}
-			}
 
-			if _debug {
-				fmt.Println()
-			}
+				if insteadPrice := traverse(item, "div", "class", "insteadPrice"); insteadPrice != nil {
+					// fmt.Println(insteadPrice)
 
-			_result = append(_result, _product)
+					itemText := traverse(insteadPrice, "text", "", "")
+
+					price, _ := text(itemText)
+					price = strings.TrimSpace(strings.ReplaceAll(price, "statt", ""))
+					if _debug {
+						fmt.Println(price)
+					}
+
+					if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+						panic(err)
+					} else {
+						_product.price = float32(_price)
+					}
+				}
+
+				if _debug {
+					fmt.Println()
+				}
+
+				_result = append(_result, _product)
+			}
+		}
+
+		if body.PagesCount <= p {
+			break
 		}
 	}
 
