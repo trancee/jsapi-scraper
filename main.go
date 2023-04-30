@@ -102,6 +102,7 @@ func main() {
 			shop.XXX_fust(isDryRun),
 			shop.XXX_galaxus(isDryRun),
 			shop.XXX_interdiscount(isDryRun),
+			shop.XXX_manor(isDryRun),
 			shop.XXX_mediamarkt(isDryRun),
 			shop.XXX_mediamarkt_refurbished(isDryRun),
 			shop.XXX_melectronics(isDryRun),

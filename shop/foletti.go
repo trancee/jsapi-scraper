@@ -249,12 +249,12 @@ func XXX_foletti(isDryRun bool) IShop {
 					}
 				}
 
-				if itemBadge := traverse(item, "span", "class", "badge"); itemBadge != nil {
-					fmt.Println(itemBadge)
+				// if itemBadge := traverse(item, "span", "class", "badge"); itemBadge != nil {
+				// 	fmt.Println(itemBadge)
 
-					// badge, _ := text(itemBadge)
-					// panic(badge)
-				}
+				// 	// badge, _ := text(itemBadge)
+				// 	// panic(badge)
+				// }
 
 				if _debug {
 					fmt.Println()
