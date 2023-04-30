@@ -25,7 +25,8 @@ var MicrospotCleanFn = func(name string) string {
 
 func XXX_microspot(isDryRun bool) IShop {
 	const _name = "Microspot"
-	const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
+	// const _url = "https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:hasPromoLabel:true&lang=de"
+	_url := fmt.Sprintf("https://www.microspot.ch/mspocc/occ/msp/products/search?currentPage=0&pageSize=100&query=:price-asc:categoryPath:/1/400/4100:categoryPath:/1/400/4100/411000:price_min:%.f:price_max:%.f:producttype411001k:Smartphone&lang=de", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 
