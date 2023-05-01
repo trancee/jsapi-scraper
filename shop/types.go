@@ -67,6 +67,7 @@ var _skips = map[string]bool{
 	"BLACKBERRY":      true,
 	"BLAUPUNKT":       true,
 	"BRONDI":          true,
+	"CARBON":          true,
 	"CAT":             true,
 	"CATERPILLAR":     true,
 	"CELLULARE":       true,

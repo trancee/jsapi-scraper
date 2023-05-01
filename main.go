@@ -249,20 +249,20 @@ func main() {
 
 			notify := false
 
-			if max.Price-min.Price >= shop.ValueWorth {
-				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
+			// if max.Price-min.Price >= shop.ValueWorth {
+			// 	fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 
-				var oldPrice Price
-				if ok, _ := db.Has(min.Name); ok {
-					db.Get(min.Name, &oldPrice)
-				}
+			// 	var oldPrice Price
+			// 	if ok, _ := db.Has(min.Name); ok {
+			// 		db.Get(min.Name, &oldPrice)
+			// 	}
 
-				if oldPrice != min {
-					db.Set(min.Name, min)
+			// 	if oldPrice != min {
+			// 		db.Set(min.Name, min)
 
-					notify = true
-				}
-			}
+			// 		notify = true
+			// 	}
+			// }
 			if 100-((100/max.Price)*min.Price) >= shop.ValueDiscount {
 				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 

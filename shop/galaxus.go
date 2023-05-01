@@ -24,13 +24,28 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone`).ReplaceAllString(name, "")
-	name = strings.NewReplacer("Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone").Replace(name)
+	name = strings.NewReplacer("Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+").Replace(name)
 
-	if strings.HasPrefix(name, "OPPO") || strings.HasPrefix(name, "Oppo") {
+	s := strings.Split(name, " ")
+
+	if s[0] == "OPPO" || s[0] == "Oppo" {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 
-	if strings.HasPrefix(name, "POCO") {
+	if s[0] == "Honor" {
+		name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
+	}
+
+	if s[0] == "Motorola" {
+		if s[1] == "Moto" && s[2] == "Edge" {
+			name = strings.ReplaceAll(name, "Moto ", "")
+		}
+		if (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
+			name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
+		}
+	}
+
+	if s[0] == "POCO" {
 		name = "Xiaomi " + name
 	}
 

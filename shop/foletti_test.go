@@ -8,6 +8,7 @@ import (
 var folettiNames = []string{
 	"Blackview BV4900 Pro 14.5 cm (5.7) Dual SIM Android 10.0 4G Micro-USB 4 GB 64 GB 5580 mAh Black",
 	"Blackview BV5200 5180 mAh 4/32 GB Green smartphone",
+	"Motorola edge 20 frosted grey",
 	"Motorola edge 20 lite electric graphite",
 	"Motorola Moto E 13",
 	"Motorola Moto E 22",
@@ -73,6 +74,7 @@ var folettiNames = []string{
 var folettiNamesExpected = []string{
 	"Blackview BV4900 Pro",
 	"Blackview BV5200",
+	"Motorola edge 20",
 	"Motorola edge 20 lite",
 	"Motorola Moto E13",
 	"Motorola Moto E22",
