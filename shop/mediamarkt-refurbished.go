@@ -20,6 +20,12 @@ var MediamarktRefurbishedCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	s := strings.Split(name, " ")
+
+	if s[0] == "Samsung" {
+		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note$1")
+	}
+
 	return strings.TrimSpace(name)
 }
 
