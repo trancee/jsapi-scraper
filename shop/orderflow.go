@@ -198,7 +198,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 				_result = append(_result, _product)
 			}
 
-			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+			for item := productList.FirstChild.NextSibling; item != nil && item.NextSibling != nil; item = item.NextSibling.NextSibling {
 				fn(item)
 			}
 
