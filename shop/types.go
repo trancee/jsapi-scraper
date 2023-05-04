@@ -131,6 +131,7 @@ var _skips = map[string]bool{
 	"TTFONE":          true,
 	"ULEFONE":         true, // EXCLUDE
 	"ULEWAY":          true,
+	"UMI":             true,
 	"UMIDIGI":         true, // EXCLUDE
 	"UNBEKANNT":       true,
 	"UNIFY":           true,

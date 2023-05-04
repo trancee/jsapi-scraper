@@ -17,7 +17,7 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
-var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU |Xia |Smartfon |Marke Modell |Sam |Cellulare |Unlocked )\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Blue|Buds|Cinemagic|Cloud Navy|Grau|Midnight Gray|Onyx Gray|Oro|Pebble White|Sunrise Orange|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS|\W+\(?20[12]\d\)?| \+ 5G`)
+var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU |Xia |Smartfon |Marke Modell |Sam |Cellulare |Unlocked )\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Blue|Buds|Cinemagic|Cloud Navy|Grau|Midnight Gray|Onyx Gray|Oro|Pebble White|Sunrise Orange|\/Black|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS|\W+\(?20[12]\d\)?| \+ 5G`)
 var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+([+/]\d+)?\s*(GB|TB)|\d\+\d+G|\W*[45][Gg](\s+|$)| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 4\+64`)
 
 var AmazonCleanFn = func(name string) string {
@@ -49,6 +49,10 @@ var AmazonCleanFn = func(name string) string {
 		}
 
 		name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
+	}
+
+	if s[0] == "OPPO" || s[0] == "Oppo" {
+		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 
 	if s[0] == "Redmi" {

@@ -33,6 +33,7 @@ var nameMapping = map[string]string{
 	"Xa":      "XA",
 	"Xcover":  "XCover",
 	"Xgody":   "XGODY",
+	"Xl":      "XL",
 	"Xr":      "XR",
 	"Xs":      "XS",
 	"Xz":      "XZ",

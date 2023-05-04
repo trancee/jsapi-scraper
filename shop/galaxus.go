@@ -23,7 +23,7 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone| Snapdragon`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone| Snapdragon| Black`).ReplaceAllString(name, "")
 	name = strings.NewReplacer("Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+").Replace(name)
 
 	s := strings.Split(name, " ")
@@ -37,7 +37,7 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
-		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note$1")
+		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
 	}
 
 	if s[0] == "Motorola" {

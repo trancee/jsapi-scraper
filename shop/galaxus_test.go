@@ -117,7 +117,7 @@ var galaxusNames = []string{
 	"Samsung Galaxy A72",
 	"Samsung Galaxy Note 20 Ultra Snapdragon",
 	"Samsung Galaxy Note 4",
-	"Samsung Galaxy Note9",
+	"Samsung Galaxy Note 9",
 	"Samsung Galaxy S20 FE 5G",
 	"Samsung Galaxy XCover 4s",
 	"Samsung Galaxy XCover 5 EE Enterprise Edition",
@@ -174,6 +174,7 @@ var galaxusNames = []string{
 	"Xiaomi Redmi Note 9 Pro",
 	"ZTE Blade A31",
 	"ZTE Blade A31 Lite",
+	"ZTE Blade V40S 4G Black",
 }
 
 var galaxusNamesExpected = []string{
@@ -286,9 +287,9 @@ var galaxusNamesExpected = []string{
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A72",
-	"Samsung Galaxy Note20 Ultra",
-	"Samsung Galaxy Note4",
-	"Samsung Galaxy Note9",
+	"Samsung Galaxy Note 20 Ultra",
+	"Samsung Galaxy Note 4",
+	"Samsung Galaxy Note 9",
 	"Samsung Galaxy S20 FE",
 	"Samsung Galaxy XCover 4s",
 	"Samsung Galaxy XCover 5",
@@ -345,6 +346,7 @@ var galaxusNamesExpected = []string{
 	"Xiaomi Redmi Note 9 Pro",
 	"ZTE Blade A31",
 	"ZTE Blade A31 Lite",
+	"ZTE Blade V40S",
 }
 
 func TestGalaxusClean(t *testing.T) {
