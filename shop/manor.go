@@ -23,6 +23,16 @@ var ManorCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	s := strings.Split(name, " ")
+
+	if s[0] == "MOTOROLA" {
+		name = strings.ReplaceAll(name, "Moto E ", "Moto ")
+	}
+
+	if s[0] == "OPPO" {
+		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	}
+
 	return strings.TrimSpace(name)
 }
 

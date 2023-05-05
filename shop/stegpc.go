@@ -91,7 +91,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	for p := 1; p <= 5; p++ {
+	for p := 1; p <= 10; p++ {
 		fn := fmt.Sprintf("shop/stegpc.%d.json", p)
 
 		if isDryRun {

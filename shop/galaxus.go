@@ -28,6 +28,10 @@ var GalaxusCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "Blackview" {
+		name = strings.ReplaceAll(name, "BL5000 8", "BL5000")
+	}
+
 	if s[0] == "OPPO" || s[0] == "Oppo" {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
@@ -47,6 +51,8 @@ var GalaxusCleanFn = func(name string) string {
 		if (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
 			name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
 		}
+		name = strings.ReplaceAll(name, "G31 4", "G31")
+		name = strings.ReplaceAll(name, "G42 4", "G42")
 	}
 
 	if s[0] == "POCO" {
