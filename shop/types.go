@@ -75,6 +75,7 @@ var _skips = map[string]bool{
 	"CUBOT":           true, // EXCLUDE
 	"CYRUS":           true,
 	"DENVER":          true,
+	"DEUTSCHE":        true,
 	"DOOGEE":          true, // EXCLUDE
 	"DORO":            true,
 	"EL":              true,
@@ -124,8 +125,9 @@ var _skips = map[string]bool{
 	"SUUNTO":          true,
 	"SWISSTONE":       true,
 	"SWISSVOICE":      true,
-	"TELEFUNKEN":      true,
+	"TELEFON":         true,
 	"TELEFONAS":       true,
+	"TELEFUNKEN":      true,
 	"TELEKOM":         true,
 	"TREVI":           true,
 	"TTFONE":          true,

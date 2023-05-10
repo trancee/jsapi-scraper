@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\(?(\d+(GB)?[+\/])?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm)\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| Force Touch| Grey| bamboo green| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\(?(\d+(GB)?[+\/])?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm|\")\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| Force Touch| Grey| Midnight Space| bamboo green| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -24,7 +24,7 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone| Snapdragon| Black`).ReplaceAllString(name, "")
-	name = strings.NewReplacer("Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+").Replace(name)
+	name = strings.NewReplacer("Xiaomi M5s", "Xiaomi Poco M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master").Replace(name)
 
 	s := strings.Split(name, " ")
 
@@ -58,9 +58,8 @@ var GalaxusCleanFn = func(name string) string {
 	if s[0] == "POCO" {
 		name = "Xiaomi " + name
 	}
-
-	if name == "Xiaomi M5s" {
-		name = "Xiaomi Poco M5s"
+	if s[0] == "Xiaomi" {
+		name = strings.ReplaceAll(name, "Redmi 9A 2", "Redmi 9A")
 	}
 
 	return strings.TrimSpace(name)

@@ -17,13 +17,27 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
-var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU |Xia |Smartfon |Marke Modell |Sam |Cellulare |Unlocked )\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Blue|Buds|Cinemagic|Cloud Navy|Glacier Blue|Grau|Midnight Gray|Onyx Gray|Oro|Pebble White|Sunrise Orange|\/Black|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS|\W+\(?20[12]\d\)?| \+ 5G`)
-var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+([+/]\d+)?\s*(GB|TB)|\d\+\d+G|\W*[45][Gg](\s+|$)| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 4\+64`)
+var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Neu |EU |Xia |MOVIL |Smartfon |Marke Modell |Sam |Cellulare |Unlocked |Senior )\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+[,.]\d+\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|Blue|Buds|Cinemagic|Cloud Navy|Glacier Blue|Gradient Bronze|Grau|Midnight Gray|Onyx Gray|Oro|Pebble White|Sunrise Orange|\/Black|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS|\W+\(?20[12]\d\)?| \+ 5G`)
+var AmazonRegex4 = regexp.MustCompile(`\s*\(?\d+([+\/]\d+)?\s*(GB|TB)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 4\+64| 128-4`)
 
 var AmazonCleanFn = func(name string) string {
 	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT`).ReplaceAllString(name, "")
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", "8GBRAM128GBROM", " ").Replace(name)
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ").Replace(name)
 	name = AmazonRegex3.ReplaceAllString(name, "|")
+
+	if s := strings.Split(name, "|"); len(s) > 0 {
+		_name := strings.TrimSpace(s[0])
+		if len(strings.Split(_name, " ")) == 1 {
+			for i := 1; i < len(s); i++ {
+				if name := strings.TrimSpace(s[i]); name != "" {
+					// fmt.Println("[" + name + "]")
+					_name += " " + name
+					break
+				}
+			}
+		}
+		name = strings.TrimSpace(_name)
+	}
 
 	s := strings.Split(name, " ")
 
@@ -55,6 +69,10 @@ var AmazonCleanFn = func(name string) string {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 
+	if s[0] == "Galaxy" {
+		name = "Samsung " + name
+	}
+
 	if s[0] == "Redmi" {
 		name = "Xiaomi " + name
 	}
@@ -64,39 +82,17 @@ var AmazonCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "  M13", " Galaxy M13")
 	}
 	if s[0] == "Xiaomi" {
-		name = strings.ReplaceAll(name, "Xiaomi 10|", "Xiaomi Redmi 10|")
-		name = strings.ReplaceAll(name, "Xiaomi M5 |", "Xiaomi POCO M5|")
+		name = strings.ReplaceAll(name, "Xiaomi 10", "Xiaomi Redmi 10")
+		name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi POCO M5")
 		name = strings.ReplaceAll(name, "Xiaomi Note ", "Xiaomi Redmi Note ")
 	}
 	if s[0] == "ZTE" {
 		name = strings.ReplaceAll(name, "V40 S", "V40S")
-	}
 
-	if s := strings.Split(name, "|"); len(s) > 0 {
-		_name := strings.TrimSpace(s[0])
-		if len(strings.Split(_name, " ")) == 1 {
-			for i := 1; i < len(s); i++ {
-				if name := strings.TrimSpace(s[i]); name != "" {
-					// fmt.Println("[" + name + "]")
-					_name += " " + name
-					break
-				}
-			}
-		}
-		name = strings.TrimSpace(_name)
-	}
-
-	if strings.HasPrefix(name, "ZTE") {
 		if strings.HasSuffix(name, "Vita") {
 			name = strings.ReplaceAll(name, "ZTE", "ZTE Blade")
 		}
 	}
-
-	name = strings.ReplaceAll(name, "  ", " ")
-	// name = strings.TrimSpace(AmazonRegex.ReplaceAllString(name, ""))
-	// name = strings.TrimSpace(strings.Split(strings.ReplaceAll(name, "()", "|"), "|")[0])
-	// name = strings.ReplaceAll(name, "()", ",")
-	// name = strings.TrimSpace(strings.Split(name, "(")[0])
 
 	if loc := AmazonRegex4.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%s\t%s\n", loc, name[:loc[0]], name)
@@ -108,10 +104,10 @@ var AmazonCleanFn = func(name string) string {
 		// fmt.Println(_model)
 		// _model = strings.TrimSpace(strings.Split(strings.ReplaceAll(_model, "()", "|"), "|")[0])
 		// fmt.Println(_model)
-		return strings.TrimSpace(_model)
+		return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(_model), " ")
 	}
 
-	return name
+	return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(name), " ")
 }
 
 func XXX_amazon(isDryRun bool) IShop {
@@ -264,7 +260,7 @@ func XXX_amazon(isDryRun bool) IShop {
 				}
 				_product.title = title
 
-				if strings.Contains(title, "Outdoor") {
+				if strings.Contains(title, "Outdoor") || (len(title) > 7 && title[0:7] == "emporia") {
 					continue
 				}
 
