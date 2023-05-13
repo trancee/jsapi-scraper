@@ -14,11 +14,17 @@ import (
 var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?)`)
 
 var AlltronCleanFn = func(name string) string {
-	name = strings.ReplaceAll(name, " Phones ", " ")
+	name = strings.NewReplacer(" Phones ", " ", "Recommerce Switzerland SA ", "").Replace(name)
 
 	if loc := AlltronRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "iPhone" {
+		name = "Apple " + name
 	}
 
 	return strings.TrimSpace(name)
