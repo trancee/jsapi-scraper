@@ -18,7 +18,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 
-var FustRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)\b|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -29,7 +29,13 @@ var FustCleanFn = func(name string) string {
 	name = strings.ReplaceAll(name, "Samsung Speicherkarte + ", "")
 	name = strings.ReplaceAll(name, "Speicherkarte + ", "")
 
-	if strings.HasPrefix(name, "Reno") || strings.HasPrefix(name, "Oppo") {
+	s := strings.Split(name, " ")
+
+	if s[0] == "Fust" {
+		name = strings.ReplaceAll(name, "Fust ", "Inoi ")
+	}
+
+	if s[0] == "Reno" || s[0] == "Oppo" {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 

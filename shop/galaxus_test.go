@@ -189,6 +189,7 @@ var galaxusNames = []string{
 	"Xiaomi X5 6/128GB blue EU",
 	"ZTE Blade A31",
 	"ZTE Blade A31 Lite",
+	"ZTE Blade V40 Vita 128G+4G black(inkl. Buds",
 	"ZTE Blade V40S 4G Black",
 }
 
@@ -376,6 +377,7 @@ var galaxusNamesExpected = []string{
 	"Xiaomi Poco X5",
 	"ZTE Blade A31",
 	"ZTE Blade A31 Lite",
+	"ZTE Blade V40 Vita",
 	"ZTE Blade V40S",
 }
 
