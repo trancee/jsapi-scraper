@@ -92,7 +92,24 @@ func XXX_alltron(isDryRun bool) IShop {
 			_body = body
 		}
 	} else {
-		resp, err := http.Get(_url)
+		req, err := http.NewRequest("GET", _url, nil)
+		if err != nil {
+			// panic(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+		req.Header.Set("Accept-Language", "de")
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+		req.Header.Set("X-Requested-With", "XMLHttpRequest")
+
+		client := &http.Client{}
+		resp, err := client.Do(req)
 		if err != nil {
 			// panic(err)
 			fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
@@ -145,7 +162,24 @@ func XXX_alltron(isDryRun bool) IShop {
 			_body = body
 		}
 	} else {
-		resp, err := http.Get(_api + strings.Join(_skus, ","))
+		req, err := http.NewRequest("GET", _api+strings.Join(_skus, ","), nil)
+		if err != nil {
+			// panic(err)
+			fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+			return NewShop(
+				_name,
+				_url,
+
+				nil,
+			)
+		}
+		req.Header.Set("Accept-Language", "de")
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+		req.Header.Set("X-Requested-With", "XMLHttpRequest")
+
+		client := &http.Client{}
+		resp, err := client.Do(req)
 		if err != nil {
 			// panic(err)
 			fmt.Printf("[%s] %s (%s)\n", _name, err, _api+strings.Join(_skus, ","))
