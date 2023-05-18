@@ -106,6 +106,62 @@
       "sustainable": false
     },
     {
+      "code": "785300188166",
+      "name": "C22 64GB charcoal",
+      "url": "/de/p/785300188166/nokia-c22-64gb-charcoal",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 129.00,
+        "priceType": "BUY",
+        "formattedValue": "129,00 CHF"
+      },
+      "baseProduct": "b785300188166",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/b6f16e5a26296b32e37c5fba013100850194ca3c/nokia-c22-64gb-charcoal-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": true,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
       "code": "785300174175",
       "name": "moto e22i 32GB Graphite Grey",
       "url": "/de/p/785300174175/motorola-moto-e22i-32gb-graphite-grey",
@@ -138,7 +194,7 @@
           "url": "https://image.migros.ch/original/7a149c3c1189caa07be039dc4cecb6e41bafef94/motorola.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -152,11 +208,190 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300188167",
+      "name": "C32 64GB charcoal",
+      "url": "/de/p/785300188167/nokia-c32-64gb-charcoal",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 149.00,
+        "priceType": "BUY",
+        "formattedValue": "149,00 CHF"
+      },
+      "baseProduct": "b785300188167",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/0a9e987945b11e20faa83a55a61f2a7e4b79a3ac/nokia-c32-64gb-charcoal-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": true,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794699200000",
+      "name": "Nokia G22 DS 64GB - Grey",
+      "url": "/de/p/794699200000/nokia-nokia-g22-ds-64gb-grey",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 159.00,
+        "priceType": "BUY",
+        "formattedValue": "159,00 CHF"
+      },
+      "baseProduct": "b794699200000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/b61803cb22bd55da51041a42e7f887943db94d8e/nokia-nokia-g22-ds-64gb-grey-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 11.0,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 179.00,
+        "priceType": "BUY",
+        "formattedValue": "179,00 CHF"
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794686400000",
+      "name": "Redmi Note 11 128GB Graphite Gray",
+      "url": "/de/p/794686400000/xiaomi-redmi-note-11-128gb-graphite-gray",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 159.00,
+        "priceType": "BUY",
+        "formattedValue": "159,00 CHF"
+      },
+      "baseProduct": "b794686400000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/ec94ab3aa1259b383681681a3ffc85d88aec53d9/xiaomi-redmi-note-11-128gb-graphite-gray-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": false,
+      "showStockEnquiry": true,
+      "percentageReduction": 36.0,
+      "brand": {
+        "name": "xiaomi",
+        "image": {
+          "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 249.00,
+        "priceType": "BUY",
+        "formattedValue": "249,00 CHF"
+      },
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 6,
+      "ratingAverage": 4.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -168,9 +403,9 @@
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 139.00,
+        "value": 159.00,
         "priceType": "BUY",
-        "formattedValue": "139,00 CHF"
+        "formattedValue": "159,00 CHF"
       },
       "baseProduct": "b794686200000",
       "images": [
@@ -188,18 +423,11 @@
       "reservable": true,
       "orderable": false,
       "showStockEnquiry": true,
-      "percentageReduction": 12.0,
       "brand": {
         "name": "Nokia",
         "image": {
           "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
         }
-      },
-      "suggestedRetailPrice": {
-        "currencyIso": "CHF",
-        "value": 159.00,
-        "priceType": "BUY",
-        "formattedValue": "159,00 CHF"
       },
       "deliveryDays": -1,
       "preorder": false,
@@ -216,64 +444,6 @@
       "availabilityDetails": {
         "icon": "p2c",
         "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "794670300000",
-      "name": "SMART.4 32 GB schwarz / silber",
-      "url": "/de/p/794670300000/emporia-smart-4-32-gb-schwarz-silber",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 159.00,
-        "priceType": "BUY",
-        "formattedValue": "159,00 CHF"
-      },
-      "baseProduct": "b794670300000",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/70abe3ee476071190acd7944b12013aaa4bd2b6d/emporia-smart4-32-gb-schwarz-silber-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "brand": {
-        "name": "Emporia",
-        "image": {
-          "url": "https://image.migros.ch/original/bd931f7817d1e6c9287b270007051de64cac1bfd/emporia.jpg"
-        }
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 8,
-      "ratingAverage": 4.75,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
       },
       "esdProduct": false,
       "sustainable": false
@@ -333,6 +503,64 @@
       "sustainable": false
     },
     {
+      "code": "794670300000",
+      "name": "SMART.4 32 GB schwarz / silber",
+      "url": "/de/p/794670300000/emporia-smart-4-32-gb-schwarz-silber",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 169.00,
+        "priceType": "BUY",
+        "formattedValue": "169,00 CHF"
+      },
+      "baseProduct": "b794670300000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/70abe3ee476071190acd7944b12013aaa4bd2b6d/emporia-smart4-32-gb-schwarz-silber-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Emporia",
+        "image": {
+          "url": "https://image.migros.ch/original/bd931f7817d1e6c9287b270007051de64cac1bfd/emporia.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 9,
+      "ratingAverage": 4.78,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
       "code": "785300184193",
       "name": "Redmi 12C 128GB - graphite gray",
       "url": "/de/p/785300184193/xiaomi-redmi-12c-128gb-graphite-gray",
@@ -365,7 +593,7 @@
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -379,65 +607,9 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "794699200000",
-      "name": "Nokia G22 DS 64GB - Grey",
-      "url": "/de/p/794699200000/nokia-nokia-g22-ds-64gb-grey",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 179.00,
-        "priceType": "BUY",
-        "formattedValue": "179,00 CHF"
-      },
-      "baseProduct": "b794699200000",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/b61803cb22bd55da51041a42e7f887943db94d8e/nokia-nokia-g22-ds-64gb-grey-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "brand": {
-        "name": "Nokia",
-        "image": {
-          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
-        }
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": false,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
         "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
+        "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -477,7 +649,7 @@
           "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -491,9 +663,65 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300173363",
+      "name": "A57s 128GB - starry black",
+      "url": "/de/p/785300173363/oppo-a57s-128gb-starry-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 179.00,
+        "priceType": "BUY",
+        "formattedValue": "179,00 CHF"
+      },
+      "baseProduct": "b785300173363",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/68ca981664029603f06e921719a8756cae50a810/oppo-a57s-128gb-starry-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Oppo",
+        "image": {
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -577,7 +805,7 @@
       "priceRange": {},
       "bossNumber": "240736283005",
       "reservable": true,
-      "orderable": true,
+      "orderable": false,
       "showStockEnquiry": true,
       "brand": {
         "name": "Amplicomms",
@@ -585,7 +813,7 @@
           "url": "https://image.migros.ch/original/9704330258769948c3467c63fe95fea4b2898e87/amplicomms.jpg"
         }
       },
-      "deliveryDays": 2,
+      "deliveryDays": -1,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -594,18 +822,14 @@
       "hasHazard": false,
       "configuratorProduct": false,
       "containsServiceItems": false,
-      "ratingCount": 1,
+      "ratingCount": 2,
       "ratingAverage": 4.0,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -643,7 +867,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -657,130 +881,9 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300173363",
-      "name": "A57s 128GB - starry black",
-      "url": "/de/p/785300173363/oppo-a57s-128gb-starry-black",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 199.00,
-        "priceType": "BUY",
-        "formattedValue": "199,00 CHF"
-      },
-      "baseProduct": "b785300173363",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/68ca981664029603f06e921719a8756cae50a810/oppo-a57s-128gb-starry-black-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": false,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300169955",
-      "name": "A96 (4G) 128GB - starry black",
-      "url": "/de/p/785300169955/oppo-a96-4g-128gb-starry-black",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 199.00,
-        "priceType": "BUY",
-        "formattedValue": "199,00 CHF"
-      },
-      "baseProduct": "b785300169955",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/ff2265a6a7c424d581e2c83f3aca3ef63ad2abda/oppo-a96-4g-128gb-starry-black-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "percentageReduction": 33.0,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "suggestedRetailPrice": {
-        "currencyIso": "CHF",
-        "value": 299.00,
-        "priceType": "BUY",
-        "formattedValue": "299,00 CHF"
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": false,
-      "ratingCount": 3,
-      "ratingAverage": 4.67,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -794,9 +897,9 @@
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 199.00,
+        "value": 195.00,
         "priceType": "BUY",
-        "formattedValue": "199,00 CHF"
+        "formattedValue": "195,00 CHF"
       },
       "baseProduct": "b785300164716",
       "images": [
@@ -820,7 +923,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -829,14 +932,14 @@
       "hasHazard": false,
       "configuratorProduct": false,
       "containsServiceItems": true,
-      "ratingCount": 5,
-      "ratingAverage": 4.6,
+      "ratingCount": 6,
+      "ratingAverage": 4.67,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -878,7 +981,7 @@
           "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -892,7 +995,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -956,64 +1059,6 @@
       "sustainable": false
     },
     {
-      "code": "794687500000",
-      "name": "Galaxy A13 128GB Black",
-      "url": "/de/p/794687500000/samsung-galaxy-a13-128gb-black",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 209.00,
-        "priceType": "BUY",
-        "formattedValue": "209,00 CHF"
-      },
-      "baseProduct": "b794687500000",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/eba29be15be85e1e38e404909b709dde72c3e4d2/samsung-galaxy-a13-128gb-black-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Samsung",
-        "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
-        }
-      },
-      "deliveryDays": 22,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 25,
-      "ratingAverage": 4.36,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "orange.onequarter",
-        "availabilityText": "lieferbar in 4 Wochen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
       "code": "785300174174",
       "name": "moto g22 64GB Cosmic Black",
       "url": "/de/p/785300174174/motorola-moto-g22-64gb-cosmic-black",
@@ -1046,7 +1091,7 @@
           "url": "https://image.migros.ch/original/7a149c3c1189caa07be039dc4cecb6e41bafef94/motorola.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1060,7 +1105,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1070,9 +1115,9 @@
       "sustainable": false
     },
     {
-      "code": "785300162681",
-      "name": "A94 5G 128 GB fluid black",
-      "url": "/de/p/785300162681/oppo-a94-5g-128-gb-fluid-black",
+      "code": "794687500000",
+      "name": "Galaxy A13 128GB Black",
+      "url": "/de/p/794687500000/samsung-galaxy-a13-128gb-black",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
@@ -1080,124 +1125,10 @@
         "priceType": "BUY",
         "formattedValue": "209,00 CHF"
       },
-      "baseProduct": "b785300162681",
+      "baseProduct": "b794687500000",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/d6bc4dcbdb5bd9dd1f5328bbd37ef19fca10b7ea/oppo-a94-5g-128-gb-fluid-black-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "deliveryDays": 3,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300162682",
-      "name": "A94 5G 128 GB cosmo blue",
-      "url": "/de/p/785300162682/oppo-a94-5g-128-gb-cosmo-blue",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 209.00,
-        "priceType": "BUY",
-        "formattedValue": "209,00 CHF"
-      },
-      "baseProduct": "b785300162682",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/ec780aacb6c79f47ef3f9eef40b23d6c323141db/oppo-a94-5g-128-gb-cosmo-blue-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240722930505",
-      "reservable": false,
-      "orderable": true,
-      "showStockEnquiry": false,
-      "brand": {
-        "name": "Oppo",
-        "image": {
-          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
-        }
-      },
-      "deliveryDays": 3,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 1,
-      "ratingAverage": 4.0,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "STRECKE",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "785300182762",
-      "name": "Galaxy A14 Black 128GB",
-      "url": "/de/p/785300182762/samsung-galaxy-a14-black-128gb",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 219.00,
-        "priceType": "BUY",
-        "formattedValue": "219,00 CHF"
-      },
-      "baseProduct": "b785300182762",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/80d5df1b3bfb187ffd4fbd863d9bf55587655f80/samsung-galaxy-a14-black-128gb-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/eba29be15be85e1e38e404909b709dde72c3e4d2/samsung-galaxy-a13-128gb-black-smartphone.jpg"
         }
       ],
       "categories": [
@@ -1216,7 +1147,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 21,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1224,15 +1155,15 @@
       "returnable": false,
       "hasHazard": false,
       "configuratorProduct": false,
-      "containsServiceItems": false,
-      "ratingCount": 1,
-      "ratingAverage": 5.0,
+      "containsServiceItems": true,
+      "ratingCount": 25,
+      "ratingAverage": 4.36,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "icon": "orange.onequarter",
+        "availabilityText": "lieferbar in 3 Wochen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1274,7 +1205,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1288,7 +1219,65 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300182762",
+      "name": "Galaxy A14 Black 128GB",
+      "url": "/de/p/785300182762/samsung-galaxy-a14-black-128gb",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 219.00,
+        "priceType": "BUY",
+        "formattedValue": "219,00 CHF"
+      },
+      "baseProduct": "b785300182762",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/80d5df1b3bfb187ffd4fbd863d9bf55587655f80/samsung-galaxy-a14-black-128gb-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "ratingCount": 1,
+      "ratingAverage": 5.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1330,7 +1319,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1344,11 +1333,70 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794686800000",
+      "name": "Nova 9 SE 128GB Midnight Black",
+      "url": "/de/p/794686800000/huawei-nova-9-se-128gb-midnight-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 219.00,
+        "priceType": "BUY",
+        "formattedValue": "219,00 CHF"
+      },
+      "baseProduct": "b794686800000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/cd2dd3d2da1f20512aba39e2b5359b746c8ed283/huawei-nova-9-se-128gb-midnight-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": false,
+      "showStockEnquiry": true,
+      "percentageReduction": 40.0,
+      "brand": {
+        "name": "Huawei",
+        "image": {
+          "url": "https://image.migros.ch/original/d36f8991d327b403eb3a7f14aa6867e37362b851/huawei.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 369.00,
+        "priceType": "BUY",
+        "formattedValue": "369,00 CHF"
+      },
+      "deliveryDays": -1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -1386,7 +1434,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1402,7 +1450,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1468,9 +1516,133 @@
       "sustainable": false
     },
     {
-      "code": "794698900000",
-      "name": "Galaxy A14 5G Black 128GB",
-      "url": "/de/p/794698900000/samsung-galaxy-a14-5g-black-128gb",
+      "code": "794683300000",
+      "name": "Nova 9 - Black",
+      "url": "/de/p/794683300000/huawei-nova-9-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 229.00,
+        "priceType": "BUY",
+        "formattedValue": "229,00 CHF"
+      },
+      "baseProduct": "b794683300000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/a7a2b046755f432ba20ed318bee3bf1af5d1949e/huawei-nova-9-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "percentageReduction": 42.0,
+      "brand": {
+        "name": "Huawei",
+        "image": {
+          "url": "https://image.migros.ch/original/d36f8991d327b403eb3a7f14aa6867e37362b851/huawei.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 399.00,
+        "priceType": "BUY",
+        "formattedValue": "399,00 CHF"
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 2,
+      "ratingAverage": 2.5,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794683500000",
+      "name": "Nova 9 - Starry Blue",
+      "url": "/de/p/794683500000/huawei-nova-9-starry-blue",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 229.00,
+        "priceType": "BUY",
+        "formattedValue": "229,00 CHF"
+      },
+      "baseProduct": "b794683500000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/59dcee3b5d706afb3e9d8ee17b72b76ba6a07e36/huawei-nova-9-starry-blue-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": false,
+      "showStockEnquiry": true,
+      "percentageReduction": 42.0,
+      "brand": {
+        "name": "Huawei",
+        "image": {
+          "url": "https://image.migros.ch/original/d36f8991d327b403eb3a7f14aa6867e37362b851/huawei.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 399.00,
+        "priceType": "BUY",
+        "formattedValue": "399,00 CHF"
+      },
+      "deliveryDays": -1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794688100000",
+      "name": "Redmi Note 11 Pro 5G 128GB",
+      "url": "/de/p/794688100000/xiaomi-redmi-note-11-pro-5g-128gb",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
@@ -1478,10 +1650,10 @@
         "priceType": "BUY",
         "formattedValue": "239,00 CHF"
       },
-      "baseProduct": "b794698900000",
+      "baseProduct": "b794688100000",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/b502871e0e7aa8fd87dc15d4d67457f65a78fcca/samsung-galaxy-a14-5g-black-128gb-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/cc9f9789cce278f3ac9a76922d1edfb9d78d6047/xiaomi-redmi-note-11-pro-5g-128gb-smartphone.jpg"
         }
       ],
       "categories": [
@@ -1490,147 +1662,23 @@
         }
       ],
       "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "percentageReduction": 7.0,
-      "brand": {
-        "name": "Samsung",
-        "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
-        }
-      },
-      "suggestedRetailPrice": {
-        "currencyIso": "CHF",
-        "value": 259.00,
-        "priceType": "BUY",
-        "formattedValue": "259,00 CHF"
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 1,
-      "ratingAverage": 5.0,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "794687400000",
-      "name": "Galaxy A33 5G 128GB Awesome Black",
-      "url": "/de/p/794687400000/samsung-galaxy-a33-5g-128gb-awesome-black",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 249.00,
-        "priceType": "BUY",
-        "formattedValue": "249,00 CHF"
-      },
-      "baseProduct": "b794687400000",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/666ad40dc9535b2a90e6beff80ffc241da69dd88/samsung-galaxy-a33-5g-128gb-awesome-black-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
-      "percentageReduction": 16.0,
-      "brand": {
-        "name": "Samsung",
-        "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
-        }
-      },
-      "suggestedRetailPrice": {
-        "currencyIso": "CHF",
-        "value": 299.00,
-        "priceType": "BUY",
-        "formattedValue": "299,00 CHF"
-      },
-      "deliveryDays": 2,
-      "preorder": false,
-      "newProduct": false,
-      "ageVerificationRequired": false,
-      "woodCutting": false,
-      "returnable": false,
-      "hasHazard": false,
-      "configuratorProduct": false,
-      "containsServiceItems": true,
-      "ratingCount": 24,
-      "ratingAverage": 4.42,
-      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
-      "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
-      "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
-      },
-      "esdProduct": false,
-      "sustainable": false
-    },
-    {
-      "code": "794686400000",
-      "name": "Redmi Note 11 128GB Graphite Gray",
-      "url": "/de/p/794686400000/xiaomi-redmi-note-11-128gb-graphite-gray",
-      "summary": "Smartphone",
-      "price": {
-        "currencyIso": "CHF",
-        "value": 249.00,
-        "priceType": "BUY",
-        "formattedValue": "249,00 CHF"
-      },
-      "baseProduct": "b794686400000",
-      "images": [
-        {
-          "url": "https://image.migros.ch/{stack}/ec94ab3aa1259b383681681a3ffc85d88aec53d9/xiaomi-redmi-note-11-128gb-graphite-gray-smartphone.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "slug": "melectronics/telefonie-navigation/smartphone"
-        }
-      ],
-      "priceRange": {},
-      "bossNumber": "240736283005",
-      "reservable": true,
-      "orderable": true,
-      "showStockEnquiry": true,
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": false,
+      "showStockEnquiry": false,
+      "percentageReduction": 35.0,
       "brand": {
         "name": "xiaomi",
         "image": {
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 2,
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 369.00,
+        "priceType": "BUY",
+        "formattedValue": "369,00 CHF"
+      },
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1639,18 +1687,14 @@
       "hasHazard": false,
       "configuratorProduct": false,
       "containsServiceItems": true,
-      "ratingCount": 6,
-      "ratingAverage": 4.0,
+      "ratingCount": 2,
+      "ratingAverage": 5.0,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
-      "generalPositionTypeGroupType": "LAGER",
+      "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
+        "icon": "notorderable",
+        "availabilityText": "Nicht lieferbar"
       },
       "esdProduct": false,
       "sustainable": false
@@ -1688,7 +1732,7 @@
           "url": "https://image.migros.ch/original/e5118926435327e8b9009b06f33a4e800bd6a2c8/xiaomi.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1702,9 +1746,67 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794698900000",
+      "name": "Galaxy A14 5G Black 128GB",
+      "url": "/de/p/794698900000/samsung-galaxy-a14-5g-black-128gb",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 259.00,
+        "priceType": "BUY",
+        "formattedValue": "259,00 CHF"
+      },
+      "baseProduct": "b794698900000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/b502871e0e7aa8fd87dc15d4d67457f65a78fcca/samsung-galaxy-a14-5g-black-128gb-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 1,
+      "ratingAverage": 5.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -1744,7 +1846,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1758,7 +1860,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1800,7 +1902,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1814,7 +1916,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -1824,20 +1926,20 @@
       "sustainable": false
     },
     {
-      "code": "785300164709",
-      "name": "Galaxy A33 5G 128GB Awesome White",
-      "url": "/de/p/785300164709/samsung-galaxy-a33-5g-128gb-awesome-white",
+      "code": "785300169120",
+      "name": "G60 (5G) 128GB - black",
+      "url": "/de/p/785300169120/nokia-g60-5g-128gb-black",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 279.00,
+        "value": 299.00,
         "priceType": "BUY",
-        "formattedValue": "279,00 CHF"
+        "formattedValue": "299,00 CHF"
       },
-      "baseProduct": "b785300164709",
+      "baseProduct": "b785300169120",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/bc2e4d15f581d71e1df533acdc1c5d8a9ec11359/samsung-galaxy-a33-5g-128gb-awesome-white-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/df502fa9c7e6d0714114f62eb1079df8916f3823/nokia-g60-5g-128gb-black-smartphone.jpg"
         }
       ],
       "categories": [
@@ -1848,15 +1950,15 @@
       "priceRange": {},
       "bossNumber": "240722930505",
       "reservable": false,
-      "orderable": false,
+      "orderable": true,
       "showStockEnquiry": false,
       "brand": {
-        "name": "Samsung",
+        "name": "Nokia",
         "image": {
-          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
         }
       },
-      "deliveryDays": -1,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1864,32 +1966,36 @@
       "returnable": false,
       "hasHazard": false,
       "configuratorProduct": false,
-      "containsServiceItems": true,
+      "containsServiceItems": false,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "notorderable",
-        "availabilityText": "Nicht lieferbar"
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
       },
       "esdProduct": false,
       "sustainable": false
     },
     {
-      "code": "794689800000",
-      "name": "G60 (5G) 128GB - Grey",
-      "url": "/de/p/794689800000/nokia-g60-5g-128gb-grey",
+      "code": "794687400000",
+      "name": "Galaxy A33 5G 128GB Awesome Black",
+      "url": "/de/p/794687400000/samsung-galaxy-a33-5g-128gb-awesome-black",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 289.00,
+        "value": 299.00,
         "priceType": "BUY",
-        "formattedValue": "289,00 CHF"
+        "formattedValue": "299,00 CHF"
       },
-      "baseProduct": "b794689800000",
+      "baseProduct": "b794687400000",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/9fe5d889305b6eb3a9a92845fbdc838d059982f4/nokia-g60-5g-128gb-grey-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/666ad40dc9535b2a90e6beff80ffc241da69dd88/samsung-galaxy-a33-5g-128gb-awesome-black-smartphone.jpg"
         }
       ],
       "categories": [
@@ -1900,22 +2006,14 @@
       "priceRange": {},
       "bossNumber": "240736283005",
       "reservable": true,
-      "orderable": true,
+      "orderable": false,
       "showStockEnquiry": true,
-      "percentageReduction": 12.0,
       "brand": {
-        "name": "Nokia",
+        "name": "Samsung",
         "image": {
-          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "suggestedRetailPrice": {
-        "currencyIso": "CHF",
-        "value": 329.00,
-        "priceType": "BUY",
-        "formattedValue": "329,00 CHF"
-      },
-      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1924,16 +2022,14 @@
       "hasHazard": false,
       "configuratorProduct": false,
       "containsServiceItems": true,
+      "ratingCount": 27,
+      "ratingAverage": 4.33,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "LAGER",
       "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 2 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab eigenem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -1971,7 +2067,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -1987,9 +2083,67 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300169955",
+      "name": "A96 (4G) 128GB - starry black",
+      "url": "/de/p/785300169955/oppo-a96-4g-128gb-starry-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 299.00,
+        "priceType": "BUY",
+        "formattedValue": "299,00 CHF"
+      },
+      "baseProduct": "b785300169955",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/ff2265a6a7c424d581e2c83f3aca3ef63ad2abda/oppo-a96-4g-128gb-starry-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Oppo",
+        "image": {
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "ratingCount": 3,
+      "ratingAverage": 4.67,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -2077,7 +2231,7 @@
       "reservable": false,
       "orderable": true,
       "showStockEnquiry": false,
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2091,7 +2245,65 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300162682",
+      "name": "A94 5G 128 GB cosmo blue",
+      "url": "/de/p/785300162682/oppo-a94-5g-128-gb-cosmo-blue",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 321.00,
+        "priceType": "BUY",
+        "formattedValue": "321,00 CHF"
+      },
+      "baseProduct": "b785300162682",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/ec780aacb6c79f47ef3f9eef40b23d6c323141db/oppo-a94-5g-128-gb-cosmo-blue-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Oppo",
+        "image": {
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 1,
+      "ratingAverage": 4.0,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -2133,7 +2345,7 @@
           "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2149,7 +2361,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -2159,9 +2371,9 @@
       "sustainable": false
     },
     {
-      "code": "785300169120",
-      "name": "G60 (5G) 128GB - black",
-      "url": "/de/p/785300169120/nokia-g60-5g-128gb-black",
+      "code": "785300162681",
+      "name": "A94 5G 128 GB fluid black",
+      "url": "/de/p/785300162681/oppo-a94-5g-128-gb-fluid-black",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
@@ -2169,10 +2381,10 @@
         "priceType": "BUY",
         "formattedValue": "329,00 CHF"
       },
-      "baseProduct": "b785300169120",
+      "baseProduct": "b785300162681",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/df502fa9c7e6d0714114f62eb1079df8916f3823/nokia-g60-5g-128gb-black-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/d6bc4dcbdb5bd9dd1f5328bbd37ef19fca10b7ea/oppo-a94-5g-128-gb-fluid-black-smartphone.jpg"
         }
       ],
       "categories": [
@@ -2186,12 +2398,12 @@
       "orderable": true,
       "showStockEnquiry": false,
       "brand": {
-        "name": "Nokia",
+        "name": "Oppo",
         "image": {
-          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2199,15 +2411,123 @@
       "returnable": false,
       "hasHazard": false,
       "configuratorProduct": false,
-      "containsServiceItems": false,
+      "containsServiceItems": true,
       "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "785300164709",
+      "name": "Galaxy A33 5G 128GB Awesome White",
+      "url": "/de/p/785300164709/samsung-galaxy-a33-5g-128gb-awesome-white",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b785300164709",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/bc2e4d15f581d71e1df533acdc1c5d8a9ec11359/samsung-galaxy-a33-5g-128gb-awesome-white-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": false,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "deliveryDays": -1,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "notorderable",
+        "availabilityText": "Nicht lieferbar"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794689800000",
+      "name": "G60 (5G) 128GB - Grey",
+      "url": "/de/p/794689800000/nokia-g60-5g-128gb-grey",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b794689800000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/9fe5d889305b6eb3a9a92845fbdc838d059982f4/nokia-g60-5g-128gb-grey-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": true,
+      "showStockEnquiry": true,
+      "brand": {
+        "name": "Nokia",
+        "image": {
+          "url": "https://image.migros.ch/original/098f13c6b794fc220b9df241158e6cdbdbe3cb35/nokia.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab eigenem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
       },
@@ -2247,7 +2567,7 @@
           "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2263,11 +2583,71 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
         "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
+      "code": "794687300000",
+      "name": "Galaxy A53 5G 128GB Awesome Black",
+      "url": "/de/p/794687300000/samsung-galaxy-a53-5g-128gb-awesome-black",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 329.00,
+        "priceType": "BUY",
+        "formattedValue": "329,00 CHF"
+      },
+      "baseProduct": "b794687300000",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/cc92b9347c2fc652dd7c065cde2435e941bc3c7f/samsung-galaxy-a53-5g-128gb-awesome-black-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240736283005",
+      "reservable": true,
+      "orderable": false,
+      "showStockEnquiry": true,
+      "percentageReduction": 26.0,
+      "brand": {
+        "name": "Samsung",
+        "image": {
+          "url": "https://image.migros.ch/original/73cb9b0110cde7baf3747d05c502df01e0f233d8/samsung.jpg"
+        }
+      },
+      "suggestedRetailPrice": {
+        "currencyIso": "CHF",
+        "value": 449.00,
+        "priceType": "BUY",
+        "formattedValue": "449,00 CHF"
+      },
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": true,
+      "ratingCount": 21,
+      "ratingAverage": 4.24,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "LAGER",
+      "availabilityDetails": {
+        "icon": "p2c",
+        "availabilityText": "Die Verfügbarkeit dieses Artikels wird beim Hinzufügen in den Warenkorb geprüft."
       },
       "esdProduct": false,
       "sustainable": false
@@ -2325,6 +2705,62 @@
       "sustainable": false
     },
     {
+      "code": "785300186137",
+      "name": "Nord CE 3 128 GB Lite Lime",
+      "url": "/de/p/785300186137/oneplus-nord-ce-3-128-gb-lite-lime",
+      "summary": "Smartphone",
+      "price": {
+        "currencyIso": "CHF",
+        "value": 343.00,
+        "priceType": "BUY",
+        "formattedValue": "343,00 CHF"
+      },
+      "baseProduct": "b785300186137",
+      "images": [
+        {
+          "url": "https://image.migros.ch/{stack}/4b51277d873a69b691571121e720ea1fcb44ae65/oneplus-nord-ce-3-128-gb-lite-lime-smartphone.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "slug": "melectronics/telefonie-navigation/smartphone"
+        }
+      ],
+      "priceRange": {},
+      "bossNumber": "240722930505",
+      "reservable": false,
+      "orderable": true,
+      "showStockEnquiry": false,
+      "brand": {
+        "name": "OnePlus",
+        "image": {
+          "url": "https://image.migros.ch/original/06ad7aecd175d760f8f76ec5dd6cec0939a87158/oneplus.jpg"
+        }
+      },
+      "deliveryDays": 2,
+      "preorder": false,
+      "newProduct": false,
+      "ageVerificationRequired": false,
+      "woodCutting": false,
+      "returnable": false,
+      "hasHazard": false,
+      "configuratorProduct": false,
+      "containsServiceItems": false,
+      "summaryLink": "q=%3Arelevance%3AsummaryAsString%3ASmartphone",
+      "logisticService": "POST",
+      "generalPositionTypeGroupType": "STRECKE",
+      "availabilityDetails": {
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
+      },
+      "esdProduct": false,
+      "sustainable": false
+    },
+    {
       "code": "785300186136",
       "name": "Nord CE 3 128 GB Lite Chromatic",
       "url": "/de/p/785300186136/oneplus-nord-ce-3-128-gb-lite-chromatic",
@@ -2357,9 +2793,9 @@
           "url": "https://image.migros.ch/original/06ad7aecd175d760f8f76ec5dd6cec0939a87158/oneplus.jpg"
         }
       },
-      "deliveryDays": 3,
+      "deliveryDays": 2,
       "preorder": false,
-      "newProduct": true,
+      "newProduct": false,
       "ageVerificationRequired": false,
       "woodCutting": false,
       "returnable": false,
@@ -2371,7 +2807,7 @@
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
         "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
+        "availabilityText": "lieferbar in 2 Tagen",
         "shippingMethodHeader": "Paketversand",
         "shippingMethod": "Versand ab externem Lager",
         "availableInStore": true,
@@ -2381,20 +2817,20 @@
       "sustainable": false
     },
     {
-      "code": "785300186137",
-      "name": "Nord CE 3 128 GB Lite Lime",
-      "url": "/de/p/785300186137/oneplus-nord-ce-3-128-gb-lite-lime",
+      "code": "785300169956",
+      "name": "Reno 8 Lite (5G) 128GB - rainbow spectrum",
+      "url": "/de/p/785300169956/oppo-reno-8-lite-5g-128gb-rainbow-spectrum",
       "summary": "Smartphone",
       "price": {
         "currencyIso": "CHF",
-        "value": 343.00,
+        "value": 349.00,
         "priceType": "BUY",
-        "formattedValue": "343,00 CHF"
+        "formattedValue": "349,00 CHF"
       },
-      "baseProduct": "b785300186137",
+      "baseProduct": "b785300169956",
       "images": [
         {
-          "url": "https://image.migros.ch/{stack}/4b51277d873a69b691571121e720ea1fcb44ae65/oneplus-nord-ce-3-128-gb-lite-lime-smartphone.jpg"
+          "url": "https://image.migros.ch/{stack}/34a7e92f0925794fb5f9d1872284cf6e85846c20/oppo-reno-8-lite-5g-128gb-rainbow-spectrum-smartphone.jpg"
         }
       ],
       "categories": [
@@ -2405,16 +2841,17 @@
       "priceRange": {},
       "bossNumber": "240722930505",
       "reservable": false,
-      "orderable": false,
+      "orderable": true,
       "showStockEnquiry": false,
       "brand": {
-        "name": "OnePlus",
+        "name": "Oppo",
         "image": {
-          "url": "https://image.migros.ch/original/06ad7aecd175d760f8f76ec5dd6cec0939a87158/oneplus.jpg"
+          "url": "https://image.migros.ch/original/f1e148623abbd4b2f700d796c24eee2e3fe21f9e/oppo.jpg"
         }
       },
+      "deliveryDays": 2,
       "preorder": false,
-      "newProduct": true,
+      "newProduct": false,
       "ageVerificationRequired": false,
       "woodCutting": false,
       "returnable": false,
@@ -2425,8 +2862,12 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "notorderable",
-        "availabilityText": "Nicht lieferbar"
+        "icon": "green.fullcircle",
+        "availabilityText": "lieferbar in 2 Tagen",
+        "shippingMethodHeader": "Paketversand",
+        "shippingMethod": "Versand ab externem Lager",
+        "availableInStore": true,
+        "shippingCosts": "Paketversand"
       },
       "esdProduct": false,
       "sustainable": false
@@ -2456,7 +2897,7 @@
       "priceRange": {},
       "bossNumber": "240722930505",
       "reservable": false,
-      "orderable": true,
+      "orderable": false,
       "showStockEnquiry": false,
       "brand": {
         "name": "Google",
@@ -2464,7 +2905,6 @@
           "url": "https://image.migros.ch/original/3139f7ab48c0ab937dd536fa53f597184198eca7/google.jpg"
         }
       },
-      "deliveryDays": 3,
       "preorder": false,
       "newProduct": false,
       "ageVerificationRequired": false,
@@ -2477,12 +2917,8 @@
       "logisticService": "POST",
       "generalPositionTypeGroupType": "STRECKE",
       "availabilityDetails": {
-        "icon": "green.fullcircle",
-        "availabilityText": "lieferbar in 3 Tagen",
-        "shippingMethodHeader": "Paketversand",
-        "shippingMethod": "Versand ab externem Lager",
-        "availableInStore": true,
-        "shippingCosts": "Paketversand"
+        "icon": "notorderable",
+        "availabilityText": "Nicht lieferbar"
       },
       "esdProduct": false,
       "sustainable": false
@@ -2537,7 +2973,7 @@
     "currentPage": 0,
     "sort": "price-asc",
     "totalPages": 1,
-    "totalResults": 44
+    "totalResults": 52
   },
   "currentQuery": {
     "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
@@ -2591,7 +3027,7 @@
       "values": [
         {
           "name": "Aktion",
-          "count": 5,
+          "count": 7,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3Aspecial%3AAktion%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2629,7 +3065,7 @@
       "values": [
         {
           "name": "Online bestellbar",
-          "count": 34,
+          "count": 35,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Aavailability%3AOnline+bestellbar%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2655,7 +3091,7 @@
       "values": [
         {
           "name": "Smartphone",
-          "count": 44,
+          "count": 52,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D",
             "query": {
@@ -2667,7 +3103,7 @@
         },
         {
           "name": "Mobiltelefon",
-          "count": 9,
+          "count": 10,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3AMobiltelefon%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2693,7 +3129,7 @@
       "values": [
         {
           "name": "Telefonie & Navigation",
-          "count": 44,
+          "count": 52,
           "query": {
             "url": "/de/c/3357845301/telefonie-navigation?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2706,7 +3142,7 @@
         },
         {
           "name": "Smartphone",
-          "count": 44,
+          "count": 52,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2793,6 +3229,18 @@
           "selected": false
         },
         {
+          "name": "Huawei",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/huawei?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:brandName:Huawei:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
           "name": "Motorola",
           "count": 2,
           "query": {
@@ -2806,7 +3254,7 @@
         },
         {
           "name": "Nokia",
-          "count": 7,
+          "count": 9,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/nokia?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2830,7 +3278,7 @@
         },
         {
           "name": "Oppo",
-          "count": 8,
+          "count": 9,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/oppo?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2842,7 +3290,7 @@
         },
         {
           "name": "Samsung",
-          "count": 14,
+          "count": 15,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/samsung?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2854,7 +3302,7 @@
         },
         {
           "name": "xiaomi",
-          "count": 6,
+          "count": 7,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone/b/xiaomi?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2867,7 +3315,7 @@
       ],
       "code": "brandName",
       "crawlingActivated": true,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3AbrandName%3AEmporia%3AbrandName%3AGoogle%3AbrandName%3AMotorola%3AbrandName%3ANokia%3AbrandName%3AOnePlus%3AbrandName%3AOppo%3AbrandName%3ASamsung%3AbrandName%3Axiaomi%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone/b/amplicomms?q=%3Aprice-asc%3AbrandName%3AEmporia%3AbrandName%3AGoogle%3AbrandName%3AHuawei%3AbrandName%3AMotorola%3AbrandName%3ANokia%3AbrandName%3AOnePlus%3AbrandName%3AOppo%3AbrandName%3ASamsung%3AbrandName%3Axiaomi%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "brandName_de_facet_string"
     },
@@ -2880,7 +3328,7 @@
       "values": [
         {
           "name": "2G GSM",
-          "count": 1,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A2G+GSM%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2892,7 +3340,7 @@
         },
         {
           "name": "4G LTE",
-          "count": 19,
+          "count": 23,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A4G+LTE%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2904,7 +3352,7 @@
         },
         {
           "name": "5G LTE",
-          "count": 13,
+          "count": 16,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_mobilfunkstandards%3A5G+LTE%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2930,7 +3378,7 @@
       "values": [
         {
           "name": "Andere",
-          "count": 1,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndere%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -2942,7 +3390,7 @@
         },
         {
           "name": "Android",
-          "count": 43,
+          "count": 48,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_betriebssystem_neu%3AAndroid%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3016,7 +3464,7 @@
         },
         {
           "name": "64 GB",
-          "count": 5,
+          "count": 7,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A64+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3028,7 +3476,7 @@
         },
         {
           "name": "128 GB",
-          "count": 31,
+          "count": 37,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_interner_speicher_neu%3A128+GB%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3150,7 +3598,7 @@
         },
         {
           "name": "6.43 \"",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.43+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3162,7 +3610,7 @@
         },
         {
           "name": "6.5 \"",
-          "count": 7,
+          "count": 8,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.5+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3174,7 +3622,7 @@
         },
         {
           "name": "6.52 \"",
-          "count": 2,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.52+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3191,6 +3639,18 @@
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.56+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
               "value": ":price-asc:MEL_display_grösse:6.56+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
+          "name": "6.57 \"",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.57+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.57+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
               "code": "[50 TO 350]"
             }
           },
@@ -3258,7 +3718,7 @@
         },
         {
           "name": "6.67 \"",
-          "count": 2,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.67+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3291,6 +3751,18 @@
             }
           },
           "selected": false
+        },
+        {
+          "name": "6.78 \"",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_gr%C3%B6sse%3A6.78+%22%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_display_grösse:6.78+%22:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
         }
       ],
       "code": "MEL_display_grösse",
@@ -3307,7 +3779,7 @@
       "values": [
         {
           "name": "AMOLED",
-          "count": 10,
+          "count": 13,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AAMOLED%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3319,7 +3791,7 @@
         },
         {
           "name": "IPS",
-          "count": 8,
+          "count": 9,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AIPS%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3343,7 +3815,7 @@
         },
         {
           "name": "OLED",
-          "count": 1,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_display_art%3AOLED%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3429,7 +3901,7 @@
         },
         {
           "name": "13 MP",
-          "count": 3,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A13+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3465,7 +3937,7 @@
         },
         {
           "name": "50 MP",
-          "count": 22,
+          "count": 25,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A50+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3477,7 +3949,7 @@
         },
         {
           "name": "64 MP",
-          "count": 1,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A64+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3489,7 +3961,7 @@
         },
         {
           "name": "108 MP",
-          "count": 2,
+          "count": 4,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3Amel_rueckkamera%3A108+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3574,6 +4046,18 @@
           "selected": false
         },
         {
+          "name": "3900 mAh",
+          "count": 1,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A3900+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:3900+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
           "name": "4000 mAh",
           "count": 1,
           "query": {
@@ -3610,6 +4094,18 @@
           "selected": false
         },
         {
+          "name": "4300 mAh",
+          "count": 2,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4300+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_akkukapazitaet:4300+mAh:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
+        },
+        {
           "name": "4310 mAh",
           "count": 2,
           "query": {
@@ -3635,7 +4131,7 @@
         },
         {
           "name": "4500 mAh",
-          "count": 2,
+          "count": 3,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A4500+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3647,7 +4143,7 @@
         },
         {
           "name": "5000 mAh",
-          "count": 29,
+          "count": 33,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_akkukapazitaet%3A5000+mAh%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3684,7 +4180,7 @@
       "values": [
         {
           "name": "Ja",
-          "count": 25,
+          "count": 31,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_dual-sim_funktionalit%C3%A4t%3AJa%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3745,7 +4241,7 @@
         },
         {
           "name": "8 MP",
-          "count": 13,
+          "count": 15,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3769,7 +4265,7 @@
         },
         {
           "name": "16 MP",
-          "count": 8,
+          "count": 11,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A16+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3778,11 +4274,23 @@
             }
           },
           "selected": false
+        },
+        {
+          "name": "32 MP",
+          "count": 3,
+          "query": {
+            "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A32+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+            "query": {
+              "value": ":price-asc:MEL_frontkamera:32+MP:priceValue:%5B50+TO+350%5D:summaryAsString:Smartphone",
+              "code": "[50 TO 350]"
+            }
+          },
+          "selected": false
         }
       ],
       "code": "MEL_frontkamera",
       "crawlingActivated": false,
-      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A2+MP%3AMEL_frontkamera%3A5+MP%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
+      "addAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_frontkamera%3A13+MP%3AMEL_frontkamera%3A16+MP%3AMEL_frontkamera%3A2+MP%3AMEL_frontkamera%3A32+MP%3AMEL_frontkamera%3A5+MP%3AMEL_frontkamera%3A8+MP%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "removeAllValuesUrl": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
       "solrFacetName": "MEL_frontkamera_de_facet_string_mv"
     },
@@ -3807,7 +4315,7 @@
         },
         {
           "name": "Bluetooth",
-          "count": 27,
+          "count": 34,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ABluetooth%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3831,7 +4339,7 @@
         },
         {
           "name": "NFC",
-          "count": 20,
+          "count": 27,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3ANFC%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3843,7 +4351,7 @@
         },
         {
           "name": "WLAN",
-          "count": 26,
+          "count": 33,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_kabellose_uebertragung%3AWLAN%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3893,7 +4401,7 @@
         },
         {
           "name": "8",
-          "count": 39,
+          "count": 47,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_prozessorkerne%3A8%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3919,7 +4427,7 @@
       "values": [
         {
           "name": "Beschleunigungssensor",
-          "count": 16,
+          "count": 18,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3ABeschleunigungssensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3931,7 +4439,7 @@
         },
         {
           "name": "Fingerprintsensor",
-          "count": 16,
+          "count": 21,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AFingerprintsensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3943,7 +4451,7 @@
         },
         {
           "name": "Gyrosensor",
-          "count": 12,
+          "count": 16,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AGyrosensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3955,7 +4463,7 @@
         },
         {
           "name": "Kompass",
-          "count": 3,
+          "count": 5,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AKompass%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3967,7 +4475,7 @@
         },
         {
           "name": "Näherungssensor",
-          "count": 8,
+          "count": 10,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AN%C3%A4herungssensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -3991,7 +4499,7 @@
         },
         {
           "name": "Umgebungslichtsensor",
-          "count": 6,
+          "count": 8,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_sensoren%3AUmgebungslichtsensor%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -4017,7 +4525,7 @@
       "values": [
         {
           "name": "Schwarz",
-          "count": 17,
+          "count": 23,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ASchwarz%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
@@ -4041,7 +4549,7 @@
         },
         {
           "name": "Blau",
-          "count": 4,
+          "count": 5,
           "query": {
             "url": "/de/c/3421317829/telefonie-navigation/smartphone?q=%3Aprice-asc%3AMEL_primaerfarbe%3ABlau%3ApriceValue%3A%5B50+TO+350%5D%3AsummaryAsString%3ASmartphone",
             "query": {
