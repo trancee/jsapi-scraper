@@ -89,6 +89,7 @@ var _skips = map[string]bool{
 	"GIGASET":         true,
 	"HAMMER":          true,
 	"I.SAFE":          true,
+	"IIIF150":         true,
 	"JABLOCOM":        true,
 	"KERKMANN":        true,
 	"KONROW":          true,
@@ -108,6 +109,7 @@ var _skips = map[string]bool{
 	"ORDISSIMO":       true,
 	"OSCAL":           true, // EXCLUDE
 	"OUKITEL":         true, // EXCLUDE
+	"PALM":            true,
 	"PANASONIC":       true,
 	"PEAQ":            true,
 	"PRIMO":           true,

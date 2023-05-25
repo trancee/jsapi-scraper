@@ -15,10 +15,17 @@ var BrackRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((E
 
 var BrackCleanFn = func(name string) string {
 	name = strings.ReplaceAll(name, " Phones ", " ")
+	name = strings.ReplaceAll(name, "Recommerce Switzerland SA ", "")
 
 	if loc := BrackRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "iPhone" {
+		name = "Apple " + name
 	}
 
 	return strings.TrimSpace(name)

@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\d+G\+\d+G|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?\d+.\d+( Zoll| cm|\")\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Elegant Black| Force Touch| Grey| Midnight Space| Pearl White|Space Silver| bamboo green| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\d+G\+\d+G|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|GREEN | Blue| Elegant Black| Force Touch| Grey| Midnight Space| Pearl White|Space Silver| bamboo green| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -23,7 +23,7 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone| Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE MOTOROLA| Handy`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone|OPPO Smartphone | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE MOTOROLA|Motorola Smartfon | Handy| OEM| TCT| \+ Huawei| Bluetooth Speaker`).ReplaceAllString(name, "")
 	name = strings.NewReplacer("Xiaomi M5s", "Xiaomi Poco M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master").Replace(name)
 
 	s := strings.Split(name, " ")
@@ -32,8 +32,8 @@ var GalaxusCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "BL5000 8", "BL5000")
 	}
 
-	if s[0] == "OPPO" || s[0] == "Oppo" {
-		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 
 	if s[0] == "Honor" {

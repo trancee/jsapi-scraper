@@ -20,6 +20,12 @@ var InterdiscountCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	s := strings.Split(name, " ")
+
+	if s[0] == "NOKIA" && s[1] == "Nokia" {
+		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
+	}
+
 	return strings.TrimSpace(name)
 }
 

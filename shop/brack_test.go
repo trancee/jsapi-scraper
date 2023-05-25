@@ -6,6 +6,7 @@ import (
 )
 
 var brackNames = []string{
+	"Recommerce Switzerland SA iPhone 8 64GB Space Grau – refurbished",
 	"Apple iPhone 11 128GB Schwarz",
 	"Apple iPhone 11 64GB Schwarz",
 	"Apple iPhone 12 64GB Schwarz",
@@ -168,6 +169,7 @@ var brackNames = []string{
 }
 
 var brackNamesExpected = []string{
+	"Apple iPhone 8",
 	"Apple iPhone 11",
 	"Apple iPhone 11",
 	"Apple iPhone 12",

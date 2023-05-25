@@ -208,6 +208,8 @@ func XXX_fust(isDryRun bool) IShop {
 					if brand == "Samsung" && strings.Split(model, " ")[0] == "Motorola" {
 						model = strings.ReplaceAll(model, "Motorola ", "")
 						brand = "Motorola"
+					} else if brand == "Fust" {
+						brand = "Inoi"
 					}
 					_product.model = brand + " " + model
 

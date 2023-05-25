@@ -21,7 +21,13 @@ var MelectronicsCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	if strings.Split(name, " ")[0] == "Redmi" {
+	s := strings.Split(name, " ")
+
+	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	}
+
+	if s[0] == "Redmi" {
 		name = "Xiaomi " + name
 	}
 
