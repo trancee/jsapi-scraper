@@ -124,6 +124,7 @@ var _skips = map[string]bool{
 	"SPC":             true,
 	"STOTZ":           true,
 	"STYRO":           true,
+	"SUNSTECH":        true,
 	"SUUNTO":          true,
 	"SWISSTONE":       true,
 	"SWISSVOICE":      true,

@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|Light|Glowing Black|Glowing Green|Midnight Black|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|denim black|electric graphite|elegant black|frosted grey|glowing blue|grau|lake blue|metallic rose|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|sterling blue|sunburst gold|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise Edition( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|Light|Glowing Black|Glowing Green|Midnight Black|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|lake blue|metallic rose|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|sterling blue|sunburst gold|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
@@ -48,6 +48,9 @@ var FolettiCleanFn = func(name string) string {
 	}
 	if s[0] == "Redmi" {
 		name = "Xiaomi " + name
+	}
+	if s[0] == "Huawei" && s[1] == "Magic5" {
+		name = strings.ReplaceAll(name, "Huawei", "Honor")
 	}
 
 	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G").Replace(name)

@@ -263,7 +263,7 @@ func main() {
 			// 		notify = true
 			// 	}
 			// }
-			if 100-((100/max.Price)*min.Price) >= shop.ValueDiscount {
+			if 100-((100/max.Price)*min.Price) >= (shop.ValueDiscount + 15) {
 				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 
 				var oldPrice Price
