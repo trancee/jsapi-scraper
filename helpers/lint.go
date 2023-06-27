@@ -26,6 +26,7 @@ var nameMapping = map[string]string{
 	"Jvc":     "JVC",
 	"Kxd":     "KXD",
 	"Lg":      "LG",
+	"NEO2":    "Neo2",
 	"Oneplus": "OnePlus",
 	"Realme":  "realme",
 	"Se":      "SE",

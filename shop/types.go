@@ -58,9 +58,11 @@ type Product struct {
 type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
+	"ACER":            true,
 	"ALCATEL":         true,
 	"ALIGATOR":        true,
 	"AMPLICOMMS":      true,
+	"AURO":            true,
 	"ARTFONE":         true,
 	"BEAFON":          true,
 	"BLABLOO":         true,
@@ -88,6 +90,7 @@ var _skips = map[string]bool{
 	"FUNKE":           true,
 	"GIGASET":         true,
 	"HAMMER":          true,
+	"HOP":             true,
 	"I.SAFE":          true,
 	"IIIF150":         true,
 	"JABLOCOM":        true,
@@ -99,9 +102,11 @@ var _skips = map[string]bool{
 	"LENOVO":          true,
 	"LEXIBOOK":        true,
 	"LG":              true, // EXCLUDE
+	"LOGICOM":         true,
 	"MAGNETOPLAN":     true,
 	"MAUL":            true,
 	"MAXCOM":          true,
+	"MEDIACOM":        true,
 	"MICROSOFT":       true, // EXCLUDE
 	"MP":              true,
 	"MYPHONE":         true,

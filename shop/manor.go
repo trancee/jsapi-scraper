@@ -11,10 +11,10 @@ import (
 	"strings"
 )
 
-var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d\.\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
+var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
 
 var ManorCleanFn = func(name string) string {
-	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", " G ", " ").Replace(name)
+	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", " G ", " ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
 
 	name = regexp.MustCompile(`\s{2,}`).ReplaceAllString(name, " ")
 
@@ -39,7 +39,7 @@ var ManorCleanFn = func(name string) string {
 func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	// _url := fmt.Sprintf("https://www.manor.ch/_next/data/g5Ai52cssZcOwaX4irIEt/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.manor.ch/_next/data/iq1MQt8GfwctYJjNGNPLF/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.manor.ch/_next/data/_3PWxN8k_RnFepGtQBcAY/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 

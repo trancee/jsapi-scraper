@@ -1,13 +1,13 @@
 package shop
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"regexp"
 	"sort"
-	"strconv"
 	"strings"
 )
 
@@ -36,6 +36,7 @@ func XXX_brack(isDryRun bool) IShop {
 	// const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?filter%5BArt%5D%5B%5D=offer&filter%5BArt%5D%5B%5D=intropromotion&filter%5BArt%5D%5B%5D=occassion&filter%5BArt%5D%5B%5D=new&sortProducts=priceasc&query=*"
 	// const _url = "https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?limit=192&sortProducts=priceasc&query=*"
 	_url := fmt.Sprintf("https://www.brack.ch/it-multimedia/telefonie-kommunikation/mobiltelefone/smartphone?filter[availability][]=Verfügbar&filter[price_standard][]=%.f~~~%.f&sortProducts=priceasc&query=*", ValueMinimum, ValueMaximum)
+	// _url := fmt.Sprintf("https://www.brack.ch/api/search?uri=%%2Fit-multimedia%%2Ftelefonie-kommunikation%%2Fmobiltelefone%%2Fsmartphone%%3Ffilter%%255Bprice_standard%%255D%%255B%%255D%%3D%.f~~~%.f%%26filter%%255Bavailability%%255D%%255B%%255D%%3DVerf%%25C3%%25BCgbar%%26limit%%3D192%%26sortProducts%%3Dpriceasc", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false
@@ -67,6 +68,37 @@ func XXX_brack(isDryRun bool) IShop {
 
 		callout Callout
 	}
+
+	type _LSPI struct {
+		Inventory struct {
+			Current                     int  `json:"current"`
+			TargetStockQuantity         int  `json:"targetStockQuantity"`
+			HasManuallySetStockQuantity bool `json:"hasManuallySetStockQuantity"`
+		} `json:"inventory"`
+
+		URL string `json:"url"`
+
+		States struct {
+			Active       bool `json:"active"`
+			NewProduct   bool `json:"newProduct"`
+			Sellout      bool `json:"sellout"`
+			SpecialSale  bool `json:"specialSale"`
+			SpecialOffer bool `json:"specialOffer"`
+		} `json:"states"`
+	}
+
+	type _LSI struct {
+		Src string `json:"src"`
+		Alt string `json:"alt"`
+	}
+
+	type _SKU struct {
+		quantity int
+
+		price    float32
+		oldPrice float32
+	}
+	var _skus map[string]_SKU = map[string]_SKU{}
 
 	var _result []_Response
 	var _body []byte
@@ -127,141 +159,128 @@ func XXX_brack(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
+	if body := regexp.MustCompile(`window.competec.products.data = {.*?};`).Find(_body); body != nil {
+		data := body[32 : len(body)-1]
+
+		var skus map[string]any
+		if err := json.Unmarshal(data, &skus); err != nil {
+			panic(err)
+		}
+		// fmt.Printf("%+v\n", skus)
+
+		for sku, value := range skus {
+			// Each value is an `any` type, that is type asserted as a string
+			// fmt.Printf("%s: %v\n", key, value)
+			_inventory := value.(map[string]any)["inventory"]
+			quantity := _inventory.(map[string]any)["current"].(float64)
+			// fmt.Printf("quantity: %v\n", quantity)
+
+			_price := value.(map[string]any)["price"]
+			// fmt.Printf("%v\n", _price)
+			// specialOffer := _price.(map[string]any)["specialOffer"]
+			// fmt.Printf("specialOffer: %v\n", specialOffer)
+			price := _price.(map[string]any)["priceWithVat"].(float64) / 100
+			// fmt.Printf("price: %v\n", price)
+
+			_standardPrice := _price.(map[string]any)["standardPrice"]
+			// fmt.Printf("%v\n", _standardPrice)
+			oldPrice := _standardPrice.(map[string]any)["priceWithVat"].(float64) / 100
+			// fmt.Printf("oldPrice: %v\n", oldPrice)
+
+			// fmt.Printf("%s\t%.2f\t%.2f\t%v\n", sku, price, oldPrice, quantity)
+
+			_skus[sku] = _SKU{
+				quantity: int(quantity),
+
+				price:    float32(price),
+				oldPrice: float32(oldPrice),
+			}
+		}
+
+		// fmt.Println(_skus)
+	}
+
 	doc := parse(string(_body))
 
-	if productList := traverse(doc, "ul", "class", "productList"); productList != nil {
-		// fmt.Println(productList)
-
-		for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling /*.NextSibling*/ {
-			// fmt.Println(item)
-			if !contains(item.Attr, "class", "product-card") {
-				continue
-			}
-			// item := traverse(items, "li", "class", "productList__item")
-			// fmt.Println(item)
-
+	for sku, value := range _skus {
+		if snippet := traverse(doc, "li", "data-snippet", sku); snippet != nil {
 			_product := _Response{}
 
-			sku, _ := attr(item.Attr, "data-sku")
 			if _debug {
 				fmt.Println(sku)
 			}
 			_product.code = sku
 
-			itemAvailability := traverse(item, "span", "class", "stock__amount")
-			// fmt.Println(itemManufacturer)
-
-			amount, _ := attr(itemAvailability.Attr, "data-amount")
+			oldPrice := value.oldPrice
 			if _debug {
-				fmt.Println(amount)
+				fmt.Println(oldPrice)
 			}
-			if _amount, err := strconv.Atoi(amount); err != nil {
-				panic(err)
-			} else {
-				_product.quantity = _amount
-			}
+			_product.oldPrice = oldPrice
 
-			// itemManufacturer := traverse(item, "span", "class", "productList__itemManufacturer")
-			// // fmt.Println(itemManufacturer)
-
-			// manufacturer, _ := text(itemManufacturer)
-			// // fmt.Println(manufacturer)
-
-			itemImage := traverse(item, "img", "class", "productList__itemImage")
-			// fmt.Println(itemImage)
-
-			title, _ := attr(itemImage.Attr, "title")
-			title = strings.ReplaceAll(strings.ReplaceAll(title, " - ", " "), "Fairphone Fairphone", "Fairphone")
+			price := value.price
 			if _debug {
-				fmt.Println(title)
+				fmt.Println(price)
 			}
-			_product.title = title
+			_product.price = price
 
-			if Skip(title) {
-				continue
-			}
-
-			model := BrackCleanFn(title)
-			if _debug {
-				fmt.Println(model)
-			}
-			_product.model = model
-
-			imageTitleLink := traverse(item, "a", "class", "product__imageTitleLink")
-			// fmt.Println(imageTitleLink)
-
-			link, _ := attr(imageTitleLink.Attr, "href")
-			if _debug {
-				fmt.Println(link)
-			}
-			_product.link = link
-
-			if itemCallout := traverse(item, "span", "class", "callout__text"); itemCallout != nil {
-				// fmt.Println(itemCallout)
-
-				callout, _ := attr(itemCallout.Attr, "class")
-				switch strings.ReplaceAll(callout, "callout__text callout__color", "") {
-				case "New":
-					_product.callout = New
-				case "Action":
-					_product.callout = Action
-				case "Trade":
-					_product.callout = Trade
-				case "Sustainability":
-					_product.callout = Sustainability
-				default:
-					panic(callout)
+			_brand := ""
+			if product := traverse(snippet, "div", "class", "blsaP_Iq2"); product != nil {
+				if brand, ok := text(product.FirstChild.FirstChild); ok {
+					if _debug {
+						fmt.Println(brand)
+					}
+					_brand = brand
 				}
 			}
 
-			// itemTitle := traverse(imageTitleLink, "span", "class", "productList__itemTitle")
-			// // fmt.Println(itemTitle)
+			var _lspl _LSPI
+			if lspl := traverse(snippet, "div", "data-e-ref", "lspl"); lspl != nil {
+				if data, ok := text(lspl.FirstChild); ok {
+					if err := json.Unmarshal([]byte(data), &_lspl); err != nil {
+						panic(err)
+					}
+					// fmt.Println(_lspl)
 
-			// title, _ := text(itemTitle)
-			// fmt.Println(manufacturer + " " + title)
+					amount := _lspl.Inventory.Current
+					if _debug {
+						fmt.Println(amount)
+					}
+					_product.quantity = amount
 
-			itemPrice := traverse(item, "div", "class", "productList__itemPrice")
-			// fmt.Println(itemPrice)
-
-			if itemOldPrice := traverse(itemPrice, "span", "class", "productList__itemOldPrice"); itemOldPrice != nil {
-				// fmt.Println(itemOldPrice)
-
-				oldPrice, _ := attr(itemOldPrice.Attr, "content")
-				if _debug {
-					fmt.Println(oldPrice)
-				}
-
-				if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
-					panic(err)
-				} else {
-					_product.oldPrice = float32(_price)
+					link := _lspl.URL
+					if _debug {
+						fmt.Println(link)
+					}
+					_product.link = link
 				}
 			}
 
-			// currentPrice := traverse(itemPrice, "div", "class", "currentPrice")
-			// fmt.Println(currentPrice)
+			var _lsi _LSI
+			if lsi := traverse(snippet, "div", "data-e-ref", "lsi"); lsi != nil {
+				if data, ok := text(lsi.FirstChild); ok {
+					if err := json.Unmarshal([]byte(data), &_lsi); err != nil {
+						panic(err)
+					}
+					// fmt.Println(_lsi)
 
-			if currentPrice := traverse(itemPrice, "em", "class", "js-currentPriceValue"); currentPrice != nil {
-				// fmt.Println(currentPrice)
+					title := _brand + " " + _lsi.Alt
+					title = strings.ReplaceAll(strings.ReplaceAll(title, " - ", " "), "Fairphone Fairphone", "Fairphone")
+					if _debug {
+						fmt.Println(title)
+					}
+					_product.title = title
 
-				price, _ := attr(currentPrice.Attr, "content")
-				if _debug {
-					fmt.Println(price)
-				}
+					if Skip(title) {
+						continue
+					}
 
-				if _price, err := strconv.ParseFloat(price, 32); err != nil {
-					panic(err)
-				} else {
-					_product.price = float32(_price)
+					model := BrackCleanFn(title)
+					if _debug {
+						fmt.Println(model)
+					}
+					_product.model = model
 				}
 			}
-
-			// if specialOffer := traverse(itemPrice, "em", "class", "specialOffer"); specialOffer != nil {
-			// 	fmt.Println(specialOffer)
-
-			// 	price, _ := attr(specialOffer.Attr, "content")
-			// 	fmt.Println(price)
-			// }
 
 			if _debug {
 				fmt.Println()
@@ -270,6 +289,148 @@ func XXX_brack(isDryRun bool) IShop {
 			_result = append(_result, _product)
 		}
 	}
+
+	// if productList := traverse(doc, "ul", "class", "productList"); productList != nil {
+	// 	// fmt.Println(productList)
+
+	// 	for item := productList.FirstChild; /*.NextSibling*/ item != nil; item = item.NextSibling /*.NextSibling*/ {
+	// 		// fmt.Println(item)
+	// 		if !contains(item.Attr, "class", "product-card") {
+	// 			continue
+	// 		}
+	// 		// item := traverse(items, "li", "class", "productList__item")
+	// 		// fmt.Println(item)
+
+	// 		_product := _Response{}
+
+	// 		sku, _ := attr(item.Attr, "data-sku")
+	// 		if _debug {
+	// 			fmt.Println(sku)
+	// 		}
+	// 		_product.code = sku
+
+	// 		itemAvailability := traverse(item, "span", "class", "stock__amount")
+	// 		// fmt.Println(itemManufacturer)
+
+	// 		amount, _ := attr(itemAvailability.Attr, "data-amount")
+	// 		if _debug {
+	// 			fmt.Println(amount)
+	// 		}
+	// 		if _amount, err := strconv.Atoi(amount); err != nil {
+	// 			panic(err)
+	// 		} else {
+	// 			_product.quantity = _amount
+	// 		}
+
+	// 		// itemManufacturer := traverse(item, "span", "class", "productList__itemManufacturer")
+	// 		// // fmt.Println(itemManufacturer)
+
+	// 		// manufacturer, _ := text(itemManufacturer)
+	// 		// // fmt.Println(manufacturer)
+
+	// 		itemImage := traverse(item, "img", "class", "productList__itemImage")
+	// 		// fmt.Println(itemImage)
+
+	// 		title, _ := attr(itemImage.Attr, "title")
+	// 		title = strings.ReplaceAll(strings.ReplaceAll(title, " - ", " "), "Fairphone Fairphone", "Fairphone")
+	// 		if _debug {
+	// 			fmt.Println(title)
+	// 		}
+	// 		_product.title = title
+
+	// 		if Skip(title) {
+	// 			continue
+	// 		}
+
+	// 		model := BrackCleanFn(title)
+	// 		if _debug {
+	// 			fmt.Println(model)
+	// 		}
+	// 		_product.model = model
+
+	// 		imageTitleLink := traverse(item, "a", "class", "product__imageTitleLink")
+	// 		// fmt.Println(imageTitleLink)
+
+	// 		link, _ := attr(imageTitleLink.Attr, "href")
+	// 		if _debug {
+	// 			fmt.Println(link)
+	// 		}
+	// 		_product.link = link
+
+	// 		if itemCallout := traverse(item, "span", "class", "callout__text"); itemCallout != nil {
+	// 			// fmt.Println(itemCallout)
+
+	// 			callout, _ := attr(itemCallout.Attr, "class")
+	// 			switch strings.ReplaceAll(callout, "callout__text callout__color", "") {
+	// 			case "New":
+	// 				_product.callout = New
+	// 			case "Action":
+	// 				_product.callout = Action
+	// 			case "Trade":
+	// 				_product.callout = Trade
+	// 			case "Sustainability":
+	// 				_product.callout = Sustainability
+	// 			default:
+	// 				panic(callout)
+	// 			}
+	// 		}
+
+	// 		// itemTitle := traverse(imageTitleLink, "span", "class", "productList__itemTitle")
+	// 		// // fmt.Println(itemTitle)
+
+	// 		// title, _ := text(itemTitle)
+	// 		// fmt.Println(manufacturer + " " + title)
+
+	// 		itemPrice := traverse(item, "div", "class", "productList__itemPrice")
+	// 		// fmt.Println(itemPrice)
+
+	// 		if itemOldPrice := traverse(itemPrice, "span", "class", "productList__itemOldPrice"); itemOldPrice != nil {
+	// 			// fmt.Println(itemOldPrice)
+
+	// 			oldPrice, _ := attr(itemOldPrice.Attr, "content")
+	// 			if _debug {
+	// 				fmt.Println(oldPrice)
+	// 			}
+
+	// 			if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
+	// 				panic(err)
+	// 			} else {
+	// 				_product.oldPrice = float32(_price)
+	// 			}
+	// 		}
+
+	// 		// currentPrice := traverse(itemPrice, "div", "class", "currentPrice")
+	// 		// fmt.Println(currentPrice)
+
+	// 		if currentPrice := traverse(itemPrice, "em", "class", "js-currentPriceValue"); currentPrice != nil {
+	// 			// fmt.Println(currentPrice)
+
+	// 			price, _ := attr(currentPrice.Attr, "content")
+	// 			if _debug {
+	// 				fmt.Println(price)
+	// 			}
+
+	// 			if _price, err := strconv.ParseFloat(price, 32); err != nil {
+	// 				panic(err)
+	// 			} else {
+	// 				_product.price = float32(_price)
+	// 			}
+	// 		}
+
+	// 		// if specialOffer := traverse(itemPrice, "em", "class", "specialOffer"); specialOffer != nil {
+	// 		// 	fmt.Println(specialOffer)
+
+	// 		// 	price, _ := attr(specialOffer.Attr, "content")
+	// 		// 	fmt.Println(price)
+	// 		// }
+
+	// 		if _debug {
+	// 			fmt.Println()
+	// 		}
+
+	// 		_result = append(_result, _product)
+	// 	}
+	// }
 
 	_parseFn := func(s IShop) *[]*Product {
 		products := []*Product{}

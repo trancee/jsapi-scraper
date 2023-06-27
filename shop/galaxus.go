@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\d+G\+\d+G|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN | Blue| Cosmic Aurora| Elegant Black| Force Touch| Grey| Midnight Space| Pearl White|Space Silver| bamboo green| hellblau| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, |\s+\d\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\s+\(?20[12]\d\)?|\s+4g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| EU| LTE| NFC| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN | Blue| Cosmic Aurora| Elegant Black| Force Touch| Grey| Midnight Space| Pearl White|Space Silver| bamboo green| hellblau| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -23,8 +23,8 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?|\s+I9505| XT\d{4}-\d+|( Blackview)? Smartphone|OPPO Smartphone | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE MOTOROLA|Motorola Smartfon | Handy| OEM| TCT| \+ Huawei| Bluetooth Speaker| Limited| Telefon`).ReplaceAllString(name, "")
-	name = strings.NewReplacer("Xiaomi M5s", "Xiaomi Poco M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master").Replace(name)
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU)?(\s+NE)?(\s+Phone)?|\s+I9505|\s+[A]\d{3}[B]| XT\d{4}-\d+|( Blackview)? Smartphone|^Vodafone |^TIM |^TE Connectivity |OPP DS |OPPO Smartphone | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE MOTOROLA|Motorola Smartfon | Handy| OEM| TCT| \+ Huawei| Bluetooth Speaker| Limited| Telefon| Porsche Design`).ReplaceAllString(name, "")
+	name = strings.NewReplacer("Xiaomi M5s", "Xiaomi Poco M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master", "SAM DS ", "SAMSUNG ", "GAL ", "GALAXY ", "HOT205G", "HOT 20 5G ", "SE2020", "SE 2020", "TCL 40 40SE", "TCL 40SE", "Xiaomi Xia ", "Xiaomi ", "Motorola 41", "Motorola Moto G41").Replace(name)
 
 	s := strings.Split(name, " ")
 
@@ -41,6 +41,7 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Infinix" {
+		name = strings.Split(name, "5G")[0]
 		name = strings.ReplaceAll(name, " INFINIX", "")
 	}
 
@@ -61,12 +62,22 @@ var GalaxusCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "Motorola Motorola ", "Motorola ")
 	}
 
-	if s[0] == "POCO" {
+	if s[0] == "POCO" || s[0] == "Poco" {
 		name = "Xiaomi " + name
 	}
 	if s[0] == "Xiaomi" {
+		if s[1] == "Samsung" || s[1] == "Honor" {
+			name = strings.ReplaceAll(name, "Xiaomi ", "")
+		}
 		name = strings.ReplaceAll(name, "Redmi 9A 2", "Redmi 9A")
+		name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi Poco M5")
 		name = strings.ReplaceAll(name, "Xiaomi X5", "Xiaomi Poco X5")
+	}
+
+	if s[0] == "Renewd" {
+		if s[1] == "iPhone" {
+			name = strings.ReplaceAll(name, "Renewd", "Apple")
+		}
 	}
 
 	return strings.TrimSpace(name)
@@ -210,6 +221,11 @@ func XXX_galaxus(isDryRun bool) IShop {
 					  "sortOrder": "LOWESTPRICE",
 					  "siteId": null,
 					  "filters": [
+						{
+							"identifier": "8279",
+							"filterType": "TEXTUAL",
+							"options": ["6395", "476832"]
+						},
 						{
 						  "identifier": "pr",
 						  "filterType": "NUMERICRANGE",

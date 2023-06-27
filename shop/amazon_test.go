@@ -6,6 +6,7 @@ import (
 )
 
 var amazonNames = []string{
+	"0 Xiaomi Redmi 10C 4GB/128GB Grey Non-NFC EU",
 	"- Xiaomi Redmi Note 12 5G 128GB/4GB Dual-SIM Frosted-Green",
 	"Apple 2022 iPhone SE (128 GB) - Polarstern (3. Generation)",
 	"Apple iPhone 12 (128 GB) - Violett",
@@ -92,6 +93,7 @@ var amazonNames = []string{
 	"KXD Handy, A1 SIM Free Smartphone Entsperrt, 5,71 Zoll Vollbild, 1GB RAM 16G ROM 128G Erweiterung, Android 8.1 Handys, 5MP Dual Rückfahrkameras, Dual SIM, Triple Kartensteckplätze",
 	"Lenovo/Motorola PA4N0106IT P2 Smartphone (13.97 cm (5.5 Zoll), 13 MP Kamera, Android 6.0 (Marshmallow)), 32 GB Dunkel Grau",
 	"MOBILE PHONE POCO X5 5G/6/128GB BLUE MZB0D6UEU POCO",
+	"MOBILE PHONE REDMI GO 16GB/BLUE MZB7506EU XIAOMI",
 	"moto G 3. Generation Smartphone (12,7 cm (5 Zoll) Touchscreen-Display, 16 GB Speicher, Android 5.1.1) schwarz",
 	"Moto One 4+64 White",
 	"moto one Smartphone (14,98 cm (5,9 Zoll), 64 GB interner Speicher, 4 GB RAM, Android one ) Weiß, inkl. Schutzcover",
@@ -164,6 +166,7 @@ var amazonNames = []string{
 	"Samsung Galaxy S22 SM-S901B 15.5 cm (6.1) Dual SIM Android 12 5G USB Type-C 8 GB 128 GB 3700 mAh Black",
 	"Samsung Galaxy S22 S908 Ultra EU 128GB, Android, phantom white",
 	"Samsung Galaxy S22+, Android Smartphone, 6,6 Zoll Dynamic AMOLED Display, 4.500 mAh Akku, 128 GB/8 GB RAM, Handy in Phanto...",
+	"Samsung Galaxy Xcover Pro Enterprise Edition - Smartphone 64GB, 4GB, Black",
 	"Samsung Galaxy XCover6 Pro, robustes Android Smartphone ohne Vertrag, 16,72 cm/ 6,6 Zoll Display, 4.050 mAh Akku, 128 GB/6...",
 	"Samsung Galaxy XCover6 Pro, robustes Android Smartphone ohne Vertrag, 16,72 cm/ 6,6 Zoll Display, 4.050 mAh Akku, 128 GB/6...",
 	"Samsung Galaxy-A33 5G - 128GB Enterprise Edition (30 Monate Garantie), Awesome Black",
@@ -207,10 +210,12 @@ var amazonNames = []string{
 	"Xiaomi Mi 9T Pro Smartphone (16,23cm (6.39 Zoll) FHD+ AMOLED Display, 128GB interner Speicher + 6GB RAM, 48MP 3fach-KI-Rückkamera, 20MP Pop-up-Selfie-Frontkamera, Dual-SIM, Android 9.0) Carbon Black",
 	"Xiaomi Note 10S Pebble White 6G RAM 128G ROM, Large",
 	"Xiaomi Note 11 Pro 6+128G 2201116TG Grau",
+	"Xiaomi Poco C40 17 cm (6.71) Dual SIM Android 11 4G USB Type-C 4 GB 64 GB 6000 mAh Green",
 	"Xiaomi Redmi 9A 2+32 Aurora Green",
 	"Xiaomi REDMI 9C 6,53'' HD+ 128Gb 4Gb Gris MZB0AK2EU",
 	"Xiaomi Redmi 9C NFC 2+32 Lavender Purple",
 	"Xiaomi Redmi 10C (Ocean Blue) Dual SIM 6.71\" IPS LCD 720x1650/2.4GHz&1.9GHz/128GB/4GB RAM/Android 11/microSDXC/WiFi.BT.4G.MZB0B2OEU",
+	"Xiaomi Redmi Note 8 Pro Telefon 6 Gb Ram + 64 Gb Rom,6,53 \"Vollbild,Mtk Helio G90T Octa-Core-Prozessor,20 Mp Front- Und 64 Mp Rückkamera (Globale Version) Blau",
 	"Xiaomi Redmi Note 10 Pro Gradient Bronze 128GB Dual SIM, 6+128GB",
 	"Xiaomi Redmi Note 10 Pro Onyx Gray 64GB Dual SIM",
 	"Xiaomi Redmi Note 10 Pro(6,67\"), leistungsstarkes Android Smartphone ohne Vertrag+Kopfhörer, 120Hz AMOLED Display, 6GB RAM+128GB Speicher,Dual-SIM, 108MP Quad-Kamera, Grey-[Exklusiv bei Amazon]",
@@ -235,6 +240,7 @@ var amazonNames = []string{
 }
 
 var amazonNamesExpected = []string{
+	"Xiaomi Redmi 10C",
 	"Xiaomi Redmi Note 12",
 	"Apple iPhone SE",
 	"Apple iPhone 12",
@@ -321,6 +327,7 @@ var amazonNamesExpected = []string{
 	"KXD A1",
 	"Lenovo P2",
 	"Xiaomi POCO X5",
+	"Xiaomi REDMI GO",
 	"Motorola moto G",
 	"Motorola Moto One",
 	"Motorola moto one",
@@ -393,6 +400,7 @@ var amazonNamesExpected = []string{
 	"Samsung Galaxy S22",
 	"Samsung Galaxy S22 Ultra",
 	"Samsung Galaxy S22+",
+	"Samsung Galaxy Xcover Pro",
 	"Samsung Galaxy XCover6 Pro",
 	"Samsung Galaxy XCover6 Pro",
 	"Samsung Galaxy A33",
@@ -436,10 +444,12 @@ var amazonNamesExpected = []string{
 	"Xiaomi Mi 9T Pro",
 	"Xiaomi Redmi Note 10S",
 	"Xiaomi Redmi Note 11 Pro",
+	"Xiaomi Poco C40",
 	"Xiaomi Redmi 9A",
 	"Xiaomi REDMI 9C",
 	"Xiaomi Redmi 9C",
 	"Xiaomi Redmi 10C",
+	"Xiaomi Redmi Note 8 Pro",
 	"Xiaomi Redmi Note 10 Pro",
 	"Xiaomi Redmi Note 10 Pro",
 	"Xiaomi Redmi Note 10 Pro",
