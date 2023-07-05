@@ -17,8 +17,9 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/oppo-smartphone-1010.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
+// https://www.fust.ch/de/r/pc-tablet-handy/smartphone/apple-iphone-530.html?shop_comparatorkey=7-1&shop_nrofrecs=12&brand=Apple&ff1878=4G%20%2F%20LTE%7C5G&price=%7B%22from%22%3A399%2C%22to%22%3A500%7D&showAllFacets=true
 
-var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -39,6 +40,13 @@ var FustCleanFn = func(name string) string {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
 
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	}
+
 	return strings.TrimSpace(name)
 }
 
@@ -46,7 +54,7 @@ func XXX_fust(isDryRun bool) IShop {
 	const _name = "Fust"
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
 
-	const _debug = false
+	const _debug = true
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -72,6 +80,7 @@ func XXX_fust(isDryRun bool) IShop {
 	path += "/"
 
 	for _category, _url := range map[string]string{
+		"apple":   fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/apple-iphone-530.html?shop_comparatorkey=9-1&shop_nrofrecs=60&brand=Apple&ff1878=4G%%%%20%%%%2F%%%%20LTE%%%%7C5G&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
 		"samsung": fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/samsung-galaxy-789.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
 		"huawei":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/huawei-smartphone-809.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),
 		"xiaomi":  fmt.Sprintf(`https://www.fust.ch/de/r/pc-tablet-handy/smartphone/xiaomi-smartphone-808.html?shop_comparatorkey=9-1&shop_nrofrecs=60&price={"from":%.f,"to":%.f}&shop_recpage=%%d`, ValueMinimum, ValueMaximum),

@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+\(?20[12]\d\)?|\s+[2345]G| LTE| Enterprise Edition`)
+var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+[2345]G| LTE| Enterprise Edition`) // |\s+\(?20[12]\d\)?
 
 var InterdiscountCleanFn = func(name string) string {
 	if loc := InterdiscountRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -24,6 +24,13 @@ var InterdiscountCleanFn = func(name string) string {
 
 	if s[0] == "NOKIA" && s[1] == "Nokia" {
 		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
+	}
+
+	if s[0] == "APPLE" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

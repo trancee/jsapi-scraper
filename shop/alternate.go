@@ -11,12 +11,21 @@ import (
 	"strings"
 )
 
-var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(?20[12]\d\)?|\s+\(SM-A\d+\)| Enterprise Edition`)
+var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(SM-A\d+\)| Enterprise Edition`)
 
 var AlternateCleanFn = func(name string) string {
 	if loc := AlternateRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

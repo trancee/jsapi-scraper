@@ -40,7 +40,7 @@ var orderflowNames = []string{
 var orderflowNamesExpected = []string{
 	"Apple iPhone 11",
 	"Apple iPhone 11",
-	"Apple iPhone SE 3rd Gen",
+	"Apple iPhone SE (2022)",
 	"HUAWEI Nova 9",
 	"HUAWEI P SMART",
 	"Motorola moto g72",

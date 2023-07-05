@@ -12,15 +12,23 @@ import (
 	"strings"
 )
 
-var MobileZoneRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual Sim`)
+var MobileZoneRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"| Dual Sim`) // |\s+\(?[2345]G\)?
 
 var MobileZoneCleanFn = func(name string) string {
-	name = strings.ReplaceAll(name, " Phone 1 A063", " Phone (1)")
-	name = strings.ReplaceAll(name, " Xcover5", " XCover 5")
+	name = strings.NewReplacer(" Phone 1 A063", " Phone (1)", " Xcover5", " XCover 5", " 5G", "").Replace(name)
 
 	if loc := MobileZoneRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

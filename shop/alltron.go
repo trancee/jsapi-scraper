@@ -11,10 +11,10 @@ import (
 	"strings"
 )
 
-var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+20[12]\d|\s+((EE )?Enterprise Edition( CH)?)`)
+var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+((EE )?Enterprise Edition( CH)?)`)
 
 var AlltronCleanFn = func(name string) string {
-	name = strings.NewReplacer(" Phones ", " ", "Recommerce Switzerland SA ", "").Replace(name)
+	name = strings.NewReplacer(" Phones ", " ", "Recommerce Switzerland SA ", "", "3. Gen.", "(2022)").Replace(name)
 
 	if loc := AlltronRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -25,6 +25,13 @@ var AlltronCleanFn = func(name string) string {
 
 	if s[0] == "iPhone" {
 		name = "Apple " + name
+	}
+
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

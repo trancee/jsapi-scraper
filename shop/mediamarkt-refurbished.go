@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-var MediamarktRefurbishedRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+\(?20[12]\d\)?|\s+[2345]G|\s+\((mono|dual) sim\)`)
+var MediamarktRefurbishedRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+[2345]G|\s+\(?(mono|dual) sim\)?`)
 
 var MediamarktRefurbishedCleanFn = func(name string) string {
 	if loc := MediamarktRefurbishedRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -24,6 +24,13 @@ var MediamarktRefurbishedCleanFn = func(name string) string {
 
 	if s[0] == "Samsung" {
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+	}
+
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

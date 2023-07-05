@@ -34,6 +34,7 @@ var ConradCleanFn = func(name string) string {
 
 	if s[0] == "iPhone" {
 		name = "Apple " + name
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
 	}
 
 	return strings.TrimSpace(name)

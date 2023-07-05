@@ -365,7 +365,7 @@ var galaxusNamesExpected = []string{
 	"realme GT",
 	"realme GT",
 	"realme Narzo 50",
-	"Apple iPhone SE 2020",
+	"Apple iPhone SE (2020)",
 	"Rephone",
 	"Samsung Galaxy A12",
 	"Samsung Galaxy A13",

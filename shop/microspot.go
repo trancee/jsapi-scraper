@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| LTE| Enterprise Edition`)
+var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| LTE| Enterprise Edition`)
 
 var MicrospotCleanFn = func(name string) string {
 	if loc := MicrospotRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -28,6 +28,13 @@ var MicrospotCleanFn = func(name string) string {
 
 	if s[0] == "NOKIA" && s[1] == "Nokia" {
 		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
+	}
+
+	if s[0] == "APPLE" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

@@ -110,10 +110,10 @@ var mobiledeviceNames = []string{
 }
 
 var mobiledeviceNamesExpected = []string{
-	"Apple iPhone SE",
-	"Apple iPhone SE",
-	"Apple iPhone SE",
-	"Apple iPhone SE",
+	"Apple iPhone SE (2020)",
+	"Apple iPhone SE (2020)",
+	"Apple iPhone SE (2020)",
+	"Apple iPhone SE (2020)",
 	"Apple iPhone XR",
 	"Apple iPhone XR",
 	"Google Pixel 4",

@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)| DS|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`)
+var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)| DS|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`) // |\s+\(?20[12]\d\)?
 
 var MelectronicsCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 3th ", " 3rd Gen ", "A53 s", "A53s").Replace(name)
@@ -29,6 +29,13 @@ var MelectronicsCleanFn = func(name string) string {
 
 	if s[0] == "Redmi" {
 		name = "Xiaomi " + name
+	}
+
+	if s[0] == "Apple" {
+		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	} else {
+		// Remove year component for all other than Apple.
+		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
 	return strings.TrimSpace(name)

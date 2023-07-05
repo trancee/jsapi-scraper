@@ -6,6 +6,7 @@ import (
 )
 
 var alternateNames = []string{
+	"Apple iPhone SE (2022) 64GB, Handy",
 	"ASUS Zenfone 8 128GB Obsidian Black",
 	"ASUS Zenfone 8 256GB Obsidian Black",
 	"ASUS Zenfone 9 128GB inkl. Chromebook Bundle Midnight Black",
@@ -239,6 +240,7 @@ var alternateNames = []string{
 }
 
 var alternateNamesExpected = []string{
+	"Apple iPhone SE (2022)",
 	"ASUS Zenfone 8",
 	"ASUS Zenfone 8",
 	"ASUS Zenfone 9",
