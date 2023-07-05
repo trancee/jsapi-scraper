@@ -150,7 +150,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 			}
 			_product.title = title
 
-			if Skip(title) {
+			if Skip(title) || strings.Contains(title, "FreeBuds") {
 				continue
 			}
 
@@ -211,7 +211,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result))
 		for _, product := range _result {
-			// fmt.Println(product)
+			// fmt.Printf("%+v\n", product)
 
 			_title := html.UnescapeString(product.title)
 			_model := product.model

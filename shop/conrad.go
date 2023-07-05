@@ -12,22 +12,28 @@ import (
 	"strings"
 )
 
-var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|\d+\s*GB|\s*\d+G|\s+\(?(Version )?20[12]\d\)?|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Rot|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|\(PRODUCT\) RED™|Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht)`)
+var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|\d+\s*GB|\s*\d+G|\s+\(Version 20[12]\d\)|\s+\(Grade [A-Z]\)|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Rot|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|Refurbished|\(PRODUCT\) RED™|Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht)`)
 
 var ConradCleanFn = func(name string) string {
-	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Samsung XCover", "Samsung Galaxy XCover").Replace(name)
+	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Samsung XCover", "Samsung Galaxy XCover", "Renewd® ", "").Replace(name)
 
 	if loc := ConradRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
 
-	name = strings.ReplaceAll(name, " E ", " E")
+	name = strings.TrimSpace(strings.ReplaceAll(name, " E ", " E"))
 
-	if s := strings.Split(name, " "); len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
+	s := strings.Split(name, " ")
+
+	if len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
 		if s[1][0] == 'E' || s[1][0] == 'G' {
 			name = s[0] + " Moto " + s[1]
 		}
+	}
+
+	if s[0] == "iPhone" {
+		name = "Apple " + name
 	}
 
 	return strings.TrimSpace(name)

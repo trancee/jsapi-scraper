@@ -80,6 +80,7 @@ var _skips = map[string]bool{
 	"DEUTSCHE":        true,
 	"DOOGEE":          true, // EXCLUDE
 	"DORO":            true,
+	"DREAME":          true,
 	"EL":              true,
 	"EMPORIA":         true,
 	"EMPORIAEUPHORIA": true,
@@ -133,6 +134,7 @@ var _skips = map[string]bool{
 	"SUUNTO":          true,
 	"SWISSTONE":       true,
 	"SWISSVOICE":      true,
+	"TCL":             true,
 	"TELEFON":         true,
 	"TELEFONAS":       true,
 	"TELEFUNKEN":      true,

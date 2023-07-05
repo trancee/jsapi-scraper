@@ -118,10 +118,12 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 				_product := _Response{}
 
 				baseInfo := traverse(item, "div", "class", "base-info")
+				if baseInfo == nil {
+					continue
+				}
 				// fmt.Println(baseInfo)
 
 				productKey, _ := attr(baseInfo.Attr, "data-reco-pid")
-				// fmt.Println(productKey)
 				productId := productKey[2:]
 				if _debug {
 					fmt.Println(productId)
