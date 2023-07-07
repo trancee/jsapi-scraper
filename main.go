@@ -112,6 +112,7 @@ func main() {
 			shop.XXX_mobilezone(isDryRun),
 			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
+			shop.XXX_tutti(isDryRun),
 		} {
 			_shops = append(_shops, _shop.Name())
 
