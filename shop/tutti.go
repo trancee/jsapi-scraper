@@ -34,9 +34,6 @@ var TuttiCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
-	if s[0] == "Blackview" {
-	}
-
 	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
 		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 		name = regexp.MustCompile(`(?i) (A)\s*(\d+)`).ReplaceAllString(name, " $1$2")
@@ -54,7 +51,7 @@ var TuttiCleanFn = func(name string) string {
 	if s[0] == "Galaxy" || s[0] == "galaxy" {
 		name = "Samsung " + name
 	}
-	if s[0] == "Samsung" || s[0] == "samsung" {
+	if s[0] == "Samsung" || s[0] == "samsung" || s[0] == "Galaxy" || s[0] == "galaxy" {
 		name = strings.ReplaceAll(name, "duas", "duos")
 		name = regexp.MustCompile(`(?i)( Galaxy)? (A|S)\s*(\d+| duos)`).ReplaceAllString(name, " Galaxy $2$3")
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
@@ -76,8 +73,6 @@ var TuttiCleanFn = func(name string) string {
 	if s[0] == "POCO" || s[0] == "Poco" || s[0] == "Redmi" {
 		name = "Xiaomi " + name
 	}
-	if s[0] == "Xiaomi" {
-	}
 
 	if s[0] == "Sony" {
 		name = regexp.MustCompile(`[DF]\d{4}`).ReplaceAllString(name, "")
@@ -91,7 +86,7 @@ var TuttiCleanFn = func(name string) string {
 		name = regexp.MustCompile(`(?i)\s*(\d+)\s*(S)`).ReplaceAllString(name, " $1$2")
 	}
 	if s[0] == "Apple" || s[0] == "iPhone" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+		name = strings.NewReplacer(" 2016", "", " 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
 	} else {
 		// Remove year component for all other than Apple.
 		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")

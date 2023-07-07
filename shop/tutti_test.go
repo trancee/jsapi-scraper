@@ -19,6 +19,7 @@ var tuttiNames = []string{
 	"Huawei Y5p Smartphone NEU und OVP",
 	"I Phone 5 S",
 	"iPhone  6",
+	"Iphone SE 2016 (intakt, nur Touch Screen zersprungen)",
 	"Iphone SE 2020/2022",
 	"IPhone SE 64GB Silber mit GARANTIE",
 	"iphone XR mit OVP",
@@ -51,6 +52,7 @@ var tuttiNames = []string{
 	"Samsung S20 FE 5G",
 	"Smartphone XIAOMI Redmi 9A ancora in Garanzia",
 	"Sony Xperia xz F8331",
+	"Wiko Fever 4G (16Go/3Go) (neuf/neu)",
 	"Xiaomi mobile redmi 10 blau chrome handy",
 	"XIAOMI Redmi 9A HD+ Smartphone Android 32GB 13MP Nero",
 }
@@ -69,6 +71,7 @@ var tuttiNamesExpected = []string{
 	"Huawei Y5p",
 	"Apple iPhone 5S",
 	"Apple iPhone 6",
+	"Apple iPhone SE",
 	"Apple iPhone SE (2020)",
 	"Apple iPhone SE",
 	"Apple iPhone XR",
@@ -101,6 +104,7 @@ var tuttiNamesExpected = []string{
 	"Samsung Galaxy S20 FE",
 	"XIAOMI Redmi 9A",
 	"Sony Xperia xz",
+	"Wiko Fever",
 	"Xiaomi redmi 10",
 	"XIAOMI Redmi 9A",
 }

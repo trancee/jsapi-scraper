@@ -62,6 +62,8 @@ func Lint(name string) string {
 		// fmt.Printf("%-30s %v\n", name, matches)
 	}
 
+	name = strings.ReplaceAll(name, "FEver", "Fever")
+
 	return name
 }
 
