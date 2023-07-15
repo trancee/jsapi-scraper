@@ -23,7 +23,7 @@ var StegCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = strings.ReplaceAll(name, " E ", " E")
+	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G", "Samsung Samsung ", "Samsung ", "Xiaomi Xiaomi ", "Xiaomi ").Replace(name)
 
 	s := strings.Split(name, " ")
 

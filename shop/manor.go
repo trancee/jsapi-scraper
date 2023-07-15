@@ -39,7 +39,7 @@ var ManorCleanFn = func(name string) string {
 func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	// _url := fmt.Sprintf("https://www.manor.ch/_next/data/g5Ai52cssZcOwaX4irIEt/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.manor.ch/_next/data/_3PWxN8k_RnFepGtQBcAY/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.manor.ch/_next/data/kMW9TWmyHMah-mSOrKa5J/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 

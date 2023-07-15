@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|ice blue|lake blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|charcoal grey|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
@@ -292,12 +292,26 @@ func XXX_foletti(isDryRun bool) IShop {
 				_result = append(_result, _product)
 			}
 
-			results := traverse(doc, "div", "class", "ps-3")
+			results := traverse(traverse(doc, "div", "class", "listing-number-of-results"), "em", "", "").NextSibling.NextSibling
 			if result, ok := text(results); ok {
-				if x := regexp.MustCompile(`(\d+)‐(\d+) \/ (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
-					break
+				current, _ := strconv.Atoi(result)
+
+				results = results.NextSibling.NextSibling
+				if result, ok := text(results); ok {
+					total, _ := strconv.Atoi(result)
+
+					if current >= total {
+						break
+					}
 				}
 			}
+
+			// results := traverse(doc, "div", "class", "ps-3")
+			// if result, ok := text(results); ok {
+			// 	if x := regexp.MustCompile(`(\d+)‐(\d+) \/ (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
+			// 		break
+			// 	}
+			// }
 		}
 	}
 
@@ -343,6 +357,8 @@ func XXX_foletti(isDryRun bool) IShop {
 			if s.IsWorth(product) {
 				products = append(products, product)
 			}
+
+			// fmt.Printf("%#v\n", product)
 		}
 
 		if _tests {

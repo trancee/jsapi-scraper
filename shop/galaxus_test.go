@@ -114,6 +114,7 @@ var galaxusNames = []string{
 	"OnePlus Nord CE",
 	"OnePlus Nord CE 2 Lite 5G",
 	"OnePlus Nord CE3 Lite 5G Pastel Lime",
+	"OPPO 8 Lite",
 	"OPPO A57s",
 	"OPPO A74",
 	"OPPO A74 5G Space Silver",
@@ -232,6 +233,7 @@ var galaxusNames = []string{
 	"ZTE Blade A31 Lite",
 	"ZTE Blade V40 Vita 128G+4G black(inkl. Buds",
 	"ZTE Blade V40S 4G Black",
+	"ZTE Graues Smartphone Blade V40 Design + schwarze Smartwatch Watch Live",
 }
 
 var galaxusNamesExpected = []string{
@@ -343,6 +345,7 @@ var galaxusNamesExpected = []string{
 	"OnePlus Nord CE",
 	"OnePlus Nord CE 2 Lite",
 	"OnePlus Nord CE 3 Lite",
+	"OPPO Reno8 Lite",
 	"OPPO A57s",
 	"OPPO A74",
 	"OPPO A74",
@@ -461,6 +464,7 @@ var galaxusNamesExpected = []string{
 	"ZTE Blade A31 Lite",
 	"ZTE Blade V40 Vita",
 	"ZTE Blade V40S",
+	"ZTE Blade V40",
 }
 
 func TestGalaxusClean(t *testing.T) {

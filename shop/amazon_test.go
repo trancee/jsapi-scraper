@@ -8,6 +8,7 @@ import (
 var amazonNames = []string{
 	"0 Xiaomi Redmi 10C 4GB/128GB Grey Non-NFC EU",
 	"- Xiaomi Redmi Note 12 5G 128GB/4GB Dual-SIM Frosted-Green",
+	"A34 AWESOME LIME 128GB 5G",
 	"Apple 2022 iPhone SE (128 GB) - Polarstern (3. Generation)",
 	"Apple iPhone 12 (128 GB) - Violett",
 	"Apple iPhone 13 (128 GB) - (Product) RED",
@@ -83,6 +84,7 @@ var amazonNames = []string{
 	"Google Pixel 7 Pro – Entsperrtes Android-Smartphone mit Tele- und Weitwinkelobjektiv – 256GB - Snow",
 	"Google Pixel 7 – Entsperrtes Android-Smartphone mit Weitwinkelobjektiv – 256GB - Obsidian",
 	"Handy ohne Vertrag Günstig,OUKITEL C25 Android 11 6.52 Zoll HD+ 5000mAh Batterie Smartphone ohne Vertrag,256GB Erweiterbar...",
+	"Honor HonorMagic5 Lite 5G 256GB Midnight Black",
 	"HONOR Magic 4 Lite, Android Smartphone, 6 + 128 GB Handy, 48-MP-Kamera, 6,81\" 90Hz-LCD, Snapdragon 680, 66W-Schnellladung mit 4800-mAh-Akku, BLAU",
 	"HUAWEI Mate10 lite Dual-Sim Smartphone (14.97 cm (5.9 Zoll), 64 GB interner Speicher, 4 GB RAM, 16 MP + 2 MP Kamera, Android 7.0, EMUI 5.1) Aurora Blau",
 	"Huawei Mate20 Dual-SIM Smartphone Bundle (6,53 Zoll, 128 GB interner Speicher, 4 GB RAM, Android 9.0, EMUI 9.0) midnight blau + USB Typ-C-Adapter [Exklusiv bei Amazon] - Deutsche Version",
@@ -245,6 +247,7 @@ var amazonNames = []string{
 var amazonNamesExpected = []string{
 	"Xiaomi Redmi 10C",
 	"Xiaomi Redmi Note 12",
+	"Samsung Galaxy A34",
 	"Apple iPhone SE",
 	"Apple iPhone 12",
 	"Apple iPhone 13",
@@ -320,6 +323,7 @@ var amazonNamesExpected = []string{
 	"Google Pixel 7 Pro",
 	"Google Pixel 7",
 	"OUKITEL C25",
+	"Honor Magic5 Lite",
 	"HONOR Magic4 Lite",
 	"HUAWEI Mate 10 lite",
 	"Huawei Mate 20",
