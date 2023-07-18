@@ -22,7 +22,8 @@ var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\
 
 var AmazonCleanFn = func(name string) string {
 	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |(XIA|REA) DS |3\. Generation|all carriers ,|^[-0] `).ReplaceAllString(name, "")
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", "A34", "Samsung Galaxy A34", " M5/", " M5|", "8GBRAM128GBROM", " ").Replace(name)
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ").Replace(name)
+	name = regexp.MustCompile(`^A34`).ReplaceAllString(name, "Samsung Galaxy A34")
 	name = AmazonRegex3.ReplaceAllString(name, "|")
 
 	if s := strings.Split(name, "|"); len(s) > 0 {
