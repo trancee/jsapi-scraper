@@ -15,9 +15,9 @@ import (
 	"golang.org/x/net/html"
 )
 
-var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(6|8|16|32|64|128|256) ?[MG]B|\/6\s+| \d"| [45] ?G| (ancora|black|blau|chrome|(rose )?gold|nero|roségold|schwarz|silber|silver|space gr[ae]y|weiss|white)| \(| \/|, `)
+var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(6|8|16|32|64|128|256) ?([MG]B|BG)|\/6\s+| \d"| [45] ?G| (ancora|black|blau|chrome|rose|(rose )?gold|nero|roségold|schwarz|silber|silver|space gr[ae]y|weiss|white)| mit | und | \(| \/|, `)
 var TuttiExclusionRegex = regexp.MustCompile(`(?i)^(emporia|ericsson|htc)|galaxy (s8|s7|s5|s4|s3|s|j\d+|gt)|iph?one? ?(3gs|3g|3|s4|4s|4|5s|5c|5|6s|6|7|8)|motorola (v8|razr)|nokia|orange|samsung (galaxy (young|s|note ii|note 2|j3|ace)|mini|rex|s7|s8|s9)|sonn?y ?(err?ics?son)|swisscom|adapter|alt|atrappe|audio|bastler|case|cloudlocked|cover|charger|custodia|defekt|display|folie|gesperrt|gigaset|hülle|kabel|kinder|klapp|mainboard|nostalgie|panzerglas|sammlung|scatola|senior|siemens|silikon|skin|teile|vecchio|vintage|voip|zersplittert`)
-var TuttiInclusionRegex = regexp.MustCompile(`(?i)^(apple (iphone (x|se|\d{2}))|asus (zenfone)|blackview (bv\d+|bl\d+|a\d+)|fairphone|google (pixel)|honor (x\d+|magic|\d+)|huawei (y\d+|p\d+|p smart|nova|mate)|infinix|inoi (note|a\d+)|motorola (moto|edge|defy)|nothing|oneplus (nord|\d+)|oppo (reno|find|a\d+)|realme (narzo|c\d+|\d+)|samsung (galaxy )|sony (xperia)|vivo (y\d+|v\d+)|wiko (y\d+|view|sunny|power|fever)|xiaomi (redmi |poco|mi|\d+)|zte (blade|axon))`)
+var TuttiInclusionRegex = regexp.MustCompile(`(?i)^(apple (iphone (x|se|\d{2}))|asus (zenfone)|blackview (bv\d+|bl\d+|a\d+)|fairphone|google (pixel)|honor (x\d+|magic|\d+)|huawei (y\d+|p\d+|p smart|nova|mate)|infinix|inoi (note|a\d+)|motorola (moto|edge|defy)|nothing|oneplus (nord|\d+)|oppo (reno|find|a\d+)|realme (narzo|c\d+|\d+)|samsung (galaxy [amnsxz])|sony (xperia)|vivo (y\d+|v\d+)|wiko (y\d+|view|sunny|power|fever)|xiaomi (redmi |poco|mi|\d+)|zte (blade|axon))`)
 
 var TuttiCleanFn = func(name string) string {
 	if loc := TuttiRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -25,11 +25,11 @@ var TuttiCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`(?i)^Original | Entsperrt| Occass?ion| Schnäppchen|Cellulate |funktioniert|Top Zustand|semplificato |Mobile Phone( - )?|Mobiletelefon |Telefon|mobile |(leicht)? gebraucht|zu verkaufen ?(ein )?|Verkauf von |vendo |(in|mit|NEU und)? OVP| und noch verschweisst| in gutem Zustand|(Micro-)?(Handy|Natel) (von |\/ )?|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smartphone? |Burnerphone |Neuwertiges | garandieschein| HD\+|dual[ -]sim|miui| Apple| RED$| (Android|EU|neu)$`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`(?i)^Original | Entsperrt| Occass?ion| Schnäppchen|Cellulate |funktioniert|Top Zustand|semplificato |Mobile Phone( - )?|Mobiletelefon | Smartphone|Telefon(ino)?|mobile |(leicht)? gebraucht|(Micro-|Neuwertiges )?(Handy|Natel) (von |\/ )?|zu verkaufen ?(ein )?|Verkauf von |vendo |( - )?(wie )?neu|(in|mit|NEU und)? OVP| und noch verschweisst| in gutem Zustand| mit Gebrauchsspuren|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smartphone? |Burnerphone |Neuwertiges | garandieschein| con vetro da sostituire| HD\+|dual[ -]sim|miui| Apple| RED$| (Android|EU)$`).ReplaceAllString(name, "")
 	name = regexp.MustCompile(`(?i)i[ -]?P(ho|oh)ne`).ReplaceAllString(name, "iPhone")
 	name = regexp.MustCompile(`(?i)One ?Plus`).ReplaceAllString(name, "OnePlus")
 	name = regexp.MustCompile(`(?i)Mi Xiaomi`).ReplaceAllString(name, "Xiaomi Mi")
-	name = strings.NewReplacer("1. Generation", "(2016)", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", " Tablet", " Tab", " Android", "", "  ", " ").Replace(name)
+	name = strings.NewReplacer("1. Generation", "(2016)", "prima generazione", "(2016)", " G5G", " G", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", " Tablet", " Tab", " Android", "", "  ", " ").Replace(name)
 	name = strings.TrimSpace(name)
 
 	s := strings.Split(name, " ")
@@ -62,12 +62,12 @@ var TuttiCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Motorola" {
-		if s[1] == "Moto" && s[2] == "Edge" {
+		if len(s) > 1 && s[1] == "Moto" && s[2] == "Edge" {
 			name = strings.ReplaceAll(name, "Moto ", "")
 		}
-		name = regexp.MustCompile(`(?i)( Moto)? (e)\s*(\d+)`).ReplaceAllString(name, " Moto $2$3")
+		name = regexp.MustCompile(`(?i)( Moto)? (e|G)\s*(\d+)`).ReplaceAllString(name, " Moto $2$3")
 	}
-	if s[0] == "moto" {
+	if s[0] == "moto" || s[0] == "Moto" {
 		name = "MOTOROLA " + name
 	}
 
@@ -77,6 +77,14 @@ var TuttiCleanFn = func(name string) string {
 
 	if s[0] == "Sony" {
 		name = regexp.MustCompile(`[DF]\d{4}`).ReplaceAllString(name, "")
+	}
+
+	if s[0] == "Wiko" {
+		name = regexp.MustCompile(`View\s*(\d)`).ReplaceAllString(name, "View $1")
+	}
+
+	if s[0] == "Xiaomi" {
+		name = regexp.MustCompile(`Note\s*(\d)`).ReplaceAllString(name, "Note $1")
 	}
 
 	if s[0] == "iPhone" {

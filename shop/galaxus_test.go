@@ -61,6 +61,7 @@ var galaxusNames = []string{
 	"Motorola Edge 20",
 	"Motorola EDGE 20 LITE 8 / 128GB LAGOON Green",
 	"Motorola Edge 30",
+	"Motorola Edge 30 5G OLED Dual SIM 256/8GB Aurora Green",
 	"Motorola G42",
 	"Motorola Google Nexus 6",
 	"Motorola Moto E 13 16 5 cm (6.5 Zoll) Dual-SIM Android 13 Go edition 4G USB Typ-C 2 GB 64 GB 5000 mA",
@@ -162,6 +163,7 @@ var galaxusNames = []string{
 	"Samsung Galaxy XCover 4s",
 	"Samsung Galaxy XCover 5 EE Enterprise Edition",
 	"Samsung Galaxy XCover Pro EE Enterprise Edition",
+	"Samsung Galaxy Z Flip3 5G EU",
 	"Sony Xperia 1",
 	"Sony Xperia 10 III",
 	"Sony Xperia XZ",
@@ -208,6 +210,7 @@ var galaxusNames = []string{
 	"Xiaomi Redmi 10",
 	"Xiaomi Redmi 10 Dual-Sim (2022) 64GB, Sea Blue",
 	"Xiaomi Redmi 10C",
+	"Xiaomi Redmi 12C (Ocean Blue) DS 6.71“ IPS LCD 720x1650/2.0GHz&1.8GHz/32GB/3GB RAM/MIUI 13/microSDXC",
 	"Xiaomi Redmi 9",
 	"Xiaomi Redmi 9C NFC",
 	"Xiaomi Redmi A1 Plus",
@@ -235,6 +238,7 @@ var galaxusNames = []string{
 	"ZTE Blade V40 Vita 128G+4G black(inkl. Buds",
 	"ZTE Blade V40S 4G Black",
 	"ZTE Graues Smartphone Blade V40 Design + schwarze Smartwatch Watch Live",
+	"ZTE Supplier did not provide product name",
 }
 
 var galaxusNamesExpected = []string{
@@ -292,6 +296,7 @@ var galaxusNamesExpected = []string{
 	"Motorola Moto E22i",
 	"Motorola Edge 20",
 	"Motorola EDGE 20 LITE",
+	"Motorola Edge 30",
 	"Motorola Edge 30",
 	"Motorola Moto G42",
 	"Motorola Google Nexus 6",
@@ -394,6 +399,7 @@ var galaxusNamesExpected = []string{
 	"Samsung Galaxy XCover 4s",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover Pro",
+	"Samsung Galaxy Z Flip3",
 	"Sony Xperia 1",
 	"Sony Xperia 10 III",
 	"Sony Xperia XZ",
@@ -440,6 +446,7 @@ var galaxusNamesExpected = []string{
 	"Xiaomi Redmi 10",
 	"Xiaomi Redmi 10",
 	"Xiaomi Redmi 10C",
+	"Xiaomi Redmi 12C",
 	"Xiaomi Redmi 9",
 	"Xiaomi Redmi 9C",
 	"Xiaomi Redmi A1+",
@@ -467,6 +474,7 @@ var galaxusNamesExpected = []string{
 	"ZTE Blade V40 Vita",
 	"ZTE Blade V40S",
 	"ZTE Blade V40",
+	"ZTE",
 }
 
 func TestGalaxusClean(t *testing.T) {

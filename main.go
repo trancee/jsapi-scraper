@@ -233,7 +233,12 @@ func main() {
 			max := Price{}
 			// fmt.Printf("%s", item)
 
-			for _, price := range matrix[item] {
+			for shop, price := range matrix[item] {
+				if _shops[shop] == "Amazon" {
+					// Do not consider discounts from Amazon.
+					continue
+				}
+
 				// fmt.Printf(" %v", price.Price)
 				if min.Price > price.Price || min.Price == 0 {
 					min = price
@@ -264,7 +269,7 @@ func main() {
 			// 		notify = true
 			// 	}
 			// }
-			if 100-((100/max.Price)*min.Price) >= (shop.ValueDiscount + 15) {
+			if 100-((100/max.Price)*min.Price) >= (shop.ValueDiscount) {
 				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 
 				var oldPrice Price
