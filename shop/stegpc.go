@@ -101,10 +101,12 @@ func XXX_stegpc(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			resp, err := http.Post(_url, "application/json", bytes.NewBuffer(nil))
+			url := fmt.Sprintf(_url, p)
+
+			resp, err := http.Post(url, "application/json", bytes.NewBuffer(nil))
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, _url)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
 				return NewShop(
 					_name,
 					_url,

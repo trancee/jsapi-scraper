@@ -113,6 +113,7 @@ func main() {
 			shop.XXX_orderflow(isDryRun),
 			shop.XXX_stegpc(isDryRun),
 			shop.XXX_tutti(isDryRun),
+			shop.XXX_venova(isDryRun),
 		} {
 			_shops = append(_shops, _shop.Name())
 
@@ -143,6 +144,7 @@ func main() {
 	}
 
 	type Price struct {
+		ID    string
 		Name  string
 		Price float32
 		Link  string
@@ -197,6 +199,7 @@ func main() {
 					}
 				} else {
 					price := Price{
+						ID:    item.Code,
 						Name:  product,
 						Price: item.Price,
 						Link:  item.URL,
@@ -228,6 +231,7 @@ func main() {
 		}
 		// fmt.Println(ids)
 
+	Loop:
 		for _, item := range _items {
 			min := Price{}
 			max := Price{}
@@ -236,7 +240,7 @@ func main() {
 			for shop, price := range matrix[item] {
 				if _shops[shop] == "Amazon" {
 					// Do not consider discounts from Amazon.
-					continue
+					continue Loop
 				}
 
 				// fmt.Printf(" %v", price.Price)
@@ -251,7 +255,7 @@ func main() {
 			// fmt.Printf(" [%v/%v]", min.Price, max.Price)
 			// fmt.Println()
 
-			delete(ids, min.Name)
+			delete(ids, min.ID)
 
 			notify := false
 
@@ -272,13 +276,13 @@ func main() {
 			if 100-((100/max.Price)*min.Price) >= (shop.ValueDiscount) {
 				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 
-				var oldPrice Price
-				if ok, _ := db.Has(min.Name); ok {
-					db.Get(min.Name, &oldPrice)
+				var oldPrice float32
+				if ok, _ := db.Has(min.ID); ok {
+					db.Get(min.ID, &oldPrice)
 				}
 
-				if oldPrice != min {
-					db.Set(min.Name, min)
+				if oldPrice != min.Price {
+					db.Set(min.ID, min.Price)
 
 					notify = true
 				}

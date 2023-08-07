@@ -154,7 +154,9 @@ func XXX_amazon(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			req, err := http.NewRequest("GET", fmt.Sprintf(_url, p), nil)
+			url := fmt.Sprintf(_url, p)
+
+			req, err := http.NewRequest("GET", url, nil)
 			if err != nil {
 				// panic(err)
 				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)

@@ -29,6 +29,10 @@ var ManorCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "Moto E ", "Moto ")
 	}
 
+	if s[0] == "NOKIA" {
+		name = strings.ReplaceAll(name, "Nokia ", "")
+	}
+
 	if s[0] == "OPPO" {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
@@ -39,7 +43,7 @@ var ManorCleanFn = func(name string) string {
 func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	// _url := fmt.Sprintf("https://www.manor.ch/_next/data/g5Ai52cssZcOwaX4irIEt/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.manor.ch/_next/data/i2gxJryMKg9MLl-Os1SSg/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.manor.ch/_next/data/VRtSVXKCqk4gTJ6YKc8DQ/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 
@@ -119,10 +123,13 @@ func XXX_manor(isDryRun bool) IShop {
 			if p > 1 {
 				page = fmt.Sprintf("&page=%d", p)
 			}
-			resp, err := http.Get(fmt.Sprintf("%s%s", _url, page))
+
+			url := fmt.Sprintf("%s%s", _url, page)
+
+			resp, err := http.Get(url)
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, fmt.Sprintf("%s%d", _url, p))
+				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
 				return NewShop(
 					_name,
 					_url,

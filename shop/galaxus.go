@@ -15,7 +15,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| EU| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN | Blue| Cosmic Aurora| Elegant Black| Force Touch| Grey| Midnight Space| \(?Ocean Blue\)?| Pastel Lime| Pearl White|Space Silver| bamboo green| hellblau| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN | Blue| Cosmic Aurora| Elegant Black| Force Touch| Grey| Midnight Space| \(?Ocean Blue\)?| Pastel Lime| Pearl White|Space Silver| bamboo green| hellblau| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -45,6 +45,7 @@ var GalaxusCleanFn = func(name string) string {
 	if s[0] == "Infinix" {
 		name = strings.Split(name, "5G")[0]
 		name = strings.ReplaceAll(name, " INFINIX", "")
+		name = strings.ReplaceAll(name, " Infinix", "")
 	}
 
 	if s[0] == "Samsung" {
@@ -77,6 +78,8 @@ var GalaxusCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "Redmi 9A 2", "Redmi 9A")
 		name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi Poco M5")
 		name = strings.ReplaceAll(name, "Xiaomi X5", "Xiaomi Poco X5")
+
+		name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
 	}
 
 	if s[0] == "Renewd" {

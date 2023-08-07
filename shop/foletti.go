@@ -100,7 +100,9 @@ func XXX_foletti(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			resp, err := http.Get(fmt.Sprintf(_url, p))
+			url := fmt.Sprintf(_url, p)
+
+			resp, err := http.Get(url)
 			if err != nil {
 				// panic(err)
 				fmt.Printf("[%s] %s (%s)\n", _name, err, _url)

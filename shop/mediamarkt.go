@@ -75,10 +75,12 @@ func XXX_mediamarkt(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			resp, err := http.Get(fmt.Sprintf("%s%d", _url, p))
+			url := fmt.Sprintf("%s%d", _url, p)
+
+			resp, err := http.Get(url)
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, fmt.Sprintf("%s%d", _url, p))
+				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
 				return NewShop(
 					_name,
 					_url,
