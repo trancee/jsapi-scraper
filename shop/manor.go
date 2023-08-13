@@ -14,7 +14,7 @@ import (
 var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
 
 var ManorCleanFn = func(name string) string {
-	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", " G ", " ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
+	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
 
 	name = regexp.MustCompile(`\s{2,}`).ReplaceAllString(name, " ")
 
@@ -26,7 +26,9 @@ var ManorCleanFn = func(name string) string {
 	s := strings.Split(name, " ")
 
 	if s[0] == "MOTOROLA" {
-		name = strings.ReplaceAll(name, "Moto E ", "Moto ")
+		name = strings.ReplaceAll(name, "Moto E E", "Moto E")
+		name = strings.ReplaceAll(name, "Moto G g", "Moto g")
+		name = regexp.MustCompile(`(?i)Moto\s*(E|G)\s*(\d+)\s*`).ReplaceAllString(name, "Moto $1$2")
 	}
 
 	if s[0] == "NOKIA" {
@@ -43,7 +45,7 @@ var ManorCleanFn = func(name string) string {
 func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	// _url := fmt.Sprintf("https://www.manor.ch/_next/data/g5Ai52cssZcOwaX4irIEt/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.manor.ch/_next/data/VRtSVXKCqk4gTJ6YKc8DQ/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.manor.ch/_next/data/gYrQohWJocTTt4rQvMxO7/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
 
 	const _tests = false
 

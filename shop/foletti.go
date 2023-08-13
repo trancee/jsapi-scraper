@@ -15,7 +15,7 @@ var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE |Smartfon |Solutions |TIM | Mobility Motorola| Mobility`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility`).ReplaceAllString(name, "")
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -39,6 +39,11 @@ var FolettiCleanFn = func(name string) string {
 		name = "Motorola " + name
 	}
 
+	if s[0] == "OnePlus" {
+		name = regexp.MustCompile(`\s*CPH\d+`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`CE\s*(\d+)`).ReplaceAllString(name, "CE $1")
+	}
+
 	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "Reno" {
 		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
 	}
@@ -46,14 +51,20 @@ var FolettiCleanFn = func(name string) string {
 	if s[0] == "Xiaomi" {
 		name = regexp.MustCompile(`Xiaomi Note\s*(\d)`).ReplaceAllString(name, "Xiaomi Redmi Note $1")
 	}
+
 	if s[0] == "Redmi" {
 		name = "Xiaomi " + name
 	}
-	if s[0] == "Huawei" && s[1] == "Magic5" {
-		name = strings.ReplaceAll(name, "Huawei", "Honor")
+
+	if s[0] == "Huawei" {
+		if s[1] == "Magic5" || s[1] == "Magic" {
+			name = strings.ReplaceAll(name, "Huawei", "Honor")
+		}
+
+		name = regexp.MustCompile(`Magic\s*(\d+)`).ReplaceAllString(name, "Magic$1")
 	}
 
-	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G").Replace(name)
+	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G", "Huawei Honor", "Honor").Replace(name)
 
 	return strings.TrimSpace(name)
 }

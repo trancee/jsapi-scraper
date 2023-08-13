@@ -168,6 +168,7 @@ var _skips = map[string]bool{
 	"XGODY":           true, // EXCLUDE
 	"XS13":            true,
 	"ZANCO":           true,
+	"ZEBRA":           true,
 }
 
 func Skip(brand string) bool {
