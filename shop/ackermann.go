@@ -1,0 +1,335 @@
+package shop
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"regexp"
+	"sort"
+	"strings"
+
+	helpers "jsapi-scraper/helpers"
+)
+
+var AckermannRegex = regexp.MustCompile(`(?i)(,\s*)?\d+\s*GB|(,\s*)?\(?[2345]G\)?| LTE| (black|glazed|green|pink|silver)`)
+
+var AckermannCleanFn = func(name string) string {
+	// name = strings.NewReplacer("", "").Replace(name)
+
+	if loc := AckermannRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
+	return helpers.Lint(name)
+
+	// name = strings.TrimSpace(name)
+
+	// s := strings.Split(name, " ")
+	// // fmt.Println(s)
+
+	// if s[0] == "Apple" {
+	// 	name = strings.NewReplacer("1. Generation", "(2016)", "1. Gen.", "(2016)", "2. Generation", "(2020)", "2. Gen.", "(2020)", "3. Generation", "(2022)", "3. Gen.", "(2022)").Replace(name)
+	// }
+
+	// if s[0] == "Huawei" {
+	// 	name = regexp.MustCompile(`Magic\s*(\d+)`).ReplaceAllString(name, "Magic$1")
+	// }
+
+	// if s[0] == "Motorola" {
+	// 	name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
+	// }
+
+	// if s[0] == "Nothing" {
+	// 	name = regexp.MustCompile(`-(\d+)`).ReplaceAllString(name, "($1)")
+	// }
+
+	// if s[0] == "OnePlus" {
+	// 	name = regexp.MustCompile(`\s*CPH\d+`).ReplaceAllString(name, "")
+	// 	name = regexp.MustCompile(`CE\s*(\d+)`).ReplaceAllString(name, "CE $1")
+	// }
+
+	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// 	name = regexp.MustCompile(`OPPO\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "OPPO Reno$1 $2")
+	// }
+
+	// if s[0] == "Samsung" {
+	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+	// 	name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+)`).ReplaceAllString(name, " Galaxy $2$3$4")
+	// }
+
+	// if s[0] == "Xiaomi" {
+	// 	name = regexp.MustCompile(`^Xiaomi\s*(\d+)\s*(\d{4})`).ReplaceAllString(name, "Xiaomi Redmi $1 ($2)")
+	// 	name = regexp.MustCompile(`(Poco\s*)?([CFMX]\d+)`).ReplaceAllString(name, "Poco $2")
+	// 	name = regexp.MustCompile(`(Redmi\s*)?Note\s*(\d+)`).ReplaceAllString(name, "Redmi Note $2")
+	// 	// name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+	// 	name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
+	// }
+
+	// if s[0] == "ZTE" {
+	// 	name = regexp.MustCompile(`(Blade\s*)?(A\d+)`).ReplaceAllString(name, "Blade $2")
+	// }
+
+	// return strings.TrimSpace(name)
+}
+
+func XXX_ackermann(isDryRun bool) IShop {
+	const _name = "Ackermann"
+	_url := "https://www.ackermann.ch/_next/data/shopping_app/de/technik/multimedia/smartphones-telefone.json?o=price-asc&f=eyJmaWx0ZXJfUHJvZHVrdHR5cF8xIjpbImZiX3ByZGt0LnAxX3NtcnQuaG5fMzgiXSwiZmlsdGVyX3ByaWNlIjpbIjE2OS0xNjA5Il19&categories=technik&categories=multimedia&categories=smartphones-telefone"
+
+	const _tests = false
+
+	testCases := map[string]string{}
+
+	type _Response struct {
+		code  string
+		title string
+		model string
+
+		link string
+
+		oldPrice float32
+		price    float32
+	}
+
+	type _Body struct {
+		PageProps struct {
+			Fallback struct {
+				SearchApiResult struct {
+					SearchResult struct {
+						Request struct {
+							Count int `json:"count"` // 72
+							Start int `json:"start"` // 144
+						} `json:"request"`
+						Result struct {
+							Count    int `json:"count"` // 162
+							Products []struct {
+								Brand struct {
+									Image string `json:"image"` // https://bilder.ackermann.ch/marken/ackermannch/samsung.gif
+									Name  string `json:"name"`  // Samsung
+								} `json:"brand"`
+								MasterSku   string `json:"masterSku"`   // AKLBB1660796293
+								Name        string `json:"name"`        // Samsung Smartphone »Samsung Galaxy A13«, light blue, 16,72 cm/6,6 Zoll, 128 GB...
+								NameNoBrand string `json:"nameNoBrand"` // Smartphone »Samsung Galaxy A13«, light blue, 16,72 cm/6,6 Zoll, 128 GB Speicherplatz,...
+								Variations  []struct {
+									VariationName string `json:"variationName"` // light blue
+									OldPrice      struct {
+										Currency string  `json:"currency"` // CHF
+										Value    float32 `json:"value"`
+										UVP      bool    `json:"uvp"`
+									} `json:"oldPrice"`
+									Price struct {
+										Currency   string  `json:"currency"` // CHF
+										Value      float32 `json:"value"`
+										Saving     int     `json:"saving"`
+										SavingType string  `json:"savingType"` // CURRENCY
+									} `json:"price"`
+									ProductUrl string `json:"productUrl"` // /p/samsung-smartphone-samsung-galaxy-a13/AKLBB1660796293?sku=9682996614&nav-c=134922#nav-i=12&ref=mba
+									ArtNo      string `json:"artNo"`      // 96829966
+									Sku        string `json:"sku"`        // 9682996614-0-1660796293
+								} `json:"variations"`
+							} `json:"products"`
+						} `json:"result"`
+					} `json:"searchresult"`
+				} `json:"search-api-result"`
+			} `json:"fallback"`
+		} `json:"pageProps"`
+	}
+
+	var _body []byte
+
+	path, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	path += "/"
+
+	var _results []_Response
+
+	for p := 1; p <= 5; p++ {
+		fn := fmt.Sprintf("shop/ackermann.%d.json", p)
+
+		if isDryRun {
+			if body, err := os.ReadFile(path + fn); err != nil {
+				panic(err)
+			} else {
+				_body = body
+			}
+		} else {
+			page := ""
+			if p > 1 {
+				page = fmt.Sprintf("&p=%d", p)
+			}
+
+			url := fmt.Sprintf("%s%s", _url, page)
+
+			resp, err := http.Get(url)
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode != http.StatusOK {
+				// panic(resp.StatusCode)
+				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+
+			if body, err := io.ReadAll(resp.Body); err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			} else {
+				_body = body
+			}
+
+			os.WriteFile(path+fn, _body, 0664)
+		}
+		// fmt.Println(string(_body))
+
+		var body _Body
+		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+			panic(err)
+		}
+
+		reName := regexp.MustCompile(`»(.*?)«`)
+
+		for _, product := range body.PageProps.Fallback.SearchApiResult.SearchResult.Result.Products {
+			name := product.Name
+			brand := product.Brand.Name
+
+			if matches := reName.FindStringSubmatch(name); len(matches) > 1 {
+				title := matches[1]
+
+				s := strings.Split(title, " ")
+				if s[0] != brand {
+					title = brand + " " + title
+				}
+
+				// fmt.Println(title)
+				model := AckermannCleanFn(title)
+				// fmt.Println(model)
+				// fmt.Println()
+
+				for _, variation := range product.Variations {
+					result := _Response{
+						code:  variation.Sku,
+						title: title,
+						model: model,
+
+						link: variation.ProductUrl,
+
+						oldPrice: variation.OldPrice.Value,
+						price:    variation.Price.Value,
+					}
+					// fmt.Println(result)
+
+					_results = append(_results, result)
+				}
+			}
+		}
+
+		if body.PageProps.Fallback.SearchApiResult.SearchResult.Request.Start+body.PageProps.Fallback.SearchApiResult.SearchResult.Request.Count >= body.PageProps.Fallback.SearchApiResult.SearchResult.Result.Count {
+			break
+		}
+	}
+
+	_parseFn := func(s IShop) *[]*Product {
+		products := []*Product{}
+
+		fmt.Printf("-- %s (%d)\n", _name, len(_results))
+		for _, _product := range _results {
+			// fmt.Println(_product)
+
+			_title := _product.title
+			_model := _product.model
+
+			if Skip(_model) {
+				continue
+			}
+
+			if _tests {
+				testCases[_title] = _model
+			}
+
+			var _savings float32
+			var _discount float32
+
+			_retailPrice := _product.oldPrice
+			_price := _retailPrice
+			if _product.price > 0 {
+				_price = _product.price
+			}
+			if _retailPrice > 0 {
+				_savings = _price - _retailPrice
+				_discount = 100 - ((100 / _retailPrice) * _price)
+			}
+
+			_link := s.ResolveURL(_product.link).String()
+
+			product := &Product{
+				Code:  _name + "//" + _product.code,
+				Name:  _title,
+				Model: _model,
+
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
+
+				URL: _link,
+			}
+
+			if s.IsWorth(product) {
+				products = append(products, product)
+			}
+		}
+
+		if _tests {
+			keys := make([]string, 0, len(testCases))
+
+			for k := range testCases {
+				keys = append(keys, k)
+			}
+			sort.Slice(keys, func(i, j int) bool { return strings.ToLower(keys[i]) < strings.ToLower(keys[j]) })
+
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(k, "\"", "\\\"") + "\",")
+			}
+			fmt.Println()
+			for _, k := range keys {
+				fmt.Println("\"" + strings.ReplaceAll(testCases[k], "\"", "\\\"") + "\",")
+			}
+		}
+
+		// fmt.Printf("%#v\n", products)
+		return &products
+	}
+
+	return NewShop(
+		_name,
+		_url,
+
+		_parseFn,
+	)
+}
