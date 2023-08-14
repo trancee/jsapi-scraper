@@ -13,6 +13,8 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(6|8|16|32|64|128|256) ?([MG]B|BG|G)|\/6\s+| \d"| [45] ?G| GSM| (ancora|black|blau|chrome|gray|onyx|red( edition|$)|rose|(rose )?gold|nero|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|weiss|white)| mit | und | [*|] | \(| \/|, |\/ `)
@@ -31,84 +33,95 @@ var TuttiCleanFn = func(name string) string {
 	name = regexp.MustCompile(`(?i)One ?Plus`).ReplaceAllString(name, "OnePlus")
 	name = regexp.MustCompile(`(?i)Mi Xiaomi`).ReplaceAllString(name, "Xiaomi Mi")
 	name = regexp.MustCompile(`(?i)Huawaii`).ReplaceAllString(name, "Huawai")
-	name = strings.NewReplacer("1. Generation", "(2016)", "1. gen", "(2016)", "1. GEN", "(2016)", "prima generazione", "(2016)", "2. Generation", "(2020)", " G5G", " G", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", "Galaxie", "Galaxy", " Tablet", " Tab", " Android", "", "n.201", "", "  ", " ").Replace(name)
-	name = strings.TrimSpace(name)
+	name = strings.NewReplacer("prima generazione", "1. Gen.", " G5G", " G", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", "Galaxie", "Galaxy", " Tablet", " Tab", " Android", "", "n.201", "", "  ", " ").Replace(name)
 
 	s := strings.Split(name, " ")
 
-	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-		name = regexp.MustCompile(`(?i) (A)\s*(\d+)`).ReplaceAllString(name, " $1$2")
-	}
-
-	if s[0] == "Honor" {
-		name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
-		name = regexp.MustCompile(`Honor\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "Honor $1 $2")
-	}
-
-	if s[0] == "Huawei" || s[0] == "HUAWEI" || s[0] == "huawei" {
-		name = strings.ReplaceAll(name, "smart +", "smart+")
-		name = regexp.MustCompile(`(?i) ([PY])[\s-]*(\d+)`).ReplaceAllString(name, " $1$2")
-	}
-
-	if s[0] == "Inoi" {
-		name = regexp.MustCompile(`(?i) A\s*(\d+)`).ReplaceAllString(name, " A$1")
-	}
-
-	if s[0] == "Galaxy" || s[0] == "galaxy" {
-		name = "Samsung " + name
-	}
 	if s[0] == "Samsung" || s[0] == "samsung" || s[0] == "Galaxy" || s[0] == "galaxy" {
 		name = strings.ReplaceAll(name, "duas", "duos")
-		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
-		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+| duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
-		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+
+		name = regexp.MustCompile(`20\d{2}`).ReplaceAllString(name, "")
 		name = regexp.MustCompile(`[J]\d{3}[H]`).ReplaceAllString(name, "")
+
 		name = strings.Split(name, ",")[0]
 		name = strings.Split(name, " - ")[0]
 	}
 
-	if s[0] == "Motorola" {
-		if len(s) > 1 && s[1] == "Moto" && s[2] == "Edge" {
-			name = strings.ReplaceAll(name, "Moto ", "")
-		}
-		name = regexp.MustCompile(`(?i)( Moto)? (e|G)\s*(\d+)`).ReplaceAllString(name, " Moto $2$3")
-	}
-	if s[0] == "moto" || s[0] == "Moto" {
-		name = "MOTOROLA " + name
-	}
+	return helpers.Lint(name)
 
-	if s[0] == "POCO" || s[0] == "Poco" || s[0] == "Redmi" {
-		name = "Xiaomi " + name
-	}
+	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// 	name = regexp.MustCompile(`(?i) (A)\s*(\d+)`).ReplaceAllString(name, " $1$2")
+	// }
 
-	if s[0] == "Sony" {
-		name = regexp.MustCompile(`[DF]\d{4}`).ReplaceAllString(name, "")
-	}
+	// if s[0] == "Honor" {
+	// 	name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
+	// 	name = regexp.MustCompile(`Honor\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "Honor $1 $2")
+	// }
 
-	if s[0] == "Wiko" {
-		name = regexp.MustCompile(`View\s*(\d)`).ReplaceAllString(name, "View $1")
-	}
+	// if s[0] == "Huawei" || s[0] == "HUAWEI" || s[0] == "huawei" {
+	// 	name = strings.ReplaceAll(name, "smart +", "smart+")
+	// 	name = regexp.MustCompile(`(?i) ([PY])[\s-]*(\d+)`).ReplaceAllString(name, " $1$2")
+	// }
 
-	if s[0] == "Xiaomi" {
-		name = regexp.MustCompile(`Note\s*(\d)`).ReplaceAllString(name, "Note $1")
-	}
+	// if s[0] == "Inoi" {
+	// 	name = regexp.MustCompile(`(?i) A\s*(\d+)`).ReplaceAllString(name, " A$1")
+	// }
 
-	if s[0] == "iPhone" {
-		name = "Apple " + name
+	// if s[0] == "Galaxy" || s[0] == "galaxy" {
+	// 	name = "Samsung " + name
+	// }
+	// if s[0] == "Samsung" || s[0] == "samsung" || s[0] == "Galaxy" || s[0] == "galaxy" {
+	// 	name = strings.ReplaceAll(name, "duas", "duos")
+	// 	name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
+	// 	name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+| duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
+	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+	// 	name = regexp.MustCompile(`[J]\d{3}[H]`).ReplaceAllString(name, "")
+	// 	name = strings.Split(name, ",")[0]
+	// 	name = strings.Split(name, " - ")[0]
+	// }
 
-		name = strings.Split(name, "/")[0]
+	// if s[0] == "Motorola" {
+	// 	if len(s) > 1 && s[1] == "Moto" && s[2] == "Edge" {
+	// 		name = strings.ReplaceAll(name, "Moto ", "")
+	// 	}
+	// 	name = regexp.MustCompile(`(?i)( Moto)? (e|G)\s*(\d+)`).ReplaceAllString(name, " Moto $2$3")
+	// }
+	// if s[0] == "moto" || s[0] == "Moto" {
+	// 	name = "MOTOROLA " + name
+	// }
 
-		name = regexp.MustCompile(`(?i)\s*(\d+)\s*(S)`).ReplaceAllString(name, " $1$2")
-	}
-	if s[0] == "Apple" || s[0] == "iPhone" {
-		name = strings.NewReplacer(" 2016", "", " 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	// if s[0] == "POCO" || s[0] == "Poco" || s[0] == "Redmi" {
+	// 	name = "Xiaomi " + name
+	// }
 
-	return strings.TrimSpace(name)
+	// if s[0] == "Sony" {
+	// 	name = regexp.MustCompile(`[DF]\d{4}`).ReplaceAllString(name, "")
+	// }
+
+	// if s[0] == "Wiko" {
+	// 	name = regexp.MustCompile(`View\s*(\d)`).ReplaceAllString(name, "View $1")
+	// }
+
+	// if s[0] == "Xiaomi" {
+	// 	name = regexp.MustCompile(`Note\s*(\d)`).ReplaceAllString(name, "Note $1")
+	// }
+
+	// if s[0] == "iPhone" {
+	// 	name = "Apple " + name
+
+	// 	name = strings.Split(name, "/")[0]
+
+	// 	name = regexp.MustCompile(`(?i)\s*(\d+)\s*(S)`).ReplaceAllString(name, " $1$2")
+	// }
+	// if s[0] == "Apple" || s[0] == "iPhone" {
+	// 	name = strings.NewReplacer(" 2016", "", " 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_tutti(isDryRun bool) IShop {

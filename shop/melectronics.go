@@ -9,36 +9,40 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?[2345]G\)?|\s*\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+((EE )?Enterprise Edition( CH)?)| DS|Awesome white|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver`) // |\s+\(?20[12]\d\)?
 
 var MelectronicsCleanFn = func(name string) string {
-	name = strings.NewReplacer(" 3th ", " 3rd Gen ", "A53 s", "A53s").Replace(name)
+	name = strings.NewReplacer(" 3th ", " 3rd Gen. ", "A53 s", "A53s").Replace(name)
 
 	if loc := MelectronicsRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
 
-	s := strings.Split(name, " ")
+	return helpers.Lint(name)
 
-	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	}
+	// s := strings.Split(name, " ")
 
-	if s[0] == "Redmi" {
-		name = "Xiaomi " + name
-	}
+	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// }
 
-	if s[0] == "Apple" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	// if s[0] == "Redmi" {
+	// 	name = "Xiaomi " + name
+	// }
 
-	return strings.TrimSpace(name)
+	// if s[0] == "Apple" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_melectronics(isDryRun bool) IShop {

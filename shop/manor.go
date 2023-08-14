@@ -9,12 +9,14 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
 
 var ManorCleanFn = func(name string) string {
-	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
+	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "NOKIA Nokia ", "Nokia ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
 
 	name = regexp.MustCompile(`\s{2,}`).ReplaceAllString(name, " ")
 
@@ -23,23 +25,25 @@ var ManorCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	s := strings.Split(name, " ")
+	return helpers.Lint(name)
 
-	if s[0] == "MOTOROLA" {
-		name = strings.ReplaceAll(name, "Moto E E", "Moto E")
-		name = strings.ReplaceAll(name, "Moto G g", "Moto g")
-		name = regexp.MustCompile(`(?i)Moto\s*(E|G)\s*(\d+)\s*`).ReplaceAllString(name, "Moto $1$2")
-	}
+	// s := strings.Split(name, " ")
 
-	if s[0] == "NOKIA" {
-		name = strings.ReplaceAll(name, "Nokia ", "")
-	}
+	// if s[0] == "MOTOROLA" {
+	// 	name = strings.ReplaceAll(name, "Moto E E", "Moto E")
+	// 	name = strings.ReplaceAll(name, "Moto G g", "Moto g")
+	// 	name = regexp.MustCompile(`(?i)Moto\s*(E|G)\s*(\d+)\s*`).ReplaceAllString(name, "Moto $1$2")
+	// }
 
-	if s[0] == "OPPO" {
-		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	}
+	// if s[0] == "NOKIA" {
+	// 	name = strings.ReplaceAll(name, "Nokia ", "")
+	// }
 
-	return strings.TrimSpace(name)
+	// if s[0] == "OPPO" {
+	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_manor(isDryRun bool) IShop {

@@ -82,6 +82,10 @@ var GalaxusCleanFn = func(name string) string {
 		name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
 	}
 
+	if s[0] == "ZTE" {
+		name = regexp.MustCompile(`(Blade\s*)?(A\d+)`).ReplaceAllString(name, "Blade $2")
+	}
+
 	if s[0] == "Renewd" {
 		if s[1] == "iPhone" {
 			name = strings.ReplaceAll(name, "Renewd", "Apple")
