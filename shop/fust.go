@@ -9,6 +9,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi
@@ -33,22 +35,34 @@ var FustCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "Fairphone" {
+		name = strings.ReplaceAll(name, " Fairphone", "")
+	}
+
 	if s[0] == "Fust" {
 		name = strings.ReplaceAll(name, "Fust ", "Inoi ")
 	}
 
-	if s[0] == "Reno" || s[0] == "Oppo" {
-		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	}
+	return helpers.Lint(name)
 
-	if s[0] == "Apple" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	// s := strings.Split(name, " ")
 
-	return strings.TrimSpace(name)
+	// if s[0] == "Fust" {
+	// 	name = strings.ReplaceAll(name, "Fust ", "Inoi ")
+	// }
+
+	// if s[0] == "Reno" || s[0] == "Oppo" {
+	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// }
+
+	// if s[0] == "Apple" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_fust(isDryRun bool) IShop {

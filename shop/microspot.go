@@ -10,6 +10,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| LTE| Enterprise Edition`)
@@ -22,22 +24,34 @@ var MicrospotCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
-	if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-		name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	}
-
 	if s[0] == "NOKIA" && s[1] == "Nokia" {
 		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
 	}
 
-	if s[0] == "APPLE" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	if s[0] == "ONEPLUS" && s[1] == "OnePlus" {
+		name = strings.ReplaceAll(name, "ONEPLUS OnePlus ", "OnePlus ")
 	}
 
-	return strings.TrimSpace(name)
+	return helpers.Lint(name)
+
+	// s := strings.Split(name, " ")
+
+	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
+	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// }
+
+	// if s[0] == "NOKIA" && s[1] == "Nokia" {
+	// 	name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
+	// }
+
+	// if s[0] == "APPLE" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_microspot(isDryRun bool) IShop {

@@ -10,6 +10,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var MiStoreRegex = regexp.MustCompile(`\s+(\d+/(GB)?)?\d+GB|\s+20[12]\d|\s+[2345]G`)
@@ -20,7 +22,15 @@ var MiStoreCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	return strings.TrimSpace(name)
+	s := strings.Split(name, " ")
+
+	if s[0] != "Xiaomi" {
+		name = "Xiaomi" + " " + name
+	}
+
+	return helpers.Lint(name)
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_mistore(isDryRun bool) IShop {

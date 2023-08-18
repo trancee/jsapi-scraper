@@ -90,7 +90,6 @@ var _skips = map[string]bool{
 	"FELLOWES":        true,
 	"FOLIA":           true,
 	"FUNKE":           true,
-	"GIGASET":         true,
 	"HAGENUK":         true,
 	"HAMMER":          true,
 	"HOP":             true,

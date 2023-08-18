@@ -10,6 +10,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+[2345]G| LTE| Enterprise Edition`) // |\s+\(?20[12]\d\)?
@@ -26,14 +28,22 @@ var InterdiscountCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
 	}
 
-	if s[0] == "APPLE" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	return helpers.Lint(name)
 
-	return strings.TrimSpace(name)
+	// s := strings.Split(name, " ")
+
+	// if s[0] == "NOKIA" && s[1] == "Nokia" {
+	// 	name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
+	// }
+
+	// if s[0] == "APPLE" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_interdiscount(isDryRun bool) IShop {

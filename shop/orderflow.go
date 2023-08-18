@@ -11,6 +11,8 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM| Blau| GREEN| HIMALAYA GREY| MIDNIGHT BLACK| Schwarz|(EE )?Enterprise Edition( CH)?`)
@@ -23,16 +25,18 @@ var OrderflowCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	s := strings.Split(name, " ")
+	return helpers.Lint(name)
 
-	if s[0] == "Apple" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	// s := strings.Split(name, " ")
 
-	return strings.TrimSpace(name)
+	// if s[0] == "Apple" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_orderflow(isDryRun bool) IShop {

@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 // r := regexp.MustCompile(`(?i)\W*((Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP Kamera,|OTG Reverse Charge|(\d{4,5}|\d{1,3}\.\d{3})mAh(\W*(Großer )?Akku)?|\(?\s*202\d\)?|\(\d+\+\d+GB\),|\d+ \+ \d+\s*GB|Android \d+( 4GB?)?)`)
@@ -17,7 +19,7 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichi?t|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[（]?\s*20[12]\d[）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
-var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Telefon |All Carriers |Neu |EU |Xia |MOVIL |Smartfon |Marke Modell |Sam |Cellulare |Unlocked |Senior | Master Edition|\(Hybrid SIM\))\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+([,.]\d+)?\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|AWESOME LIME|Blau|Blue|Buds|Cinemagic|Cloud Navy|Dark Silver|Glacier Blue|Gradient Bronze|Graphite Gray|Grau|Midnight Gray|Mint Green|\(?Ocean Blue\)?|Onyx Gray|Oro|Pebble White|Polar White|Sunrise Orange|White|\/Black|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS|\W+\(?20[12]\d\)?| \+ 5G| Enterprise Edition`)
+var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Telefon |All Carriers |Neu |EU |Xia |MOVIL |Smartfon |Marke Modell |Sam |Cellulare |Unlocked |Senior | Master Edition|\(Hybrid SIM\))\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+([,.]\d+)?\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|\d+\.\d+\s*mAh|AWESOME LIME|Blau|Blue|Buds|Cinemagic|Cloud Navy|Dark Silver|Glacier Blue|Gradient Bronze|Graphite Gray|Grau|Midnight Gray|Mint Green|\(?Ocean Blue\)?|Onyx Gray|Oro|Pebble White|Polar White|Sunrise Orange|White|\/Black|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS| \+ 5G| Enterprise Edition`)
 var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 2\+32| 4\+64| 4\+128| 128-4`)
 
 var AmazonCleanFn = func(name string) string {
@@ -42,64 +44,64 @@ var AmazonCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
-	if s[0] == "HUAWEI" || s[0] == "Huawei" {
-		name = strings.ReplaceAll(name, "Mate10", "Mate 10")
-		name = strings.ReplaceAll(name, "Mate20", "Mate 20")
-	}
+	// if s[0] == "HUAWEI" || s[0] == "Huawei" {
+	// 	name = strings.ReplaceAll(name, "Mate10", "Mate 10")
+	// 	name = strings.ReplaceAll(name, "Mate20", "Mate 20")
+	// }
 
 	if s[0] == "Honor" || s[0] == "HONOR" {
 		name = strings.ReplaceAll(name, "HonorMagic", "Magic")
-		name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
+		// name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
 	}
 
-	if s[0] == "moto" || s[0] == "Moto" {
-		name = "Motorola " + name
-	}
+	// if s[0] == "moto" || s[0] == "Moto" {
+	// 	name = "Motorola " + name
+	// }
 	if s[0] == "Motorola" {
 		name = strings.NewReplacer("Light", "Lite", " E ", " E").Replace(name)
 
-		if len(s) > 1 && (s[1] == "Moto" || s[1] == "moto") && (s[2] == "Edge" || s[2] == "edge") {
-			name = strings.ReplaceAll(name, "Moto ", "")
-		}
-		if len(s[1]) > 1 && (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
-			name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
-		}
+		// 	if len(s) > 1 && (s[1] == "Moto" || s[1] == "moto") && (s[2] == "Edge" || s[2] == "edge") {
+		// 		name = strings.ReplaceAll(name, "Moto ", "")
+		// 	}
+		// 	if len(s[1]) > 1 && (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
+		// 		name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
+		// 	}
 
-		name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
+		// 	name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
 	}
 
-	if s[0] == "OPPO" || s[0] == "Oppo" {
-		name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	}
+	// if s[0] == "OPPO" || s[0] == "Oppo" {
+	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
+	// }
 
-	if s[0] == "Galaxy" {
-		name = "Samsung " + name
-	}
+	// if s[0] == "Galaxy" {
+	// 	name = "Samsung " + name
+	// }
 
-	if s[0] == "Redmi" || s[0] == "REDMI" || s[0] == "POCO" {
-		name = "Xiaomi " + name
-	}
+	// if s[0] == "Redmi" || s[0] == "REDMI" || s[0] == "POCO" {
+	// 	name = "Xiaomi " + name
+	// }
 	if s[0] == "Samsung" {
 		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "Samsung A", "Samsung Galaxy A")
 		name = strings.ReplaceAll(name, "Samsung M", "Samsung Galaxy M")
 	}
-	if s[0] == "Xiaomi" {
-		name = strings.ReplaceAll(name, "Xiaomi 10", "Xiaomi Redmi 10")
-		name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi POCO M5")
-		name = strings.ReplaceAll(name, "Xiaomi Note ", "Xiaomi Redmi Note ")
-	}
-	if s[0] == "ZTE" {
-		name = strings.ReplaceAll(name, "V40 S", "V40S")
+	// if s[0] == "Xiaomi" {
+	// 	name = strings.ReplaceAll(name, "Xiaomi 10", "Xiaomi Redmi 10")
+	// 	name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi POCO M5")
+	// 	name = strings.ReplaceAll(name, "Xiaomi Note ", "Xiaomi Redmi Note ")
+	// }
+	// if s[0] == "ZTE" {
+	// 	name = strings.ReplaceAll(name, "V40 S", "V40S")
 
-		if strings.HasSuffix(name, "Vita") && s[1] != "Blade" {
-			name = strings.ReplaceAll(name, "ZTE", "ZTE Blade")
-		}
-	}
+	// 	if strings.HasSuffix(name, "Vita") && s[1] != "Blade" {
+	// 		name = strings.ReplaceAll(name, "ZTE", "ZTE Blade")
+	// 	}
+	// }
 
 	if loc := AmazonRegex4.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%s\t%s\n", loc, name[:loc[0]], name)
-		_model := name[:loc[0]]
+		name = name[:loc[0]]
 		// // fmt.Printf("%v\t%s\t%s\n", loc, name[loc[2]:loc[3]], name)
 		// _model := name[loc[2]:loc[3]]
 		// fmt.Println(_model)
@@ -107,10 +109,25 @@ var AmazonCleanFn = func(name string) string {
 		// fmt.Println(_model)
 		// _model = strings.TrimSpace(strings.Split(strings.ReplaceAll(_model, "()", "|"), "|")[0])
 		// fmt.Println(_model)
-		return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(_model), " ")
+		// return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(_model), " ")
 	}
 
-	return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(name), " ")
+	if s[0] == "Apple" {
+		var year string
+		name = regexp.MustCompile(`\s+\(?(2016|2020|2022)\)?`).ReplaceAllStringFunc(name, func(s string) string {
+			year = s
+			return ""
+		})
+		name += year
+	}
+
+	if s[0] == "Blackview" || s[0] == "DOOGEE" || s[0] == "OSCAL" {
+		name = regexp.MustCompile(`\s*\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	}
+
+	return helpers.Lint(name)
+
+	// return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(name), " ")
 }
 
 func XXX_amazon(isDryRun bool) IShop {

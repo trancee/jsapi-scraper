@@ -10,6 +10,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|\d+\s*GB|\s*\d+G|\s+\(Version 20[12]\d\)|\s+\(Grade [A-Z]\)|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Rot|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|Refurbished|\(PRODUCT\) RED™|Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht)`)
@@ -22,22 +24,30 @@ var ConradCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = strings.TrimSpace(strings.ReplaceAll(name, " E ", " E"))
+	// name = strings.TrimSpace(strings.ReplaceAll(name, " E ", " E"))
 
 	s := strings.Split(name, " ")
 
-	if len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
-		if s[1][0] == 'E' || s[1][0] == 'G' {
-			name = s[0] + " Moto " + s[1]
-		}
+	if s[0] == "Gigaset" {
+		name = strings.ReplaceAll(name, " Gigaset", "")
 	}
 
-	if s[0] == "iPhone" {
-		name = "Apple " + name
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " (2. Generation)", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	}
+	return helpers.Lint(name)
 
-	return strings.TrimSpace(name)
+	// s := strings.Split(name, " ")
+
+	// if len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
+	// 	if s[1][0] == 'E' || s[1][0] == 'G' {
+	// 		name = s[0] + " Moto " + s[1]
+	// 	}
+	// }
+
+	// if s[0] == "iPhone" {
+	// 	name = "Apple " + name
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " (2. Generation)", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_conrad(isDryRun bool) IShop {

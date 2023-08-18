@@ -9,9 +9,11 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	helpers "jsapi-scraper/helpers"
 )
 
-var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+\(SM-A\d+\)| Enterprise Edition`)
+var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?[^T])|\s+\(SM-A\d+\)| Enterprise Edition`)
 
 var AlternateCleanFn = func(name string) string {
 	if loc := AlternateRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -19,16 +21,18 @@ var AlternateCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	s := strings.Split(name, " ")
+	return helpers.Lint(name)
 
-	if s[0] == "Apple" {
-		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	} else {
-		// Remove year component for all other than Apple.
-		name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	}
+	// s := strings.Split(name, " ")
 
-	return strings.TrimSpace(name)
+	// if s[0] == "Apple" {
+	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
+	// } else {
+	// 	// Remove year component for all other than Apple.
+	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
+	// }
+
+	// return strings.TrimSpace(name)
 }
 
 func XXX_alternate(isDryRun bool) IShop {
