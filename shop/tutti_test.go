@@ -35,7 +35,7 @@ var tuttiNames = []string{
 	"iPhone  6",
 	"iPhone Apple 6S 32GB Gold - Guter Zustand",
 	"iPhone X con vetro da sostituire",
-	"Iphone SE 1Gen Rigenerato Garanzia",
+	"Iphone SE 1Gen  Rigenerato Garanzia",
 	"iPhone SE 1. GEN",
 	"iPhone SE 1. gen 64gb",
 	"iPhone SE 2. Generation (2020) Rot",

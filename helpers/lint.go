@@ -22,6 +22,7 @@ var nameMapping = map[string]string{
 	"9I":   "9i",
 	"Ce":   "CE",
 	"Ds":   "DS",
+	"Ee":   "EE",
 	"El":   "EL",
 	"Fe":   "FE",
 	"FLIP": "Flip",
@@ -269,12 +270,12 @@ func Model(name string) string {
 	}
 
 	if s[0] == "Samsung" {
-		name = regexp.MustCompile(`[^F][E]$`).ReplaceAllStringFunc(name, strings.ToLower)
+		name = regexp.MustCompile(`[^FE][E]$`).ReplaceAllStringFunc(name, strings.ToLower)
 
 		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFMS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+| Duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
+		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?([AFMS])\s*(\d+| Duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
 
 		name = regexp.MustCompile(`(?i)FieldPro`).ReplaceAllString(name, "Field Pro")
 

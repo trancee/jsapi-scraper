@@ -222,6 +222,7 @@ var galaxusNames = []string{
 	"Xiaomi Redmi A1 Plus",
 	"Xiaomi Redmi A1+ Dual Sim 32GB, 2GB RAM, Blue",
 	"Xiaomi Redmi A2 2/32 GB blue EU",
+	"Xiaomi Redmi Note 1",
 	"Xiaomi Redmi Note 10",
 	"Xiaomi Redmi Note 10 Pro",
 	"Xiaomi Redmi Note 10S",
@@ -245,6 +246,7 @@ var galaxusNames = []string{
 	"ZTE Blade V40S 4G Black",
 	"ZTE Graues Smartphone Blade V40 Design + schwarze Smartwatch Watch Live",
 	"ZTE Smartphone A310 1/8GB Graphit (A31232/GY)",
+	"ZTE Smartphone Blade A72s 3",
 	"ZTE Supplier did not provide product name",
 }
 
@@ -465,6 +467,7 @@ var galaxusNamesExpected = []string{
 	"Xiaomi Redmi A1+",
 	"Xiaomi Redmi A1+",
 	"Xiaomi Redmi A2",
+	"Xiaomi Redmi Note 11S",
 	"Xiaomi Redmi Note 10",
 	"Xiaomi Redmi Note 10 Pro",
 	"Xiaomi Redmi Note 10S",
@@ -488,6 +491,7 @@ var galaxusNamesExpected = []string{
 	"ZTE Blade V40s",
 	"ZTE Blade V40",
 	"ZTE Blade A310",
+	"ZTE Blade A72s",
 	"ZTE",
 }
 

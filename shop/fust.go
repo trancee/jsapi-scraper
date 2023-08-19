@@ -77,7 +77,7 @@ func XXX_fust(isDryRun bool) IShop {
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
 
 	const _debug = false
-	const _tests = true
+	const _tests = false
 
 	testCases := map[string]string{}
 

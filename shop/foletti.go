@@ -16,61 +16,29 @@ import (
 var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|(Ocean )?Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|charcoal grey|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|titan\/?silber|(dark )?titanium grey|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
-	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor`).ReplaceAllString(name, "")
-
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
 
+	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
+	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor`).ReplaceAllString(name, "")
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "Samsung" {
+		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
+			name = strings.ReplaceAll(name, part, "")
+
+			model := regexp.MustCompile(`[AMS]\d{2}`).FindString(part)
+
+			if !strings.Contains(name, model) {
+				name = name + " " + model
+			}
+		}
+	}
+
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Motorola" {
-	// 	name = strings.ReplaceAll(name, " G G", " G")
-	// 	if s[1] == "Moto" && s[2] == "Edge" {
-	// 		name = strings.ReplaceAll(name, "Moto ", "")
-	// 	}
-	// 	if (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
-	// 		name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
-	// 	}
-	// 	name = strings.ReplaceAll(name, "G31 4", "G31")
-	// 	name = strings.ReplaceAll(name, "G42 4", "G42")
-	// }
-	// if s[0] == "Moto" {
-	// 	name = "Motorola " + name
-	// }
-
-	// if s[0] == "OnePlus" {
-	// 	name = regexp.MustCompile(`\s*CPH\d+`).ReplaceAllString(name, "")
-	// 	name = regexp.MustCompile(`CE\s*(\d+)`).ReplaceAllString(name, "CE $1")
-	// }
-
-	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "Reno" {
-	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// if s[0] == "Xiaomi" {
-	// 	name = regexp.MustCompile(`Xiaomi Note\s*(\d)`).ReplaceAllString(name, "Xiaomi Redmi Note $1")
-	// }
-
-	// if s[0] == "Redmi" {
-	// 	name = "Xiaomi " + name
-	// }
-
-	// if s[0] == "Huawei" {
-	// 	if s[1] == "Magic5" || s[1] == "Magic" {
-	// 		name = strings.ReplaceAll(name, "Huawei", "Honor")
-	// 	}
-
-	// 	name = regexp.MustCompile(`Magic\s*(\d+)`).ReplaceAllString(name, "Magic$1")
-	// }
-
-	// name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G", "Huawei Honor", "Honor").Replace(name)
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_foletti(isDryRun bool) IShop {

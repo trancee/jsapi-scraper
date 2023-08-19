@@ -23,57 +23,17 @@ var AckermannCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	s := strings.Split(name, " ")
+
+	if s[0] == "Samsung" {
+		if strings.HasSuffix(name, "Xcover Pro") {
+			name = strings.ReplaceAll(name, "Xcover Pro", "XCover 6 Pro EE")
+		} else if strings.HasSuffix(name, "Xcover") {
+			name = strings.ReplaceAll(name, "Xcover", "XCover 5 EE")
+		}
+	}
+
 	return helpers.Lint(name)
-
-	// name = strings.TrimSpace(name)
-
-	// s := strings.Split(name, " ")
-	// // fmt.Println(s)
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer("1. Generation", "(2016)", "1. Gen.", "(2016)", "2. Generation", "(2020)", "2. Gen.", "(2020)", "3. Generation", "(2022)", "3. Gen.", "(2022)").Replace(name)
-	// }
-
-	// if s[0] == "Huawei" {
-	// 	name = regexp.MustCompile(`Magic\s*(\d+)`).ReplaceAllString(name, "Magic$1")
-	// }
-
-	// if s[0] == "Motorola" {
-	// 	name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
-	// }
-
-	// if s[0] == "Nothing" {
-	// 	name = regexp.MustCompile(`-(\d+)`).ReplaceAllString(name, "($1)")
-	// }
-
-	// if s[0] == "OnePlus" {
-	// 	name = regexp.MustCompile(`\s*CPH\d+`).ReplaceAllString(name, "")
-	// 	name = regexp.MustCompile(`CE\s*(\d+)`).ReplaceAllString(name, "CE $1")
-	// }
-
-	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// 	name = regexp.MustCompile(`OPPO\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "OPPO Reno$1 $2")
-	// }
-
-	// if s[0] == "Samsung" {
-	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-	// 	name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+)`).ReplaceAllString(name, " Galaxy $2$3$4")
-	// }
-
-	// if s[0] == "Xiaomi" {
-	// 	name = regexp.MustCompile(`^Xiaomi\s*(\d+)\s*(\d{4})`).ReplaceAllString(name, "Xiaomi Redmi $1 ($2)")
-	// 	name = regexp.MustCompile(`(Poco\s*)?([CFMX]\d+)`).ReplaceAllString(name, "Poco $2")
-	// 	name = regexp.MustCompile(`(Redmi\s*)?Note\s*(\d+)`).ReplaceAllString(name, "Redmi Note $2")
-	// 	// name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-	// 	name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
-	// }
-
-	// if s[0] == "ZTE" {
-	// 	name = regexp.MustCompile(`(Blade\s*)?(A\d+)`).ReplaceAllString(name, "Blade $2")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_ackermann(isDryRun bool) IShop {
