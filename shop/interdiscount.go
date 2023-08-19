@@ -24,6 +24,10 @@ var InterdiscountCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "GIGASET" {
+		name = strings.NewReplacer(" 2022", "").Replace(name)
+	}
+
 	if s[0] == "NOKIA" && s[1] == "Nokia" {
 		name = strings.ReplaceAll(name, "NOKIA Nokia ", "NOKIA ")
 	}

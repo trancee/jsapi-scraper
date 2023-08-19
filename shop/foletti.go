@@ -13,11 +13,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|(Ocean )?Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|charcoal grey|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|(Ocean )?Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|bamboo green|black onyx|blau|blue|charcoal grey|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|titan\/?silber|(dark )?titanium grey|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` \(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?| XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor`).ReplaceAllString(name, "")
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

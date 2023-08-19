@@ -8,6 +8,10 @@ import (
 var folettiNames = []string{
 	"Blackview BV4900 Pro 14.5 cm (5.7) Dual SIM Android 10.0 4G Micro-USB 4 GB 64 GB 5580 mAh Black",
 	"Blackview BV5200 5180 mAh 4/32 GB Green smartphone",
+	"Gigaset GL390 titan/silber",
+	"Gigaset GS5 Lite dark titanium grey",
+	"Gigaset GX290 plus titanium grey 4+64GB",
+	"Gigaset GX4 Outdoor",
 	"Google Pixel 6a sage",
 	"Moto e20 32GB, Handy",
 	"Moto G42 64GB, Handy",
@@ -110,6 +114,10 @@ var folettiNames = []string{
 var folettiNamesExpected = []string{
 	"Blackview BV4900 Pro",
 	"Blackview BV5200",
+	"Gigaset GL390",
+	"Gigaset GS5 LITE",
+	"Gigaset GX290 Plus",
+	"Gigaset GX4",
 	"Google Pixel 6a",
 	"motorola moto e20",
 	"motorola moto g42",

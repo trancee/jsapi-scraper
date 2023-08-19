@@ -151,7 +151,9 @@ func Model(name string) string {
 	}
 
 	if s[0] == "Gigaset" {
-		name = regexp.MustCompile(`(?i)G[SX]`).ReplaceAllStringFunc(name, strings.ToUpper)
+		name = strings.ReplaceAll(name, " Ls", "LS")
+
+		name = regexp.MustCompile(`(?i)G[LSX]\d+(LS)?`).ReplaceAllStringFunc(name, strings.ToUpper)
 		name = regexp.MustCompile(`(?i)senior$`).ReplaceAllStringFunc(name, strings.ToLower)
 		name = regexp.MustCompile(`(?i)LITE$`).ReplaceAllStringFunc(name, strings.ToUpper)
 	}
@@ -206,7 +208,7 @@ func Model(name string) string {
 
 		// name = regexp.MustCompile(`(?i)motorola`).ReplaceAllStringFunc(name, strings.ToLower)
 
-		if s[1] == "Moto" && s[2] == "Edge" {
+		if len(s) > 1 && s[1] == "Moto" && s[2] == "Edge" {
 			name = strings.ReplaceAll(name, "moto ", "")
 		}
 

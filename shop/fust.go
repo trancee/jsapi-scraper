@@ -21,7 +21,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/apple-iphone-530.html?shop_comparatorkey=7-1&shop_nrofrecs=12&brand=Apple&ff1878=4G%20%2F%20LTE%7C5G&price=%7B%22from%22%3A399%2C%22to%22%3A500%7D&showAllFacets=true
 
-var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Shadow|Space|Starlight|Sunset|Titan|White|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+((EE )?Enterprise Edition( CH)?|Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Purple|Shadow|Space|Starlight|Sunset|Titan|White|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue|CH)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -34,6 +34,13 @@ var FustCleanFn = func(name string) string {
 	name = strings.ReplaceAll(name, "Phones ", "")
 
 	s := strings.Split(name, " ")
+
+	// if brand == "Samsung" && strings.Split(model, " ")[0] == "Motorola" {
+	// 	model = strings.ReplaceAll(model, "Motorola ", "")
+	// 	brand = "Motorola"
+	// } else if brand == "Fust" {
+	// 	brand = "Inoi"
+	// }
 
 	if s[0] == "Fairphone" {
 		name = strings.ReplaceAll(name, " Fairphone", "")
@@ -70,7 +77,7 @@ func XXX_fust(isDryRun bool) IShop {
 	const _url = "https://www.fust.ch/de/r/pc-tablet-handy/smartphone-145.html?shop_comparatorkey=9-1&shop_nrofrecs=12&brand=Fairphone%7CGoogle%7CHuawei%7CMotorola%7CNokia%7CNothing%20Phones%7COnePlus%7COppo%7CRealme%7CSamsung%7CXiaomi"
 
 	const _debug = false
-	const _tests = false
+	const _tests = true
 
 	testCases := map[string]string{}
 
@@ -227,17 +234,15 @@ func XXX_fust(isDryRun bool) IShop {
 						continue
 					}
 
+					if !strings.HasPrefix(title, brand) {
+						title = brand + " " + title
+					}
+
 					model := FustCleanFn(title)
 					if _debug {
 						fmt.Println(model)
 					}
-					if brand == "Samsung" && strings.Split(model, " ")[0] == "Motorola" {
-						model = strings.ReplaceAll(model, "Motorola ", "")
-						brand = "Motorola"
-					} else if brand == "Fust" {
-						brand = "Inoi"
-					}
-					_product.model = brand + " " + model
+					_product.model = model
 
 					itemPrice := traverse(item, "div", "class", "price-block")
 					// fmt.Println(itemPrice)

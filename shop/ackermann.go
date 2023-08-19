@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var AckermannRegex = regexp.MustCompile(`(?i)(,\s*)?\d+\s*GB|(,\s*)?\(?[2345]G\)?| LTE| (black|glazed|green|pink|silver)`)
+var AckermannRegex = regexp.MustCompile(`(?i)(,\s*)?\d+\s*GB|(,\s*)?\(?[2345]G\)?| LTE| (black|blue|glazed|green|pink|silver|sky)`)
 
 var AckermannCleanFn = func(name string) string {
 	// name = strings.NewReplacer("", "").Replace(name)

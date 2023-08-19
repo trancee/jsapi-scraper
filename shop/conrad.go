@@ -17,7 +17,7 @@ import (
 var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|\d+\s*GB|\s*\d+G|\s+\(Version 20[12]\d\)|\s+\(Grade [A-Z]\)|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Rot|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|Refurbished|\(PRODUCT\) RED™|Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht)`)
 
 var ConradCleanFn = func(name string) string {
-	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Samsung XCover", "Samsung Galaxy XCover", "Renewd® ", "").Replace(name)
+	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Samsung XCover", "Samsung Galaxy XCover", "Renewd® ", "", "refurbished", "").Replace(name)
 
 	if loc := ConradRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

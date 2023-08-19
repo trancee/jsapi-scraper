@@ -22,7 +22,7 @@ var TuttiExclusionRegex = regexp.MustCompile(`(?i)^(emporia|ericsson|htc)|galaxy
 var TuttiInclusionRegex = regexp.MustCompile(`(?i)^(apple (iphone (x|se|\d{2}))|asus (zenfone)|blackview (bv\d+|bl\d+|a\d+)|fairphone|google (pixel)|honor (x\d+|magic|\d+)|huawei (y\d+|p[ -]?\d+|p smart|nova|mate)|infinix|inoi (note|a\d+)|motorola (moto|edge|defy)|nothing|oneplus (nord|\d+)|oppo (reno|find|a\d+)|realme (narzo|c\d+|\d+)|samsung (galaxy [amnsxz])|sony (xperia)|vivo (y\d+|v\d+)|wiko (y\d+|view|sunny|power|fever)|xiaomi (redmi |poco|mi|\d+)|zte (blade|axon))`)
 
 var TuttiCleanFn = func(name string) string {
-	name = regexp.MustCompile(`(?i)^Original | Entsperrt| Occass?ion| Schnäppchen|Cellulate |funktioniert|Garanzia|RESERVIERT|Top Zustand|( - )?sehr guter Zustand| in ottimo stato|semplificato |Mobile Phone( - )?|Mobile?telefon | Smartphone| Handy( - )?|Telefon(ino)?|mobile |(leicht)? gebraucht|(Micro-|Neuwertiges )?(Handy|Natel) (von |\/ |- )?|Handy/Natel|zu verkaufen ?(ein )?|Verkauf von |vendo |(in|mit|NEU und)? OVP|( - )?(wie )?neu(e|wertig)?| und noch verschweisst| in gutem Zustand| mit Gebrauchsspuren|einwandfrei|renoviert|4 Farben|Gratisversand|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smartphone? |Burnerphone |Neuwertiges | garandieschein| con vetro da sostituire| HD\+|( - )?dual[ -]sim|miui|Firmengerät| Apple| Original Taptic Engine| Original Front Kamera Module| Original Kamera Module| Gehäuse Original|\[DANNEGGIATO\]| RED$| (Android|EU)$`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`(?i)^Original | Entsperrt| Occass?ion| Schnäppchen|Cellulate |funktioniert|Garanzia|RESERVIERT|Top Zustand|( - )?sehr guter Zustand| in ottimo stato|semplificato |Mobile Phone( - )?|Mobile?telefon | Smartphone| Handy( - )?|Telefon(ino)?|mobile |(leicht)? gebraucht|(Micro-|Neuwertiges )?(Handy|Natel) (von |\/ |- )?|Handy/Natel|zu verkaufen ?(ein )?|Verkauf von |vendo |originalverpackt|(in|mit|NEU und)? OVP|( - )?(wie )?neu(e|wertig)?| und noch verschweisst| in gutem Zustand| mit Gebrauchsspuren|einwandfrei|renoviert|4 Farben|Gratisversand|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smartphone? |Burnerphone |Neuwertiges | garandieschein| con vetro da sostituire| HD\+|( - )?dual[ -]sim|miui|Firmengerät| Apple| Original Taptic Engine| Original Front Kamera Module| Original Kamera Module| Gehäuse Original|SIMLOCKED|\[DANNEGGIATO\]| RED$| (Android|EU)$`).ReplaceAllString(name, "")
 
 	if loc := TuttiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -33,12 +33,12 @@ var TuttiCleanFn = func(name string) string {
 	name = regexp.MustCompile(`(?i)One ?Plus`).ReplaceAllString(name, "OnePlus")
 	name = regexp.MustCompile(`(?i)Mi Xiaomi`).ReplaceAllString(name, "Xiaomi Mi")
 	name = regexp.MustCompile(`(?i)Huawaii`).ReplaceAllString(name, "Huawai")
-	name = strings.NewReplacer("prima generazione", "1. Gen.", " G5G", " G", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", "Galaxie", "Galaxy", " Tablet", " Tab", " Android", "", "n.201", "", "  ", " ").Replace(name)
+	name = strings.NewReplacer("prima generazione", "1. Gen.", "1Gen Rigenerato", "1. Gen.", " G5G", " G", "20 e", "20e", "FE20", "S20 FE", "A5-6", "A5", "Galxy", "Galaxy", "XSMax", "XS Max", "Mate-20", "Mate 20", "Motorolla", "Motorola", "Sansung", "Samsung", "SAMSUG", "SAMSUNG", "Galaxie", "Galaxy", " Tablet", " Tab", "2 Stück", "", " Android", "", "n.201", "", "  ", " ").Replace(name)
 
 	s := strings.Split(name, " ")
 
 	if s[0] == "Samsung" || s[0] == "samsung" || s[0] == "Galaxy" || s[0] == "galaxy" {
-		name = strings.ReplaceAll(name, "duas", "duos")
+		name = strings.NewReplacer("duas", "duos", "GT 19070", "").Replace(name)
 
 		name = regexp.MustCompile(`20\d{2}`).ReplaceAllString(name, "")
 		name = regexp.MustCompile(`[J]\d{3}[H]`).ReplaceAllString(name, "")

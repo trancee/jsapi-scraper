@@ -85,6 +85,8 @@ var _skips = map[string]bool{
 	"EL":              true,
 	"EMPORIA":         true,
 	"EMPORIAEUPHORIA": true,
+	"EMPORIASMART":    true,
+	"EMPORIATOUCH":    true,
 	"ENERGIZER":       true,
 	"EVOLVEO":         true,
 	"FELLOWES":        true,
