@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"runtime/debug"
 	"sort"
 	"strconv"
@@ -24,11 +25,12 @@ import (
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 
-	helpers "jsapi-scraper/helpers"
 	"jsapi-scraper/shop"
 )
 
 // https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
+
+var exclusionRegex = regexp.MustCompile(`(?i)^(emporia|htc|siemens|sony ericsson)|apple iphone \d(gs|g|c|s)?\b|fairphone (1|2)|gigaset (gl|gs)|google pixel (2|3|4|5)a?\b|motorola moto g\d?\b|samsung galaxy (zoom|young|rex|note(\s[1234567]\b|$)|j\d|gt|alpha|ace|s\d?\b|a\d?\b|advance|mini|duos)`)
 
 func main() {
 	isDryRun := false
@@ -140,10 +142,6 @@ func main() {
 		}
 	}
 
-	lint := func(text string) string {
-		return helpers.Lint(helpers.Model(helpers.Title(strings.ToLower(strings.TrimSpace(text)))))
-	}
-
 	type Price struct {
 		ID    string
 		Name  string
@@ -172,11 +170,15 @@ func main() {
 
 		if items != nil {
 			for _, item := range *items {
-				product := lint(item.Model)
+				product := item.Model
 				productKey := strings.ToUpper(product)
 
 				if len(strings.Split(product, " ")) == 1 {
 					// Skip products with only brand name
+					continue
+				}
+
+				if exclusionRegex.MatchString(product) {
 					continue
 				}
 
