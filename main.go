@@ -30,7 +30,7 @@ import (
 
 // https://docs.google.com/spreadsheets/d/1x28A6zoXXKeo7wmeoiAECyIzl-nlRjUSh6CJHUVifvI/edit#gid=238356703
 
-var exclusionRegex = regexp.MustCompile(`(?i)^(emporia|htc|siemens|sony ericsson)|apple iphone \d(gs|g|c|s)?\b|fairphone (1|2)|gigaset (gl|gs)|google pixel (2|3|4|5)a?\b|motorola moto g\d?\b|samsung galaxy (zoom|young|rex|note(\s[1234567]\b|$)|j\d|gt|alpha|ace|s\d?\b|a\d?\b|advance|mini|duos)`)
+var exclusionRegex = regexp.MustCompile(`(?i)^(emporia|htc|siemens|sony ericsson)|apple iphone \d(gs|g|c|s)?\b|fairphone (1|2)|gigaset (gl|gs)|google pixel (2|3|4|5)a?\b|motorola moto g[1234567]?\b|samsung galaxy (zoom|young|rex|note(\s[1234567]\b|$)|j\d|gt|alpha|ace|s\d?\b|a\d?\b|advance|mini|duos)`)
 
 func main() {
 	isDryRun := false
