@@ -12,7 +12,7 @@ import (
 const ValueDiscount = 50.0
 const ValueWorth = 100.0
 
-const ValueMinimum = 50.0
+const ValueMinimum = 0.0
 const ValueMaximum = 350.0
 
 type IShop interface {
@@ -140,6 +140,7 @@ var _skips = map[string]bool{
 	"SGW":             true,
 	"SIGEL":           true,
 	"SIMVALLEY":       true,
+	"SKROSS":          true,
 	"SONIM":           true,
 	"SP":              true,
 	"SPC":             true,
