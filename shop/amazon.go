@@ -254,7 +254,7 @@ func XXX_amazon(isDryRun bool) IShop {
 		if productList := traverse(doc, "div", "class", "s-search-results"); productList != nil {
 			// fmt.Println(productList)
 
-			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling {
 				if !contains(item.Attr, "data-component-type", "s-search-result") {
 					continue
 				}
