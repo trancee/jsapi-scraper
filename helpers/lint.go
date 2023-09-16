@@ -194,6 +194,12 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)^IIIF150`).ReplaceAllStringFunc(name, strings.ToUpper)
 	}
 
+	if s[0] == "Infinix" {
+		name = strings.ToUpper(name)
+		name = strings.ReplaceAll(name, "INFINIX", "Infinix")
+		name = regexp.MustCompile(`(?i)\d+i\b`).ReplaceAllStringFunc(name, strings.ToLower)
+	}
+
 	if s[0] == "Inoi" {
 		name = regexp.MustCompile(`(?i) A\s*(\d+)`).ReplaceAllString(name, " A$1")
 	}
@@ -224,7 +230,7 @@ func Model(name string) string {
 	}
 
 	if s[0] == "Nothing" {
-		name = regexp.MustCompile(`-(\d+)`).ReplaceAllString(name, "($1)")
+		name = regexp.MustCompile(`-?\(?(\d+)\)?`).ReplaceAllString(name, "($1)")
 	}
 
 	if s[0] == "Oukitel" {
@@ -240,6 +246,8 @@ func Model(name string) string {
 
 	if s[0] == "Oppo" {
 		name = regexp.MustCompile(`(?i)OPPO`).ReplaceAllStringFunc(name, strings.ToUpper)
+
+		name = regexp.MustCompile(`(?i)\s*CPH\d{4}`).ReplaceAllString(name, "")
 
 		name = regexp.MustCompile(`(?i)([A])\s*(\d+)\s*([ks])?\s*\(?(\d{4})?\)?`).ReplaceAllString(name, "$1$2$3 $4")
 		name = regexp.MustCompile(`[KS]\s*$`).ReplaceAllStringFunc(name, strings.ToLower)
@@ -316,6 +324,8 @@ func Model(name string) string {
 		// name = regexp.MustCompile(`(?i)\d+[A]$`).ReplaceAllStringFunc(name, strings.ToUpper)
 
 		name = regexp.MustCompile(`\s*\(?(\d{4})\)?`).ReplaceAllString(name, " $1")
+
+		name = regexp.MustCompile(`(?i)Mi(\d+)`).ReplaceAllString(name, "Mi $1")
 	}
 
 	if s[0] == "ZTE" {
