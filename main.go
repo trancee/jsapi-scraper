@@ -116,6 +116,7 @@ func main() {
 			shop.XXX_orderflow(isDryRun),
 			// shop.XXX_stegpc(isDryRun), // out of order
 			shop.XXX_tutti(isDryRun),
+			shop.XXX_ultimus(isDryRun),
 			shop.XXX_venova(isDryRun),
 		} {
 			_shops = append(_shops, _shop.Name())

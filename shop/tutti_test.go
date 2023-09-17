@@ -140,6 +140,7 @@ var tuttiNames = []string{
 	"Xiaomi Redmi 9A 2GB 32 GB Grau 2 Jahre Garantie",
 	"XIAOMI Redmi 9A HD+ Smartphone Android 32GB 13MP Nero",
 	"Xiaomi Redmi 9a in OVP und noch verschweisst",
+	"XIAOMI Redmi 9AT NUOVO!",
 	"Xiaomi Redmi Note5",
 	"Zu verkaufen Honor 9Lite",
 }
@@ -279,6 +280,7 @@ var tuttiNamesExpected = []string{
 	"Xiaomi Redmi 9A",
 	"Xiaomi Redmi 9A",
 	"Xiaomi Redmi 9A",
+	"Xiaomi Redmi 9AT",
 	"Xiaomi Redmi Note 5",
 	"HONOR 9 Lite",
 }
