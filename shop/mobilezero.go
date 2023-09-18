@@ -13,24 +13,32 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var UltimusRegex = regexp.MustCompile(`(?i)Refurbished|(Outdoor-|Robustes |Rugged )?Smartphone|(2|4|6|8)GB|[345]G`)
-var UltimusExclusionRegex = regexp.MustCompile(`(?i)Adapter|Armband|Ch?inch|Christbaum|Etui|Halterung|Kopfhörer|Ladegerät|Ladestation|Netzkabel|Objektiv|Robustes Smartphone$|Saugnapf|Schutzfolie|Smartphone mit 100MP Kamera|Stativ|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
+var MobilezeroRegex = regexp.MustCompile(`(?i),| - |\([^\d]|(\d+\/)?(2|4|6|8|16|32|64|128|256)GB|\(?[345]G\)?|Dual(-SIM)?| DS| EU$`)
+var MobilezeroExclusionRegex = regexp.MustCompile(`(?i)Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|^Core|\bCover\b|Earphones|Etui|Halterung|Hülle|Kopfhörer|Ladegerät|Ladestation|Magnet|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|SmartTag|Stand|Ständer|Stativ|Stylus|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
-var UltimusCleanFn = func(name string) string {
-	name = strings.ReplaceAll(name, "Xioami", "Xiaomi")
-	name = strings.ReplaceAll(name, "Robustes Smartphone ", "")
+var MobilezeroCleanFn = func(name string) string {
+	name = strings.NewReplacer("Appel", "Apple", "Blackshark", "Black Shark").Replace(name)
+	name = regexp.MustCompile(`(?i)\b(Black|Blau|Gold|Graphite Grey|Grau|Pale Grey|Pink)\b`).ReplaceAllString(name, "")
+	name = strings.TrimSpace(name)
 
-	if loc := UltimusRegex.FindStringSubmatchIndex(name); loc != nil {
+	if loc := MobilezeroRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
+	}
+
+	s := strings.Split(name, " ")
+
+	if s[0] == "Motorola" {
+		name = strings.ReplaceAll(name, "Razr22", "Razr 2022")
 	}
 
 	return helpers.Lint(name)
 }
 
-func XXX_ultimus(isDryRun bool) IShop {
-	const _name = "Ultimus"
-	_url := fmt.Sprintf("https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/%%d/?orderby=price&price_filter_min=%.f&price_filter_max=%.f", ValueMinimum, ValueMaximum)
+func XXX_mobilezero(isDryRun bool) IShop {
+	const _name = "mobilezero"
+	const _count = 500
+	_url := fmt.Sprintf("https://www.mobilezero.ch/ajax/ProductLoader.aspx?mode=category&orderby=priceup&filterid=1549&searchterm=&skip=%%d&count=%d&languageId=2055&languageCode=de", _count)
 
 	const _debug = false
 	const _tests = false
@@ -58,16 +66,16 @@ func XXX_ultimus(isDryRun bool) IShop {
 	path += "/"
 
 	for p := 1; p <= 10; p++ {
-		fn := fmt.Sprintf("shop/ultimus.%d.html", p)
+		fn := fmt.Sprintf("shop/mobilezero.%d.html", p)
 
 		if isDryRun {
 			if body, err := os.ReadFile(path + fn); err != nil {
-				panic(err)
+				break
 			} else {
 				_body = body
 			}
 		} else {
-			url := fmt.Sprintf(_url, p)
+			url := fmt.Sprintf(_url, (p-1)*_count)
 
 			resp, err := http.Get(url)
 			if err != nil {
@@ -106,27 +114,43 @@ func XXX_ultimus(isDryRun bool) IShop {
 				_body = body
 			}
 
+			if len(_body) == 0 {
+				break
+			}
+
 			os.WriteFile(path+fn, _body, 0664)
 		}
 		// fmt.Println(string(_body))
 
 		doc := parse(string(_body))
 
-		if productList := traverse(doc, "ul", "class", "products"); productList != nil {
+		if productList := traverse(doc, "article", "class", "shop-product-list"); productList != nil {
 			// fmt.Println(productList)
 
-			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+			for item := productList; item != nil; item = item.NextSibling.NextSibling.NextSibling.NextSibling {
 				// fmt.Println(item)
+
+				itemAvailability := traverse(item, "span", "class", "icon-shop")
+				// fmt.Println(itemAvailability)
+
+				if contains(itemAvailability.Attr, "class", "icon-red") {
+					// Skip if item out of stock
+					continue
+				}
+				if contains(itemAvailability.Attr, "class", "icon-orange") && !contains(itemAvailability.Attr, "title", "Ab Fremdlager verfügbar") {
+					// Skip if item not available
+					continue
+				}
 
 				_product := _Response{}
 
-				code, _ := attr(item.Attr, "data-product-id")
+				code, _ := attr(item.Attr, "data-productid")
 				if _debug {
 					fmt.Println(code)
 				}
 				_product.code = code
 
-				itemLink := traverse(item, "a", "class", "woocommerce-loop-product__link")
+				itemLink := traverse(item, "a", "", "")
 				// fmt.Println(itemLink)
 
 				link, _ := attr(itemLink.Attr, "href")
@@ -135,7 +159,7 @@ func XXX_ultimus(isDryRun bool) IShop {
 				}
 				_product.link = link
 
-				itemTitle := traverse(item, "h2", "class", "woocommerce-loop-product__title")
+				itemTitle := traverse(item, "h3", "", "")
 				// fmt.Println(itemTitle)
 
 				title, _ := text(itemTitle)
@@ -148,55 +172,30 @@ func XXX_ultimus(isDryRun bool) IShop {
 					continue
 				}
 
-				if UltimusExclusionRegex.MatchString(title) {
+				if MobilezeroExclusionRegex.MatchString(title) {
 					continue
 				}
 
-				model := UltimusCleanFn(title)
+				model := MobilezeroCleanFn(title)
 				if _debug {
 					fmt.Println(model)
 				}
 				_product.model = model
 
-				itemPrice := traverse(item, "span", "class", "price")
+				itemPrice := itemTitle.NextSibling.NextSibling.NextSibling.NextSibling.FirstChild
 				// fmt.Println(itemPrice)
 
-				// fmt.Println(itemPrice.FirstChild)
-
-				if itemPrice.FirstChild.Data == "del" {
-					itemPrice = itemPrice.FirstChild
+				price, _ := text(itemPrice)
+				if _debug {
+					fmt.Println(price)
 				}
 
-				if itemPrice.FirstChild.FirstChild.Data == "bdi" {
-					price, _ := text(itemPrice.FirstChild.FirstChild.FirstChild.NextSibling)
-					if _debug {
-						fmt.Println(price)
-					}
+				price = strings.TrimSpace(strings.NewReplacer("CHF", "", ".-", ".00", "'", "", "Aktion", "").Replace(price))
 
-					if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
-						panic(err)
-					} else {
-						_product.oldPrice = float32(_price)
-					}
-				}
-
-				// fmt.Printf("%+v\n", itemPrice.Parent.FirstChild.NextSibling.NextSibling)
-
-				if itemPrice.Parent.FirstChild.NextSibling.NextSibling.Data == "ins" {
-					itemPrice = itemPrice.Parent.FirstChild.NextSibling.NextSibling
-
-					if itemPrice.FirstChild.FirstChild.Data == "bdi" {
-						price, _ := text(itemPrice.FirstChild.FirstChild.FirstChild.NextSibling)
-						if _debug {
-							fmt.Println(price)
-						}
-
-						if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
-							panic(err)
-						} else {
-							_product.price = float32(_price)
-						}
-					}
+				if _price, err := strconv.ParseFloat(price, 32); err != nil {
+					panic(err)
+				} else {
+					_product.oldPrice = float32(_price)
 				}
 
 				if _debug {
@@ -204,15 +203,6 @@ func XXX_ultimus(isDryRun bool) IShop {
 				}
 
 				_result = append(_result, _product)
-			}
-
-			if pagination := traverse(doc, "nav", "class", "ultimus_pagination"); pagination != nil {
-				results := pagination.FirstChild.NextSibling.NextSibling
-				if result, ok := text(results); ok {
-					if x := regexp.MustCompile(`Seite (\d+) von (\d+)`).FindStringSubmatch(result); x != nil && x[1] == x[2] {
-						break
-					}
-				}
 			}
 		}
 	}

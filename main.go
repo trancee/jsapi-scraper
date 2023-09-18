@@ -112,6 +112,7 @@ func main() {
 			shop.XXX_microspot(isDryRun),
 			shop.XXX_mistore(isDryRun),
 			shop.XXX_mobiledevice(isDryRun),
+			shop.XXX_mobilezero(isDryRun),
 			shop.XXX_mobilezone(isDryRun),
 			shop.XXX_orderflow(isDryRun),
 			// shop.XXX_stegpc(isDryRun), // out of order

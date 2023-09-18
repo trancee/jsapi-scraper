@@ -5,7 +5,8 @@ import (
 	"testing"
 )
 
-var ultimusNames = []string{"Apple iPhone 11 Refurbished",
+var ultimusNames = []string{
+	"Apple iPhone 11 Refurbished",
 	"Apple iPhone 8 Plus Refurbished",
 	"Apple iPhone 8 Refurbished",
 	"Apple iPhone SE 2020 Refurbished",

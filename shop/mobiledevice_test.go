@@ -153,7 +153,7 @@ var mobiledeviceNamesExpected = []string{
 	"realme GT 2",
 	"realme GT 2",
 	"realme GT",
-	"Samsung Galaxy A04s",
+	"Samsung Galaxy A04s (2022)",
 	"Samsung Galaxy A13",
 	"Samsung Galaxy A13",
 	"Samsung Galaxy A13",

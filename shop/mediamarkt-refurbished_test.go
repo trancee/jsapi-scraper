@@ -154,7 +154,7 @@ var mediamarktRefurbishedNamesExpected = []string{
 	"Samsung Galaxy A51",
 	"Samsung Galaxy A51",
 	"Samsung Galaxy A51",
-	"Samsung Galaxy A8",
+	"Samsung Galaxy A8 (2018)",
 	"Samsung Galaxy Note 10",
 	"Samsung Galaxy Note 10+",
 	"Samsung Galaxy Note 10+",

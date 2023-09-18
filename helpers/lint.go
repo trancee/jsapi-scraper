@@ -114,6 +114,8 @@ func Model(name string) string {
 	if s[0] == "Asus" {
 		name = regexp.MustCompile(`(?i)ASUS`).ReplaceAllStringFunc(name, strings.ToUpper)
 		name = regexp.MustCompile(`(?i)ROG`).ReplaceAllStringFunc(name, strings.ToUpper)
+
+		name = regexp.MustCompile(`(?i)Z[ES]\d{3}[KM]L`).ReplaceAllString(name, "")
 	}
 
 	if s[0] == "Beafon" {
@@ -127,6 +129,8 @@ func Model(name string) string {
 	if s[0] == "Blackview" {
 		name = regexp.MustCompile(`(?i)BL\s*(\d+)`).ReplaceAllString(name, "BL$1")
 		name = regexp.MustCompile(`(?i)BV\s*(\d+)`).ReplaceAllString(name, "BV$1")
+
+		name = regexp.MustCompile(`(?i)\(\d+\)`).ReplaceAllString(name, "")
 	}
 
 	if s[0] == "Cat" {
@@ -280,14 +284,14 @@ func Model(name string) string {
 	if s[0] == "Samsung" {
 		name = regexp.MustCompile(`[^FE][E]$`).ReplaceAllStringFunc(name, strings.ToLower)
 
-		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFMS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
 		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?([AFMS])\s*(\d+| Duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
 
 		name = regexp.MustCompile(`(?i)FieldPro`).ReplaceAllString(name, "Field Pro")
 
-		name = regexp.MustCompile(`\(\d{4}\)`).ReplaceAllString(name, "") // remove year annotation
+		// name = regexp.MustCompile(`\(\d{4}\)`).ReplaceAllString(name, "") // remove year annotation
 	}
 
 	if s[0] == "Sony" {
@@ -326,6 +330,9 @@ func Model(name string) string {
 		name = regexp.MustCompile(`\s*\(?(\d{4})\)?`).ReplaceAllString(name, " $1")
 
 		name = regexp.MustCompile(`(?i)Mi(\d+)`).ReplaceAllString(name, "Mi $1")
+
+		name = regexp.MustCompile(`\d+[I]`).ReplaceAllStringFunc(name, strings.ToLower)
+		name = strings.ReplaceAll(name, "Mi Redmi ", "Mi ")
 	}
 
 	if s[0] == "ZTE" {
