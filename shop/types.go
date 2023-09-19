@@ -98,6 +98,7 @@ var _skips = map[string]bool{
 	"HOP":             true,
 	"HP":              true,
 	"I.SAFE":          true,
+	"IBASSO":          true,
 	"IGET":            true,
 	"IIIF150":         true,
 	"JABLOCOM":        true,
@@ -236,7 +237,7 @@ func text(n *html.Node) (string, bool) {
 		return strings.TrimSpace(html.UnescapeString(n.Data)), true
 	}
 	n = n.FirstChild
-	if n.Type == html.TextNode {
+	if n != nil && n.Type == html.TextNode {
 		return strings.TrimSpace(html.UnescapeString(n.Data)), true
 	}
 	return "", false

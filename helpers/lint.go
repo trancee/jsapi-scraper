@@ -312,7 +312,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)View\s*(\d+)`).ReplaceAllString(name, "View $1")
 	}
 
-	if s[0] == "Poco" || s[0] == "Redmi" {
+	if s[0] == "Poco" || s[0] == "Redmi" || s[0] == "Mi" {
 		name = "Xiaomi" + " " + name
 
 		s = strings.Split(name, " ")

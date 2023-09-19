@@ -99,6 +99,7 @@ func main() {
 			shop.XXX_amazon(isDryRun),
 			// shop.XXX_bohnettrade(isDryRun),
 			shop.XXX_brack(isDryRun),
+			shop.XXX_cashconverters(isDryRun),
 			shop.XXX_conrad(isDryRun),
 			// shop.XXX_electronova(isDryRun),
 			shop.XXX_foletti(isDryRun),
