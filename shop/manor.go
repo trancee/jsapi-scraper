@@ -1,6 +1,7 @@
 package shop
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -11,6 +12,8 @@ import (
 	"strings"
 
 	helpers "jsapi-scraper/helpers"
+
+	"golang.org/x/net/html"
 )
 
 var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
@@ -48,55 +51,22 @@ var ManorCleanFn = func(name string) string {
 
 func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
-	const _token = "o7K6XBX2kkMc_Aj12roet"
-	// _url := fmt.Sprintf("https://www.manor.ch/_next/data/g5Ai52cssZcOwaX4irIEt/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.manor.ch/_next/data/%s/de/shop/multimedia/telefonie-navigation/smartphones/c/telephone-navigation-smartphones.json?priceValue=>%.f+|+<%.f&sort=PRICE_VALUE_ASC&slug=shop&slug=multimedia&slug=telefonie-navigation&slug=smartphones&slug=c&slug=telephone-navigation-smartphones", _token, ValueMinimum, ValueMaximum)
+	const _url = "https://ecom-api.manor.ch/graphql"
 
 	const _tests = false
 
 	testCases := map[string]string{}
 
-	type _Response struct {
-		code  string
-		title string
-		model string
-
-		link string
-
-		oldPrice float32
-		price    float32
-	}
-
-	type _Body struct {
-		PageProps struct {
-			InitialApolloState map[string]json.RawMessage `json:"initialApolloState"`
-		} `json:"pageProps"`
-	}
-
-	type _Query struct {
-		SearchProducts struct {
-			TotalResults int `json:"totalResults"`
-			Page         int `json:"page"`
-			PageSize     int `json:"pageSize"`
-			TotalPages   int `json:"totalPages"`
-			Products     []struct {
-				Ref string `json:"__ref"`
-			} `json:"products"`
-		} `json:"searchProducts"`
-	}
-
-	type _Product struct {
+	type _Result struct {
 		Code string `json:"code"`
+		Name string `json:"name"`
+
+		Description string `json:"description"`
+
+		BrandID string `json:"brandId"`
+		Brand   string `json:"brandName"`
+
 		Link string `json:"link"`
-
-		BrandName string `json:"brandName"`
-		Name      string `json:"name"`
-
-		Titles struct {
-			First  string `json:"first"`
-			Second string `json:"second"`
-			Third  string `json:"third"`
-		} `json:"titles"`
 
 		PriceValue struct {
 			Amount float32 `json:"amount"`
@@ -104,8 +74,27 @@ func XXX_manor(isDryRun bool) IShop {
 		OriginalPrice struct {
 			Amount float32 `json:"amount"`
 		} `json:"originalPrice"`
+
+		Stock struct {
+			Level int `json:"level"`
+		} `json:"stock"`
 	}
 
+	type _Response struct {
+		Data struct {
+			SearchProducts struct {
+				Products []_Result `json:"products"`
+
+				Page     int `json:"page"`
+				PageSize int `json:"pageSize"`
+
+				TotalPages   int `json:"totalPages"`
+				TotalResults int `json:"totalResults"`
+			} `json:"searchProducts"`
+		} `json:"data"`
+	}
+
+	var _result _Response
 	var _body []byte
 
 	path, err := os.Getwd()
@@ -114,7 +103,7 @@ func XXX_manor(isDryRun bool) IShop {
 	}
 	path += "/"
 
-	var _results []_Response
+	var _results []_Result
 
 	for p := 1; p <= 5; p++ {
 		fn := fmt.Sprintf("shop/manor.%d.json", p)
@@ -126,17 +115,54 @@ func XXX_manor(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			page := ""
-			if p > 1 {
-				page = fmt.Sprintf("&page=%d", p)
-			}
+			jsonData := []byte(fmt.Sprintf(`{
+				"operationName": "SearchProducts",
+				"variables": {
+					"input": {
+						"numericFilters": [
+							{
+								"fieldName": "priceValue",
+								"lowerBound": %.f,
+								"upperBound": %.f
+							}
+						],
+						"orderBy": "PRICE_VALUE_ASC",
+						"page": %d,
+						"pageSize": 24,
+						"selectedFilters": [
+							{
+								"facetName": "category",
+								"facetValues": [
+									"telephone-navigation-smartphones"
+								]
+							}
+						],
+						"mixedRuleSearchResult": {}
+					}
+				},
+				"query": "query SearchProducts($input: InputSearch!) {\n  searchProducts(input: $input) {\n    ...productSearchResultFields\n    __typename\n  }\n}\n\nfragment productSearchResultFields on ProductSearchResult {\n  totalResults\n  page\n  pageSize\n  totalPages\n  queryId\n  analyticsIndexName\n  products {\n    ...indexedProductFields\n    __typename\n  }\n  productListerConfig {\n    hideCount\n    __typename\n  }\n  searchUserData {\n    type\n    url\n    __typename\n  }\n  mixedRuleSearchResult {\n    introductoryOffset\n    introductoryProductCodes\n    marketplaceOffset\n    wholesaleOffset\n    __typename\n  }\n  __typename\n}\n\nfragment indexedProductFields on IndexedProduct {\n  id\n  baseCode\n  titles {\n    first\n    second\n    third\n    __typename\n  }\n  priceValue {\n    ...priceFields\n    __typename\n  }\n  originalPrice {\n    ...priceFields\n    __typename\n  }\n  uvpPrice {\n    ...priceFields\n    __typename\n  }\n  stock {\n    level\n    status\n    __typename\n  }\n  variantColors {\n    name\n    url\n    hexCode\n    variantCode\n    __typename\n  }\n  imageUrls {\n    mobile\n    tablet\n    desktop\n    __typename\n  }\n  labels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  discountLabels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  averageRating\n  brandId\n  brandName\n  category\n  color\n  size\n  code\n  description\n  isFromPrice\n  isManorProduct\n  link\n  name\n  productDisplayConfig {\n    ...productDisplayConfigFields\n    __typename\n  }\n  gtin\n  productBreadcrumbPath\n  offlineAvailabilityStatus\n  __typename\n}\n\nfragment priceFields on Price {\n  currency\n  amount\n  digits\n  formattedValue\n  priceType\n  __typename\n}\n\nfragment productDisplayConfigFields on ProductDisplayConfig {\n  hideRatings\n  hideLabels\n  hideAvailability\n  hideCarousels\n  __typename\n}"
+			}`, ValueMinimum, ValueMaximum, p))
 
-			url := fmt.Sprintf("%s%s", _url, page)
-
-			resp, err := http.Get(url)
+			req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+			req.Header.Set("Content-Type", "application/json")
+			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36")
+			req.Header.Set("Origin", "https://www.manor.ch")
+
+			client := &http.Client{}
+			resp, err := client.Do(req)
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
 				return NewShop(
 					_name,
 					_url,
@@ -174,46 +200,13 @@ func XXX_manor(isDryRun bool) IShop {
 		}
 		// fmt.Println(string(_body))
 
-		var body _Body
-		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+		if err := json.Unmarshal(_body, &_result); err != nil {
 			panic(err)
 		}
 
-		var query _Query
-		if err := json.Unmarshal(body.PageProps.InitialApolloState["ROOT_QUERY"], &query); err != nil {
-			panic(err)
-		}
-		// fmt.Println(query)
+		_results = append(_results, _result.Data.SearchProducts.Products...)
 
-		for _, k := range query.SearchProducts.Products {
-			var product _Product
-			if err := json.Unmarshal(body.PageProps.InitialApolloState[k.Ref], &product); err != nil {
-				panic(err)
-			}
-			// fmt.Println(product)
-
-			name := product.Name
-			brand := strings.Split(name, " ")[0]
-			if strings.ToUpper(product.BrandName) == strings.ToUpper(brand) {
-				name = strings.ReplaceAll(name, brand, "")
-			}
-			title := product.BrandName + " " + product.Titles.Second + " " + name
-			model := ManorCleanFn(title)
-			// fmt.Println(model)
-
-			_results = append(_results, _Response{
-				code:  product.Code,
-				title: title,
-				model: model,
-
-				link: product.Link,
-
-				oldPrice: product.OriginalPrice.Amount,
-				price:    product.PriceValue.Amount,
-			})
-		}
-
-		if query.SearchProducts.Page >= p {
+		if _result.Data.SearchProducts.TotalPages <= p {
 			break
 		}
 	}
@@ -222,11 +215,21 @@ func XXX_manor(isDryRun bool) IShop {
 		products := []*Product{}
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_results))
-		for _, _product := range _results {
+		for _, product := range _results {
 			// fmt.Println(_product)
 
-			_title := _product.title
-			_model := _product.model
+			product.Brand = html.UnescapeString(product.Brand)
+			product.Name = html.UnescapeString(product.Name)
+			product.Description = html.UnescapeString(product.Description)
+
+			_title := product.Name
+			if !strings.HasPrefix(strings.ToUpper(_title), strings.ToUpper(product.Brand)) {
+				_title = product.Brand + " " + _title
+			}
+			// fmt.Println(_title)
+			_model := ManorCleanFn(_title)
+			// fmt.Println(_model)
+			// fmt.Println()
 
 			if Skip(_model) {
 				continue
@@ -239,20 +242,20 @@ func XXX_manor(isDryRun bool) IShop {
 			var _savings float32
 			var _discount float32
 
-			_retailPrice := _product.oldPrice
+			_retailPrice := product.OriginalPrice.Amount
 			_price := _retailPrice
-			if _product.price > 0 {
-				_price = _product.price
+			if product.PriceValue.Amount > 0 {
+				_price = product.PriceValue.Amount
 			}
 			if _retailPrice > 0 {
 				_savings = _price - _retailPrice
 				_discount = 100 - ((100 / _retailPrice) * _price)
 			}
 
-			_link := s.ResolveURL(_product.link).String()
+			_link := s.ResolveURL(product.Link).String()
 
 			product := &Product{
-				Code:  _name + "//" + _product.code,
+				Code:  _name + "//" + product.Code,
 				Name:  _title,
 				Model: _model,
 
