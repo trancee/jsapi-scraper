@@ -240,10 +240,10 @@ func XXX_cashconverters(isDryRun bool) IShop {
 				testCases[_title] = _model
 			}
 
-			_retailPrice := _product.oldPrice
+			_retailPrice := _product.price
 			_price := _retailPrice
-			if _product.price > 0 {
-				_price = _product.price
+			if _product.oldPrice > 0 {
+				_retailPrice = _product.oldPrice
 			}
 
 			_savings := _price - _retailPrice
