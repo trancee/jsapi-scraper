@@ -291,6 +291,8 @@ func Model(name string) string {
 
 		name = regexp.MustCompile(`(?i)FieldPro`).ReplaceAllString(name, "Field Pro")
 
+		name = regexp.MustCompile(`(?i)X\s*Cover\s*(\d)`).ReplaceAllString(name, "XCover $1")
+
 		// name = regexp.MustCompile(`\(\d{4}\)`).ReplaceAllString(name, "") // remove year annotation
 	}
 

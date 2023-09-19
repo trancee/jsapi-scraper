@@ -404,7 +404,7 @@ var conradNamesExpected = []string{
 	"Samsung Galaxy S23",
 	"Samsung Galaxy XCover Field Pro",
 	"Samsung Galaxy XCover Pro",
-	"Samsung Galaxy XCover6 Pro",
+	"Samsung Galaxy XCover 6 Pro",
 	"Samsung Galaxy Z Flip4",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",

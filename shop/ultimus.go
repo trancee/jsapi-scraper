@@ -25,6 +25,12 @@ var UltimusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
+	s := strings.Split(name, " ")
+
+	if s[0] == "Nokia" {
+		name = strings.ReplaceAll(name, "C2-2E", "C2 2nd Edition")
+	}
+
 	return helpers.Lint(name)
 }
 

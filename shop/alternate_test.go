@@ -373,7 +373,7 @@ var alternateNamesExpected = []string{
 	"Samsung Galaxy S23",
 	"Samsung Galaxy S23",
 	"Samsung Galaxy XCover 5",
-	"Samsung Galaxy XCover6 Pro",
+	"Samsung Galaxy XCover 6 Pro",
 	"Samsung Galaxy Z Flip3",
 	"Samsung Galaxy Z Flip3",
 	"Samsung Galaxy Z Flip4",

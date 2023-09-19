@@ -150,7 +150,7 @@ var ultimusNamesExpected = []string{
 	"motorola moto g72",
 	"motorola moto g73",
 	"motorola moto g82",
-	"Nokia C2-2E",
+	"Nokia C2 2nd Edition",
 	"Nokia G11",
 	"Nokia G21",
 	"Nokia G22",
