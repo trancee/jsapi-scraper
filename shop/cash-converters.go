@@ -35,7 +35,7 @@ var CashConvertersCleanFn = func(name string) string {
 			name = strings.ReplaceAll(name, "Samsung Samsung", "Samsung")
 		}
 
-		name = strings.NewReplacer("S20FE", "S20 FE", "AO2S", "A02s").Replace(name)
+		name = strings.NewReplacer("S10PLUS", "S10 Plus", "S20FE", "S20 FE", "AO2S", "A02s").Replace(name)
 	}
 
 	return helpers.Lint(name)
@@ -249,6 +249,8 @@ func XXX_cashconverters(isDryRun bool) IShop {
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
+			_link := s.ResolveURL(_product.link).String()
+
 			product := &Product{
 				Code:  _name + "//" + _product.code,
 				Name:  _title,
@@ -259,7 +261,7 @@ func XXX_cashconverters(isDryRun bool) IShop {
 				Savings:     _savings,
 				Discount:    _discount,
 
-				URL: _product.link,
+				URL: _link,
 			}
 
 			if s.IsWorth(product) {

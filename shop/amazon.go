@@ -173,45 +173,10 @@ func XXX_amazon(isDryRun bool) IShop {
 		} else {
 			url := fmt.Sprintf(_url, p)
 
-			req, err := http.NewRequest("GET", url, nil)
+			resp, err := http.Get(url)
 			if err != nil {
 				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
-				return NewShop(
-					_name,
-					_url,
-
-					nil,
-				)
-			}
-			req.Header.Set("Content-Type", "application/json")
-			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
-
-			req.AddCookie(
-				&http.Cookie{
-					Name:   "lc-acbde",
-					Value:  "de_DE",
-					Path:   "/",
-					MaxAge: 3600,
-					Secure: true,
-				},
-			)
-
-			req.AddCookie(
-				&http.Cookie{
-					Name:   "i18n-prefs",
-					Value:  "CHF",
-					Path:   "/",
-					MaxAge: 3600,
-					Secure: true,
-				},
-			)
-
-			client := &http.Client{}
-			resp, err := client.Do(req)
-			if err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
 				return NewShop(
 					_name,
 					_url,

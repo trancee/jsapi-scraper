@@ -1769,7 +1769,7 @@ var mobilezeroNamesExpected = []string{
 	"Samsung Galaxy Z Fold 4",
 	"Samsung Galaxy Z Fold 4",
 	"Samsung Galaxy Z Fold 4",
-	"Samsung Galaxy XCover 5 EE",
+	"Samsung Galaxy XCover 5",
 	"Sony Xperia 1 V",
 	"Sony Xperia 1 V",
 	"Sony Xperia 1 V",

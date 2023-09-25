@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|(2|4|6|8|12)\/(64|128|256?B?)(GB)?|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|(Ocean )?Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|atlantic green|bamboo green|black onyx|blau|blue|charcoal grey|cosmic black|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|(gravity )?grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|titan\/?silber|(dark )?titanium grey|schwarz|inkl\.)`)
+var FolettiRegex = regexp.MustCompile(`\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\d+\s*GB\)?|\s*\d+G|(2|4|6|8|12)\/(64|128|256?B?)(GB)?|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|LTE|NFC|smartphone|Ice|Black|(Ocean )?Blue|Charcoal|Dark Green|Dusk|Grey|HIMALAYA GREY|Light|Glowing Black|Glowing Green|Graphite Gray|Midnight Black|Mint Green|Night|Polar White|Prism Black|Prism Blue|astro black|atlantic green|bamboo green|black onyx|blau|blue|charcoal grey|cosmic black|denim black|electric graphite|elegant black|frosted grey|glowing blue|graphite grey|(gravity )?grau|ice blue|lake blue|lavender blue|matte charcoal|metallic rose|meteor black|meteorite black|meteorite grey|midnight blue|mint green|night|ocean blue|polar blue|sage|sandy|stargaze white|steel blue|sterling blue|sunburst gold|titan\/?silber|(dark )?titanium grey|schwarz|inkl\.)`)
 
 var FolettiCleanFn = func(name string) string {
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -22,7 +22,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 

@@ -29,24 +29,6 @@ var ManorCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "MOTOROLA" {
-	// 	name = strings.ReplaceAll(name, "Moto E E", "Moto E")
-	// 	name = strings.ReplaceAll(name, "Moto G g", "Moto g")
-	// 	name = regexp.MustCompile(`(?i)Moto\s*(E|G)\s*(\d+)\s*`).ReplaceAllString(name, "Moto $1$2")
-	// }
-
-	// if s[0] == "NOKIA" {
-	// 	name = strings.ReplaceAll(name, "Nokia ", "")
-	// }
-
-	// if s[0] == "OPPO" {
-	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_manor(isDryRun bool) IShop {

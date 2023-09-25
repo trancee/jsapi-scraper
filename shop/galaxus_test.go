@@ -255,8 +255,10 @@ var galaxusNames = []string{
 	"ZTE Blade V40 Vita 128G+4G black(inkl. Buds",
 	"ZTE Blade V40S 4G Black",
 	"ZTE Graues Smartphone Blade V40 Design + schwarze Smartwatch Watch Live",
+	"ZTE Smartfon ZTE Blade A31 2/32GB Szary",
 	"ZTE Smartphone A310 1/8GB Graphit (A31232/GY)",
 	"ZTE Smartphone Blade A72s 3",
+	"ZTE SMARTPHONE BLADE A51",
 	"ZTE Supplier did not provide product name",
 }
 
@@ -510,8 +512,10 @@ var galaxusNamesExpected = []string{
 	"ZTE Blade V40 Vita",
 	"ZTE Blade V40s",
 	"ZTE Blade V40",
+	"ZTE Blade A31",
 	"ZTE Blade A310",
 	"ZTE Blade A72s",
+	"ZTE Blade A51",
 	"ZTE",
 }
 
