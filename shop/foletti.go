@@ -22,7 +22,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE| EE`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 

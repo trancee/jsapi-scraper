@@ -15,6 +15,8 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
+const EUR_CHF = 0.97
+
 // r := regexp.MustCompile(`(?i)\W*((Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP Kamera,|OTG Reverse Charge|(\d{4,5}|\d{1,3}\.\d{3})mAh(\W*(Großer )?Akku)?|\(?\s*202\d\)?|\(\d+\+\d+GB\),|\d+ \+ \d+\s*GB|Android \d+( 4GB?)?)`)
 // r := regexp.MustCompile(`(?i)\W*((Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|\(?\s*202\d\)?|\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
 // r := regexp.MustCompile(`(?i)\s*([ ，]|(Handys?|(4G )?Smartphones?)( mit)?|ohne Vertragy?,?|Outdoor|(\+\W*)Kopfhörer|Günstige?,?|Telekom|Wasserdichit|50MP\+8MP (Dual )?Kamera,|OTG Reverse Charge|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?Akku)?|[(（]?\s*202\d[)）]?|\W*\d+(GB)?\s*\+\s*\d+\s*GB(\/\d+[GT]B)?\)?,?|Android \d+)`)
@@ -285,14 +287,16 @@ func XXX_amazon(isDryRun bool) IShop {
 				}
 				_product.link = link
 
-				if itemPrice := traverse(item, "div", "class", "s-price-instructions-style"); itemPrice != nil {
+				// puis-price-instructions-style
+				// s-price-instructions-style
+				if itemPrice := traverse(item, "a", "class", "s-no-hover"); itemPrice != nil {
 					// fmt.Println(itemPrice)
 
-					if itemOldPrice := traverse(itemPrice, "span", "class", "a-price-whole"); itemOldPrice != nil {
+					if itemOldPrice := traverse(itemPrice, "span", "class", "a-offscreen"); itemOldPrice != nil {
 						// fmt.Println(itemOldPrice)
 
 						oldPrice, _ := text(itemOldPrice)
-						oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "CHF", "")
+						oldPrice = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(oldPrice, ".", ""), ",", "."), "\u00a0€", "")
 						if _debug {
 							fmt.Println(oldPrice)
 						}
@@ -300,18 +304,19 @@ func XXX_amazon(isDryRun bool) IShop {
 						if _price, err := strconv.ParseFloat(oldPrice, 32); err != nil {
 							panic(err)
 						} else {
-							_product.price = float32(_price)
+							_product.price = float32(_price) * EUR_CHF
+							if _debug {
+								fmt.Println(_product.price)
+							}
 						}
 					}
 
-					if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
-						// fmt.Println(currentPrice)
+					if itemPrice := itemPrice.FirstChild.NextSibling.NextSibling; itemPrice != nil {
+						if itemPrice := traverse(itemPrice, "span", "class", "a-offscreen"); itemPrice != nil {
+							// fmt.Println(itemPrice)
 
-						if currentPrice := traverse(itemPrice, "span", "aria-hidden", "true"); currentPrice != nil {
-							// fmt.Println(currentPrice)
-
-							price, _ := text(currentPrice)
-							price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "CHF", "")
+							price, _ := text(itemPrice)
+							price = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(price, ".", ""), ",", "."), "\u00a0€", "")
 							if _debug {
 								fmt.Println(price)
 							}
@@ -319,7 +324,10 @@ func XXX_amazon(isDryRun bool) IShop {
 							if _price, err := strconv.ParseFloat(price, 32); err != nil {
 								panic(err)
 							} else {
-								_product.oldPrice = float32(_price)
+								_product.oldPrice = float32(_price) * EUR_CHF
+								if _debug {
+									fmt.Println(_product.oldPrice)
+								}
 							}
 						}
 					}
