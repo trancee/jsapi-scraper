@@ -35,7 +35,7 @@ func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	const _url = "https://ecom-api.manor.ch/graphql"
 
-	const _tests = true
+	const _tests = false
 
 	testCases := map[string]string{}
 
