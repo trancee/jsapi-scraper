@@ -64,6 +64,12 @@ var TuttiCleanFn = func(name string) string {
 		name = strings.Split(name, " - ")[0]
 	}
 
+	if s[0] == "Xiaomi" {
+		if s[1] == "9C" {
+			name = strings.ReplaceAll(name, "9C", "Redmi 9C")
+		}
+	}
+
 	name = regexp.MustCompile(`A\d{4}|\.$`).ReplaceAllString(name, "")
 
 	return helpers.Lint(name)

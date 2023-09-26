@@ -8,6 +8,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
+
+	"golang.org/x/net/http2"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -173,10 +176,28 @@ func XXX_amazon(isDryRun bool) IShop {
 		} else {
 			url := fmt.Sprintf(_url, p)
 
-			resp, err := http.Get(url)
+			req, err := http.NewRequest(http.MethodGet, url, nil)
 			if err != nil {
 				// panic(err)
 				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
+				return NewShop(
+					_name,
+					_url,
+
+					nil,
+				)
+			}
+
+			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36")
+
+			client := &http.Client{
+				Transport: &http2.Transport{},
+				Timeout:   10 * time.Second,
+			}
+			resp, err := client.Do(req)
+			if err != nil {
+				// panic(err)
+				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
 				return NewShop(
 					_name,
 					_url,
