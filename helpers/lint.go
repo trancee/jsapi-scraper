@@ -171,7 +171,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)HONOR`).ReplaceAllStringFunc(name, strings.ToUpper)
 
 		name = regexp.MustCompile(`(?i)Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
-		name = regexp.MustCompile(`(?i)HONOR\s*(\d+)\s*(\w)?`).ReplaceAllString(name, "HONOR $1 $2")
+		name = regexp.MustCompile(`(?i)HONOR\s*(\d+[X]?)\s*(\w)?`).ReplaceAllString(name, "HONOR $1 $2")
 	}
 
 	if s[0] == "Huawei" {

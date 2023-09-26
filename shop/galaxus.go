@@ -47,6 +47,7 @@ var GalaxusCleanFn = func(name string) string {
 
 		name = strings.ReplaceAll(name, "Motorola Motorola ", "Motorola ")
 		name = strings.ReplaceAll(name, "Moto E Moto ", "Moto ")
+		name = strings.ReplaceAll(name, "Moto E moto ", "Moto ")
 		name = strings.ReplaceAll(name, "Motorola 30 ", "Motorola Edge 30 ")
 	}
 

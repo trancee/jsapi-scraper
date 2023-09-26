@@ -28,6 +28,10 @@ var MobilezeroCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "Huawei" {
+		name = regexp.MustCompile(`(?i)\((\d{4})\)`).ReplaceAllString(name, "$1")
+	}
+
 	if s[0] == "Motorola" {
 		name = strings.ReplaceAll(name, "Razr22", "Razr 2022")
 	}

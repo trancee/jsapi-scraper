@@ -1350,7 +1350,7 @@ var mobilezeroNamesExpected = []string{
 	"HUAWEI P8 lite 2017",
 	"HUAWEI P9 lite",
 	"HUAWEI P9",
-	"HUAWEI Y5 (2019)",
+	"HUAWEI Y5 2019",
 	"HUAWEI Y5p",
 	"HUAWEI Y6p",
 	"HUAWEI Y6p",

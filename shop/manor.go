@@ -16,7 +16,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|\s+20[12]\d|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
+var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
 
 var ManorCleanFn = func(name string) string {
 	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "NOKIA Nokia ", "Nokia ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
@@ -35,7 +35,7 @@ func XXX_manor(isDryRun bool) IShop {
 	const _name = "Manor"
 	const _url = "https://ecom-api.manor.ch/graphql"
 
-	const _tests = false
+	const _tests = true
 
 	testCases := map[string]string{}
 
@@ -56,6 +56,12 @@ func XXX_manor(isDryRun bool) IShop {
 		OriginalPrice struct {
 			Amount float32 `json:"amount"`
 		} `json:"originalPrice"`
+
+		Titles struct {
+			First  string `json:"first"`
+			Second string `json:"second"`
+			Third  string `json:"third"`
+		} `json:"titles"`
 
 		Stock struct {
 			Level int `json:"level"`
@@ -204,10 +210,18 @@ func XXX_manor(isDryRun bool) IShop {
 			product.Name = html.UnescapeString(product.Name)
 			product.Description = html.UnescapeString(product.Description)
 
-			_title := product.Name
-			if !strings.HasPrefix(strings.ToUpper(_title), strings.ToUpper(product.Brand)) {
-				_title = product.Brand + " " + _title
+			_titles := []string{}
+			if !strings.HasPrefix(strings.ToUpper(product.Name), strings.ToUpper(product.Brand)) {
+				_titles = append(_titles, html.UnescapeString(product.Titles.First))
 			}
+			if len(product.Titles.Second) > 0 {
+				_titles = append(_titles, html.UnescapeString(product.Titles.Second))
+			}
+			if len(product.Titles.Third) > 0 {
+				_titles = append(_titles, html.UnescapeString(product.Titles.Third))
+			}
+
+			_title := strings.TrimSpace(strings.Join(_titles, " "))
 			// fmt.Println(_title)
 			_model := ManorCleanFn(_title)
 			// fmt.Println(_model)

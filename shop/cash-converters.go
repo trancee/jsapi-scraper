@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var CashConvertersRegex = regexp.MustCompile(`(?i),|(\d+\/)?(2|4|6|8|16|32|64|128|256)\s*(GB|BG|Go|B)|\(?[345]G\)?|NFC|LTE|Dual[- ]SIM|\+? Boîte|\((Black|Bleu Azur|Gris)\)`)
+var CashConvertersRegex = regexp.MustCompile(`(?i),|(\d+\/)?(2|4|6|8|16|32|64|128|256)\s*(GB|BG|Go|B)|\(?[345]G\)?|NFC|LTE|Dual[- ]SIM|\+? Boîte|\((Black|Bleu Azur|Gris|Noir)\)`)
 
 var CashConvertersCleanFn = func(name string) string {
 	name = strings.NewReplacer(" - ", " ").Replace(name)
@@ -26,6 +26,10 @@ var CashConvertersCleanFn = func(name string) string {
 	}
 
 	s := strings.Split(name, " ")
+
+	if s[0] == "Oppo" || s[0] == "OPPO" {
+		name = strings.ReplaceAll(name, "Fond", "Find")
+	}
 
 	if s[0] == "Samsung" || s[0] == "SAMSUNG" {
 		if s[1] == "Note20" {
