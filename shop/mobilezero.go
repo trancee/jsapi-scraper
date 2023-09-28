@@ -238,6 +238,8 @@ func XXX_mobilezero(isDryRun bool) IShop {
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 
+			_link := s.ResolveURL(_product.link).String()
+
 			product := &Product{
 				Code:  _name + "//" + _product.code,
 				Name:  _title,
@@ -248,7 +250,7 @@ func XXX_mobilezero(isDryRun bool) IShop {
 				Savings:     _savings,
 				Discount:    _discount,
 
-				URL: _product.link,
+				URL: _link,
 			}
 
 			if s.IsWorth(product) {
