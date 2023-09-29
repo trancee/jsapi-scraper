@@ -28,8 +28,8 @@ var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom
 var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 2\+32| 4\+64| 4\+128| 128-4`)
 
 var AmazonCleanFn = func(name string) string {
-	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |(XIA|REA) DS | SLP|3\. Generation|all carriers ,|^[-0] `).ReplaceAllString(name, "")
-	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ").Replace(name)
+	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |(XIA|REA) DS | SLP| was-LX1|3\. Generation|all carriers ,|^[-0] `).ReplaceAllString(name, "")
+	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ", "Black Smartphone", " ").Replace(name)
 	name = regexp.MustCompile(`^A34`).ReplaceAllString(name, "Samsung Galaxy A34")
 	name = AmazonRegex3.ReplaceAllString(name, "|")
 
@@ -49,30 +49,12 @@ var AmazonCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
-	// if s[0] == "HUAWEI" || s[0] == "Huawei" {
-	// 	name = strings.ReplaceAll(name, "Mate10", "Mate 10")
-	// 	name = strings.ReplaceAll(name, "Mate20", "Mate 20")
-	// }
-
 	if s[0] == "Honor" || s[0] == "HONOR" {
 		name = strings.ReplaceAll(name, "HonorMagic", "Magic")
-		// name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
 	}
 
-	// if s[0] == "moto" || s[0] == "Moto" {
-	// 	name = "Motorola " + name
-	// }
 	if s[0] == "Motorola" {
 		name = strings.NewReplacer("Light", "Lite", " E ", " E").Replace(name)
-
-		// 	if len(s) > 1 && (s[1] == "Moto" || s[1] == "moto") && (s[2] == "Edge" || s[2] == "edge") {
-		// 		name = strings.ReplaceAll(name, "Moto ", "")
-		// 	}
-		// 	if len(s[1]) > 1 && (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
-		// 		name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
-		// 	}
-
-		// 	name = regexp.MustCompile(`(?i)edge\s*(\d+)\s*(\w*)`).ReplaceAllString(name, "edge $1 $2")
 	}
 
 	if s[0] == "Nothing" {
@@ -81,46 +63,15 @@ var AmazonCleanFn = func(name string) string {
 		}
 	}
 
-	// if s[0] == "OPPO" || s[0] == "Oppo" {
-	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// if s[0] == "Galaxy" {
-	// 	name = "Samsung " + name
-	// }
-
-	// if s[0] == "Redmi" || s[0] == "REDMI" || s[0] == "POCO" {
-	// 	name = "Xiaomi " + name
-	// }
 	if s[0] == "Samsung" {
 		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "Samsung A", "Samsung Galaxy A")
 		name = strings.ReplaceAll(name, "Samsung M", "Samsung Galaxy M")
 	}
-	// if s[0] == "Xiaomi" {
-	// 	name = strings.ReplaceAll(name, "Xiaomi 10", "Xiaomi Redmi 10")
-	// 	name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi POCO M5")
-	// 	name = strings.ReplaceAll(name, "Xiaomi Note ", "Xiaomi Redmi Note ")
-	// }
-	// if s[0] == "ZTE" {
-	// 	name = strings.ReplaceAll(name, "V40 S", "V40S")
-
-	// 	if strings.HasSuffix(name, "Vita") && s[1] != "Blade" {
-	// 		name = strings.ReplaceAll(name, "ZTE", "ZTE Blade")
-	// 	}
-	// }
 
 	if loc := AmazonRegex4.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%s\t%s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
-		// // fmt.Printf("%v\t%s\t%s\n", loc, name[loc[2]:loc[3]], name)
-		// _model := name[loc[2]:loc[3]]
-		// fmt.Println(_model)
-		// _model = strings.TrimSpace(strings.Trim(_model, "("))
-		// fmt.Println(_model)
-		// _model = strings.TrimSpace(strings.Split(strings.ReplaceAll(_model, "()", "|"), "|")[0])
-		// fmt.Println(_model)
-		// return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(_model), " ")
 	}
 
 	if s[0] == "Apple" {
@@ -136,9 +87,9 @@ var AmazonCleanFn = func(name string) string {
 		name = regexp.MustCompile(`\s*\(?20[12]\d\)?`).ReplaceAllString(name, "")
 	}
 
-	return helpers.Lint(name)
+	name = regexp.MustCompile(`\s*\($`).ReplaceAllString(name, "")
 
-	// return regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(name), " ")
+	return helpers.Lint(name)
 }
 
 func XXX_amazon(isDryRun bool) IShop {

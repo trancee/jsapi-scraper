@@ -286,6 +286,8 @@ func Model(name string) string {
 
 		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 
+		name = regexp.MustCompile(`Flip\s*(\d+)`).ReplaceAllString(name, "Flip $1")
+		name = regexp.MustCompile(`Fold\s*(\d+)`).ReplaceAllString(name, "Fold $1")
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
 		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?([AFMS])\s*(\d+| Duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
 

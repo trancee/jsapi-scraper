@@ -117,6 +117,7 @@ func main() {
 			shop.XXX_mobilezone(isDryRun),
 			shop.XXX_orderflow(isDryRun),
 			// shop.XXX_stegpc(isDryRun), // out of order
+			shop.XXX_techinn(isDryRun),
 			shop.XXX_tutti(isDryRun),
 			shop.XXX_ultimus(isDryRun),
 			shop.XXX_venova(isDryRun),

@@ -28,28 +28,6 @@ var StegCleanFn = func(name string) string {
 	name = strings.NewReplacer(" E e", " e", " E ", " E", " G ", " G", "Samsung Samsung ", "Samsung ", "Xiaomi Xiaomi ", "Xiaomi ").Replace(name)
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
-	// 	if s[1][0] == 'E' || s[1][0] == 'G' {
-	// 		name = s[0] + " Moto " + s[1]
-	// 	}
-	// }
-
-	// if s[0] == "OPPO" || s[0] == "Oppo" {
-	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// if s[0] == "Honor" {
-	// 	name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
-	// }
-
-	// if s[0] == "iPhone" {
-	// 	name = "Apple " + name
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 // POST https://www.steg-electronics.ch/de/Filter/SetCheckboxFilter

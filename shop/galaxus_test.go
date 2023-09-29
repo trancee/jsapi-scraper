@@ -436,7 +436,7 @@ var galaxusNamesExpected = []string{
 	"Samsung Galaxy XCover 4S",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover Pro",
-	"Samsung Galaxy Z Flip3",
+	"Samsung Galaxy Z Flip 3",
 	"Sony Xperia 1",
 	"Sony Xperia 10 III",
 	"Sony Xperia XZ",
