@@ -26,9 +26,10 @@ const EUR_CHF = 0.97
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
 var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Telefon |All Carriers |Neu |EU |Xia |MOVIL |Smartfon |Marke Modell |Sam |Cellulare |Unlocked |Senior | Master Edition|\(Hybrid SIM\))\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+([,.]\d+)?\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|\d+\.\d+\s*mAh|AWESOME LIME|Blau|Blue|Buds|Cinemagic|Cloud Navy|Dark Silver|Glacier Blue|Gradient Bronze|Graphite Gray|Grau|Midnight Gray|Mint Green|\(?Ocean Blue\)?|Onyx Gray|Oro|Pebble White|Polar White|Sunrise Orange|White|Zeus Black|\/Black|\/?BLACK|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS| \+ 5G|\d,\d Zoll| Enterprise Edition`)
 var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 2\+32| 4\+64| 4\+128| 128-4`)
+var AmazonExclusionRegex = regexp.MustCompile(`(?i)Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|^Core|\bCover\b|Earphones|Etui|Halterung|Handschuhe|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|SmartTag|Stand|Ständer|Stativ|Stylus|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var AmazonCleanFn = func(name string) string {
-	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |(XIA|REA) DS | SLP| was-LX1|3\. Generation|all carriers ,|^[-0] `).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |(XIA|REA) DS | SLP|^Brodos | was-LX1|3\. Generation|all carriers ,|^[-0] `).ReplaceAllString(name, "")
 	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ", "Black Smartphone", " ").Replace(name)
 	name = regexp.MustCompile(`^A34`).ReplaceAllString(name, "Samsung Galaxy A34")
 	name = AmazonRegex3.ReplaceAllString(name, "|")
@@ -232,6 +233,10 @@ func XXX_amazon(isDryRun bool) IShop {
 				}
 
 				if Skip(title) {
+					continue
+				}
+
+				if AmazonExclusionRegex.MatchString(title) {
 					continue
 				}
 

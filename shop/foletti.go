@@ -26,6 +26,10 @@ var FolettiCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "Xiaomi" {
+		name = strings.ReplaceAll(name, "23021RAA2Y", "Redmi Note 12")
+	}
+
 	if s[0] == "Samsung" {
 		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
 			name = strings.ReplaceAll(name, part, "")

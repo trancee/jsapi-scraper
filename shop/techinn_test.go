@@ -769,7 +769,7 @@ var techinnNamesExpected = []string{
 	"Xiaomi Redmi Note 11 Pro",
 	"Xiaomi Redmi Note 11 Pro",
 	"Xiaomi Redmi Note 11 Pro",
-	"Xiaomi Redmi Note 11 Pro Plus",
+	"Xiaomi Redmi Note 11 Pro+",
 	"Xiaomi Redmi Note 11S",
 	"Xiaomi Redmi Note 11S",
 	"Xiaomi Redmi Note 11S",
