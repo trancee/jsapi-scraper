@@ -9,7 +9,9 @@ import (
 	"golang.org/x/net/html"
 )
 
-const ValueDiscount = 50.0
+var EUR_CHF = 1.0
+
+const ValueDiscount = 75.0
 const ValueWorth = 100.0
 
 const ValueMinimum = 0.0
@@ -47,6 +49,7 @@ type Product struct {
 
 	RetailPrice float32 `json:"oldPrice"`
 	Price       float32 `json:"price"`
+	EURPrice    float32 `json:"eurPrice"`
 	Savings     float32 `json:"savings"`
 	Discount    float32 `json:"discount"`
 

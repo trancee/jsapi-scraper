@@ -2,6 +2,8 @@ discounts
 discounts.idx
 products
 products.idx
+rates
+rates.idx
 bin/
 scraper-*.json
 .archive/

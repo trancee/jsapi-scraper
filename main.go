@@ -25,6 +25,7 @@ import (
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 
+	helpers "jsapi-scraper/helpers"
 	"jsapi-scraper/shop"
 )
 
@@ -62,6 +63,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	shop.EUR_CHF = helpers.EUR_CHF()
+	fmt.Printf("EUR/CHF = %f\n", shop.EUR_CHF)
 
 	sheetId, err := strconv.Atoi(os.Getenv("SHEET_ID"))
 	if err != nil {
@@ -695,16 +699,16 @@ func main() {
 	}
 	defer db.Close()
 
-	ids := map[string]bool{}
+	// ids := map[string]bool{}
 
-	if keys, err := db.Keys(nil, 0, 0, true); err != nil {
-		panic(err)
-	} else {
-		for _, key := range keys {
-			ids[string(key)] = true
-		}
-	}
-	// fmt.Println(ids)
+	// if keys, err := db.Keys(nil, 0, 0, true); err != nil {
+	// 	panic(err)
+	// } else {
+	// 	for _, key := range keys {
+	// 		ids[string(key)] = true
+	// 	}
+	// }
+	// // fmt.Println(ids)
 
 	for name, products := range _products {
 		fmt.Println()
@@ -720,7 +724,7 @@ func main() {
 		if products != nil {
 			for _, product := range *products {
 				id := product.Code
-				delete(ids, id)
+				// delete(ids, id)
 
 				_name := product.Name
 				if product.Quantity > 0 {
@@ -740,12 +744,14 @@ func main() {
 					db.Get(id, &oldProduct)
 				}
 
-				if oldProduct != *product {
-					db.Set(id, product)
+				db.Set(id, product)
 
-					if oldProduct.RetailPrice != product.RetailPrice && ( /*product.RetailPrice < ValueWorth ||*/ product.Discount > shop.ValueDiscount) {
+				if product.EURPrice > 0 {
+					if oldProduct.EURPrice != product.EURPrice {
 						notify = true
 					}
+				} else if oldProduct.RetailPrice != product.RetailPrice && (product.RetailPrice <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
+					notify = true
 				}
 
 				if notify {
@@ -775,10 +781,10 @@ func main() {
 		}
 	}
 
-	// fmt.Println(ids)
-	for id := range ids {
-		db.Delete(id)
-	}
+	// // fmt.Println(ids)
+	// for id := range ids {
+	// 	db.Delete(id)
+	// }
 }
 
 func color(v float64) float64 {
