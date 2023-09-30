@@ -56,6 +56,11 @@ type Product struct {
 	Quantity int `json:"quantity"`
 
 	URL string `json:"link"`
+
+	Counter          int64 `json:"counter"`
+	CreationDate     int64 `json:"createdAt"`
+	ModificationDate int64 `json:"modifiedAt"`
+	NotificationDate int64 `json:"notifiedAt"`
 }
 
 type parseFn func(s IShop) *[]*Product

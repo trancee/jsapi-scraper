@@ -699,16 +699,16 @@ func main() {
 	}
 	defer db.Close()
 
-	// ids := map[string]bool{}
+	ids := map[string]bool{}
 
-	// if keys, err := db.Keys(nil, 0, 0, true); err != nil {
-	// 	panic(err)
-	// } else {
-	// 	for _, key := range keys {
-	// 		ids[string(key)] = true
-	// 	}
-	// }
-	// // fmt.Println(ids)
+	if keys, err := db.Keys(nil, 0, 0, true); err != nil {
+		panic(err)
+	} else {
+		for _, key := range keys {
+			ids[string(key)] = true
+		}
+	}
+	// fmt.Println(ids)
 
 	for name, products := range _products {
 		fmt.Println()
@@ -724,7 +724,7 @@ func main() {
 		if products != nil {
 			for _, product := range *products {
 				id := product.Code
-				// delete(ids, id)
+				delete(ids, id)
 
 				_name := product.Name
 				if product.Quantity > 0 {
@@ -742,16 +742,26 @@ func main() {
 				var oldProduct shop.Product
 				if ok, _ := db.Has(id); ok {
 					db.Get(id, &oldProduct)
-				}
 
-				db.Set(id, product)
+					product.Counter = oldProduct.Counter
+					product.CreationDate = oldProduct.CreationDate
+				} else {
+					product.CreationDate = time.Now().Unix()
+				}
 
 				if ((product.EURPrice > 0 && oldProduct.EURPrice != product.EURPrice) ||
 					(oldProduct.RetailPrice > 0 && oldProduct.RetailPrice != product.RetailPrice) ||
 					(oldProduct.Price > 0 && oldProduct.Price != product.Price)) &&
 					(product.RetailPrice <= shop.ValueWorth || product.Price <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
 					notify = true
+
+					product.NotificationDate = time.Now().Unix()
 				}
+
+				product.Counter++
+				product.ModificationDate = time.Now().Unix()
+
+				db.Set(id, product)
 
 				if notify {
 					if !isDryRun {
@@ -780,10 +790,20 @@ func main() {
 		}
 	}
 
-	// // fmt.Println(ids)
-	// for id := range ids {
-	// 	db.Delete(id)
-	// }
+	// fmt.Println(ids)
+	for id := range ids {
+		var oldProduct shop.Product
+		if ok, _ := db.Has(id); ok {
+			db.Get(id, &oldProduct)
+
+			// Do not delete data if it is not older than 5 days.
+			if time.Now().Unix()-oldProduct.ModificationDate > 5*24*60*60 {
+				continue
+			}
+		}
+
+		db.Delete(id)
+	}
 }
 
 func color(v float64) float64 {
