@@ -746,11 +746,10 @@ func main() {
 
 				db.Set(id, product)
 
-				if product.EURPrice > 0 {
-					if oldProduct.EURPrice != product.EURPrice {
-						notify = true
-					}
-				} else if oldProduct.RetailPrice != product.RetailPrice && (product.RetailPrice <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
+				if ((product.EURPrice > 0 && oldProduct.EURPrice != product.EURPrice) ||
+					(oldProduct.RetailPrice > 0 && oldProduct.RetailPrice != product.RetailPrice) ||
+					(oldProduct.Price > 0 && oldProduct.Price != product.Price)) &&
+					(product.RetailPrice <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
 					notify = true
 				}
 

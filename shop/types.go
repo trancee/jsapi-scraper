@@ -127,6 +127,7 @@ var _skips = map[string]bool{
 	"MEDIACOM":        true,
 	"MICROSOFT":       true, // EXCLUDE
 	"MITEL":           true,
+	"MOBISTEL":        true,
 	"MP":              true,
 	"MYPHONE":         true,
 	"NOMU":            true,
