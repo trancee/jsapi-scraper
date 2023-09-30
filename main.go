@@ -749,7 +749,7 @@ func main() {
 				if ((product.EURPrice > 0 && oldProduct.EURPrice != product.EURPrice) ||
 					(oldProduct.RetailPrice > 0 && oldProduct.RetailPrice != product.RetailPrice) ||
 					(oldProduct.Price > 0 && oldProduct.Price != product.Price)) &&
-					(product.RetailPrice <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
+					(product.RetailPrice <= shop.ValueWorth || product.Price <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
 					notify = true
 				}
 
