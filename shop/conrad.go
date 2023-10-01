@@ -390,7 +390,7 @@ func XXX_conrad(isDryRun bool) IShop {
 
 			_retailPrice := product.RetailPrice
 			_price := product.Price
-			_savings := product.Savings
+			_savings := -product.Savings
 			_discount := product.Discount
 
 			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))

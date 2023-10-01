@@ -726,7 +726,7 @@ func main() {
 				id := product.Code
 				delete(ids, id)
 
-				_name := product.Name
+				_name := product.Model
 				if product.Quantity > 0 {
 					_name += fmt.Sprintf(" (%d)", product.Quantity)
 				}

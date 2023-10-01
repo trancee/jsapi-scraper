@@ -24,25 +24,6 @@ var MelectronicsCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// if s[0] == "Redmi" {
-	// 	name = "Xiaomi " + name
-	// }
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_melectronics(isDryRun bool) IShop {
@@ -186,15 +167,24 @@ func XXX_melectronics(isDryRun bool) IShop {
 				testCases[_title] = _model
 			}
 
+			_retailPrice := product.SuggestedRetailPrice.Value
+			_price := _retailPrice
+			if product.Price.Value > 0 {
+				_price = product.Price.Value
+			}
+
+			_savings := _price - _retailPrice
+			_discount := product.PercentageReduction
+
 			product := Product{
 				Code:  _name + "//" + product.Code,
 				Name:  _title,
 				Model: _model,
 
-				RetailPrice: product.SuggestedRetailPrice.Value,
-				Price:       product.Price.Value,
-				Savings:     product.Price.Value - product.SuggestedRetailPrice.Value,
-				Discount:    product.PercentageReduction,
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
 
 				URL: s.ResolveURL(product.URL).String(),
 			}

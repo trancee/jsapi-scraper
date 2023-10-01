@@ -323,6 +323,7 @@ func XXX_foletti(isDryRun bool) IShop {
 			if product.oldPrice > 0 {
 				_retailPrice = product.oldPrice
 			}
+
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
 

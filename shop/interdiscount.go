@@ -215,7 +215,7 @@ func XXX_interdiscount(isDryRun bool) IShop {
 					if price.InsteadPrice.Value > 0 {
 						_price = price.FinalPrice.Value
 						_retailPrice = price.InsteadPrice.Value
-						_savings = price.Savings.Value
+						_savings = -price.Savings.Value
 					}
 				}
 			}
