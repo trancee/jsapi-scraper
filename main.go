@@ -797,7 +797,7 @@ func main() {
 			db.Get(id, &oldProduct)
 
 			// Do not delete data if it is not older than 5 days.
-			if time.Now().Unix()-oldProduct.ModificationDate > 5*24*60*60 {
+			if time.Now().Unix()-oldProduct.ModificationDate < 5*24*60*60 {
 				continue
 			}
 		}

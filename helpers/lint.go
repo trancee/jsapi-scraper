@@ -129,7 +129,7 @@ func Model(name string) string {
 	if s[0] == "Blackview" {
 		name = regexp.MustCompile(`(?i)BL\s*(\d+)`).ReplaceAllString(name, "BL$1")
 		name = regexp.MustCompile(`(?i)BV\s*(\d+)`).ReplaceAllString(name, "BV$1")
-
+		// name = regexp.MustCompile(`(?i)(B[LV]\d+)\s*s`).ReplaceAllString(name, "$1s")
 		name = regexp.MustCompile(`(?i)\(\d+\)`).ReplaceAllString(name, "")
 	}
 

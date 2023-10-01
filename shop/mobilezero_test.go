@@ -1288,7 +1288,7 @@ var mobilezeroNamesExpected = []string{
 	"ASUS ROG Phone II",
 	"ASUS Zenfone 2",
 	"ASUS Zenfone 2 Laser",
-	"Blackview 4900S",
+	"Blackview BV4900s",
 	"Blackview A100",
 	"Blackview A80",
 	"Blackview A80 Plus",
