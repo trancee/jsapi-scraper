@@ -23,7 +23,7 @@ import (
 // var AmazonRegex = regexp.MustCompile(`(?i)\s*(((4G |Lockfreie )?(Handys?|Smartphones?))( mit)?|ohne Vertragy?,?(\d\.\d+'*( Zoll HD\+)?)?|(4G )?Outdoor|(\+\W*)Kopfhörer|Günstig(,|es|e)?|Neu|Telekom|(IP\d+\s+)?Wasserdichi?t(er)?|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|Dual\W+SIM(\+SD \(.*?\))?|\d Zoll Touch Bildschirm,|EU 128GB|OTG Reverse Charge|Cloud Navy|Erweiterbar|Octa\W*Core(\W*Pro[cz]essor)?|(Großer?|Größten) Akku|(Starker )?(\d{4,5}|\d{1,3}\.\d{3})\s*mAh(\W*(Großer )?(Akku|Batterie))?|\b20[12]\d|\W*\d+(GB)?\s*\+\s*\d+\s*GB([\/+]\d+[GT]B)?\)?,?|Android \d+(\.\d)?( Go)?|(SM )?[SG]\d{3}[A-Z]*)`)
 // var AmazonRegex2 = regexp.MustCompile(`(?i)^(.*?)(\s+\(?\dG\W*|\s*\d+\W*([GT]B|W)|\W\d+[,.]\d+|\s*–\s*|\s*Android| Helio | mit | Octa |,)`)
 var AmazonRegex3 = regexp.MustCompile(`(Android \d{1,2}( Go)?|Quad Core |Telekom |Telefon |All Carriers |Neu |EU |Xia |MOVIL |Smartfon |Marke Modell |Sam |Cellulare |Unlocked |Senior | Master Edition|\(Hybrid SIM\))\s*|(-?4G )?(Simlockfreie |Lockfreie |Outdoor |Android[ -]|SIM Free )?(Handys?|Smartphones?)( [Oo]hne [Vv]ertragy?,?)?( Günstig,?)?|(\W*\d+(GB)?\s*\+\s*\d+\s*GB\W*)|\W*\d+([,.]\d+)?\s*(cm|\"|''|')|(Dual|DUAL)\W+(SIM|Sim)|\d+MP(\+8MP)?\W+(AI\W*)?(Dual\W+|Quad\W+|Unterwasser)?Kamera|\(?5G|\d{4,5}mAh( Akku)?|\d+\.\d+\s*mAh|Azul|AWESOME LIME|Blau|Blue|Buds|Cinemagic|Cloud Navy|Dark Silver|Glacier Blue|Gradient Bronze|Graphite Gray|Grau|Midnight Gray|Mint Green|\(?Ocean Blue\)?|Onyx Gray|Oro|Pebble White|Polar White|Sunrise Orange|White|Zeus Black|\/Black|\/?BLACK|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS| \+ 5G|\d,\d Zoll| LTE| Enterprise Edition`)
-var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 2\+32| 3\+64| 4\+64| 4\+128| 128-4`)
+var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\d+G|\W*[45][Gg](\s+|$)?| DS| EU| NFC| -|,|\s+\(\d{2}| 32-2| 2\+32| 3\+64| 4\+64| 64\/4| 4\+128| 128-4`)
 var AmazonExclusionRegex = regexp.MustCompile(`(?i)Abdeckung|Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|Clamshell|^Core|\bCover\b|Earphones|Etui|Halterung|Handschuhe|HARDCASE|Headset|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Majestic|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|SmartTag|Stand|Ständer|Stativ|Stylus|Tastatur|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var AmazonCleanFn = func(name string) string {
@@ -66,6 +66,7 @@ var AmazonCleanFn = func(name string) string {
 		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "Samsung A", "Samsung Galaxy A")
 		name = strings.ReplaceAll(name, "Samsung M", "Samsung Galaxy M")
+		name = strings.ReplaceAll(name, "Samsung G ", "Samsung Galaxy ")
 	}
 
 	if loc := AmazonRegex4.FindStringSubmatchIndex(name); loc != nil {

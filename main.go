@@ -242,17 +242,17 @@ func main() {
 		}
 		// fmt.Println(ids)
 
-	Loop:
+		// Loop:
 		for _, item := range _items {
 			min := Price{}
 			max := Price{}
 			// fmt.Printf("%s", item)
 
-			for shop, price := range matrix[item] {
-				if _shops[shop] == "Amazon" {
-					// Do not consider discounts from Amazon.
-					continue Loop
-				}
+			for _, price := range matrix[item] {
+				// if _shops[shop] == "Amazon" {
+				// 	// Do not consider discounts from Amazon.
+				// 	continue Loop
+				// }
 
 				// fmt.Printf(" %v", price.Price)
 				if min.Price > price.Price || min.Price == 0 {
@@ -735,7 +735,7 @@ func main() {
 					priceLine = fmt.Sprintf("%8.2f %8.2f %3d%%", product.Price, product.Savings, int(product.Discount))
 				}
 
-				fmt.Printf("%-69s %8.2f %22s %s\n", _name, product.RetailPrice, priceLine, product.URL)
+				fmt.Printf("%-30s %8.2f %22s %s\n", _name, product.RetailPrice, priceLine, product.URL)
 
 				notify := false
 

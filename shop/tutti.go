@@ -232,6 +232,7 @@ func XXX_tutti(isDryRun bool) IShop {
 		}
 		// fmt.Println(_result.Data.SearchListingsByQuery.Listings.Edges)
 
+		first := true
 		for _, edge := range _result.Data.SearchListingsByQuery.Listings.Edges {
 			_title := html.UnescapeString(edge.Node.Name)
 
@@ -246,6 +247,11 @@ func XXX_tutti(isDryRun bool) IShop {
 			}
 
 			if !TuttiInclusionRegex.MatchString(_model) {
+				if first {
+					fmt.Println()
+					first = false
+				}
+
 				fmt.Printf("*** %-50s %s\n", _model, _title)
 				continue
 			}

@@ -41,6 +41,7 @@ func XXX_ackermann(isDryRun bool) IShop {
 	const _name = "Ackermann"
 	_url := fmt.Sprintf("https://www.ackermann.ch/_next/data/shopping_app/de/technik/multimedia/smartphones-telefone.json?o=price-asc&f=%s&categories=technik&categories=multimedia&categories=smartphones-telefone", base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf(`{"filter_Produkttyp_1":["fb_prdkt.p1_smrt.hn_38"],"filter_price":["%.f-%.f"]}`, ValueMinimum, ValueMaximum))))
 
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -192,7 +193,8 @@ func XXX_ackermann(isDryRun bool) IShop {
 				// fmt.Println(model)
 				// fmt.Println()
 
-				for _, variation := range product.Variations {
+				// for _, variation := range product.Variations {
+				if variation := product.Variations[0]; len(product.Variations) > 0 {
 					result := _Response{
 						code:  variation.Sku,
 						title: title,
@@ -228,6 +230,10 @@ func XXX_ackermann(isDryRun bool) IShop {
 			if Skip(_model) {
 				continue
 			}
+			if _debug {
+				// fmt.Println(_title)
+				fmt.Println(_model)
+			}
 
 			if _tests {
 				testCases[_title] = _model
@@ -236,17 +242,30 @@ func XXX_ackermann(isDryRun bool) IShop {
 			var _savings float32
 			var _discount float32
 
-			_retailPrice := _product.oldPrice
+			_retailPrice := max(_product.oldPrice, _product.price)
 			_price := _retailPrice
 			if _product.price > 0 {
 				_price = _product.price
 			}
-			if _retailPrice > 0 {
+			if _debug {
+				fmt.Println(_retailPrice)
+				fmt.Println(_price)
+			}
+
+			if _price > 0 {
 				_savings = _price - _retailPrice
 				_discount = 100 - ((100 / _retailPrice) * _price)
 			}
+			if _debug {
+				fmt.Println(_savings)
+				fmt.Println(_discount)
+			}
 
 			_link := s.ResolveURL(_product.link).String()
+			if _debug {
+				fmt.Println(_link)
+				fmt.Println()
+			}
 
 			product := &Product{
 				Code:  _name + "//" + _product.code,

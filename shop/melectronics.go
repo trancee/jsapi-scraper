@@ -32,6 +32,7 @@ func XXX_melectronics(isDryRun bool) IShop {
 	// const _url = "https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:summaryAsString:Smartphone&pageSize=100"
 	_url := fmt.Sprintf("https://www.melectronics.ch/jsapi/v1/de/products/search/category/3421317829?q=:price-asc:priceValue:%%5B%.f+TO+%.f%%5D:summaryAsString:Smartphone&pageSize=100", ValueMinimum, ValueMaximum)
 
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -162,19 +163,40 @@ func XXX_melectronics(isDryRun bool) IShop {
 			if Skip(_model) {
 				continue
 			}
+			if _debug {
+				// fmt.Println(_title)
+				fmt.Println(_model)
+			}
 
 			if _tests {
 				testCases[_title] = _model
 			}
 
 			_retailPrice := product.SuggestedRetailPrice.Value
+			if _retailPrice == 0 {
+				_retailPrice = product.Price.Value
+			}
 			_price := _retailPrice
 			if product.Price.Value > 0 {
 				_price = product.Price.Value
 			}
+			if _debug {
+				fmt.Println(_retailPrice)
+				fmt.Println(_price)
+			}
 
 			_savings := _price - _retailPrice
 			_discount := product.PercentageReduction
+			if _debug {
+				fmt.Println(_savings)
+				fmt.Println(_discount)
+			}
+
+			_link := s.ResolveURL(product.URL).String()
+			if _debug {
+				fmt.Println(_link)
+				fmt.Println()
+			}
 
 			product := Product{
 				Code:  _name + "//" + product.Code,
@@ -186,7 +208,7 @@ func XXX_melectronics(isDryRun bool) IShop {
 				Savings:     _savings,
 				Discount:    _discount,
 
-				URL: s.ResolveURL(product.URL).String(),
+				URL: _link,
 			}
 
 			if s.IsWorth(&product) {

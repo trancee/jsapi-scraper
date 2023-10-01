@@ -24,8 +24,6 @@ var ConradCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	// name = strings.TrimSpace(strings.ReplaceAll(name, " E ", " E"))
-
 	s := strings.Split(name, " ")
 
 	if s[0] == "Gigaset" {
@@ -33,27 +31,13 @@ var ConradCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if len(s) == 2 && strings.ToUpper(s[0]) == "MOTOROLA" && strings.ToUpper(s[1]) != "MOTO" {
-	// 	if s[1][0] == 'E' || s[1][0] == 'G' {
-	// 		name = s[0] + " Moto " + s[1]
-	// 	}
-	// }
-
-	// if s[0] == "iPhone" {
-	// 	name = "Apple " + name
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " (2. Generation)", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_conrad(isDryRun bool) IShop {
 	const _name = "Conrad"
 	const _url = "https://api.conrad.ch/search/1/v3/facetSearch/ch/de/b2c?apikey=2cHbdksbmXc6PQDkPzRVFOcdladLvH7w"
 
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -367,6 +351,10 @@ func XXX_conrad(isDryRun bool) IShop {
 			if Skip(_model) {
 				continue
 			}
+			if _debug {
+				// fmt.Println(_title)
+				fmt.Println(_model)
+			}
 
 			for _, detail := range product.TechnicalDetails {
 				switch detail.Name {
@@ -388,13 +376,29 @@ func XXX_conrad(isDryRun bool) IShop {
 				testCases[_title] = _model
 			}
 
-			_retailPrice := product.RetailPrice
-			_price := product.Price
-			_savings := -product.Savings
+			_retailPrice := max(product.RetailPrice, product.Price)
+			_price := min(product.RetailPrice, product.Price)
+			if _debug {
+				fmt.Println(_retailPrice)
+				fmt.Println(_price)
+			}
+
+			_savings := product.Savings
+			if _savings > 0 {
+				_savings = -_savings
+			}
 			_discount := product.Discount
+			if _debug {
+				fmt.Println(_savings)
+				fmt.Println(_discount)
+			}
 
 			_productName := strings.NewReplacer(" ", "-", ".", "-").Replace(r.ReplaceAllString(strings.ToLower(_title), "$1"))
-			_productUrl := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
+			_link := fmt.Sprintf("https://www.conrad.ch/de/p/%s-%s.html", _productName, product.Code)
+			if _debug {
+				fmt.Println(_link)
+				fmt.Println()
+			}
 
 			product := &Product{
 				Code:  _name + "//" + product.Code,
@@ -408,7 +412,7 @@ func XXX_conrad(isDryRun bool) IShop {
 
 				Quantity: product.Quantity,
 
-				URL: _productUrl,
+				URL: _link,
 			}
 
 			if s.IsWorth(product) {
