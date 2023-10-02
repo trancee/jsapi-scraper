@@ -28,17 +28,6 @@ var OrderflowCleanFn = func(name string) string {
 	name = strings.NewReplacer("4+128", "").Replace(name)
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_orderflow(isDryRun bool) IShop {
@@ -250,6 +239,37 @@ func XXX_orderflow(isDryRun bool) IShop {
 				testCases[_title] = _model
 			}
 
+			_link := s.ResolveURL(product.link).String()
+
+			if product.oldPrice == 0 {
+				if resp, err := http.Get(_link); err != nil {
+					panic(err)
+				} else {
+					defer resp.Body.Close()
+
+					if body, err := io.ReadAll(resp.Body); err != nil {
+						panic(err)
+					} else {
+						doc := parse(string(body))
+
+						if productPrice := traverse(doc, "div", "class", "product-price"); productPrice != nil {
+							if msrp := traverse(productPrice, "span", "class", "msrp"); msrp != nil {
+								if amount := traverse(msrp, "span", "class", "amount"); amount != nil {
+									if _value, ok := text(amount); ok {
+										_value = strings.ReplaceAll(_value, "CHF ", "")
+										if oldPrice, err := strconv.ParseFloat(_value, 32); err != nil {
+											panic(err)
+										} else {
+											product.oldPrice = float32(oldPrice)
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
 			_retailPrice := product.price
 			_price := _retailPrice
 			if product.oldPrice > 0 {
@@ -258,8 +278,6 @@ func XXX_orderflow(isDryRun bool) IShop {
 
 			_savings := _price - _retailPrice
 			_discount := 100 - ((100 / _retailPrice) * _price)
-
-			_link := s.ResolveURL(product.link).String()
 
 			product := &Product{
 				Code:  _name + "//" + product.code,

@@ -86,80 +86,13 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Blackview" {
-	// 	name = strings.ReplaceAll(name, "BL5000 8", "BL5000")
-	// }
-
-	// if s[0] == "OPPO" || s[0] == "Oppo" || s[0] == "oppo" {
-	// 	name = regexp.MustCompile(`[Rr]eno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// 	name = regexp.MustCompile(`OPPO\s*(\d)\s*(\w)?`).ReplaceAllString(name, "OPPO Reno$1 $2")
-	// }
-
-	// if s[0] == "Honor" {
-	// 	name = regexp.MustCompile(`Magic\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Magic$1 $2")
-	// }
-
-	// if s[0] == "Infinix" {
-	// 	name = strings.Split(name, "5G")[0]
-	// 	name = strings.ReplaceAll(name, " INFINIX", "")
-	// 	name = strings.ReplaceAll(name, " Infinix", "")
-	// }
-
-	// if s[0] == "Samsung" {
-	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-	// }
-
-	// if s[0] == "Motorola" {
-	// 	if s[1] == "Moto" && s[2] == "Edge" {
-	// 		name = strings.ReplaceAll(name, "Moto ", "")
-	// 	}
-	// 	if (s[1][0:1] == "e" || s[1][0:1] == "E" || s[1][0:1] == "g" || s[1][0:1] == "G") && s[1][1:2] >= "0" && s[1][1:2] <= "9" {
-	// 		name = strings.ReplaceAll(name, "Motorola ", "Motorola Moto ")
-	// 	}
-	// 	name = strings.ReplaceAll(name, "G31 4", "G31")
-	// 	name = strings.ReplaceAll(name, "G42 4", "G42")
-	// 	name = strings.ReplaceAll(name, " E ", " E")
-	// 	name = strings.ReplaceAll(name, "Motorola Motorola ", "Motorola ")
-	// }
-	// if s[0] == "moto" {
-	// 	name = "MOTOROLA " + name
-	// }
-
-	// if s[0] == "POCO" || s[0] == "Poco" {
-	// 	name = "Xiaomi " + name
-	// }
-	// if s[0] == "Xiaomi" {
-	// 	if s[1] == "Samsung" || s[1] == "Honor" || s[1] == "Xiaomi" {
-	// 		name = strings.Replace(name, "Xiaomi ", "", 1)
-	// 	}
-	// 	name = strings.ReplaceAll(name, "Redmi 9A 2", "Redmi 9A")
-	// 	name = strings.ReplaceAll(name, "Xiaomi M5", "Xiaomi Poco M5")
-	// 	name = strings.ReplaceAll(name, "Xiaomi X5", "Xiaomi Poco X5")
-
-	// 	name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
-	// }
-
-	// if s[0] == "ZTE" {
-	// 	name = regexp.MustCompile(`(Blade\s*)?(A\d+)`).ReplaceAllString(name, "Blade $2")
-	// }
-
-	// if s[0] == "Renewd" {
-	// 	if s[1] == "iPhone" {
-	// 		name = strings.ReplaceAll(name, "Renewd", "Apple")
-	// 		name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// 	}
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_galaxus(isDryRun bool) IShop {
 	const _name = "Galaxus"
 	const _url = "https://www.galaxus.ch/api/graphql/product-type-filter-products"
 
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -234,56 +167,6 @@ func XXX_galaxus(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			/*
-				// 4G, 5G
-				{
-					"identifier": "8279",
-					"filterType": "TEXTUAL",
-					"options": ["6395", "476832"]
-				},
-				{
-					"identifier": "pr",
-					"filterType": "NUMERICRANGE",
-					"options": [],
-					"greaterThanOrEquals": 50,
-					"lessThanOrEquals": 300
-				},
-				{
-					"identifier": "off",
-					"filterType": "TEXTUAL",
-					"options": [
-						"InStock",
-						"Sale",
-						"Secondhand"
-					]
-			*/
-			/*
-				{
-					"operationName": "PRODUCT_TYPE_FILTER_PRODUCTS",
-					"variables": {
-						"productTypeId": 24,
-						"offset": %d,
-						"limit": 200,
-						"sortOrder": "LOWESTPRICE",
-						"siteId": null,
-						"filters": [
-							{
-								"identifier": "8279",
-								"filterType": "TEXTUAL",
-								"options": ["6395", "476832"]
-							},
-							{
-								"identifier": "pr",
-								"filterType": "NUMERICRANGE",
-								"options": [],
-								"greaterThanOrEquals": %.f,
-								"lessThanOrEquals": %.f
-							}
-						]
-					},
-					"query": "query PRODUCT_TYPE_FILTER_PRODUCTS($productTypeId: Int!, $filters: [SearchFilter!], $sortOrder: ProductSort, $offset: Int, $siteId: String, $limit: Int, $searchTerm: String) {\n  productType(id: $productTypeId) {\n    filterProducts(\n      offset: $offset\n      limit: $limit\n      sort: $sortOrder\n      siteId: $siteId\n      filters: $filters\n      searchTerm: $searchTerm\n    ) {\n      products {\n        hasMore\n        results {\n          ...ProductWithOffer\n          __typename\n        }\n        __typename\n      }\n      counts {\n        total\n        filteredTotal\n        __typename\n      }\n      filters {\n        identifier\n        name\n        filterType\n        score\n        tooltip {\n          ...FilterTooltipResult\n          __typename\n        }\n        ...CheckboxSearchFilterResult\n        ...RangeSearchFilterResult\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment ProductWithOffer on ProductWithOffer {\n  mandatorSpecificData {\n    ...ProductMandatorSpecific\n    __typename\n  }\n  product {\n    ...ProductMandatorIndependent\n    __typename\n  }\n  offer {\n    ...ProductOffer\n    __typename\n  }\n  isDefaultOffer\n  __typename\n}\n\nfragment FilterTooltipResult on FilterTooltip {\n  text\n  moreInformationLink\n  __typename\n}\n\nfragment CheckboxSearchFilterResult on CheckboxSearchFilter {\n  options {\n    identifier\n    name\n    productCount\n    score\n    referenceValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    preferredValue {\n      value\n      unit {\n        abbreviation\n        __typename\n      }\n      __typename\n    }\n    tooltip {\n      ...FilterTooltipResult\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment RangeSearchFilterResult on RangeSearchFilter {\n  referenceMin\n  preferredMin\n  referenceMax\n  preferredMax\n  referenceStepSize\n  preferredStepSize\n  rangeMergeInfo {\n    isBottomMerged\n    isTopMerged\n    __typename\n  }\n  referenceUnit {\n    abbreviation\n    __typename\n  }\n  preferredUnit {\n    abbreviation\n    __typename\n  }\n  rangeFilterDataPoint {\n    ...RangeFilterDataPointResult\n    __typename\n  }\n  __typename\n}\n\nfragment ProductMandatorSpecific on MandatorSpecificData {\n  isBestseller\n  isDeleted\n  showroomSites\n  sectorIds\n  hasVariants\n  __typename\n}\n\nfragment ProductMandatorIndependent on ProductV2 {\n  id\n  productId\n  name\n  nameProperties\n  productTypeId\n  productTypeName\n  brandId\n  brandName\n  averageRating\n  totalRatings\n  totalQuestions\n  isProductSet\n  images {\n    url\n    height\n    width\n    __typename\n  }\n  energyEfficiency {\n    energyEfficiencyColorType\n    energyEfficiencyLabelText\n    energyEfficiencyLabelSigns\n    energyEfficiencyImage {\n      url\n      height\n      width\n      __typename\n    }\n    __typename\n  }\n  seo {\n    seoProductTypeName\n    seoNameProperties\n    productGroups {\n      productGroup1\n      productGroup2\n      productGroup3\n      productGroup4\n      __typename\n    }\n    gtin\n    __typename\n  }\n  smallDimensions\n  basePrice {\n    priceFactor\n    value\n    __typename\n  }\n  productDataSheet {\n    name\n    languages\n    url\n    size\n    __typename\n  }\n  __typename\n}\n\nfragment ProductOffer on OfferV2 {\n  id\n  productId\n  offerId\n  shopOfferId\n  price {\n    amountIncl\n    amountExcl\n    currency\n    __typename\n  }\n  deliveryOptions {\n    mail {\n      classification\n      futureReleaseDate\n      __typename\n    }\n    pickup {\n      siteId\n      classification\n      futureReleaseDate\n      __typename\n    }\n    detailsProvider {\n      productId\n      offerId\n      quantity\n      type\n      __typename\n    }\n    __typename\n  }\n  label\n  labelType\n  type\n  volumeDiscountPrices {\n    minAmount\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    isDefault\n    __typename\n  }\n  salesInformation {\n    numberOfItems\n    numberOfItemsSold\n    isEndingSoon\n    validFrom\n    __typename\n  }\n  incentiveText\n  isIncentiveCashback\n  isNew\n  isSalesPromotion\n  hideInProductDiscovery\n  canAddToBasket\n  hidePrice\n  insteadOfPrice {\n    type\n    price {\n      amountIncl\n      amountExcl\n      currency\n      __typename\n    }\n    __typename\n  }\n  minOrderQuantity\n  __typename\n}\n\nfragment RangeFilterDataPointResult on RangeFilterDataPoint {\n  count\n  referenceValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  preferredValue {\n    value\n    unit {\n      abbreviation\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n"
-				}
-			*/
 			jsonData := []byte(fmt.Sprintf(`[
 				{
 					"operationName": "PRODUCT_TYPE_FILTER_PRODUCTS",
@@ -397,13 +280,14 @@ func XXX_galaxus(isDryRun bool) IShop {
 			product.Description = html.UnescapeString(product.Description)
 
 			_title := product.Brand + " " + product.Name
-			// fmt.Println(_title)
 			_model := GalaxusCleanFn(_title)
-			// fmt.Println(_model)
-			// fmt.Println()
 
 			if Skip(_model) {
 				continue
+			}
+			if _debug {
+				// fmt.Println(_title)
+				fmt.Println(_model)
 			}
 
 			if _tests {
@@ -415,29 +299,33 @@ func XXX_galaxus(isDryRun bool) IShop {
 			var _savings float32
 			var _discount float32
 
-			_price = offer.Price.Amount
-			_retailPrice = _price
-
-			if offer.OldPrice.Price.Amount > 0 {
-				_retailPrice = offer.OldPrice.Price.Amount
+			_retailPrice = max(offer.Price.Amount, offer.OldPrice.Price.Amount)
+			_price = min(offer.Price.Amount, offer.OldPrice.Price.Amount)
+			if _price == 0 {
+				_price = _retailPrice
+			}
+			if _debug {
+				fmt.Println(_retailPrice)
+				fmt.Println(_price)
 			}
 
 			if _savings == 0 {
 				_savings = _price - _retailPrice
 			}
 			_discount = 100 - ((100 / _retailPrice) * _price)
-
-			// 0.03 GB, Black, 2.40\", Hybrid Dual SIM, 0.30 Mpx, 2G
-			// 003-gb-black-240-hybrid-dual-sim-030-mpx-2g
-			// 0-03gb-black-2-40-hybrid-dual-sim-0-30mpx-2g
-
-			// https://www.galaxus.ch/de/s1/product/blaupunkt-fm-01-slider-2g-003-gb-black-240-hybrid-dual-sim-030-mpx-2g-smartphone-10336937?shid=979245
-			// https://www.galaxus.ch/de/s1/product/blaupunkt-fm-01-slider-2g-003-gb-black-240-hybrid-dual-sim-030-mpx-2g-smartphone-10336937
+			if _debug {
+				fmt.Println(_savings)
+				fmt.Println(_discount)
+			}
 
 			_productName := strings.NewReplacer(" ", "-", " ", "-").Replace(r.ReplaceAllString(strings.ToLower(product.Brand+"-"+product.Name+"-"+product.Description+"-"+product.Category), "$1"))
-			_productUrl := fmt.Sprintf("https://www.galaxus.ch/de/s1/product/%s-%d", _productName, product.Code)
+			_link := fmt.Sprintf("https://www.galaxus.ch/de/s1/product/%s-%d", _productName, product.Code)
 			if !result.IsDefaultOffer {
-				_productUrl += fmt.Sprintf("?shid=%d", offer.ShopOfferID)
+				_link += fmt.Sprintf("?shid=%d", offer.ShopOfferID)
+			}
+			if _debug {
+				fmt.Println(_link)
+				fmt.Println()
 			}
 
 			{
@@ -452,7 +340,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 					Savings:     _savings,
 					Discount:    _discount,
 
-					URL: _productUrl,
+					URL: _link,
 				}
 
 				if s.IsWorth(product) {

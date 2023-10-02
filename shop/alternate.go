@@ -22,17 +22,6 @@ var AlternateCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_alternate(isDryRun bool) IShop {
@@ -41,7 +30,8 @@ func XXX_alternate(isDryRun bool) IShop {
 	// const _url = "https://www.alternate.ch/Alle-Smartphones?t=18352&filter_-2=true&filter_16536=5&s=price_asc&page=%d"
 	// const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_-2=true&filter_16536=5&s=price_asc&page=%d"
 	// const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_16536=5&s=price_asc&page=%d"
-	_url := fmt.Sprintf("https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_16536=5&s=price_asc&pr1=%.f&pr2=%.f&page=%%d", ValueMinimum, ValueMaximum)
+	// _url := fmt.Sprintf("https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_16536=5&s=price_asc&pr1=%.f&pr2=%.f&page=%%d", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.alternate.ch/Alle-Smartphones?t=18352&s=price_asc&pr1=%.f&pr2=%.f&filter_-2=true&filter_16536=5&page=%%d", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false
