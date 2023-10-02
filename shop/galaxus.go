@@ -66,6 +66,10 @@ var GalaxusCleanFn = func(name string) string {
 
 		name = regexp.MustCompile(`Redmi\s*(\d+)`).ReplaceAllString(name, "Redmi $1")
 
+		if strings.HasSuffix(name, "NOTE 1") {
+			name = strings.ReplaceAll(name, "NOTE 1", "NOTE 12")
+		}
+
 		if strings.HasSuffix(name, "Note 1") {
 			name = strings.ReplaceAll(name, "Note 1", "Note 11S")
 		}
