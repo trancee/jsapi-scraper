@@ -731,7 +731,7 @@ func main() {
 					_name += fmt.Sprintf(" (%d)", product.Quantity)
 				}
 				priceLine := ""
-				if product.Price != product.RetailPrice {
+				if priceDiff(product.Price, product.RetailPrice) {
 					priceLine = fmt.Sprintf("%8.2f %8.2f %3d%%", product.Price, product.Savings, int(product.Discount))
 				}
 
@@ -749,9 +749,9 @@ func main() {
 					product.CreationDate = time.Now().Unix()
 				}
 
-				if ((product.EURPrice > 0 && oldProduct.EURPrice != product.EURPrice) ||
-					(oldProduct.RetailPrice > 0 && oldProduct.RetailPrice != product.RetailPrice) ||
-					(oldProduct.Price > 0 && oldProduct.Price != product.Price)) &&
+				if ((product.EURPrice > 0 && priceDiff(oldProduct.EURPrice, product.EURPrice)) ||
+					(oldProduct.RetailPrice > 0 && priceDiff(oldProduct.RetailPrice, product.RetailPrice)) ||
+					(oldProduct.Price > 0 && priceDiff(oldProduct.Price, product.Price))) &&
 					(product.RetailPrice <= shop.ValueWorth || product.Price <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
 					notify = true
 
@@ -804,6 +804,13 @@ func main() {
 
 		db.Delete(id)
 	}
+}
+
+func priceDiff(a float32, b float32) bool {
+	_max := max(a, b)
+	_min := min(a, b)
+	_diff := _max - _min
+	return (100 / _max * _diff) > 0.5
 }
 
 func color(v float64) float64 {
