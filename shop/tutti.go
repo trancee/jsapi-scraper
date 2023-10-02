@@ -127,6 +127,7 @@ func XXX_tutti(isDryRun bool) IShop {
 	var _results []_Result
 	_count := 0
 
+	first := true
 	for p := 1; p <= 10; p++ {
 		fn := fmt.Sprintf("shop/tutti.%d.json", p)
 
@@ -232,7 +233,6 @@ func XXX_tutti(isDryRun bool) IShop {
 		}
 		// fmt.Println(_result.Data.SearchListingsByQuery.Listings.Edges)
 
-		first := true
 		for _, edge := range _result.Data.SearchListingsByQuery.Listings.Edges {
 			_title := html.UnescapeString(edge.Node.Name)
 

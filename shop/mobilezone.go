@@ -25,23 +25,13 @@ var MobileZoneCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_mobilezone(isDryRun bool) IShop {
 	const _name = "mobilezone"
 	const _url = "https://search.epoq.de/inbound-servletapi/getSearchResult?full&ff=e:alloc_THEME&fv=alle_handys&ff=c:anzeigename&fv=Handys&ff=e:isPriceVariant&fv=0&callback=X&tenantId=mobilezone-ch-2019&sessionId=f87cc9415cf968d4d633dd6d15f812ca&orderBy=e:sorting_price&order=asc&limit=100&offset=0&style=compact&format=json&query="
 
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -153,11 +143,17 @@ func XXX_mobilezone(isDryRun bool) IShop {
 
 		fmt.Printf("-- %s (%d)\n", _name, len(_result.Result.Findings.Products))
 		for _, product := range _result.Result.Findings.Products {
+			// fmt.Printf("%+v\n", product)
+
 			_title := product.MatchItem.Description.Value
 			_model := MobileZoneCleanFn(_title)
 
 			if Skip(_model) {
 				continue
+			}
+			if _debug {
+				// fmt.Println(_title)
+				fmt.Println(_model)
 			}
 
 			if _tests {
@@ -168,48 +164,62 @@ func XXX_mobilezone(isDryRun bool) IShop {
 				continue
 			}
 
-			if _sale, err := strconv.ParseBool(*product.MatchItem.Sale.Value); err != nil {
-				panic(err)
-			} else if _sale {
-				// fmt.Println(product)
+			var _retailPrice float32
+			var _price float32
+			var _savings float32
+			var _discount float32
 
-				var _retailPrice float32
-				var _price float32
-				var _savings float32
-				var _discount float32
-
+			if product.MatchItem.OldPrice.Value != "" {
 				if oldPrice, err := strconv.ParseFloat(product.MatchItem.OldPrice.Value, 32); err != nil {
 					panic(err)
 				} else {
 					_retailPrice = float32(oldPrice)
 				}
-				if price, err := strconv.ParseFloat(product.MatchItem.Price.Value, 32); err != nil {
-					panic(err)
-				} else {
-					_price = float32(price)
+			}
+			if price, err := strconv.ParseFloat(product.MatchItem.Price.Value, 32); err != nil {
+				panic(err)
+			} else {
+				_price = float32(price)
+
+				if _retailPrice == 0 {
+					_retailPrice = _price
 				}
+			}
+			if _debug {
+				fmt.Println(_retailPrice)
+				fmt.Println(_price)
+			}
 
-				if _savings == 0 {
-					_savings = _price - _retailPrice
-				}
-				_discount = 100 - ((100 / _retailPrice) * _price)
+			if _savings == 0 {
+				_savings = _price - _retailPrice
+			}
+			_discount = 100 - ((100 / _retailPrice) * _price)
+			if _debug {
+				fmt.Println(_savings)
+				fmt.Println(_discount)
+			}
 
-				product := &Product{
-					Code:  _name + "//" + product.MatchItem.Code.Value,
-					Name:  _title,
-					Model: _model,
+			_link := product.MatchItem.Link.Value
+			if _debug {
+				fmt.Println(_link)
+				fmt.Println()
+			}
 
-					RetailPrice: _retailPrice,
-					Price:       _price,
-					Savings:     _savings,
-					Discount:    _discount,
+			product := &Product{
+				Code:  _name + "//" + product.MatchItem.Code.Value,
+				Name:  _title,
+				Model: _model,
 
-					URL: product.MatchItem.Link.Value,
-				}
+				RetailPrice: _retailPrice,
+				Price:       _price,
+				Savings:     _savings,
+				Discount:    _discount,
 
-				if s.IsWorth(product) {
-					products = append(products, product)
-				}
+				URL: _link,
+			}
+
+			if s.IsWorth(product) {
+				products = append(products, product)
 			}
 		}
 

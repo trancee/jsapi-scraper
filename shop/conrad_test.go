@@ -6,6 +6,7 @@ import (
 )
 
 var conradNames = []string{
+	"5G Smartphone Nokia G42 5G 128 GB 16.7 cm (6.56 Zoll) Grau Android™ 13 Single-SIM",
 	"Apple iPhone 12 (PRODUCT) RED™ 128 GB",
 	"Apple iPhone 12 (PRODUCT) RED™ 64 GB",
 	"Apple iPhone 12 Blue 128 GB",
@@ -215,6 +216,7 @@ var conradNames = []string{
 }
 
 var conradNamesExpected = []string{
+	"Nokia G42",
 	"Apple iPhone 12",
 	"Apple iPhone 12",
 	"Apple iPhone 12",
