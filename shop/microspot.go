@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -10,6 +9,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -172,7 +173,7 @@ func XXX_microspot(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
-	if err := json.Unmarshal(_body, &_result); err != nil {
+	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}
 	// fmt.Println(_result.Products)

@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,6 +8,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -174,7 +175,7 @@ func XXX_brack(isDryRun bool) IShop {
 		data := body[32 : len(body)-1]
 
 		var skus map[string]any
-		if err := json.Unmarshal(data, &skus); err != nil {
+		if err := sonnet.Unmarshal(data, &skus); err != nil {
 			panic(err)
 		}
 		// fmt.Printf("%+v\n", skus)
@@ -247,7 +248,7 @@ func XXX_brack(isDryRun bool) IShop {
 			var _lspl _LSPI
 			if lspl := traverse(snippet, "div", "data-e-ref", "lspl"); lspl != nil {
 				if data, ok := text(lspl.FirstChild); ok {
-					if err := json.Unmarshal([]byte(data), &_lspl); err != nil {
+					if err := sonnet.Unmarshal([]byte(data), &_lspl); err != nil {
 						panic(err)
 					}
 					// fmt.Println(_lspl)
@@ -269,7 +270,7 @@ func XXX_brack(isDryRun bool) IShop {
 			var _lsi _LSI
 			if lsi := traverse(snippet, "div", "data-e-ref", "lsi"); lsi != nil {
 				if data, ok := text(lsi.FirstChild); ok {
-					if err := json.Unmarshal([]byte(data), &_lsi); err != nil {
+					if err := sonnet.Unmarshal([]byte(data), &_lsi); err != nil {
 						panic(err)
 					}
 					// fmt.Println(_lsi)

@@ -2,7 +2,6 @@ package shop
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -14,10 +13,12 @@ import (
 
 	"golang.org/x/net/html"
 
+	"github.com/sugawarayuuta/sonnet"
+
 	helpers "jsapi-scraper/helpers"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN |( Sky)? [Bb]lue| Cosmic Aurora| Elegant Black| Force Touch| Grey|(\/?LASER)? BLACK| Midnight Blue| Midnight Space| \(?Ocean Blue\)?| Pastel Lime| Pearl White|Space Silver| Viva Magenta| bamboo green| hellblau| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?(\d+(GB)?\s*[+\/]\s*)?\d+\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(1\d[., ])?\d+( Zoll| cm|\")\)?|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\/BLUE|GREEN |( Sky)? [Bb]lue| Cosmic Aurora| Elegant Black| Force Touch| Grey|(\/?LASER)? BLACK| Midnight Blue| Midnight Space| \(?Ocean Blue\)?| Pastel Lime| Pearl White|Space Silver| Viva Magenta| bamboo green| dark green| hellblau| midday dream| midnight blue`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -115,10 +116,10 @@ func XXX_galaxus(isDryRun bool) IShop {
 
 		ShopOfferID int `json:"shopOfferId"`
 
-		Type string `json:"type"`
+		// Type string `json:"type"`
 
-		IsNew            bool `json:"isNew"`
-		IsSalesPromotion bool `json:"isSalesPromotion"`
+		// IsNew            bool `json:"isNew"`
+		// IsSalesPromotion bool `json:"isSalesPromotion"`
 
 		OldPrice struct {
 			Price struct {
@@ -253,7 +254,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 		}
 		// fmt.Println(string(_body))
 
-		if err := json.Unmarshal(_body, &_result); err != nil {
+		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)
 		}
 		// fmt.Println(_result[0].Data.ProductType.FilterProducts.Products.Results)

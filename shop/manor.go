@@ -2,7 +2,6 @@ package shop
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,9 +10,11 @@ import (
 	"sort"
 	"strings"
 
-	helpers "jsapi-scraper/helpers"
-
 	"golang.org/x/net/html"
+
+	"github.com/sugawarayuuta/sonnet"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
@@ -188,7 +189,7 @@ func XXX_manor(isDryRun bool) IShop {
 		}
 		// fmt.Println(string(_body))
 
-		if err := json.Unmarshal(_body, &_result); err != nil {
+		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)
 		}
 

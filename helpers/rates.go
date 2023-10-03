@@ -1,13 +1,13 @@
 package lint
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 
 	"github.com/recoilme/pudge"
+	"github.com/sugawarayuuta/sonnet"
 )
 
 const EXCHANGE_RATES_BASE_URL = "http://api.exchangeratesapi.io/v1/"
@@ -87,7 +87,7 @@ func EUR_CHF() float64 {
 	// fmt.Printf("%+v\n", string(body))
 
 	var response Response
-	if err := json.Unmarshal(body, &response); err != nil {
+	if err := sonnet.Unmarshal(body, &response); err != nil {
 		panic(err)
 	}
 	// fmt.Printf("%+v\n", response)

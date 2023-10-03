@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -10,6 +9,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -135,7 +136,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 		body := "{" + strings.TrimSuffix(string(r.Find(_body)), ",\n") + "}"
 		// fmt.Println(body)
 
-		if err := json.Unmarshal([]byte(body), &_products); err != nil {
+		if err := sonnet.Unmarshal([]byte(body), &_products); err != nil {
 			panic(err)
 		}
 		// fmt.Println(_products)

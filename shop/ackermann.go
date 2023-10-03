@@ -2,7 +2,6 @@ package shop
 
 import (
 	"encoding/base64"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -10,6 +9,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -170,7 +171,7 @@ func XXX_ackermann(isDryRun bool) IShop {
 		// fmt.Println(string(_body))
 
 		var body _Body
-		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
 			panic(err)
 		}
 

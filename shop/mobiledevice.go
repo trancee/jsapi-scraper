@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -10,6 +9,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	"golang.org/x/net/html"
 
@@ -129,7 +130,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 	var body _Body
 	{
-		if err := json.Unmarshal([]byte(_body), &body); err != nil {
+		if err := sonnet.Unmarshal([]byte(_body), &body); err != nil {
 			panic(err)
 		}
 		_body = []byte(body.Products)

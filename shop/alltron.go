@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,6 +8,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -154,7 +155,7 @@ func XXX_alltron(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
-	if err := json.Unmarshal(_body, &_result); err != nil {
+	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}
 
@@ -232,7 +233,7 @@ func XXX_alltron(isDryRun bool) IShop {
 	// fmt.Println(string(_body))
 
 	_products := make(map[string]*_Product)
-	if err := json.Unmarshal(_body, &_products); err != nil {
+	if err := sonnet.Unmarshal(_body, &_products); err != nil {
 		panic(err)
 	}
 	// fmt.Println(_products)

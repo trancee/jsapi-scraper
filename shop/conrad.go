@@ -11,6 +11,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/sugawarayuuta/sonnet"
+
 	helpers "jsapi-scraper/helpers"
 )
 
@@ -166,7 +168,7 @@ func XXX_conrad(isDryRun bool) IShop {
 	}
 	// fmt.Println(string(_body))
 
-	if err := json.Unmarshal(_body, &_result); err != nil {
+	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)
 	}
 	// fmt.Println(_result.Products)
@@ -292,7 +294,7 @@ func XXX_conrad(isDryRun bool) IShop {
 		// fmt.Println(string(_body))
 
 		var __result _Response
-		if err := json.Unmarshal(_body, &__result); err != nil {
+		if err := sonnet.Unmarshal(_body, &__result); err != nil {
 			panic(err)
 		}
 		// fmt.Println(__result.PriceAndAvailabilityFacadeResponse.Products.Product)

@@ -20,6 +20,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/recoilme/pudge"
+	"github.com/sugawarayuuta/sonnet"
 
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/option"
@@ -91,7 +92,7 @@ func main() {
 	if isDryRun {
 		if products, err := os.ReadFile(path + fn); err != nil {
 			panic(err)
-		} else if err := json.Unmarshal(products, &_products); err != nil {
+		} else if err := sonnet.Unmarshal(products, &_products); err != nil {
 			panic(err)
 		}
 	} else {
@@ -161,11 +162,6 @@ func main() {
 	}
 	matrix := map[string]map[int]Price{}
 
-	// shops := make([]string, 0, len(_products))
-	// for k := range _products {
-	// 	shops = append(shops, k)
-	// }
-	// sort.Strings(shops)
 	sort.Slice(_shops, func(i, j int) bool { return strings.ToLower(_shops[i]) < strings.ToLower(_shops[j]) })
 
 	for _, shop := range _shops {
@@ -287,7 +283,7 @@ func main() {
 			// 		notify = true
 			// 	}
 			// }
-			if 100-((100/max.Price)*min.Price) >= (shop.ValueDiscount) {
+			if 100-((100/max.Price)*min.Price) >= shop.ValueDiscount {
 				fmt.Printf("%-25s %7.2f %7.2f %3.f%% %s\n", min.Name, min.Price, max.Price-min.Price, 100-((100/max.Price)*min.Price), min.Link)
 
 				var oldPrice float32

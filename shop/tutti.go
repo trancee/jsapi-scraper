@@ -2,7 +2,6 @@ package shop
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,6 +10,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/sugawarayuuta/sonnet"
 
 	"golang.org/x/net/html"
 
@@ -228,7 +229,7 @@ func XXX_tutti(isDryRun bool) IShop {
 		}
 		// fmt.Println(string(_body))
 
-		if err := json.Unmarshal(_body, &_result); err != nil {
+		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)
 		}
 		// fmt.Println(_result.Data.SearchListingsByQuery.Listings.Edges)

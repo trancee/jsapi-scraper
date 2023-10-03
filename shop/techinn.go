@@ -1,7 +1,6 @@
 package shop
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"math"
@@ -13,9 +12,11 @@ import (
 	"strconv"
 	"strings"
 
-	helpers "jsapi-scraper/helpers"
+	"github.com/sugawarayuuta/sonnet"
 
 	"golang.org/x/net/html"
+
+	helpers "jsapi-scraper/helpers"
 )
 
 var TechInnRegex = regexp.MustCompile(`(?i)(\d{1,2}\/)?\d{1,3}[GT]b|(\d\.)?\d{1,2}´´|[345]G|Grade [ABC]| LTE| Dual Sim| Refurbished| Enterprise Edition| EE`)
@@ -139,7 +140,7 @@ func XXX_techinn(isDryRun bool) IShop {
 		}
 
 		var body _Body
-		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
 			panic(err)
 		}
 
@@ -221,7 +222,7 @@ func XXX_techinn(isDryRun bool) IShop {
 		// fmt.Println(string(_body))
 
 		var body _Body
-		if err := json.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
 			panic(err)
 		}
 		// fmt.Println(body.Model)
