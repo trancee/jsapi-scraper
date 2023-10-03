@@ -46,7 +46,7 @@ func XXX_venova(isDryRun bool) IShop {
 	const _name = "Venova"
 	_url := fmt.Sprintf("https://www.venova.ch/de/widgets/listing/listingCount/sCategory/5760?p=%%d&o=3&n=%d&min=%.f&max=%.f&loadProducts=1", PageCount, ValueMinimum, ValueMaximum)
 
-	const _debug = true
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
