@@ -37,23 +37,6 @@ var VenovaCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Samsung" {
-	// 	name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[A-Za-z]*`).ReplaceAllString(name, "")
-	// 	name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?(A|S)\s*(\d+| duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
-	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-	// 	name = regexp.MustCompile(`[J]\d{3}[H]`).ReplaceAllString(name, "")
-	// }
-
-	// if s[0] == "Xiaomi" {
-	// 	name = regexp.MustCompile(`\s+\d+-\d+-\d+`).ReplaceAllString(name, "")
-	// 	name = regexp.MustCompile(`Note\s*(\d)`).ReplaceAllString(name, "Note $1")
-	// 	name = regexp.MustCompile(`Redmi\s*(\d+)\s*([ABC])`).ReplaceAllString(name, "Redmi $1$2")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_venova(isDryRun bool) IShop {
@@ -62,7 +45,7 @@ func XXX_venova(isDryRun bool) IShop {
 	const _name = "Venova"
 	_url := fmt.Sprintf("https://www.venova.ch/de/widgets/listing/listingCount/sCategory/5760?p=%%d&o=3&n=%d&min=%.f&max=%.f&loadProducts=1", PageCount, ValueMinimum, ValueMaximum)
 
-	const _debug = false
+	const _debug = true
 	const _tests = false
 
 	testCases := map[string]string{}
