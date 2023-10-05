@@ -66,6 +66,7 @@ type Product struct {
 type parseFn func(s IShop) *[]*Product
 
 var _skips = map[string]bool{
+	"30":              true,
 	"ACER":            true,
 	"ALCATEL":         true,
 	"ALIGATOR":        true,

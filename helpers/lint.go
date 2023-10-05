@@ -10,14 +10,8 @@ import (
 )
 
 var nameMapping = map[string]string{
-	"2Nd": "2nd",
-	"2ND": "2nd",
-	// "3A":   "3a",
-	// "4A":   "4a",
-	// "5A":   "5a",
-	// "6A":   "6a",
-	// "7A":   "7a",
-	// "8A":   "8a",
+	"2Nd":  "2nd",
+	"2ND":  "2nd",
 	"9At":  "9AT",
 	"9I":   "9i",
 	"Ce":   "CE",
