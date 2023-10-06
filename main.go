@@ -35,7 +35,8 @@ import (
 var exclusionRegex = regexp.MustCompile(`(?i)^(emporia|htc|siemens|sony ericsson)|apple iphone \d(gs|g|c|s)?\b|fairphone (1|2)|gigaset (gl|gs)|google pixel (2|3|4|5)a?\b|motorola moto g[1234567]?\b|samsung galaxy (zoom|young|rex|note(\s[1234567]\b|$)|j\d|gt|alpha|ace|s\d?\b|a\d?\b|advance|mini|duos)`)
 
 const PRODUCT_EXPIRATION = 5 * 24 * 60 * 60
-const PRICE_DIFFERENCE = 5.0
+const PRICE_DIFFERENCE_PERCENTAGE = 5.0
+const PRICE_DIFFERENCE_VALUE = 5
 
 func main() {
 	isDryRun := false
@@ -809,7 +810,7 @@ func priceDiff(a float32, b float32) bool {
 	_max := max(a, b)
 	_min := min(a, b)
 	_diff := _max - _min
-	return (100 / _max * _diff) >= PRICE_DIFFERENCE
+	return (100/_max*_diff) > PRICE_DIFFERENCE_PERCENTAGE && _diff > PRICE_DIFFERENCE_VALUE
 }
 
 func color(v float64) float64 {
