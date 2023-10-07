@@ -25,7 +25,7 @@ var OrderflowCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = strings.NewReplacer("4+128", "").Replace(name)
+	name = strings.NewReplacer("4+128", "", "2+64", "").Replace(name)
 
 	return helpers.Lint(name)
 }

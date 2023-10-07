@@ -63,7 +63,7 @@ var AmazonCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
-		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFR]?(\/DSN?)?`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFPR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "Samsung A", "Samsung Galaxy A")
 		name = strings.ReplaceAll(name, "Samsung M", "Samsung Galaxy M")
 		name = strings.ReplaceAll(name, "Samsung G ", "Samsung Galaxy ")

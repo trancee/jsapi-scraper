@@ -278,7 +278,7 @@ func Model(name string) string {
 	if s[0] == "Samsung" {
 		name = regexp.MustCompile(`[^FE][E]$`).ReplaceAllStringFunc(name, strings.ToLower)
 
-		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFPR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 
 		name = regexp.MustCompile(`Flip\s*(\d+)`).ReplaceAllString(name, "Flip $1")
 		name = regexp.MustCompile(`Fold\s*(\d+)`).ReplaceAllString(name, "Fold $1")
