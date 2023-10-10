@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var miStoreNames = []string{
+var miStoreV1Names = []string{
 	"Poco F3 5G 8/256GB Moonlight Silver",
 	"Poco F3 5G 8/256GB Ocean Blue",
 	"Poco F4 8/256GB moonlight silver",
@@ -56,7 +56,7 @@ var miStoreNames = []string{
 	"Xiaomi 13 Pro 12GB/256GB ceramic black",
 }
 
-var miStoreNamesExpected = []string{
+var miStoreV1NamesExpected = []string{
 	"Xiaomi POCO F3",
 	"Xiaomi POCO F3",
 	"Xiaomi POCO F4",
@@ -107,10 +107,10 @@ var miStoreNamesExpected = []string{
 	"Xiaomi 13 Pro",
 }
 
-func TestMiStoreClean(t *testing.T) {
-	for i, name := range miStoreNames {
-		if _name := shop.MiStoreCleanFn(name); _name != miStoreNamesExpected[i] {
-			t.Errorf("given name \"%s\" not match expected name \"%s\"\n%s\n", _name, miStoreNamesExpected[i], name)
+func TestMiStoreV1Clean(t *testing.T) {
+	for i, name := range miStoreV1Names {
+		if _name := shop.MiStoreV1CleanFn(name); _name != miStoreV1NamesExpected[i] {
+			t.Errorf("given name \"%s\" not match expected name \"%s\"\n%s\n", _name, miStoreV1NamesExpected[i], name)
 		}
 	}
 }

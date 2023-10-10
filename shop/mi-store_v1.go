@@ -14,10 +14,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MiStoreRegex = regexp.MustCompile(`\s+(\d+/(GB)?)?\d+GB|\s+20[12]\d|\s+[2345]G`)
+var MiStoreV1Regex = regexp.MustCompile(`\s+(\d+/(GB)?)?\d+GB|\s+20[12]\d|\s+[2345]G`)
 
-var MiStoreCleanFn = func(name string) string {
-	if loc := MiStoreRegex.FindStringSubmatchIndex(name); loc != nil {
+var MiStoreV1CleanFn = func(name string) string {
+	if loc := MiStoreV1Regex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
@@ -29,11 +29,9 @@ var MiStoreCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// return strings.TrimSpace(name)
 }
 
-func XXX_mistore(isDryRun bool) IShop {
+func XXX_mistore_v1(isDryRun bool) IShop {
 	const _name = "Mi Store"
 	const _url = "https://mi-store.ch/produkt-kategorie/smartphones/?orderby=price"
 
@@ -167,7 +165,7 @@ func XXX_mistore(isDryRun bool) IShop {
 				continue
 			}
 
-			model := MiStoreCleanFn(_product.title)
+			model := MiStoreV1CleanFn(_product.title)
 			if _debug {
 				fmt.Println(model)
 			}
