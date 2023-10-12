@@ -51,6 +51,7 @@ var tuttiNames = []string{
 	"iPhone Apple 6S 32GB Gold - Guter Zustand",
 	"iPhone X con vetro da sostituire",
 	"Iphone X funktionstüchtig / Jedoch mit Streifen",
+	"iPhone SE 1 Gen 64GB SpaceGray",
 	"Iphone SE 1Gen  Rigenerato Garanzia",
 	"Iphone SE 1 Generation 32GB",
 	"iPhone SE 1. GEN",
@@ -157,6 +158,7 @@ var tuttiNames = []string{
 	"XIAOMI Redmi 9A HD+ Smartphone Android 32GB 13MP Nero",
 	"Xiaomi Redmi 9a in OVP und noch verschweisst",
 	"XIAOMI Redmi 9AT NUOVO!",
+	"Xiaomi Redmi Note 8 Pro Pearl White",
 	"Xiaomi Redmi Note5",
 	"Zu verkaufen Honor 9Lite",
 }
@@ -207,6 +209,7 @@ var tuttiNamesExpected = []string{
 	"Apple iPhone 6S",
 	"Apple iPhone X",
 	"Apple iPhone X",
+	"Apple iPhone SE (2016)",
 	"Apple iPhone SE (2016)",
 	"Apple iPhone SE (2016)",
 	"Apple iPhone SE (2016)",
@@ -313,6 +316,7 @@ var tuttiNamesExpected = []string{
 	"Xiaomi Redmi 9A",
 	"Xiaomi Redmi 9A",
 	"Xiaomi Redmi 9AT",
+	"Xiaomi Redmi Note 8 Pro",
 	"Xiaomi Redmi Note 5",
 	"HONOR 9 Lite",
 }
