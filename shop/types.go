@@ -115,6 +115,7 @@ var _skips = map[string]bool{
 	"IBASSO":          true,
 	"IGET":            true,
 	"IIIF150":         true,
+	"INAB":            true,
 	"JABLOCOM":        true,
 	"KERKMANN":        true,
 	"KONROW":          true,
@@ -133,6 +134,7 @@ var _skips = map[string]bool{
 	"MAXCOM":          true,
 	"MEDIACOM":        true,
 	"MICROSOFT":       true, // EXCLUDE
+	"MIGNON":          true,
 	"MITEL":           true,
 	"MOBISTEL":        true,
 	"MP":              true,
