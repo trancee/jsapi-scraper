@@ -14,6 +14,7 @@ var folettiNames = []string{
 	"Gigaset GS5 Lite dark titanium grey",
 	"Gigaset GX290 plus titanium grey 4+64GB",
 	"Gigaset GX4 Outdoor",
+	"Gigaset GX4 petrol",
 	"Google Pixel 6a sage",
 	"Moto e20 32GB, Handy",
 	"Moto G42 64GB, Handy",
@@ -122,6 +123,7 @@ var folettiNames = []string{
 	"TIM Xiaomi Redmi 10C 17 cm (6.71) Dual SIM Android 11 4G USB Type-C 4 GB 64 GB 5000 mAh Grey",
 	"ZTE Blade A31 Lite grau",
 	"ZTE Blade V40 Vita inkl. Buds zeus black",
+	"ZTE Blade V50 Vita icy blue",
 	"ZTE Blade A72 blau",
 	"ZTE Blade A72 grau",
 }
@@ -134,6 +136,7 @@ var folettiNamesExpected = []string{
 	"Gigaset GL390",
 	"Gigaset GS5 LITE",
 	"Gigaset GX290 Plus",
+	"Gigaset GX4",
 	"Gigaset GX4",
 	"Google Pixel 6a",
 	"motorola moto e20",
@@ -243,6 +246,7 @@ var folettiNamesExpected = []string{
 	"Xiaomi Redmi 10C",
 	"ZTE Blade A31 Lite",
 	"ZTE Blade V40 Vita",
+	"ZTE Blade V50 Vita",
 	"ZTE Blade A72",
 	"ZTE Blade A72",
 }

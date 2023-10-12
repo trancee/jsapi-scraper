@@ -39,7 +39,7 @@ var CashConvertersCleanFn = func(name string) string {
 			name = strings.ReplaceAll(name, "Samsung Samsung", "Samsung")
 		}
 
-		name = strings.NewReplacer("S10PLUS", "S10 Plus", "S20FE", "S20 FE", "AO2S", "A02s").Replace(name)
+		name = strings.NewReplacer("S10PLUS", "S10 Plus", "S20FE", "S20 FE", "AO2S", "A02s", "S10 +", "S10+").Replace(name)
 	}
 
 	return helpers.Lint(name)
