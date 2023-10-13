@@ -177,6 +177,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)nova\s*([Y]?\d+)?`).ReplaceAllString(name, "nova $1")
 		name = regexp.MustCompile(`(?i)P\s*(smart[+]?)\s*(\+?)`).ReplaceAllString(name, "P smart$2 $3")
 		name = regexp.MustCompile(`(?i)P-?\s*(\d+)`).ReplaceAllString(name, "P$1")
+		name = regexp.MustCompile(`(?i)\s*SE$`).ReplaceAllString(name, " SE")
 
 		name = regexp.MustCompile(`(?i)lite`).ReplaceAllString(name, "lite")
 
