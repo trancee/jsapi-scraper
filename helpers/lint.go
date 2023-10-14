@@ -331,6 +331,8 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)Mi(\d+)`).ReplaceAllString(name, "Mi $1")
 
 		name = regexp.MustCompile(`\d+[I]`).ReplaceAllStringFunc(name, strings.ToLower)
+		name = regexp.MustCompile(`\d+[t]`).ReplaceAllStringFunc(name, strings.ToUpper)
+
 		name = strings.ReplaceAll(name, "Mi Redmi ", "Mi ")
 	}
 
