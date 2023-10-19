@@ -229,11 +229,11 @@ func XXX_ackermann(isDryRun bool) IShop {
 			_model := _product.model
 
 			if Skip(_model) {
+				if _debug {
+					fmt.Println()
+				}
+
 				continue
-			}
-			if _debug {
-				// fmt.Println(_title)
-				fmt.Println(_model)
 			}
 
 			if _tests {
