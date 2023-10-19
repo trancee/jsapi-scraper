@@ -274,7 +274,7 @@ func XXX_amazon(isDryRun bool) IShop {
 						}
 					}
 
-					if itemPrice := itemPrice.FirstChild.NextSibling.NextSibling; itemPrice != nil {
+					if itemPrice := traverse(itemPrice, "span", "class", "a-text-price"); itemPrice != nil {
 						if itemPrice := traverse(itemPrice, "span", "class", "a-offscreen"); itemPrice != nil {
 							// fmt.Println(itemPrice)
 
