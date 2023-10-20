@@ -273,7 +273,7 @@ func XXX_alltron(isDryRun bool) IShop {
 				}
 
 				_savings := _price - _retailPrice
-				_discount := 100 - ((100 / _retailPrice) * _price)
+				_discount := 100 - ((_price * 100) / _retailPrice)
 
 				_link := s.ResolveURL("https://alltron.ch/de/product/" + product.SKU).String()
 

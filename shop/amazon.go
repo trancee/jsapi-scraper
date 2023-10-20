@@ -349,7 +349,7 @@ func XXX_amazon(isDryRun bool) IShop {
 			_eurPrice := product.eurPrice
 
 			_savings := _price - _retailPrice
-			_discount := 100 - ((100 / _retailPrice) * _price)
+			_discount := 100 - ((_price * 100) / _retailPrice)
 
 			_link := s.ResolveURL(product.link).String()
 			_link = strings.Split(_link, "/ref=")[0]

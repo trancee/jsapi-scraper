@@ -248,7 +248,7 @@ func XXX_ultimus(isDryRun bool) IShop {
 			}
 
 			_savings := _price - _retailPrice
-			_discount := 100 - ((100 / _retailPrice) * _price)
+			_discount := 100 - ((_price * 100) / _retailPrice)
 
 			product := &Product{
 				Code:  _name + "//" + _product.code,

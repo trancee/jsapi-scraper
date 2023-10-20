@@ -252,7 +252,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 				_price = product.price
 			}
 			_savings := _price - _retailPrice
-			_discount := 100 - ((100 / _retailPrice) * _price)
+			_discount := 100 - ((_price * 100) / _retailPrice)
 
 			product := &Product{
 				Code:  _name + "//" + product.code,
