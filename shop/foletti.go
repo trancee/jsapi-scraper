@@ -1,6 +1,7 @@
 package shop
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"net/http"
@@ -138,11 +139,11 @@ func XXX_foletti(isDryRun bool) IShop {
 		doc := parse(string(_body))
 
 		if productList := traverse(doc, "div", "class", "product-list-items"); productList != nil {
-			// fmt.Println(productList)
+			// fmt.Printf("\n-- PRODUCT LIST\n%+v\n", productList)
 
-			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
+			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling {
 				// item := traverse(items, "li", "class", "productList__item")
-				// fmt.Println(item)
+				// fmt.Printf("\n-- ITEM\n%+v\n", item)
 
 				if !contains(item.Attr, "class", "item") {
 					continue
@@ -294,22 +295,28 @@ func XXX_foletti(isDryRun bool) IShop {
 				_result = append(_result, _product)
 			}
 
-			results := traverse(traverse(doc, "div", "class", "listing-number-of-results"), "em", "", "").NextSibling.NextSibling
-			if result, ok := text(results); ok {
-				current, _ := strconv.Atoi(result)
+			// results := traverse(traverse(doc, "div", "class", "listing-number-of-results"), "em", "", "").NextSibling.NextSibling
+			// if result, ok := text(results); ok {
+			// 	current, _ := strconv.Atoi(result)
 
-				results = results.NextSibling.NextSibling
-				if result, ok := text(results); ok {
-					total, _ := strconv.Atoi(result)
+			// 	results = results.NextSibling.NextSibling
+			// 	if result, ok := text(results); ok {
+			// 		total, _ := strconv.Atoi(result)
 
-					if current >= total {
-						break
-					}
-				}
+			// 		if current >= total {
+			// 			break
+			// 		}
+			// 	}
+			// }
+
+			if x := regexp.MustCompile(`<span class="Title">Angezeigte Produkte</span> <em>(\d+)</em> bis <em>(\d+)</em> \(von <em>(\d+)</em> insgesamt\)`).FindSubmatch(_body); x != nil && bytes.Equal(x[2], x[3]) {
+				break
 			}
 
-			// results := traverse(doc, "div", "class", "ps-3")
-			// if result, ok := text(results); ok {
+			// results := traverse(doc, "div", "class", "listing-number-of-results")
+			// fmt.Printf("%+v\n", results)
+			// if result, ok := text(results.NextSibling.NextSibling); ok {
+			// 	fmt.Printf("> [%+v] %v\n", result, ok)
 			// 	if x := regexp.MustCompile(`(\d+)‐(\d+) \/ (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
 			// 		break
 			// 	}
