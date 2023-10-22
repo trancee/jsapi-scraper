@@ -69,7 +69,7 @@ func main() {
 		panic(err)
 	}
 
-	shop.EUR_CHF = helpers.EUR_CHF()
+	shop.EUR_CHF = helpers.EUR_CHF_v2()
 	fmt.Printf("EUR/CHF = %f\n", shop.EUR_CHF)
 
 	sheetId, err := strconv.Atoi(os.Getenv("SHEET_ID"))

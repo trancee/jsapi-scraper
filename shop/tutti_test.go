@@ -170,6 +170,7 @@ var tuttiNames = []string{
 	"Xiaomi Redmi 9a in OVP und noch verschweisst",
 	"XIAOMI Redmi 9AT NUOVO!",
 	"Xiaomi Redmi Note 8 Pro Pearl White",
+	"Xiaomi Redmi Note 12 Glasschaden Funktioniert 100%",
 	"Xiaomi Redmi Note5",
 	"Zu verkaufen Honor 9Lite",
 }
@@ -339,6 +340,7 @@ var tuttiNamesExpected = []string{
 	"Xiaomi Redmi 9A",
 	"Xiaomi Redmi 9AT",
 	"Xiaomi Redmi Note 8 Pro",
+	"Xiaomi Redmi Note 12",
 	"Xiaomi Redmi Note 5",
 	"HONOR 9 Lite",
 }

@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/recoilme/pudge"
 	"github.com/sugawarayuuta/sonnet"
@@ -30,6 +31,37 @@ type Response struct {
 		Code    string `json:"code"`
 		Message string `json:"message"`
 	} `json:"error"`
+}
+
+func EUR_CHF_v2() float64 {
+	type _Body struct {
+		Currencies struct {
+			CHF string `json:"CHF"`
+		} `json:"currencies"`
+	}
+
+	resp, err := http.Get("https://www.tradeinn.com/?action=get_info_pais&id_tienda=16&id_pais=192")
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	_body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	var body _Body
+	if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
+		panic(err)
+	}
+
+	EUR_CHF, err := strconv.ParseFloat(body.Currencies.CHF, 32)
+	if err != nil {
+		panic(err)
+	}
+
+	return EUR_CHF
 }
 
 func EUR_CHF() float64 {
