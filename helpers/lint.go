@@ -12,6 +12,8 @@ import (
 var nameMapping = map[string]string{
 	"2Nd":  "2nd",
 	"2ND":  "2nd",
+	"3Rd":  "3rd",
+	"3RD":  "3rd",
 	"9At":  "9AT",
 	"9I":   "9i",
 	"Ce":   "CE",

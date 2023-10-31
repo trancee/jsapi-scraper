@@ -39,6 +39,7 @@ var cashConvertersNames = []string{
 	"IPhone SE 2022 64GB",
 	"IPhone SE 2022 64GB Bleu Navy",
 	"IPhone SE 2022 64GB Red",
+	"iPhone SE 3rd 2022 64GB batterie 100%",
 	"IPhone SE 64GB 2022",
 	"Motorola G7 power Dual SIM 64GB",
 	"Motorola G7 Power Dual Sim 64Go Noir Reconditionné",
@@ -103,6 +104,7 @@ var cashConvertersNames = []string{
 	"Samsung Galaxy Xcover 5 64 GB",
 	"SAMSUNG S20FE,",
 	"Samsung S7 32GB",
+	"Téléphone : iPhone 8 64 GB batterie à 78%",
 	"Téléphone Galaxy S7 32GB",
 	"Téléphone OPPO A15 32GB Dual",
 	"Téléphone OPPO A16S 64GB Dual",
@@ -141,6 +143,7 @@ var cashConvertersNames = []string{
 	"Xiaomi Mi 11 Lite 5G 128Gb Dual",
 	"Xiaomi Mi 11 Lite 5G 128GB Dusl Sim",
 	"Xiaomi Mi Mix 2 64Go Dual Sim Noir Reconditionné",
+	"Xiaomi Redmi Mi 10 Lite 5G 64GB + boite:",
 }
 
 var cashConvertersNamesExpected = []string{
@@ -172,6 +175,7 @@ var cashConvertersNamesExpected = []string{
 	"Apple iPhone 8",
 	"Apple iPhone SE (2022)",
 	"Apple iPhone SE (2020)",
+	"Apple iPhone SE (2022)",
 	"Apple iPhone SE (2022)",
 	"Apple iPhone SE (2022)",
 	"Apple iPhone SE (2022)",
@@ -241,6 +245,7 @@ var cashConvertersNamesExpected = []string{
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy S20 FE",
 	"Samsung Galaxy S7",
+	"Apple iPhone 8",
 	"Samsung Galaxy S7",
 	"OPPO A15",
 	"OPPO A16s",
@@ -279,6 +284,7 @@ var cashConvertersNamesExpected = []string{
 	"Xiaomi Mi 11 Lite",
 	"Xiaomi Mi 11 Lite",
 	"Xiaomi Mi Mix 2",
+	"Xiaomi Redmi Mi 10 Lite",
 }
 
 func TestCashConvertersClean(t *testing.T) {

@@ -34,10 +34,11 @@ var FolettiCleanFn = func(name string) string {
 
 	if s[0] == "Xiaomi" {
 		name = strings.ReplaceAll(name, "23021RAA2Y", "Redmi Note 12")
+		name = strings.ReplaceAll(name, "MZB0A3JeU", "Redmi 9AT")
 	}
 
 	if s[0] == "Samsung" {
-		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
+		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Za-z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
 			name = strings.ReplaceAll(name, part, "")
 
 			model := regexp.MustCompile(`[AMS]\d{2}`).FindString(part)

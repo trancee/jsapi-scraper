@@ -18,7 +18,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(2|4|6|8|16|32|54|64|128|256|265) ?([MG]B|BG|G)( RAM)?|\/6\s+| \d"| [45] ?G| GSM| (ancora|(electric )?black|blau|chrome|gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|weiss|white)| mit | und | [*|] | \(| \/|, |\/ | - `)
+var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(2|4|6|8|16|32|54|64|65|128|256|265) ?([MG]B|BG|G)( RAM)?|\/6\s+| \d"| [45] ?G| GSM| (ancora|(electric )?black|blau|chrome|gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|weiss|white)| mit | und | [*|] | \(| \/|, |\/ | - `)
 var TuttiExclusionRegex = regexp.MustCompile(`(?i)^(emporia|ericsson|htc)|galaxy (s8|s7|s5|s4|s3|s|j\d+|gt)|iph?one? ?(3gs|3g|3|s4|4s|4|5s|5c|5|6s|6|7|8)|motorola (v8|razr)|nokia|orange|samsung (galaxy (young|s|note ii|note 2|j3|ace)|mini|rex|s7|s8|s9)|sonn?y ?(err?ics?son)|swisscom|adapter|akku|alt|astuccio|atrappe|audio|bastler|bootloop|case|cloudlocked|cover|charger|charging stand|custodia|defec?kt|display|folie|gesperrt|gigaset|hülle|kabel|kameraschutz|kinder|klapp|mainboard|nostalgie|nur verpackung|panzerglas|riss|rott[io]|sammlung|scambio|scatola|senior|siemens|silikon|skin|sperre|teile|vecchio|vintage|voip|zersplittert`)
 var TuttiInclusionRegex = regexp.MustCompile(`(?i)^(apple (iphone (x|se|\d{2}))|asus (zenfone|rog)|blackview (bv\d+|bl\d+|a\d+)|fairphone|google (pixel)|honor (x\d+|magic|\d+)|huawei (y\d+|p[ -]?\d+|p smart|nova|mate)|infinix|inoi (note|a\d+)|motorola (moto|edge|defy)|nothing|oneplus (nord|\d+)|oppo (reno|find|a\d+)|realme (narzo|c\d+|\d+)|samsung (galaxy [amnsxz])|sony (xperia)|vivo (y\d+|v\d+)|wiko (y\d+|view|sunny|power|fever)|xiaomi (redmi |poco|mi|\d+)|zte (blade|axon))`)
 
@@ -45,6 +45,10 @@ var TuttiCleanFn = func(name string) string {
 
 	if s[0] == "Honor" {
 		name = regexp.MustCompile(`(i?)PLK-[ATU]?L\d{2}[H]?`).ReplaceAllString(name, "")
+	}
+
+	if s[0] == "Huawei" {
+		name = regexp.MustCompile(`(i?)BLA-L\d{2}`).ReplaceAllString(name, "")
 	}
 
 	if s[0] == "iPhone" {

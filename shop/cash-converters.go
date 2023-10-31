@@ -17,7 +17,7 @@ var CashConvertersRegex = regexp.MustCompile(`(?i),|(\d+\/)?(2|4|6|8|16|32|64|12
 
 var CashConvertersCleanFn = func(name string) string {
 	name = strings.NewReplacer(" - ", " ").Replace(name)
-	name = regexp.MustCompile(`(?i)Portable|Reconditionné|Rouge|Téléphone`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`(?i)Portable|Reconditionné|Rouge|Téléphone(\s*:\s*)?`).ReplaceAllString(name, "")
 	name = strings.TrimSpace(name)
 
 	if loc := CashConvertersRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -26,6 +26,11 @@ var CashConvertersCleanFn = func(name string) string {
 	}
 
 	s := strings.Split(name, " ")
+
+	if s[0] == "iPhone" {
+		name = strings.ReplaceAll(name, "3rd", "2022")
+		name = strings.ReplaceAll(name, "2022 2022", "2022")
+	}
 
 	if s[0] == "Oppo" || s[0] == "OPPO" {
 		name = strings.ReplaceAll(name, "Fond", "Find")
@@ -40,6 +45,14 @@ var CashConvertersCleanFn = func(name string) string {
 		}
 
 		name = strings.NewReplacer("S10PLUS", "S10 Plus", "S20FE", "S20 FE", "AO2S", "A02s", "S10 +", "S10+").Replace(name)
+	}
+
+	if s[0] == "Xiaomi" {
+		if s[1] == "Redmi" {
+			if s[2] == "Mi" {
+				strings.ReplaceAll(name, "Redmi ", "")
+			}
+		}
 	}
 
 	return helpers.Lint(name)
