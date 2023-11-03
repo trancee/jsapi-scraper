@@ -24,21 +24,6 @@ var MediamarktRefurbishedCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Samsung" {
-	// 	name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
-	// }
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
@@ -121,7 +106,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	// fmt.Println(string(_body))
 
 	type _Product struct {
-		Category string  `json:"category"`
+		Category any     `json:"category"`
 		Name     string  `json:"name"`
 		Price    float32 `json:"price"`
 	}
@@ -192,8 +177,11 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 				}
 				_product.code = productId
 
-				item := _products.Products[productId]
-				_product.title = item.Category + " " + _product.title
+				_item := _products.Products[productId]
+				if _item.Name == "" {
+					continue
+				}
+				_product.title = fmt.Sprintf("%s %s", _item.Category, _product.title)
 
 				model := MediamarktRefurbishedCleanFn(_product.title)
 				if _debug {
