@@ -148,33 +148,38 @@ func XXX_tutti(isDryRun bool) IShop {
 			}
 		} else {
 			// "query": "Apple iPhone | Google Pixel | Huawei | Motorola | Nothing | OnePlus | OPPO | realme | Samsung Galaxy | Vivo | Xiaomi | ZTE",
-			jsonData := []byte(fmt.Sprintf(`
-			{
-				"query": "query SearchListingsByConstraints($query: String, $constraints: ListingSearchConstraints, $category: ID, $first: Int!, $offset: Int!, $sort: ListingSortMode!, $direction: SortDirection!) {\n  searchListingsByQuery(\n    query: $query\n    constraints: $constraints\n    category: $category\n  ) {\n    ...searchResultFields\n  }\n}\n\nfragment searchResultFields on ListingSearchResult {\n  listings(first: $first, offset: $offset, sort: $sort, direction: $direction) {\n    ...listingsConnectionFields\n  }\n  galleryListings(first: 3) {\n    ...listingFields\n  }\n  filters {\n    ...filterFields\n  }\n  suggestedCategories {\n    ...suggestedCategoryFields\n  }\n  selectedCategory {\n    ...selectedCategoryFields\n  }\n  seoInformation {\n    seoIndexable\n    deQuerySlug: querySlug(language: DE)\n    frQuerySlug: querySlug(language: FR)\n    itQuerySlug: querySlug(language: IT)\n    bottomSEOLinks {\n      label\n      slug\n      searchToken\n    }\n  }\n  searchToken\n  query\n}\n\nfragment selectedCategoryFields on Category {\n  categoryID\n  label\n  ...categoryParentFields\n}\n\nfragment categoryParentFields on Category {\n  parent {\n    categoryID\n    label\n    parent {\n      categoryID\n      label\n      parent {\n        categoryID\n        label\n      }\n    }\n  }\n}\n\nfragment suggestedCategoryFields on Category {\n  categoryID\n  label\n  searchToken\n  mainImage {\n    rendition(width: 300) {\n      src\n    }\n  }\n}\n\nfragment filterFields on ListingFilter {\n  __typename\n  ...filterDescriptionFields\n  ... on ListingIntervalFilter {\n    ...intervalFilterFields\n  }\n  ... on ListingSingleSelectFilter {\n    ...singleSelectFilterFields\n  }\n  ... on ListingMultiSelectFilter {\n    ...multiSelectFilterFields\n  }\n  ... on ListingPricingFilter {\n    ...pricingFilterFields\n  }\n  ... on ListingLocationFilter {\n    ...locationFilterFields\n  }\n}\n\nfragment filterDescriptionFields on ListingsFilterDescription {\n  name\n  label\n  disabled\n}\n\nfragment intervalFilterFields on ListingIntervalFilter {\n  ...filterDescriptionFields\n  intervalType {\n    __typename\n    ... on ListingIntervalTypeText {\n      ...intervalTypeTextFields\n    }\n    ... on ListingIntervalTypeSlider {\n      ...intervalTypeSliderFields\n    }\n  }\n  intervalValue: value {\n    min\n    max\n  }\n  step\n  unit\n  minField {\n    placeholder\n  }\n  maxField {\n    placeholder\n  }\n}\n\nfragment intervalTypeTextFields on ListingIntervalTypeText {\n  minLimit\n  maxLimit\n}\n\nfragment intervalTypeSliderFields on ListingIntervalTypeSlider {\n  sliderStart: minLimit\n  sliderEnd: maxLimit\n}\n\nfragment singleSelectFilterFields on ListingSingleSelectFilter {\n  ...filterDescriptionFields\n  ...selectFilterFields\n  selectedOption: value\n}\n\nfragment selectFilterFields on ListingSelectFilter {\n  options {\n    ...selectOptionFields\n  }\n  placeholder\n  inline\n}\n\nfragment selectOptionFields on ListingSelectOption {\n  value\n  label\n}\n\nfragment multiSelectFilterFields on ListingMultiSelectFilter {\n  ...filterDescriptionFields\n  ...selectFilterFields\n  selectedOptions: values\n}\n\nfragment pricingFilterFields on ListingPricingFilter {\n  ...filterDescriptionFields\n  pricingValue: value {\n    min\n    max\n    freeOnly\n  }\n  minField {\n    placeholder\n  }\n  maxField {\n    placeholder\n  }\n}\n\nfragment locationFilterFields on ListingLocationFilter {\n  ...filterDescriptionFields\n  value {\n    radius\n    selectedLocalities {\n      ...localityFields\n    }\n  }\n}\n\nfragment localityFields on Locality {\n  localityID\n  name\n  localityType\n}\n\nfragment listingFields on Listing {\n  listingID\n  title\n  body\n  postcodeInformation {\n    postcode\n    locationName\n    canton {\n      shortName\n      name\n    }\n  }\n  timestamp\n  formattedPrice\n  formattedSource\n  highlighted\n  primaryCategory {\n    categoryID\n  }\n  sellerInfo {\n    alias\n    logo {\n      rendition {\n        src\n      }\n    }\n    subscriptionInfo {\n      subscriptionBadge {\n        src(format: SVG)\n      }\n    }\n  }\n  images(first: 15) {\n    __typename\n  }\n  thumbnail {\n    normalRendition: rendition(width: 235, height: 167) {\n      src\n    }\n    retinaRendition: rendition(width: 470, height: 334) {\n      src\n    }\n  }\n  seoInformation {\n    deSlug: slug(language: DE)\n    frSlug: slug(language: FR)\n    itSlug: slug(language: IT)\n  }\n}\n\nfragment listingsConnectionFields on ListingsConnection {\n  totalCount\n  edges {\n    node {\n      ...listingFields\n    }\n  }\n  placements {\n    keyValues {\n      key\n      value\n    }\n    pageName\n    pagePath\n    positions {\n      adUnitID\n      mobile\n      position\n      positionType\n    }\n    afs {\n      customChannelID\n      styleID\n      adUnits {\n        adUnitID\n        mobile\n      }\n    }\n  }\n}",
-				"variables": {
-					"constraints": {
-						"strings": [{
-							"key": "organic",
-							"value": ["tutti"]
-						}],
-						"prices": [{
-							"key": "price",
-							"min": %.f,
-							"max": %.f,
-							"freeOnly": false
-						}],
-						"intervals": null,
-						"locations": null
-					},
-					"category": "cellPhones",
-					"status": "pendingUpdateWithoutToken",
-					"first": 100,
-					"offset": %d,
-					"direction": "DESCENDING",
-					"sort": "TIMESTAMP"
-				}
-			}
-			`, 0.0, ValueWorth, _count))
+			var jsonData = StringToBytes(
+				fmt.Sprintf(
+					`{
+						"query": "query SearchListingsByConstraints($query: String, $constraints: ListingSearchConstraints, $category: ID, $first: Int!, $offset: Int!, $sort: ListingSortMode!, $direction: SortDirection!) {\n  searchListingsByQuery(\n    query: $query\n    constraints: $constraints\n    category: $category\n  ) {\n    ...searchResultFields\n  }\n}\n\nfragment searchResultFields on ListingSearchResult {\n  listings(first: $first, offset: $offset, sort: $sort, direction: $direction) {\n    ...listingsConnectionFields\n  }\n  galleryListings(first: 3) {\n    ...listingFields\n  }\n  filters {\n    ...filterFields\n  }\n  suggestedCategories {\n    ...suggestedCategoryFields\n  }\n  selectedCategory {\n    ...selectedCategoryFields\n  }\n  seoInformation {\n    seoIndexable\n    deQuerySlug: querySlug(language: DE)\n    frQuerySlug: querySlug(language: FR)\n    itQuerySlug: querySlug(language: IT)\n    bottomSEOLinks {\n      label\n      slug\n      searchToken\n    }\n  }\n  searchToken\n  query\n}\n\nfragment selectedCategoryFields on Category {\n  categoryID\n  label\n  ...categoryParentFields\n}\n\nfragment categoryParentFields on Category {\n  parent {\n    categoryID\n    label\n    parent {\n      categoryID\n      label\n      parent {\n        categoryID\n        label\n      }\n    }\n  }\n}\n\nfragment suggestedCategoryFields on Category {\n  categoryID\n  label\n  searchToken\n  mainImage {\n    rendition(width: 300) {\n      src\n    }\n  }\n}\n\nfragment filterFields on ListingFilter {\n  __typename\n  ...filterDescriptionFields\n  ... on ListingIntervalFilter {\n    ...intervalFilterFields\n  }\n  ... on ListingSingleSelectFilter {\n    ...singleSelectFilterFields\n  }\n  ... on ListingMultiSelectFilter {\n    ...multiSelectFilterFields\n  }\n  ... on ListingPricingFilter {\n    ...pricingFilterFields\n  }\n  ... on ListingLocationFilter {\n    ...locationFilterFields\n  }\n}\n\nfragment filterDescriptionFields on ListingsFilterDescription {\n  name\n  label\n  disabled\n}\n\nfragment intervalFilterFields on ListingIntervalFilter {\n  ...filterDescriptionFields\n  intervalType {\n    __typename\n    ... on ListingIntervalTypeText {\n      ...intervalTypeTextFields\n    }\n    ... on ListingIntervalTypeSlider {\n      ...intervalTypeSliderFields\n    }\n  }\n  intervalValue: value {\n    min\n    max\n  }\n  step\n  unit\n  minField {\n    placeholder\n  }\n  maxField {\n    placeholder\n  }\n}\n\nfragment intervalTypeTextFields on ListingIntervalTypeText {\n  minLimit\n  maxLimit\n}\n\nfragment intervalTypeSliderFields on ListingIntervalTypeSlider {\n  sliderStart: minLimit\n  sliderEnd: maxLimit\n}\n\nfragment singleSelectFilterFields on ListingSingleSelectFilter {\n  ...filterDescriptionFields\n  ...selectFilterFields\n  selectedOption: value\n}\n\nfragment selectFilterFields on ListingSelectFilter {\n  options {\n    ...selectOptionFields\n  }\n  placeholder\n  inline\n}\n\nfragment selectOptionFields on ListingSelectOption {\n  value\n  label\n}\n\nfragment multiSelectFilterFields on ListingMultiSelectFilter {\n  ...filterDescriptionFields\n  ...selectFilterFields\n  selectedOptions: values\n}\n\nfragment pricingFilterFields on ListingPricingFilter {\n  ...filterDescriptionFields\n  pricingValue: value {\n    min\n    max\n    freeOnly\n  }\n  minField {\n    placeholder\n  }\n  maxField {\n    placeholder\n  }\n}\n\nfragment locationFilterFields on ListingLocationFilter {\n  ...filterDescriptionFields\n  value {\n    radius\n    selectedLocalities {\n      ...localityFields\n    }\n  }\n}\n\nfragment localityFields on Locality {\n  localityID\n  name\n  localityType\n}\n\nfragment listingFields on Listing {\n  listingID\n  title\n  body\n  postcodeInformation {\n    postcode\n    locationName\n    canton {\n      shortName\n      name\n    }\n  }\n  timestamp\n  formattedPrice\n  formattedSource\n  highlighted\n  primaryCategory {\n    categoryID\n  }\n  sellerInfo {\n    alias\n    logo {\n      rendition {\n        src\n      }\n    }\n    subscriptionInfo {\n      subscriptionBadge {\n        src(format: SVG)\n      }\n    }\n  }\n  images(first: 15) {\n    __typename\n  }\n  thumbnail {\n    normalRendition: rendition(width: 235, height: 167) {\n      src\n    }\n    retinaRendition: rendition(width: 470, height: 334) {\n      src\n    }\n  }\n  seoInformation {\n    deSlug: slug(language: DE)\n    frSlug: slug(language: FR)\n    itSlug: slug(language: IT)\n  }\n}\n\nfragment listingsConnectionFields on ListingsConnection {\n  totalCount\n  edges {\n    node {\n      ...listingFields\n    }\n  }\n  placements {\n    keyValues {\n      key\n      value\n    }\n    pageName\n    pagePath\n    positions {\n      adUnitID\n      mobile\n      position\n      positionType\n    }\n    afs {\n      customChannelID\n      styleID\n      adUnits {\n        adUnitID\n        mobile\n      }\n    }\n  }\n}",
+						"variables": {
+							"constraints": {
+								"strings": [{
+									"key": "organic",
+									"value": ["tutti"]
+								}],
+								"prices": [{
+									"key": "price",
+									"min": %.f,
+									"max": %.f,
+									"freeOnly": false
+								}],
+								"intervals": null,
+								"locations": null
+							},
+							"category": "cellPhones",
+							"status": "pendingUpdateWithoutToken",
+							"first": 100,
+							"offset": %d,
+							"direction": "DESCENDING",
+							"sort": "TIMESTAMP"
+						}
+					}`,
+					0.0,
+					ValueWorth,
+					_count,
+				),
+			)
 
 			req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
 			if err != nil {
@@ -235,7 +240,7 @@ func XXX_tutti(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)

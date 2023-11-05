@@ -77,7 +77,7 @@ func XXX_conrad(isDryRun bool) IShop {
 	var _result _Response
 	var _body []byte
 
-	var jsonData = []byte(
+	var jsonData = StringToBytes(
 		fmt.Sprintf(
 			`{
 				"query": "",
@@ -166,7 +166,7 @@ func XXX_conrad(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)
@@ -291,7 +291,7 @@ func XXX_conrad(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		var __result _Response
 		if err := sonnet.Unmarshal(_body, &__result); err != nil {

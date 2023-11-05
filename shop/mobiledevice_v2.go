@@ -137,16 +137,16 @@ func XXX_mobiledevice_v2(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		var body _Body
 		{
-			if err := sonnet.Unmarshal([]byte(_body), &body); err != nil {
+			if err := sonnet.Unmarshal(_body, &body); err != nil {
 				panic(err)
 			}
 			_result = append(_result, body.Products...)
 		}
-		// fmt.Println(string(body))
+		// fmt.Println(BytesToString(body))
 
 		if body.Pagination.CurrentPage >= body.Pagination.PagesCount {
 			break

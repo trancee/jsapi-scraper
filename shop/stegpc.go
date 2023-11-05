@@ -125,7 +125,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		var body _Body
 		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer
@@ -133,7 +133,7 @@ func XXX_stegpc(isDryRun bool) IShop {
 		}
 		// fmt.Println(body.NewProductList)
 
-		doc := parse(string(body.NewProductList))
+		doc := parse(body.NewProductList)
 
 		if productList := traverse(doc, "article", "class", "product-element"); productList != nil {
 			// fmt.Println(productList)

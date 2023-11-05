@@ -29,17 +29,6 @@ var MobileDeviceCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_mobiledevice(isDryRun bool) IShop {
@@ -122,7 +111,7 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	type _Body struct {
 		Products string `json:"productList"`
@@ -130,14 +119,14 @@ func XXX_mobiledevice(isDryRun bool) IShop {
 
 	var body _Body
 	{
-		if err := sonnet.Unmarshal([]byte(_body), &body); err != nil {
+		if err := sonnet.Unmarshal(_body, &body); err != nil {
 			panic(err)
 		}
-		_body = []byte(body.Products)
+		_body = StringToBytes(body.Products)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
-	doc := parse(string(_body))
+	doc := parse(BytesToString(_body))
 
 	if productList := traverse(doc, "ul", "class", "product_list"); productList != nil {
 		// fmt.Println(productList)

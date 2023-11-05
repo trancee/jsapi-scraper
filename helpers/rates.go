@@ -116,7 +116,7 @@ func EUR_CHF() float64 {
 	if err != nil {
 		panic(err)
 	}
-	// fmt.Printf("%+v\n", string(body))
+	// fmt.Printf("%+v\n", BytesToString(body))
 
 	var response Response
 	if err := sonnet.Unmarshal(body, &response); err != nil {

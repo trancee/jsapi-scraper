@@ -104,33 +104,40 @@ func XXX_manor(isDryRun bool) IShop {
 				_body = body
 			}
 		} else {
-			jsonData := []byte(fmt.Sprintf(`{
-				"operationName": "SearchProducts",
-				"variables": {
-					"input": {
-						"numericFilters": [
-							{
-								"fieldName": "priceValue",
-								"lowerBound": %.f,
-								"upperBound": %.f
+			var jsonData = StringToBytes(
+				fmt.Sprintf(
+					`{
+						"operationName": "SearchProducts",
+						"variables": {
+							"input": {
+								"numericFilters": [
+									{
+										"fieldName": "priceValue",
+										"lowerBound": %.f,
+										"upperBound": %.f
+									}
+								],
+								"orderBy": "PRICE_VALUE_ASC",
+								"page": %d,
+								"pageSize": 24,
+								"selectedFilters": [
+									{
+										"facetName": "category",
+										"facetValues": [
+											"telephone-navigation-smartphones"
+										]
+									}
+								],
+								"mixedRuleSearchResult": {}
 							}
-						],
-						"orderBy": "PRICE_VALUE_ASC",
-						"page": %d,
-						"pageSize": 24,
-						"selectedFilters": [
-							{
-								"facetName": "category",
-								"facetValues": [
-									"telephone-navigation-smartphones"
-								]
-							}
-						],
-						"mixedRuleSearchResult": {}
-					}
-				},
-				"query": "query SearchProducts($input: InputSearch!) {\n  searchProducts(input: $input) {\n    ...productSearchResultFields\n    __typename\n  }\n}\n\nfragment productSearchResultFields on ProductSearchResult {\n  totalResults\n  page\n  pageSize\n  totalPages\n  queryId\n  analyticsIndexName\n  products {\n    ...indexedProductFields\n    __typename\n  }\n  productListerConfig {\n    hideCount\n    __typename\n  }\n  searchUserData {\n    type\n    url\n    __typename\n  }\n  mixedRuleSearchResult {\n    introductoryOffset\n    introductoryProductCodes\n    marketplaceOffset\n    wholesaleOffset\n    __typename\n  }\n  __typename\n}\n\nfragment indexedProductFields on IndexedProduct {\n  id\n  baseCode\n  titles {\n    first\n    second\n    third\n    __typename\n  }\n  priceValue {\n    ...priceFields\n    __typename\n  }\n  originalPrice {\n    ...priceFields\n    __typename\n  }\n  uvpPrice {\n    ...priceFields\n    __typename\n  }\n  stock {\n    level\n    status\n    __typename\n  }\n  variantColors {\n    name\n    url\n    hexCode\n    variantCode\n    __typename\n  }\n  imageUrls {\n    mobile\n    tablet\n    desktop\n    __typename\n  }\n  labels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  discountLabels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  averageRating\n  brandId\n  brandName\n  category\n  color\n  size\n  code\n  description\n  isFromPrice\n  isManorProduct\n  link\n  name\n  productDisplayConfig {\n    ...productDisplayConfigFields\n    __typename\n  }\n  gtin\n  productBreadcrumbPath\n  offlineAvailabilityStatus\n  __typename\n}\n\nfragment priceFields on Price {\n  currency\n  amount\n  digits\n  formattedValue\n  priceType\n  __typename\n}\n\nfragment productDisplayConfigFields on ProductDisplayConfig {\n  hideRatings\n  hideLabels\n  hideAvailability\n  hideCarousels\n  __typename\n}"
-			}`, ValueMinimum, ValueMaximum, p))
+						},
+						"query": "query SearchProducts($input: InputSearch!) {\n  searchProducts(input: $input) {\n    ...productSearchResultFields\n    __typename\n  }\n}\n\nfragment productSearchResultFields on ProductSearchResult {\n  totalResults\n  page\n  pageSize\n  totalPages\n  queryId\n  analyticsIndexName\n  products {\n    ...indexedProductFields\n    __typename\n  }\n  productListerConfig {\n    hideCount\n    __typename\n  }\n  searchUserData {\n    type\n    url\n    __typename\n  }\n  mixedRuleSearchResult {\n    introductoryOffset\n    introductoryProductCodes\n    marketplaceOffset\n    wholesaleOffset\n    __typename\n  }\n  __typename\n}\n\nfragment indexedProductFields on IndexedProduct {\n  id\n  baseCode\n  titles {\n    first\n    second\n    third\n    __typename\n  }\n  priceValue {\n    ...priceFields\n    __typename\n  }\n  originalPrice {\n    ...priceFields\n    __typename\n  }\n  uvpPrice {\n    ...priceFields\n    __typename\n  }\n  stock {\n    level\n    status\n    __typename\n  }\n  variantColors {\n    name\n    url\n    hexCode\n    variantCode\n    __typename\n  }\n  imageUrls {\n    mobile\n    tablet\n    desktop\n    __typename\n  }\n  labels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  discountLabels {\n    id\n    text\n    backgroundColor\n    textColor\n    priority\n    __typename\n  }\n  averageRating\n  brandId\n  brandName\n  category\n  color\n  size\n  code\n  description\n  isFromPrice\n  isManorProduct\n  link\n  name\n  productDisplayConfig {\n    ...productDisplayConfigFields\n    __typename\n  }\n  gtin\n  productBreadcrumbPath\n  offlineAvailabilityStatus\n  __typename\n}\n\nfragment priceFields on Price {\n  currency\n  amount\n  digits\n  formattedValue\n  priceType\n  __typename\n}\n\nfragment productDisplayConfigFields on ProductDisplayConfig {\n  hideRatings\n  hideLabels\n  hideAvailability\n  hideCarousels\n  __typename\n}"
+					}`,
+					ValueMinimum,
+					ValueMaximum,
+					p,
+				),
+			)
 
 			req, err := http.NewRequest("POST", _url, bytes.NewBuffer(jsonData))
 			if err != nil {
@@ -187,7 +194,7 @@ func XXX_manor(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)

@@ -25,21 +25,6 @@ var BrackCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "iPhone" {
-	// 	name = "Apple " + name
-	// }
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_brack(isDryRun bool) IShop {
@@ -169,7 +154,7 @@ func XXX_brack(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	if body := regexp.MustCompile(`window.competec.products.data = {.*?};`).Find(_body); body != nil {
 		data := body[32 : len(body)-1]
@@ -212,7 +197,7 @@ func XXX_brack(isDryRun bool) IShop {
 		// fmt.Println(_skus)
 	}
 
-	doc := parse(string(_body))
+	doc := parse(BytesToString(_body))
 
 	for sku, value := range _skus {
 		if snippet := traverse(doc, "li", "data-snippet", sku); snippet != nil {
@@ -248,7 +233,7 @@ func XXX_brack(isDryRun bool) IShop {
 			var _lspl _LSPI
 			if lspl := traverse(snippet, "div", "data-e-ref", "lspl"); lspl != nil {
 				if data, ok := text(lspl.FirstChild); ok {
-					if err := sonnet.Unmarshal([]byte(data), &_lspl); err != nil {
+					if err := sonnet.Unmarshal(StringToBytes(data), &_lspl); err != nil {
 						panic(err)
 					}
 					// fmt.Println(_lspl)
@@ -270,7 +255,7 @@ func XXX_brack(isDryRun bool) IShop {
 			var _lsi _LSI
 			if lsi := traverse(snippet, "div", "data-e-ref", "lsi"); lsi != nil {
 				if data, ok := text(lsi.FirstChild); ok {
-					if err := sonnet.Unmarshal([]byte(data), &_lsi); err != nil {
+					if err := sonnet.Unmarshal(StringToBytes(data), &_lsi); err != nil {
 						panic(err)
 					}
 					// fmt.Println(_lsi)

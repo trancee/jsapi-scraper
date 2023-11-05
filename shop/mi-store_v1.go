@@ -69,7 +69,7 @@ func XXX_mistore_v1(isDryRun bool) IShop {
 			_body = body
 		}
 	} else {
-		var formData = []byte(`mogo-woocommerce-products-per-page=96`)
+		var formData = StringToBytes(`mogo-woocommerce-products-per-page=96`)
 
 		resp, err := http.Post(_url, "application/x-www-form-urlencoded", bytes.NewBuffer(formData))
 		if err != nil {
@@ -110,9 +110,9 @@ func XXX_mistore_v1(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
-	doc := parse(string(_body))
+	doc := parse(BytesToString(_body))
 
 	if productList := traverse(doc, "div", "class", "tt-product-view"); productList != nil {
 		// fmt.Println(productList)

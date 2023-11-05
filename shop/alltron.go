@@ -25,21 +25,6 @@ var AlltronCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "iPhone" {
-	// 	name = "Apple " + name
-	// }
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_alltron(isDryRun bool) IShop {
@@ -153,7 +138,7 @@ func XXX_alltron(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)
@@ -230,7 +215,7 @@ func XXX_alltron(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	_products := make(map[string]*_Product)
 	if err := sonnet.Unmarshal(_body, &_products); err != nil {

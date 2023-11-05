@@ -25,12 +25,6 @@ var MiStoreV2CleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	// s := strings.Split(name, " ")
-
-	// if s[0] != "Xiaomi" {
-	// 	name = "Xiaomi" + " " + name
-	// }
-
 	return helpers.Lint(name)
 }
 
@@ -114,9 +108,9 @@ func XXX_mistore_v2(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
-		doc := parse(string(_body))
+		doc := parse(BytesToString(_body))
 
 		if productList := traverse(doc, "div", "class", "cms-listing-row"); productList != nil {
 			// fmt.Printf("%+v\n", productList)

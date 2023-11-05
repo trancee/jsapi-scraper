@@ -103,7 +103,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	type _Product struct {
 		Category any     `json:"category"`
@@ -118,16 +118,16 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 	var _products _Products
 	{
 		r := regexp.MustCompile(`"products": {(.*?)},\n`)
-		body := "{" + strings.TrimSuffix(string(r.Find(_body)), ",\n") + "}"
+		body := "{" + strings.TrimSuffix(BytesToString(r.Find(_body)), ",\n") + "}"
 		// fmt.Println(body)
 
-		if err := sonnet.Unmarshal([]byte(body), &_products); err != nil {
+		if err := sonnet.Unmarshal(StringToBytes(body), &_products); err != nil {
 			panic(err)
 		}
 		// fmt.Println(_products)
 	}
 
-	doc := parse(string(_body))
+	doc := parse(BytesToString(_body))
 
 	if productList := traverse(doc, "ol", "class", "products"); productList != nil {
 		// fmt.Println(productList)

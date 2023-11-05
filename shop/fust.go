@@ -35,13 +35,6 @@ var FustCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
-	// if brand == "Samsung" && strings.Split(model, " ")[0] == "Motorola" {
-	// 	model = strings.ReplaceAll(model, "Motorola ", "")
-	// 	brand = "Motorola"
-	// } else if brand == "Fust" {
-	// 	brand = "Inoi"
-	// }
-
 	if s[0] == "Fairphone" {
 		name = strings.ReplaceAll(name, " Fairphone", "")
 	}
@@ -51,25 +44,6 @@ var FustCleanFn = func(name string) string {
 	}
 
 	return helpers.Lint(name)
-
-	// s := strings.Split(name, " ")
-
-	// if s[0] == "Fust" {
-	// 	name = strings.ReplaceAll(name, "Fust ", "Inoi ")
-	// }
-
-	// if s[0] == "Reno" || s[0] == "Oppo" {
-	// 	name = regexp.MustCompile(`Reno\s*(\d)\s*(\w)?`).ReplaceAllString(name, "Reno$1 $2")
-	// }
-
-	// if s[0] == "Apple" {
-	// 	name = strings.NewReplacer(" 2020", " (2020)", " 2022", " (2022)", " 2nd Gen", " (2020)", " 3rd Gen", " (2022)").Replace(name)
-	// } else {
-	// 	// Remove year component for all other than Apple.
-	// 	name = regexp.MustCompile(`\s+\(?20[12]\d\)?`).ReplaceAllString(name, "")
-	// }
-
-	// return strings.TrimSpace(name)
 }
 
 func XXX_fust(isDryRun bool) IShop {
@@ -160,9 +134,9 @@ func XXX_fust(isDryRun bool) IShop {
 
 				os.WriteFile(path+fn, _body, 0664)
 			}
-			// fmt.Println(string(_body))
+			// fmt.Println(BytesToString(_body))
 
-			doc := parse(string(_body))
+			doc := parse(BytesToString(_body))
 
 			if productList := traverse(doc, "ul", "id", "productslist"); productList != nil {
 				// fmt.Println(productList)

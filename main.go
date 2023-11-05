@@ -53,7 +53,7 @@ func main() {
 			fmt.Println(err)
 			fmt.Println()
 
-			stack := strings.Join(strings.Split(string(debug.Stack()), "\n")[7:], "\n")
+			stack := strings.Join(strings.Split(shop.BytesToString(debug.Stack()), "\n")[7:], "\n")
 			fmt.Printf("%s\n", stack)
 
 			if !isDryRun {
@@ -239,7 +239,7 @@ func main() {
 			panic(err)
 		} else {
 			for _, key := range keys {
-				ids[string(key)] = true
+				ids[shop.BytesToString(key)] = true
 			}
 		}
 		// fmt.Println(ids)
@@ -707,7 +707,7 @@ func main() {
 		panic(err)
 	} else {
 		for _, key := range keys {
-			ids[string(key)] = true
+			ids[shop.BytesToString(key)] = true
 		}
 	}
 	// fmt.Println(ids)

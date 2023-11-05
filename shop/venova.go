@@ -134,13 +134,13 @@ func XXX_venova(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		if err := sonnet.Unmarshal(_body, &_result); err != nil {
 			panic(err)
 		}
 
-		doc := parse(string(_result.Listing))
+		doc := parse(_result.Listing)
 
 		for item := traverse(doc, "div", "class", "product--box"); item != nil; item = item.NextSibling.NextSibling {
 			// fmt.Println(item)

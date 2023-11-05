@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"unsafe"
 
 	"golang.org/x/net/html"
 )
@@ -278,7 +279,7 @@ func contains(s []html.Attribute, key string, val string) bool {
 			if val == "" || a.Val == val {
 				return true
 			} else {
-				matched, _ := regexp.Match(`\b`+strings.ReplaceAll(val, "-", "_")+`\b`, []byte(strings.ReplaceAll(a.Val, "-", "_")))
+				matched, _ := regexp.Match(`\b`+strings.ReplaceAll(val, "-", "_")+`\b`, StringToBytes(strings.ReplaceAll(a.Val, "-", "_")))
 				return matched
 			}
 		}
@@ -306,4 +307,18 @@ func traverse(n *html.Node, tag string, key string, val string) *html.Node {
 		}
 	}
 	return nil
+}
+
+// https://josestg.medium.com/140x-faster-string-to-byte-and-byte-to-string-conversions-with-zero-allocation-in-go-200b4d7105fc
+func BytesToString(b []byte) string {
+	// Ignore if your IDE shows an error here; it's a false positive.
+	p := unsafe.SliceData(b)
+	return unsafe.String(p, len(b))
+}
+
+// https://josestg.medium.com/140x-faster-string-to-byte-and-byte-to-string-conversions-with-zero-allocation-in-go-200b4d7105fc
+func StringToBytes(s string) []byte {
+	p := unsafe.StringData(s)
+	b := unsafe.Slice(p, len(s))
+	return b
 }

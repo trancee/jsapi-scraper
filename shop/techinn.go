@@ -219,7 +219,7 @@ func XXX_techinn(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		var body _Body
 		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer

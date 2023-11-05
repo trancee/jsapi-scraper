@@ -143,7 +143,7 @@ func XXX_melectronics(isDryRun bool) IShop {
 
 		os.WriteFile(path+fn, _body, 0664)
 	}
-	// fmt.Println(string(_body))
+	// fmt.Println(BytesToString(_body))
 
 	if err := sonnet.Unmarshal(_body, &_result); err != nil {
 		panic(err)

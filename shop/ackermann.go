@@ -40,7 +40,7 @@ var AckermannCleanFn = func(name string) string {
 
 func XXX_ackermann(isDryRun bool) IShop {
 	const _name = "Ackermann"
-	_url := fmt.Sprintf("https://www.ackermann.ch/_next/data/shopping_app/de/technik/multimedia/smartphones-telefone.json?o=price-asc&f=%s&categories=technik&categories=multimedia&categories=smartphones-telefone", base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf(`{"filter_Produkttyp_1":["fb_prdkt.p1_smrt.hn_38"],"filter_price":["%.f-%.f"]}`, ValueMinimum, ValueMaximum))))
+	_url := fmt.Sprintf("https://www.ackermann.ch/_next/data/shopping_app/de/technik/multimedia/smartphones-telefone.json?o=price-asc&f=%s&categories=technik&categories=multimedia&categories=smartphones-telefone", base64.StdEncoding.EncodeToString(StringToBytes(fmt.Sprintf(`{"filter_Produkttyp_1":["fb_prdkt.p1_smrt.hn_38"],"filter_price":["%.f-%.f"]}`, ValueMinimum, ValueMaximum))))
 
 	const _debug = false
 	const _tests = false
@@ -168,7 +168,7 @@ func XXX_ackermann(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
 		var body _Body
 		if err := sonnet.Unmarshal(_body, &body); err != nil { // Parse []byte to go struct pointer

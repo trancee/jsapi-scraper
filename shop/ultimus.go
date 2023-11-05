@@ -114,9 +114,9 @@ func XXX_ultimus(isDryRun bool) IShop {
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
-		// fmt.Println(string(_body))
+		// fmt.Println(BytesToString(_body))
 
-		doc := parse(string(_body))
+		doc := parse(BytesToString(_body))
 
 		if productList := traverse(doc, "ul", "class", "products"); productList != nil {
 			// fmt.Println(productList)
