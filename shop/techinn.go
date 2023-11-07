@@ -41,6 +41,12 @@ var TechInnCleanFn = func(name string) string {
 		name = regexp.MustCompile(`(?i)IP\d{2}`).ReplaceAllString(name, "")
 	}
 
+	if s[0] == "Huawei" || s[0] == "HUAWEI" {
+		if s[1] == "Honor" || s[1] == "HONOR" {
+			name = regexp.MustCompile(`(?i)^HUAWEI\s*`).ReplaceAllString(name, "")
+		}
+	}
+
 	if s[0] == "Realme" {
 		name = regexp.MustCompile(`(?i)RMX\s+\d{4}`).ReplaceAllString(name, "")
 	}
