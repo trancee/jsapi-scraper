@@ -215,6 +215,10 @@ func XXX_mistore_v2(isDryRun bool) IShop {
 				}
 
 				_result = append(_result, _product)
+
+				if item.NextSibling == nil {
+					break
+				}
 			}
 
 			if pagination := traverse(doc, "nav", "class", "pagination-nav"); pagination != nil {
