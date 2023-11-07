@@ -97,6 +97,7 @@ var folettiNames = []string{
 	"Samsung Galaxy XCover 5 Enterprise Edition CH - Bildschirmdiagonale: 5.3 - Betriebssystem: Android - Detailfarbe: Schwarz - Speicherkapazität total: 64 GB - Verbauter Arbeitsspeicher: 4 GB - Induktionsladung: Nein",
 	"Samsung Galaxy Xcover 5 Enterprise 64GB Black 5.3 EU Model Android",
 	"Samsung Galaxy Xcover 5 (G525F) 64GB Black",
+	"Samsung Galaxy XCover 5 schwarz Enterprise Edition DACH 4+64GB",
 	"Samsung Galaxy XCover 5 SM-G525F/DS 13.5 cm (5.3) Dual SIM Android 11 4G USB Type-C 4 GB 64 GB 3000 mAh Black",
 	"Samsung Galaxy XCover 5 -- Enterprise Edition - 64GB Black",
 	"Smartfon OnePlus Nord CE3 Lite 8/128GB 5G Szary",
@@ -138,6 +139,7 @@ var folettiNames = []string{
 	"ZTE Blade V50 Vita icy blue",
 	"ZTE Blade A72 blau",
 	"ZTE Blade A72 grau",
+	"ZTE Blade A73 schwarz",
 }
 
 var folettiNamesExpected = []string{
@@ -234,6 +236,7 @@ var folettiNamesExpected = []string{
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5",
 	"OnePlus Nord CE 3 Lite",
 	"Samsung Galaxy A14",
 	"Xiaomi Redmi 10C",
@@ -273,6 +276,7 @@ var folettiNamesExpected = []string{
 	"ZTE Blade V50 Vita",
 	"ZTE Blade A72",
 	"ZTE Blade A72",
+	"ZTE Blade A73",
 }
 
 func TestFolettiClean(t *testing.T) {

@@ -105,6 +105,10 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)\s*(\d+)\s*(S)`).ReplaceAllString(name, " $1$2")
 
 		name = strings.ReplaceAll(name, "11 (2020)", "11")
+
+		name = strings.ReplaceAll(name, "(2016) (2016)", "(2016)")
+		name = strings.ReplaceAll(name, "(2020) (2020)", "(2020)")
+		name = strings.ReplaceAll(name, "(2022) (2022)", "(2022)")
 	}
 
 	if s[0] == "Asus" {

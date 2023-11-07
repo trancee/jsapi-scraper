@@ -29,7 +29,7 @@ var CashConvertersCleanFn = func(name string) string {
 
 	if s[0] == "iPhone" {
 		name = strings.ReplaceAll(name, "3rd", "2022")
-		name = strings.ReplaceAll(name, "2022 2022", "2022")
+		// name = strings.ReplaceAll(name, "2022 2022", "2022")
 	}
 
 	if s[0] == "Oppo" || s[0] == "OPPO" {
