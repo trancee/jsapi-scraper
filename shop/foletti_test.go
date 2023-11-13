@@ -6,6 +6,7 @@ import (
 )
 
 var folettiNames = []string{
+	"Apple iPhone X 64GB silber Premium Refurbished #GOECO",
 	"Blackview BV4900 Pro 14.5 cm (5.7) Dual SIM Android 10.0 4G Micro-USB 4 GB 64 GB 5580 mAh Black",
 	"Blackview BV5200 5180 mAh 4/32 GB Green smartphone",
 	"Blackview BV7100 6/128 Black",
@@ -145,6 +146,7 @@ var folettiNames = []string{
 }
 
 var folettiNamesExpected = []string{
+	"Apple iPhone X",
 	"Blackview BV4900 Pro",
 	"Blackview BV5200",
 	"Blackview BV7100",
