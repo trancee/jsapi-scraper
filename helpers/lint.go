@@ -9,6 +9,17 @@ import (
 	"golang.org/x/text/language"
 )
 
+var colorRegex = regexp.MustCompile(`(?i)([/(]?(Ancora|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Black|(Hell)?Blau|Bleu|Blue|Champagne|Charcoal|Chrome|Cloudy?|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty|Mitternacht|Moonlight|Night|Noir|Ocean|Onyx|Orange| Oro|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Roségold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Twilight|Violett|(in )?Weiss|White|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
+
+// (ancora|(electric )?black|blau|chrome|Glacier|(Graphite )?gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|(in )?weiss|white)
+// | Blau| GREEN| HIMALAYA GREY| MIDNIGHT BLACK| MINT GREEN| OCEAN BLUE| Schwarz
+// |Awesome white|Black|Blue|Electric|Granite|Green|Luminous|Ocean|Silver
+// |\/BLUE|GREEN |( Sky)? [Bb]lue| Cosmic Aurora| Elegant Black| Force Touch|( Gravity)? Grey|(\/?LASER)? BLACK| ORANGE| Midnight Blue| Midnight Space| \(?Ocean Blue\)?| Orange| Pastel Lime| Pearl White|Space Silver| Viva Magenta| bamboo green| black| dark green| hellblau| midday dream| midnight blue
+// |Arctic Bleen|Astral|Awesome|Black|(New )?(Blk|Slv)|Champagne|Charcoal|Cloudy|Cosmo|Blue|Frost|Galactic|Green|Grey|Ice|Marine|Midnight|Moonlight|Ocean|Pepper Grey|Pink|Purple|Shadow|Space|Starlight|Sunset|Titan|White|black|cosmic|gold|schwarz|starry|c\.teal|e\.graphite|n\.blue
+// |Blau|Blue|Dunkellila|Gelb|Grün|Rose|Schwarz|Silber|Violett|Weiß|Polarstern|Mitternacht
+// |\((Black|Bleu Azur|Gris|Noir)\)
+// |Azul|AWESOME LIME|Blau|Blue|Cloud Navy|Dark Silver|Glacier Blue|Gradient Bronze|Graphite Gray|Grau|Midnight Gray|Mint Green|\(?Ocean Blue\)?|Onyx Gray|Oro|Pebble White|Polar White|Sunrise Orange|White|Zeus Black|\/Black|\/?BLACK|\/?BLUE|\/?GREEN|\/?ORANGE|GRIS
+
 var nameMapping = map[string]string{
 	"2Nd":  "2nd",
 	"2ND":  "2nd",
@@ -66,6 +77,11 @@ func Title(name string) string {
 }
 
 func Lint(name string) string {
+	if loc := colorRegex.FindStringSubmatchIndex(name); loc != nil {
+		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
+		name = name[:loc[0]]
+	}
+
 	name = Title(strings.ToLower(regexp.MustCompile(`\s+`).ReplaceAllString(strings.TrimSpace(name), " ")))
 
 	if matches := r.FindAllStringSubmatch(name, -1); len(matches) > 0 {
@@ -350,29 +366,4 @@ func Model(name string) string {
 	}
 
 	return strings.TrimSpace(name)
-
-	// var r2 = regexp.MustCompile(`\W*([A-Z][a-z]*)?[0-9]+[A-Za-z]*\W*`)
-
-	// if matches := r2.FindAllStringSubmatch(name, -1); len(matches) > 0 {
-	// 	for _, match := range matches {
-	// 		if len(match) > 1 && (match[1] == "Reno" || match[1] == "Magic") {
-	// 			continue
-	// 		}
-
-	// 		oldModel := strings.ToUpper(strings.TrimSpace(match[0]))
-	// 		newModel := oldModel
-	// 		if n := len(oldModel); n > 1 {
-	// 			if s := oldModel[n-1 : n]; s == "I" || s == "E" {
-	// 				newModel = oldModel[:n-1] + strings.ToLower(s)
-	// 				// fmt.Println("*** MATCH:" + oldModel + "/" + oldModel[n-1:n] + "/" + newModel)
-	// 			}
-	// 		}
-
-	// 		name = strings.ReplaceAll(name, match[0], strings.ReplaceAll(strings.ToUpper(match[0]), oldModel, newModel))
-	// 	}
-
-	// 	// fmt.Printf("%-30s %v\n", name, matches)
-	// }
-
-	// return name
 }

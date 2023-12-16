@@ -18,7 +18,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?((2|3|4|6|8|12|16)(GB)?\s*[+\/]\s*)?(2|4|6|8|12|16|32|64|128|256)\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(\d{1,2}[., ])?\d+( Zoll|\")\)?|\s+(1\d[., ])?\d+\s*cm|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\(?Juodas\)?|\/BLUE|GREEN |( Sky)? [Bb]lue| Cosmic Aurora| Elegant Black| Force Touch|( Gravity)? Grey|(\/?LASER)? BLACK| ORANGE| Midnight Blue| Midnight Space| \(?Ocean Blue\)?| Orange| Pastel Lime| Pearl White|Space Silver| Viva Magenta| bamboo green| black| dark green| hellblau| midday dream| midnight blue`)
+var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?((2|3|4|6|8|12|16)(GB)?\s*[+\/]\s*)?(2|4|6|8|12|16|32|64|128|256)\s*GB\)?|\d+G\/\d+G|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(\d{1,2}[., ])?\d+( Zoll|\")\)?|\s+(1\d[., ])?\d+\s*cm|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| Force Touch|\/LASER| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|\(?Juodas\)?`)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {

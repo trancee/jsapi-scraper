@@ -15,7 +15,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var AckermannRegex = regexp.MustCompile(`(?i)(,\s*)?\d+\s*GB|(,\s*)?\(?[2345]G\)?| LTE| (Aqua Green|black|blue|glazed|green|Mist Black|pink|silver|sky)`)
+var AckermannRegex = regexp.MustCompile(`(?i)(,\s*)?\d+\s*GB|(,\s*)?\(?[2345]G\)?| LTE`)
 
 var AckermannCleanFn = func(name string) string {
 	// name = strings.NewReplacer("", "").Replace(name)
@@ -26,6 +26,12 @@ var AckermannCleanFn = func(name string) string {
 	}
 
 	s := strings.Split(name, " ")
+
+	if s[0] == "Apple" {
+		if s[1] != "iPhone" {
+			name = strings.ReplaceAll(name, "Apple ", "Apple iPhone ")
+		}
+	}
 
 	if s[0] == "Samsung" {
 		if strings.HasSuffix(name, "Xcover Pro") {
