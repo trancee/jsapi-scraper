@@ -9,7 +9,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var colorRegex = regexp.MustCompile(`(?i)([/(]?(Ancora|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Black|(Hell)?Blau|Bleu|Blue|Champagne|Charcoal|Chrome|Cloudy?|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty|Mitternacht|Moonlight|Night|Noir|Ocean|Onyx|Orange| Oro|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Roségold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Twilight|Violett|(in )?Weiss|White|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
+var colorRegex = regexp.MustCompile(`(?i)([/(]?(Ancora|Aqua|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Black|(Hell)?Blau|Bleu|Blue|Champagne|Charcoal|Chrome|Cloudy?|Clover|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Interstellar|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty?|Mitternacht|Moonlight|Navy|Night|Noir|Ocean|Onyx|Orange| Oro|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Ros[ée]gold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Twilight|Violett|(in )?Weiss|White|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
 
 // (ancora|(electric )?black|blau|chrome|Glacier|(Graphite )?gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|(in )?weiss|white)
 // | Blau| GREEN| HIMALAYA GREY| MIDNIGHT BLACK| MINT GREEN| OCEAN BLUE| Schwarz
@@ -311,6 +311,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)FieldPro`).ReplaceAllString(name, "Field Pro")
 
 		name = regexp.MustCompile(`(?i)X\s*Cover\s*(\d)`).ReplaceAllString(name, "XCover $1")
+		name = regexp.MustCompile(`\s+\d[s]$`).ReplaceAllStringFunc(name, strings.ToUpper)
 
 		// name = regexp.MustCompile(`\(\d{4}\)`).ReplaceAllString(name, "") // remove year annotation
 	}

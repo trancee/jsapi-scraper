@@ -89,6 +89,7 @@ var _skips = map[string]bool{
 	"CLEMENTONI":      true,
 	"CROSSCALL":       true,
 	"CUBOT":           true, // EXCLUDE
+	"CUSTOM":          true,
 	"CYRUS":           true,
 	"DENVER":          true,
 	"DEUTSCHE":        true,
@@ -121,6 +122,7 @@ var _skips = map[string]bool{
 	"KERKMANN":        true,
 	"KONROW":          true,
 	"KONTAKT":         true,
+	"KRUGER":          true,
 	"KRÜGER&MATZ":     true,
 	"KXD":             true, // EXCLUDE
 	"LEIOA":           true,
@@ -134,6 +136,7 @@ var _skips = map[string]bool{
 	"MAUL":            true,
 	"MAXCOM":          true,
 	"MEDIACOM":        true,
+	"MFOX":            true,
 	"MICROSOFT":       true, // EXCLUDE
 	"MIGNON":          true,
 	"MITEL":           true,
