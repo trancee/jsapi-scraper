@@ -74,6 +74,7 @@ var _skips = map[string]bool{
 	"AMPLICOMMS":      true,
 	"AURO":            true,
 	"ARTFONE":         true,
+	"ATHESI":          true,
 	"BEAFON":          true,
 	"BEGHELLI":        true,
 	"BLABLOO":         true,
@@ -125,6 +126,7 @@ var _skips = map[string]bool{
 	"KRUGER":          true,
 	"KRÜGER&MATZ":     true,
 	"KXD":             true, // EXCLUDE
+	"LANCOM":          true,
 	"LEIOA":           true,
 	"LENOVO":          true,
 	"LEXIBOOK":        true,
@@ -143,6 +145,7 @@ var _skips = map[string]bool{
 	"MOBISTEL":        true,
 	"MP":              true,
 	"MYPHONE":         true,
+	"NEFFOS":          true,
 	"NGM":             true,
 	"NOMU":            true,
 	"OGO":             true,
@@ -194,8 +197,10 @@ var _skips = map[string]bool{
 	"UNBEKANNT":       true,
 	"UNIFY":           true,
 	"WEDO":            true,
+	"WOLDER":          true,
 	"XGODY":           true, // EXCLUDE
 	"XS13":            true,
+	"YEZZ":            true,
 	"ZANCO":           true,
 	"ZEBRA":           true,
 }
