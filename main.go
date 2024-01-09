@@ -710,6 +710,7 @@ func main() {
 			ids[shop.BytesToString(key)] = true
 		}
 	}
+	// fmt.Println()
 	// fmt.Println(ids)
 
 	for name, products := range _products {
@@ -751,11 +752,17 @@ func main() {
 					product.CreationDate = time.Now().Unix()
 				}
 
-				if ((product.EURPrice > 0 && priceDiff(oldProduct.EURPrice, product.EURPrice)) ||
-					(oldProduct.RetailPrice > 0 && priceDiff(oldProduct.RetailPrice, product.RetailPrice)) ||
-					(oldProduct.Price > 0 && priceDiff(oldProduct.Price, product.Price))) &&
+				if ((oldProduct.EURPrice > 0 && product.EURPrice > 0 && oldProduct.EURPrice > product.EURPrice && priceDiff(oldProduct.EURPrice, product.EURPrice)) ||
+					(oldProduct.RetailPrice > 0 && product.RetailPrice > 0 && oldProduct.RetailPrice > product.RetailPrice && priceDiff(oldProduct.RetailPrice, product.RetailPrice)) ||
+					(oldProduct.Price > 0 && product.Price > 0 && oldProduct.Price > product.Price && priceDiff(oldProduct.Price, product.Price))) &&
 					(product.RetailPrice <= shop.ValueWorth || product.Price <= shop.ValueWorth || product.Discount >= shop.ValueDiscount) {
 					notify = true
+
+					fmt.Printf("### EUR[%v=%v:%v] Retail[%v=%v:%v:%v] Price[%v=%v:%v:%v] Discount[%.2f:%v]\n\n",
+						oldProduct.EURPrice, product.EURPrice, priceDiff(oldProduct.EURPrice, product.EURPrice),
+						oldProduct.RetailPrice, product.RetailPrice, priceDiff(oldProduct.RetailPrice, product.RetailPrice), product.RetailPrice <= shop.ValueWorth,
+						oldProduct.Price, product.Price, priceDiff(oldProduct.Price, product.Price), product.Price <= shop.ValueWorth,
+						product.Discount, product.Discount >= shop.ValueDiscount)
 
 					product.NotificationDate = time.Now().Unix()
 				}
@@ -793,18 +800,24 @@ func main() {
 	}
 
 	// fmt.Println(ids)
+	fmt.Println()
 	for id := range ids {
+		// fmt.Printf("OLD:%-50v", id)
 		var oldProduct shop.Product
 		if ok, _ := db.Has(id); ok {
 			db.Get(id, &oldProduct)
+			// fmt.Printf(" %v %v %5d", time.Unix(oldProduct.CreationDate, 0).Format(time.RFC3339), time.Unix(oldProduct.ModificationDate, 0).Format(time.RFC3339), oldProduct.Counter)
 
 			// Do not delete data if it is not older than 5 days.
 			if time.Now().Unix()-oldProduct.ModificationDate < PRODUCT_EXPIRATION {
+				// fmt.Printf(" SKIP\n")
 				continue
 			}
 		}
 
 		db.Delete(id)
+
+		fmt.Printf("%-50v %v %v %5d\n", id, time.Unix(oldProduct.CreationDate, 0).Format(time.RFC3339), time.Unix(oldProduct.ModificationDate, 0).Format(time.RFC3339), oldProduct.Counter)
 	}
 }
 

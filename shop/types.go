@@ -172,6 +172,7 @@ var _skips = map[string]bool{
 	"SKROSS":          true,
 	"SONIM":           true,
 	"SP":              true,
+	"SPARK":           true,
 	"SPC":             true,
 	"STOTZ":           true,
 	"STYRO":           true,

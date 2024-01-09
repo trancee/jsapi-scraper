@@ -9,7 +9,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var colorRegex = regexp.MustCompile(`(?i)([/(]?(Ancora|Aqua|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Black|(Hell)?Blau|Bleu|Blue|Champagne|Charcoal|Chrome|Cloudy?|Clover|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Interstellar|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty?|Mitternacht|Moonlight|Navy|Night|Noir|Ocean|Onyx|Orange| Oro|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Ros[ée]gold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Twilight|Violett|(in )?Weiss|White|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
+var colorRegex = regexp.MustCompile(`(?i)(in )?([/(]?(Ancora|Aqua|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Bianco|Black|(Hell)?Blau|Bleu|Blue?|Champagne|Charcoal|Chrome|Cloudy?|Clover|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Interstellar|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty?|Mitternacht|Moonlight|Mystic|Navy|Nero|Night|Noir|Ocean|Onyx|Orange| Oro|Pacific|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Ros[aée]gold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Türkis|Twilight|Violett|Weiss|Weiß|White|Yellow|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
 
 // (ancora|(electric )?black|blau|chrome|Glacier|(Graphite )?gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|(in )?weiss|white)
 // | Blau| GREEN| HIMALAYA GREY| MIDNIGHT BLACK| MINT GREEN| OCEAN BLUE| Schwarz
@@ -49,6 +49,7 @@ var nameMapping = map[string]string{
 	"Mini":    "mini",
 	"Mm":      "MM",
 	"NEO2":    "Neo2",
+	"Nfc":     "NFC",
 	"Oneplus": "OnePlus",
 	// "Poco":    "POCO",
 	// "Realme":  "realme",
@@ -114,7 +115,7 @@ func Model(name string) string {
 	if s[0] == "Apple" {
 		name = strings.Split(name, "/")[0]
 
-		name = regexp.MustCompile(`\s+\(?(2016|2020|2022)\)?`).ReplaceAllString(name, " ($1)")
+		name = regexp.MustCompile(`\s+SE\s*\(?(2016|2020|2022)\)?`).ReplaceAllString(name, " SE ($1)")
 		name = regexp.MustCompile(`(?i)\(?1(\.|st)\s*Gen(eration)?\.?\)?`).ReplaceAllString(name, "(2016)")
 		name = regexp.MustCompile(`(?i)\(?2(\.|nd)\s*Gen(eration)?\.?\)?`).ReplaceAllString(name, "(2020)")
 		name = regexp.MustCompile(`(?i)\(?3(\.|rd)\s*Gen(eration)?\.?\)?`).ReplaceAllString(name, "(2022)")
@@ -124,6 +125,9 @@ func Model(name string) string {
 		name = strings.ReplaceAll(name, "SE2", "SE (2020)")
 		name = strings.ReplaceAll(name, "11 (2020)", "11")
 
+		name = strings.ReplaceAll(name, "(2016) 2016", "(2016)")
+		name = strings.ReplaceAll(name, "(2020) 2020", "(2020)")
+		name = strings.ReplaceAll(name, "(2022) 2022", "(2022)")
 		name = strings.ReplaceAll(name, "(2016) (2016)", "(2016)")
 		name = strings.ReplaceAll(name, "(2020) (2020)", "(2020)")
 		name = strings.ReplaceAll(name, "(2022) (2022)", "(2022)")
@@ -206,6 +210,8 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)lite`).ReplaceAllString(name, "lite")
 
 		name = regexp.MustCompile(`(?i)\d+i$`).ReplaceAllStringFunc(name, strings.ToLower)
+
+		name = strings.ReplaceAll(name, " Gx8", " GX8")
 	}
 
 	if s[0] == "I.safe" {
@@ -289,6 +295,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)narzo`).ReplaceAllStringFunc(name, strings.ToLower)
 
 		name = regexp.MustCompile(`(?i)GT\s*(\d+)`).ReplaceAllString(name, "GT $1")
+		name = strings.ReplaceAll(name, "Neo ", "NEO ")
 
 		name = regexp.MustCompile(`(?i)\d+i`).ReplaceAllStringFunc(name, strings.ToLower)
 		name = regexp.MustCompile(`(?i)\d+[y]`).ReplaceAllStringFunc(name, strings.ToUpper)
@@ -315,13 +322,16 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)X\s*Cover\s*(\d)`).ReplaceAllString(name, "XCover $1")
 		name = regexp.MustCompile(`\s+\d[s]$`).ReplaceAllStringFunc(name, strings.ToUpper)
 
+		name = strings.ReplaceAll(name, "Samsung Note", "Samsung Galaxy Note")
+
 		// name = regexp.MustCompile(`\(\d{4}\)`).ReplaceAllString(name, "") // remove year annotation
 	}
 
 	if s[0] == "Sony" {
 		name = regexp.MustCompile(`[DF]\d{4}`).ReplaceAllString(name, "")
 
-		name = regexp.MustCompile(`(?i)\s*I+$`).ReplaceAllStringFunc(name, strings.ToUpper)
+		name = regexp.MustCompile(`(?i)\s*(III|II|IV|V|VI|VII)$`).ReplaceAllStringFunc(name, strings.ToUpper)
+		name = regexp.MustCompile(`(?i)\s*(III|II|IV|V|VI|VII)$`).ReplaceAllString(name, " $1")
 	}
 
 	if s[0] == "Vivo" {

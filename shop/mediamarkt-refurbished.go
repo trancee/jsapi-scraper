@@ -15,7 +15,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MediamarktRefurbishedRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+[2345]G|\s+\(?(mono|dual) sim\)?`)
+var MediamarktRefurbishedRegex = regexp.MustCompile(`\s+\d+\s*GB?|\s+[2345]G|\s+\(?([Mm]ono|[Dd]ual) sim\)?`)
 
 var MediamarktRefurbishedCleanFn = func(name string) string {
 	if loc := MediamarktRefurbishedRegex.FindStringSubmatchIndex(name); loc != nil {
