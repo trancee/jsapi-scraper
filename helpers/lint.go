@@ -9,7 +9,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var colorRegex = regexp.MustCompile(`(?i)(in )?([/(]?(Ancora|Aqua|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Bianco|Black|(Hell)?Blau|Bleu|Blue?|Champagne|Charcoal|Chrome|Cloudy?|Clover|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Interstellar|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty?|Mitternacht|Moonlight|Mystic|Navy|Nero|Night|Noir|Ocean|Onyx|Orange| Oro|Pacific|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Ros[aée]gold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Türkis|Twilight|Violett|Weiss|Weiß|White|Yellow|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
+var colorRegex = regexp.MustCompile(`(?i)(in )?([/(]?(Ancora|Aqua|Arctic|Astral|Astro|Atlantic|Awesome|Azul|Bamboo|Bianco|Black|(Hell ?)?Blau|Bleu|Blue?|Champagne|Charcoal|Chrome|Cloudy?|Clover|Copper|Cosmic|Cosmo|Dark|Denim|Diamond|Dusk|Electric|Elegant|Frost(ed)?|Galactic|Gelb|Glacier|Glazed|Glowing|Gold|Gradient|Granite|Graphite|Gr[ae]y|Green|Grau|Gravity|Gris|Grün|Himalaya|Ic[ey]|Interstellar|Lagoon|Lake|Lavender|Light|(Dunkel)?Lila|Luminous|Marine|Matte|Metallic|Meteorite|Meteor|Midday|Midnight|Mint|Misty?|Mitternacht|Moonlight|Mystic|Navy|Nero|Night|Noir|Ocean|Onyx|Orange| Oro|Pacific|Pastel|Pearl|Pebble|Pepper|Petrol|Pink|Polar(stern)?|Prism|Purple|Red Edition|Rosa|Rose|Ros[aée]gold|Rosso|Rot|Sage|Sandy|Schwarz|Shadow|Silber|Silver|Sky|Space|Stargaze|Starlight|Steel|Sterling|Sunburst|Sunrise|Sunset|Titanium|Titan|Türkis|Twilight|Violett|Weiss|Weiß|White|Yellow|Zeus)\b[\s\/]?)(Azur|Black|Blau|Bleen|Blue|Bronze|Dream|Gold|Green|Gr[ae]y|Grau|Lime|Navy|Onyx|Rose|Schwarz|Silber|Silver|White)?[)]?`)
 
 // (ancora|(electric )?black|blau|chrome|Glacier|(Graphite )?gray|onyx|Pearl White|red edition|rose|(rose )?gold|nero|rosa|roségold|rosso|rot|schwarz|silber|silver|space gr[ae]y|(in )?weiss|white)
 // | Blau| GREEN| HIMALAYA GREY| MIDNIGHT BLACK| MINT GREEN| OCEAN BLUE| Schwarz
@@ -212,6 +212,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)\d+i$`).ReplaceAllStringFunc(name, strings.ToLower)
 
 		name = strings.ReplaceAll(name, " Gx8", " GX8")
+		name = strings.ReplaceAll(name, " Ne", " NE")
 	}
 
 	if s[0] == "I.safe" {
@@ -312,9 +313,10 @@ func Model(name string) string {
 
 		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFPR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 
-		name = regexp.MustCompile(`Flip\s*(\d+)`).ReplaceAllString(name, "Flip $1")
-		name = regexp.MustCompile(`Fold\s*(\d+)`).ReplaceAllString(name, "Fold $1")
-		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note $1")
+		name = regexp.MustCompile(`(?i)Z\s*Flip\s*(\d+)`).ReplaceAllString(name, "Z Flip $1")
+		name = regexp.MustCompile(`(?i)Z\s*Fold\s*(\d+)`).ReplaceAllString(name, "Z Fold $1")
+		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note$1")
+		name = regexp.MustCompile(`(?i)(Note\d+)\s+Plus`).ReplaceAllString(name, "$1+")
 		name = regexp.MustCompile(`(?i)( Galaxy)? (Tab )?([AFMS])\s*(\d+| Duos)`).ReplaceAllString(name, " Galaxy $2$3$4")
 
 		name = regexp.MustCompile(`(?i)FieldPro`).ReplaceAllString(name, "Field Pro")

@@ -126,7 +126,7 @@ var mobilezoneNamesExpected = []string{
 	"Samsung Galaxy A34",
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A54",
-	"Samsung Galaxy Note 10",
+	"Samsung Galaxy Note10",
 	"Samsung Galaxy S21",
 	"Samsung Galaxy S21 FE",
 	"Samsung Galaxy S22",

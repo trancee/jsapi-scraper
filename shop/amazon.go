@@ -53,7 +53,7 @@ var AmazonCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Huawei" || s[0] == "HUAWEI" {
-		name = regexp.MustCompile(`(i?)[A-Z]{3}-L\d{2}`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(?i)[A-Z]{3}-L\d{2}`).ReplaceAllString(name, "")
 	}
 
 	if s[0] == "Motorola" {

@@ -18,12 +18,12 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(2|4|6|8|16|32|54|64|65|128|256|265|512) ?([MG][BG]|BG|G)( RAM)?|\b6\/128\b|\/6\s+| \d"| [45] ?G| GSM| inkl\. | mit | und | [*|] | \(| \/|, |\/ | -`)
+var TuttiRegex = regexp.MustCompile(`(?i)[,-]? ?(2|4|6|8|12|16|32|54|64|65|128|256|265|512) ?([MG][BG]|BG|G)( RAM)?|\b(6|8|128|256)\/(6|8|128|256)(GB)?\b|\/6\s+| \d"| [45] ?G| GSM| inkl\. | mit | und | [*|] | \(| \/|, |\/ | -`)
 var TuttiExclusionRegex = regexp.MustCompile(`(?i)^(emporia|ericsson|htc)|galaxy (s8|s7|s5|s4|s3|s|j\d+|gt)|iph?one? ?(3gs|3g|3|s4|4s|4|5s|5c|5|6s|6|7|8)|motorola (v8|razr)|nokia|orange|samsung (galaxy (young|s|note ii|note 2|j3|ace)|mini|rex|s7|s8|s9)|sonn?y ?(err?ics?son)|swisscom|adapter|akku|alt|astuccio|atrappe|audio|bastler|bilschirmschutz|bootloop|case|cloudlocked|cover|charger|charging stand|custodia|defec?kt|display|folie|gesperrt|gigaset|hülle|kabel|kameraschutz|kinder|klapp|mainboard|nostalgie|(nur )?verpackung|panzerglas|riss|rott[io]|sammlung|scambio|scatola|screen protector|senior| set|siemens|silikon|skin|sperre|teile|vecchio|vintage|voip|zersplittert`)
 var TuttiInclusionRegex = regexp.MustCompile(`(?i)^(apple (iphone (x|se|\d{2}))|asus (zenfone|rog)|blackview (bv\d+|bl\d+|a\d+)|fairphone|google (pixel)|honor (x\d+|magic|\d+)|huawei (y\d+|p[ -]?\d+|p smart|nova|mate)|infinix|inoi (note|a\d+)|motorola (moto|edge|defy)|nothing|oneplus (nord|\d+)|oppo (reno|find|a\d+)|realme (narzo|c\d+|\d+)|samsung (galaxy [amnsxz])|sony (xperia)|vivo (y\d+|v\d+)|wiko (y\d+|view|sunny|power|fever)|xiaomi (redmi |poco|mi|\d+)|zte (blade|axon))`)
 
 var TuttiCleanFn = func(name string) string {
-	name = regexp.MustCompile(`(?i)^Original |^\+\+ | \+\+$| Entsperrt| Occass?ion|Gebrauchtes | Schnäppchen| GÜNSTIG|>BILLIG: |Cellulate |funktioniert (100%)?|Batteriekapazität( \d+%)?|COMPLETO FUNZIONA BENISSIMO|(Perfetto )?Garanzia|RESERVIERT|(in (einem )?sehr gute[nm]|in exzellente[nm]|Perfekter|(in )?Top) Zustand|ohne Kratzer|funktionstüchtig|im sehr guten Zustand|Neuwertiger zustand|mit Box|( - )?sehr guter Zustand|Hammer Geil| in ottimo stato|semplificato |Mobile Phone( - )?|Mobile?telefon (von )?| (Smart(fon|phone)|Handy)( - |:)?|Telefon(ino|o)?( per anziani)?|mobile |(leicht)? gebraucht( & gelöscht)?|(Micro-|Neuwertiges |Komfort-)?(Handy|Natel) (von |\/ |- )?|Neuwertiges |Handy\s*/\s*(Natel|Smart(fon|phone))( - |:)?|(zu )?verkaufen? ?(ein )?|Verkauf von |vendo |\(Tausche\/Verhandelbar\) |originalverpackt|neu & ungeöffnet|(in|mit|NEU und| und)? OVP|( - )?(wie )?neu(es?|wertig)?| und noch verschweisst| nie benutzt| in gute[mn] Zustand| mit Gebrauchsspuren|einwandfrei|renoviert|4 Farben|Gratisversand|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smart(fon|phon)e?( -|:)? |Burnerphone |Neuwertiges |(Usato ma )?(Praticamente )?Nuovo( |!)?| garandieschein| con vetro da sostituire| Glasschaden| HD\+|( - )?dual[ -]?sim|(\d\.)?\d Zoll|miui|Firmengerät| Apple| ESR| MagSafe| Original Taptic Engine| Original Front Kamera Module| Original Kamera Module| 4K Kamera| inkl\. Ladegerät| Gehäuse Original|Google Sperre|SIMLOCKED| Speicher|\d+% di batteria|condizioni ottime| modell|cellulare |\[DANNEGGIATO\]|(16|32|64|128|256)\+(2|3|4|6|8|12|16)GB|(2|3|4|6|8|12|16)\s*ram|(16|32|64|128|256)\s*rom|Red Product| RED$| (Android|EU)$`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`(?i)^Original |^\+\+ | \+\+$| Entsperrt| Occass?ion|Gebrauchtes | Schnäppchen| GÜNSTIG|>BILLIG: |Cellulate |funktioniert (100%)?|Batteriekapazität( \d+%)?|COMPLETO FUNZIONA BENISSIMO|(Perfetto )?Garanzia|RESERVIERT|(in (einem )?sehr gute[nm]|in exzellente[nm]|Perfekter|(in )?Top) Zustand|ohne Kratzer|funktionstüchtig|im sehr guten Zustand|Neuwertiger zustand|mit Box|( - )?sehr guter Zustand|Hammer Geil| in ottimo stato|semplificato |Mobile Phone( - )?|Mobile?telefon (von )?| (Smart(fon|phone)|Handy)( - |:)?|Telefon(ino|o)?( per anziani)?|mobile |(leicht)? gebraucht( & gelöscht)?|(Micro-|Neuwertiges |Komfort-)?(Handy|Natel) (von |\/ |- )?|Neuwertiges |Handy\s*/\s*(Natel|Smart(fon|phone))( - |:)?|(zu )?verkaufen? ?(ein )?|Verkauf von |vendo |preis verhandelbar|\(Tausche\/Verhandelbar\) |originalverpackt|neu & ungeöffnet|(in|inklusive|mit|NEU und| und)? OVP|( - )?(wie |Fabrik)?neu(es?|wertig)?| und noch verschweisst| nie benutzt| in gute[mn] Zustand| mit Gebrauchsspuren|einwandfrei|renoviert|4 Farben|Gratisversand|in Lederetui|mit Eingabestift|läuft einwandfrei| MIT GOOGLE SERVICES|(neues |Android )?Smart(fon|phon)e?( -|:)? |Burnerphone |Neuwertiges |(Usato ma )?(Praticamente )?Nuovo( |!)?| garandieschein| anno| con vetro da sostituire| Glasschaden| HD\+|( - )?dual[ -]?sim|(\d\.)?\d Zoll|miui|Firmengerät| Apple| ESR| MagSafe| Original Taptic Engine| Original Front Kamera Module| Original Kamera Module| 4K Kamera| inkl\. Ladegerät| Gehäuse Original|Google Sperre|SIMLOCKED| Speicher| di Xiaomi|\d+% di batteria|condizioni ottime| modell|cellulare |\[DANNEGGIATO\]|(16|32|64|128|256)\+(2|3|4|6|8|12|16)GB|(2|3|4|6|8|12|16)\s*ram|(16|32|64|128|256)\s*rom|Breathing Crystal|Red Product| RED$| (Android|EU)$`).ReplaceAllString(name, "")
 
 	if loc := TuttiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -45,13 +45,15 @@ var TuttiCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Honor" {
-		name = regexp.MustCompile(`(i?)PLK-[ATU]?L\d{2}[H]?`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(?i)PLK-[ATU]?L\d{2}[H]?`).ReplaceAllString(name, "")
 	}
 
 	if s[0] == "Huawei" || s[0] == "HUAWEI" {
-		name = regexp.MustCompile(`(i?)[A-Z]{3}-L\d{2}`).ReplaceAllString(name, "")
+		name = regexp.MustCompile(`(?i)[A-Z]{3}-L\d{2}`).ReplaceAllString(name, "")
 
-		name = regexp.MustCompile(`(i?)(\S)pro`).ReplaceAllString(name, "$2 Pro")
+		name = regexp.MustCompile(`(\s*)[Pp]ro`).ReplaceAllString(name, " Pro")
+
+		name = regexp.MustCompile(`(?i)New Edition`).ReplaceAllString(name, "NE")
 	}
 
 	if s[0] == "iPhone" || s[0] == "Apple" {
@@ -62,9 +64,15 @@ var TuttiCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, " 128", "")
 		name = strings.ReplaceAll(name, " 64", "")
 
-		name = regexp.MustCompile(`(XS|XR|X|11|12|13|14|15)\s*(Pro|mini)`).ReplaceAllString(name, "$1 $2")
+		name = regexp.MustCompile(`(XS|XR|X|11|12|13|14|15)\s*([Pp]ro|[Mm]ini)`).ReplaceAllString(name, "$1 $2")
 
 		name = regexp.MustCompile(` 1$`).ReplaceAllString(name, " (2016)")
+
+		name = regexp.MustCompile(`[.!]+\s*$`).ReplaceAllString(name, "")
+	}
+
+	if s[0] == "Oppo" || s[0] == "OPPO" {
+		name = regexp.MustCompile(`(?i)([X])\s+(\d+)`).ReplaceAllString(name, "$1$2")
 	}
 
 	if s[0] == "Pocophone" || s[0] == "POCOPHONE" {

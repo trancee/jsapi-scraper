@@ -33,6 +33,10 @@ var AckermannCleanFn = func(name string) string {
 		}
 	}
 
+	if s[0] == "Motorola" {
+		name = strings.ReplaceAll(name, " 454", " g54")
+	}
+
 	if s[0] == "Samsung" {
 		if strings.HasSuffix(name, "Xcover Pro") {
 			name = strings.ReplaceAll(name, "Xcover Pro", "XCover 6 Pro")
