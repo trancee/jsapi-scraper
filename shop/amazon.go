@@ -27,7 +27,7 @@ var AmazonRegex4 = regexp.MustCompile(`\s*-?\(?\d+([+\/]\d+)?\s*(GB|TB|gb)|\d\+\
 var AmazonExclusionRegex = regexp.MustCompile(`(?i)Abdeckung|Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|Clamshell|^Core|\bCover\b|Earphones|Etui|Halterung|Handschuhe|HARDCASE|Headset|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Majestic|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|SmartTag|Stand|Ständer|Stativ|Stylus|Tastatur|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var AmazonCleanFn = func(name string) string {
-	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|TA-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |Prefix : |(XIA|REA) DS | SLP|^Brodos |^Milwaukee | was-LX1|3\. Generation|Flashlight|all carriers ,|^[-0] `).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\d{5}[A-Z]{3}|RM-\d{4}|TA-\d{4}|SIPP5 |\/Motorola PA4N0106IT|MOBILE PHONE |Prefix : |(XIA|REA) DS | SLP|^Brodos |^Milwaukee |^KERDEJAR | was-LX1|3\. Generation|Flashlight|all carriers ,|^[-0] `).ReplaceAllString(name, "")
 	name = strings.NewReplacer(" ", " ", "，", ",", "（", "(", "）", ")", "–", "|", "‎", "", "Kingkong", "King Kong", "KXD Handy,", "KXD", "Mobile Phone", "", "TELEFONO MOVIL", "", "Telefonas ", " ", "Mobility", "", "Galaxy-A", "Galaxy A", "Galaxy-Xcover", "Galaxy XCover", " A 90", " A90", " M5/", " M5|", "8GBRAM128GBROM", " ", "Black Smartphone", " ", "XIA DS", "Xiaomi").Replace(name)
 	name = regexp.MustCompile(`^A34`).ReplaceAllString(name, "Samsung Galaxy A34")
 	name = AmazonRegex3.ReplaceAllString(name, "|")
@@ -57,7 +57,7 @@ var AmazonCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Motorola" {
-		name = strings.NewReplacer("Light", "Lite", " E ", " E").Replace(name)
+		name = strings.NewReplacer("Moto Edge", "Edge", "Light", "Lite", " E ", " E").Replace(name)
 	}
 
 	if s[0] == "Nothing" {
