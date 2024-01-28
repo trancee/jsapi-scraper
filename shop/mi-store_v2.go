@@ -188,7 +188,7 @@ func XXX_mistore_v2(isDryRun bool) IShop {
 					fmt.Println(price)
 				}
 
-				if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, "CHF\u00a0", ""), "'", ""), 32); err != nil {
+				if _price, err := strconv.ParseFloat(strings.NewReplacer("CHF\u00a0", "", "*", "", "'", "").Replace(price), 32); err != nil {
 					panic(err)
 				} else {
 					_product.oldPrice = float32(_price)
