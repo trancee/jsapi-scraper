@@ -179,7 +179,7 @@ func XXX_ultimus(isDryRun bool) IShop {
 						fmt.Println(price)
 					}
 
-					if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+					if _price, err := strconv.ParseFloat(strings.NewReplacer(",", "", ".-", ".00", "'", "").Replace(price), 32); err != nil {
 						panic(err)
 					} else {
 						_product.oldPrice = float32(_price)
@@ -197,7 +197,7 @@ func XXX_ultimus(isDryRun bool) IShop {
 							fmt.Println(price)
 						}
 
-						if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+						if _price, err := strconv.ParseFloat(strings.NewReplacer(",", "", ".-", ".00", "'", "").Replace(price), 32); err != nil {
 							panic(err)
 						} else {
 							_product.price = float32(_price)
