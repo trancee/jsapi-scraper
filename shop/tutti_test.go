@@ -6,6 +6,7 @@ import (
 )
 
 var tuttiNames = []string{
+	"****Galaxy Z Flip 3 5G****",
 	"++ Realme GT Neo 3T Dragon Ball Z Edition Hammer Geil ++",
 	"Iphone12 pro oro",
 	"neuwertiges iPhone XS Max Rose 256GB",
@@ -24,6 +25,7 @@ var tuttiNames = []string{
 	"Blackwew A80 2GB RAM 16GB ROM",
 	"Fairphone 1 2 Stück",
 	"Fairphone 3 in guten Zustand zu verkaufen",
+	"Für Einsteiger: iPhone SE 32Gb (1. Generation), Space Gray",
 	"Galaxy A40 (Sehr guter Zustand",
 	"gebrauchtes Xiaomi 9C",
 	"Gebrauchtes Xiaomi Redmi 7A",
@@ -61,6 +63,7 @@ var tuttiNames = []string{
 	"Huawei Y5p Smartphone NEU und OVP",
 	"Huawei Y6 - 2018 - Dual (2) SIM 16GB ATU-L21,",
 	"inoi A83 128+6GB",
+	"I-Phone 5s + AirPods inkl. Zubehör",
 	"I Phone 5 S",
 	"I Phone 5 16G, Black",
 	"I Phone 6 16 G Gold",
@@ -138,6 +141,7 @@ var tuttiNames = []string{
 	"iPhone 12. 64 GB",
 	"IPhone 12 64mg",
 	"iPhone 12 blu 128 Gb",
+	"iPhone 12 guter Zustand",
 	"iPhone 12 Mini inklusive OVP",
 	"iPhone 12 Pro in Pacific Blue",
 	"iPhone 12 Pro Max Gehäuse Original",
@@ -232,6 +236,8 @@ var tuttiNames = []string{
 	"Sony XPERIA XZ2 4k kamera",
 	"Sony Xperia Z3 Compact renoviert 4 Farben Gratisversand",
 	"Sony Xperia Z5 Premium E6883",
+	"Supper iPhone 11 Pro 256 GB Nachtgrün",
+	"Telefon Xiomi Mi Note 10 Pro - 256GB",
 	"Telefono per anziani Doro 7080",
 	"Vendo iphone 11 rosso",
 	"VENDO SAMSUNG GALAXY NUOVO A14 4G, LUGANO",
@@ -263,6 +269,7 @@ var tuttiNames = []string{
 }
 
 var tuttiNamesExpected = []string{
+	"Samsung Galaxy Z Flip 3",
 	"realme GT NEO 3T Dragon Ball Z Edition",
 	"Apple iPhone 12 Pro",
 	"Apple iPhone XS Max",
@@ -281,6 +288,7 @@ var tuttiNamesExpected = []string{
 	"Blackview A80",
 	"Fairphone 1",
 	"Fairphone 3",
+	"Apple iPhone SE",
 	"Samsung Galaxy A40",
 	"Xiaomi Redmi 9C",
 	"Xiaomi Redmi 7A",
@@ -318,6 +326,7 @@ var tuttiNamesExpected = []string{
 	"HUAWEI Y5p",
 	"HUAWEI Y6",
 	"Inoi A83",
+	"Apple iPhone 5S",
 	"Apple iPhone 5S",
 	"Apple iPhone 5",
 	"Apple iPhone 6",
@@ -392,6 +401,7 @@ var tuttiNamesExpected = []string{
 	"Apple iPhone 11",
 	"Apple iPhone 11 Pro",
 	"Apple iPhone 11 Pro Max",
+	"Apple iPhone 12",
 	"Apple iPhone 12",
 	"Apple iPhone 12",
 	"Apple iPhone 12",
@@ -489,6 +499,8 @@ var tuttiNamesExpected = []string{
 	"Sony Xperia XZ2",
 	"Sony Xperia Z3 Compact",
 	"Sony Xperia Z5 Premium",
+	"Apple iPhone 11 Pro",
+	"Xiaomi Mi Note 10 Pro",
 	"Doro 7080",
 	"Apple iPhone 11",
 	"Samsung Galaxy A14",
