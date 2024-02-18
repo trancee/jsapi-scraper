@@ -30,7 +30,8 @@ var AlltronCleanFn = func(name string) string {
 func XXX_alltron(isDryRun bool) IShop {
 	const _name = "Alltron"
 	// const _url =     "https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar&searchEarlyFilter=true&format=json"
-	_url := fmt.Sprintf("https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar|||price_standard:::%.f~~~%.f&searchEarlyFilter=true&format=json", ValueMinimum, ValueMaximum)
+	// _url := fmt.Sprintf("https://alltron.ch/api/v1/catalog/search?path=/telco-ucc/mobiltelefonie/smartphones/smartphone&limit=192&sortProducts=priceasc&filters=availability:::Verfügbar|||price_standard:::%.f~~~%.f&searchEarlyFilter=true&format=json", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://alltron.ch/api/v1/catalog/search?path=%%2Ftelco-ucc%%2Fmobiltelefonie%%2Fsmartphones%%2Fsmartphone&limit=192&page=1&sortProducts=priceasc&filters=availability%%3A%%3A%%3AVerf%%C3%%BCgbar%%7C%%7C%%7Cprice_standard%%3A%%3A%%3A%.f~~~%.f&listView=listshop&searchEarlyFilter=true&format=json", ValueMinimum, ValueMaximum)
 
 	const _api = "https://alltron.ch/api/v1/products/multiple-tiles/"
 
@@ -101,8 +102,11 @@ func XXX_alltron(isDryRun bool) IShop {
 			)
 		}
 		req.Header.Set("Accept-Language", "de")
+		req.Header.Set("Accept", "application/json")
 		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+		req.Header.Set("Cache-Control", "no-cache")
+		req.Header.Set("Pragma", "no-cache")
+		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
 		req.Header.Set("X-Requested-With", "XMLHttpRequest")
 
 		client := &http.Client{}
@@ -171,8 +175,11 @@ func XXX_alltron(isDryRun bool) IShop {
 			)
 		}
 		req.Header.Set("Accept-Language", "de")
+		req.Header.Set("Accept", "application/json")
 		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
+		req.Header.Set("Cache-Control", "no-cache")
+		req.Header.Set("Pragma", "no-cache")
+		req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
 		req.Header.Set("X-Requested-With", "XMLHttpRequest")
 
 		client := &http.Client{}
