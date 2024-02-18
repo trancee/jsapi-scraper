@@ -6,6 +6,8 @@ import (
 )
 
 var techinnNames = []string{
+	"Xiaomi Redmi 12 Note 11S 4GB/64GB 6.4´´ Dual Sim",
+
 	"Apple iPhone 11 128GB 6.1´´",
 	"Apple iPhone 11 256GB 6.1´´ Refurbished",
 	"Apple iPhone 11 4GB/64GB 6.1´´ Dual Sim Refurbished",
@@ -405,6 +407,8 @@ var techinnNames = []string{
 }
 
 var techinnNamesExpected = []string{
+	"Xiaomi Redmi Note 11S",
+
 	"Apple iPhone 11",
 	"Apple iPhone 11",
 	"Apple iPhone 11",

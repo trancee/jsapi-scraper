@@ -150,6 +150,7 @@ var _skips = map[string]bool{
 	"NEFFOS":          true,
 	"NGM":             true,
 	"NOMU":            true,
+	"OEM":             true,
 	"OGO":             true,
 	"OLYMPIA":         true,
 	"ORDISSIMO":       true,

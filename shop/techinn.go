@@ -59,6 +59,8 @@ var TechInnCleanFn = func(name string) string {
 
 	if s[0] == "Xiaomi" {
 		name = strings.ReplaceAll(name, " Plus", "+")
+
+		name = strings.ReplaceAll(name, "Xiaomi Redmi 12 Note 11S", "Xiaomi Redmi Note 11S")
 	}
 
 	if s[0] == "Zte" {

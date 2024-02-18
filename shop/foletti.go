@@ -14,7 +14,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var FolettiRegex = regexp.MustCompile(`(?i)\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+\/])?\d+\s*GB\)?|\s*\d+G|(2|4|6|8|12)\/(64|128|256?B?)(GB)?|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|inch|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|inkl\.|LTE|NFC|smartphone)`)
+var FolettiRegex = regexp.MustCompile(`(?i)\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+\/])?\d+\s*GB\)?|\s*[45]G|(2|4|6|8|12)\/(64|128|256?B?)(GB)?|\s+\(?20[12]\d\)?|\s*\d+([,.]\d+)?\s*(cm|inch|\")|\d{4,5}\s*mAh|\s+20[12]\d|\s+(Hybrid|Dual\W(SIM|Sim)|(EE )?Enterprise( Edition)?( CH)?|inkl\.|LTE|NFC|smartphone)`)
 var FolettiExclusionRegex = regexp.MustCompile(`(?i)Abdeckung|Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|Clamshell|^Core|\bCover\b|Earphones|Etui|Fernauslöser|Gimbal|Halterung|Handschuhe|HARDCASE|Headset|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Majestic|Näh(faden|garn)|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|Schutzglas|SmartTag|Stand|Ständer|Stativ|Stick|Stylus|Tastatur|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var FolettiCleanFn = func(name string) string {
@@ -24,7 +24,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE| EE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM0009PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE| EE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 
@@ -42,6 +42,8 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
+		name = regexp.MustCompile(`SM-A057G(Z[KS]U)?`).ReplaceAllString(name, "A05s")
+
 		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Za-z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
 			name = strings.ReplaceAll(name, part, "")
 

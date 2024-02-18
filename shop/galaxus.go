@@ -18,7 +18,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?((2|3|4|6|8|12|16|32)(GB)?\s*[+\/]\s*)?(2|4|6|8|12|16|32|64|128|256)\s*GB\)?|\d+G\/\d+G|(32)gb|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(\d{1,2}[., ])?\d+( Zoll|\")\)?|\s+(1\d[., ])?\d+\s*cm|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| Force Touch|\/LASER| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|RM-\d{4}|TA-\d{4}|\(?Juodas\)?| \. `)
+var GalaxusRegex = regexp.MustCompile(`, | [+-] |\s+\d+\/\d+|\s*\d+G?\+\d+G?|\s*\(?(\s*[+\/]\s*)?((1|2|3|4|6|8|12|16|32)(GB)?\s*[+\/]\s*)?(1|2|4|6|8|12|16|32|64|128|256)\s*GB( RAM)?\)?|(16|32|64)-(1|2|3|4)-(4G|5G)|\d+G\/\d+G|(32)gb|\s+\(?20[12]\d\)?|\s+[45]g|\s+X\d{3}F|\s+\(V\d{4}\)|\d{4,} mAh|\s+\(?(\d{1,2}[., ])?\d+( Zoll|\")\)?|\s+(1\d[., ])?\d+\s*cm|\s+\(?\d\.\d+( Zoll|\")\s*\)?| DS\s*\d|\s+((EE )?Enterprise Edition( CH)?)| Master( Edition)?| DE| EU| Force Touch| modrá|\/LASER| LTE| NFC| OLED| (Dual|DUAL)[ -](Sim|SIM)|Value Edition|RM-\d{4}|TA-\d{4}|\(?Juodas\)?| \. `)
 
 var GalaxusCleanFn = func(name string) string {
 	if loc := GalaxusRegex.FindStringSubmatchIndex(name); loc != nil {
@@ -26,7 +26,7 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU|\s+\d)?(\s+NE)?(\s+Phone)?|\s+I9505|\s+[A]\d{3}[B]| XT\d{4}-\d+|\/(2|4|6|8|12)\/(64|128|256)|( Blackview| Graues)? Smart(fon|phone)( Blackview| oppo| ZTE)?| Smartfon|^Vodafone |^TIM |^TE Connectivity |HON DS |OPP DS | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE( MOTOROLA)?|Motorola Smartfon | Handy| OEM| TCT| VoLTE| \+ Huawei| Outdoor| Bluetooth Speaker| Android| Limited|Telefon(as)?|Inapa|\(Snapdragon\)|( Porsche)? Design| czarny| pomarańczowy|-puhelin| zielony| Supplier did not provide product name`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU|\s+\d)?(\s+NE)?(\s+Phone)?|\s+I9505|\s+I9195I|\s+[A]\d{3}[B]| XT\d{4}-\d+|\/(2|4|6|8|12)\/(64|128|256)|( Blackview| Graues)? Smart(fon|phone)( Blackview| oppo| ZTE)?| Smartfon|^Vodafone |^TIM |^TE Connectivity |HON DS |OPP DS | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE( MOTOROLA)?|Motorola Smartfon | Handy| OEM| TCT| VoLTE| \+ Huawei| Outdoor| Bluetooth Speaker| Android| Limited|Telefon(as)?|Inapa|\(Snapdragon\)|( Porsche)? Design| czarny| pomarańczowy|-puhelin| zielony| Supplier did not provide product name`).ReplaceAllString(name, "")
 	name = strings.NewReplacer("Xiaomi M5s", "Xiaomi POCO M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master", "SAM DS ", "SAMSUNG ", "GAL ", "GALAXY ", "HOT205G", "HOT 20 5G ", "SE2020", "SE 2020", "TCL 40 40SE", "TCL 40SE", "Xiaomi Xia ", "Xiaomi ", "Motorola 41", "Motorola Moto G41", " CE3", " CE 3", "A57s 4", "A57s", "2nd Gen", "2020").Replace(name)
 	name = strings.TrimSpace(name)
 
@@ -62,6 +62,7 @@ var GalaxusCleanFn = func(name string) string {
 	}
 
 	if s[0] == "realme" {
+		name = strings.ReplaceAll(name, "realme 53", "realme C53")
 		name = strings.ReplaceAll(name, "realme SM ", "")
 		name = strings.ReplaceAll(name, "-Y", "Y")
 	}

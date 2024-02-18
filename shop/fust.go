@@ -21,7 +21,7 @@ import (
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/weitere-smartphones-und-handy-366.html?shop_comparatorkey=9-1&shop_nrofrecs=12
 // https://www.fust.ch/de/r/pc-tablet-handy/smartphone/apple-iphone-530.html?shop_comparatorkey=7-1&shop_nrofrecs=12&brand=Apple&ff1878=4G%20%2F%20LTE%7C5G&price=%7B%22from%22%3A399%2C%22to%22%3A500%7D&showAllFacets=true
 
-var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\d+\s*GB?)\b|\s+((EE )?Enterprise Edition( CH)?|(New )?(Blk|Slv)|c\.teal|e\.graphite|n\.blue)`)
+var FustRegex = regexp.MustCompile(`(\s*[-,–]\s+)|(\b(2|3)\s*-\s*)?(\d+\s*GB?)\b|\s+((EE )?Enterprise Edition( CH)?|(New )?(Blk|Slv)|c\.teal|e\.graphite|n\.blue)`)
 
 var FustCleanFn = func(name string) string {
 	if loc := FustRegex.FindStringSubmatchIndex(name); loc != nil {
