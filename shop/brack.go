@@ -1,6 +1,7 @@
 package shop
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"net/http"
@@ -156,8 +157,8 @@ func XXX_brack(isDryRun bool) IShop {
 	}
 	// fmt.Println(BytesToString(_body))
 
-	if body := regexp.MustCompile(`window.competec.products.data = {.*?};`).Find(_body); body != nil {
-		data := body[32 : len(body)-1]
+	if body := regexp.MustCompile(`<script type="application/json" id="b2c-search-products">(.*?)</script>`).Find(_body); body != nil {
+		data := body[bytes.IndexByte(body, byte('{')) : bytes.LastIndexByte(body, byte('}'))+1]
 
 		var skus map[string]any
 		if err := sonnet.Unmarshal(data, &skus); err != nil {
