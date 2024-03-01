@@ -102,7 +102,8 @@ func main() {
 		_mutex := &sync.RWMutex{}
 
 		for _, _shop := range []shop.IShop{
-			shop.XXX_ackermann(isDryRun),
+			// shop.XXX_ackermann(isDryRun),
+			shop.XXX_ackermann_v2(isDryRun),
 			shop.XXX_alltron(isDryRun),
 			shop.XXX_alternate(isDryRun),
 			shop.XXX_amazon(isDryRun),

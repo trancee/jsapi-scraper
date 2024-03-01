@@ -100,7 +100,7 @@ func XXX_galaxus(isDryRun bool) IShop {
 	const _name = "Galaxus"
 	const _url = "https://www.galaxus.ch/api/graphql/product-type-filter-products"
 
-	const _debug = true
+	const _debug = false
 	const _tests = false
 
 	testCases := map[string]string{}
