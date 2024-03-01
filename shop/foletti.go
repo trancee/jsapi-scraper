@@ -42,7 +42,10 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
-		name = regexp.MustCompile(`SM-A057G(Z[KS]U)?`).ReplaceAllString(name, "A05s")
+		// SM-A057GZKU
+		// SM-A057GLGU
+		// SM-A057G/DSN
+		name = regexp.MustCompile(`SM-A057G([LZ][GKS]U)?(\/DSN)?`).ReplaceAllString(name, "A05s")
 
 		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Za-z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
 			name = strings.ReplaceAll(name, part, "")
@@ -202,7 +205,7 @@ func XXX_foletti(isDryRun bool) IShop {
 				}
 				_product.model = model
 
-				if brand != "o2" && !(brand == "Huawei" && strings.HasPrefix(title, "Honor")) {
+				if brand != "o2" && !(brand == "Huawei" && strings.HasPrefix(title, "Honor")) && !strings.HasPrefix(brand, "tecXL") {
 					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
 						_product.title = strings.ReplaceAll(brand, " Mobility", "") + " " + _product.title
 					}

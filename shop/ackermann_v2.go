@@ -35,6 +35,7 @@ var AckermannV2CleanFn = func(name string) string {
 
 	if s[0] == "Motorola" {
 		name = strings.ReplaceAll(name, " 454", " g54")
+		name = strings.ReplaceAll(name, "¹³", "13")
 	}
 
 	if s[0] == "Samsung" {

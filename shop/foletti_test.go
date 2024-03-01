@@ -7,6 +7,7 @@ import (
 
 var folettiNames = []string{
 	"Apple iPhone X 64GB silber Premium Refurbished #GOECO",
+	"Apple iPhone 11 64GB black (Refurbished) iOS",
 	"Blackview BV4900 Pro 14.5 cm (5.7) Dual SIM Android 10.0 4G Micro-USB 4 GB 64 GB 5580 mAh Black",
 	"Blackview BV5200 5180 mAh 4/32 GB Green smartphone",
 	"Blackview BV7100 6/128 Black",
@@ -99,6 +100,8 @@ var folettiNames = []string{
 	"Samsung SM-M336B/DS 16.8 cm (6.6) Dual SIM 5G USB Type-C 6 GB 128 GB 5000 mAh Blue",
 	"Samsung Galaxy A53 ( A536B) 5G 128GB Enterprise Edition Black",
 	"Samsung Galaxy SM-A057GZKU 17 cm (6.7) Dual SIM Android 13 4G USB Type-C 4 GB 64 GB 5000 mAh Black",
+	"Samsung Galaxy SM-A057GLGU 17 cm (6.7) Dual SIM Android 13 4G USB Type-C 4 GB 64 GB 5000 mAh Green",
+	"Samsung Galaxy SM-A057G/DSN 17 cm (6.7) Dual SIM Android 13 4G USB Type-C 4 GB 128 GB 5000 mAh Silver",
 	"Samsung Galaxy SM-M336B/DS 16.8 cm (6.6) Dual SIM 5G USB Type-C 6 GB 128 GB 5000 mAh Brown",
 	"Samsung Galaxy Xcover 5 EE 64GB 4RAM 4G DE black",
 	"Samsung Galaxy XCover 5 Enterprise Edition CH - Bildschirmdiagonale: 5.3 - Betriebssystem: Android - Detailfarbe: Schwarz - Speicherkapazität total: 64 GB - Verbauter Arbeitsspeicher: 4 GB - Induktionsladung: Nein",
@@ -111,6 +114,8 @@ var folettiNames = []string{
 	"Smartfon Samsung Galaxy A14 (A146P) 5G ds 4/64GB Silver",
 	"Smartfon  Xiaomi Redmi 10C 3/64GB Zielony",
 	"SMARTPHONE MOTOROLA MOTO G53 5G 4/128 ARCTIC SILVER",
+	"Sony Xperia 10 V lavendel",
+	"Sony Xperia 10 V salbeigrün",
 	"TCL 3189 HIMALAYA GREY .",
 	"vivo Y01 elegant black",
 	"vivo Y21s midnight blue",
@@ -152,6 +157,7 @@ var folettiNames = []string{
 
 var folettiNamesExpected = []string{
 	"Apple iPhone X",
+	"Apple iPhone 11",
 	"Blackview BV4900 Pro",
 	"Blackview BV5200",
 	"Blackview BV7100",
@@ -244,6 +250,8 @@ var folettiNamesExpected = []string{
 	"Samsung Galaxy M33",
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A05s",
+	"Samsung Galaxy A05s",
+	"Samsung Galaxy A05s",
 	"Samsung Galaxy M33",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",
@@ -256,6 +264,8 @@ var folettiNamesExpected = []string{
 	"Samsung Galaxy A14",
 	"Xiaomi Redmi 10C",
 	"motorola moto g53",
+	"Sony Xperia 10 V",
+	"Sony Xperia 10 V",
 	"TCL 3189",
 	"vivo Y01",
 	"vivo Y21s",
