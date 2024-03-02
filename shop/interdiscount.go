@@ -15,7 +15,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\s+[2345]G| LTE| Enterprise Edition`) // |\s+\(?20[12]\d\)?
+var InterdiscountRegex = regexp.MustCompile(`\(\d+\s*GB?|\(\d\.\d{1,2}"|\s+[2345]G| LTE| Enterprise Edition`) // |\s+\(?20[12]\d\)?
 
 var InterdiscountCleanFn = func(name string) string {
 	if loc := InterdiscountRegex.FindStringSubmatchIndex(name); loc != nil {
