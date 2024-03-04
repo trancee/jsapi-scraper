@@ -274,9 +274,9 @@ func XXX_galaxus(isDryRun bool) IShop {
 
 		_results = append(_results, _result[0].Data.ProductType.FilterProducts.Products.Results...)
 
-		if len(_result[0].Data.ProductType.FilterProducts.Products.Results) < 200 {
-			break
-		}
+		// if len(_result[0].Data.ProductType.FilterProducts.Products.Results) < 200 {
+		// 	break
+		// }
 	}
 
 	r := regexp.MustCompile("[^a-z0-9  -]")
