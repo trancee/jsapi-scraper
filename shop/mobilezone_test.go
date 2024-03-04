@@ -136,7 +136,7 @@ var mobilezoneNamesExpected = []string{
 	"Samsung Galaxy S23 Ultra",
 	"Samsung Galaxy S23+",
 	"Samsung Galaxy XCover 5",
-	"Samsung Galaxy Z Flip 4",
+	"Samsung Galaxy Z Flip4",
 	"Samsung Galaxy Z Fold 3",
 	"Samsung Galaxy Z Fold 4",
 	"Wiko Power U20",

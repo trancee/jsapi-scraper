@@ -409,7 +409,7 @@ var conradNamesExpected = []string{
 	"Samsung Galaxy XCover Field Pro",
 	"Samsung Galaxy XCover Pro",
 	"Samsung Galaxy XCover 6 Pro",
-	"Samsung Galaxy Z Flip 4",
+	"Samsung Galaxy Z Flip4",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",
 	"Sony Xperia 5 III",

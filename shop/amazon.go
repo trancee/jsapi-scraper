@@ -75,8 +75,8 @@ var AmazonCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
-		// name = strings.ReplaceAll(name, "SM-A057GZSU", "A05s")
-		name = regexp.MustCompile(`SM-A057G(Z[KS]U)?`).ReplaceAllString(name, "A05s")
+		// SM-A057GLGU
+		name = regexp.MustCompile(`SM-A057G([LZ][GKS][UV])?(\/DSN)?`).ReplaceAllString(name, "A05s")
 
 		name = regexp.MustCompile(`\s+(SM-)?[AFMS]\d{3}[BFPR]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = strings.ReplaceAll(name, "Samsung A", "Samsung Galaxy A")

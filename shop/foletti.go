@@ -44,8 +44,9 @@ var FolettiCleanFn = func(name string) string {
 	if s[0] == "Samsung" {
 		// SM-A057GZKU
 		// SM-A057GLGU
+		// SM-A057GLGV
 		// SM-A057G/DSN
-		name = regexp.MustCompile(`SM-A057G([LZ][GKS]U)?(\/DSN)?`).ReplaceAllString(name, "A05s")
+		name = regexp.MustCompile(`SM-A057G([LZ][GKS][UV])?(\/DSN)?`).ReplaceAllString(name, "A05s")
 
 		if part := regexp.MustCompile(`\(?\s*(SM-)?[AGMS]\d{3}[A-Za-z]*(\/DSN?)?\)?`).FindString(name); len(part) > 0 {
 			name = strings.ReplaceAll(name, part, "")

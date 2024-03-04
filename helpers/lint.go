@@ -319,7 +319,7 @@ func Model(name string) string {
 		name = regexp.MustCompile(`(?i)\s+(SM-)?[AFGMNS]\d{3}[BFPR]?[N]?(\/DSN?)?`).ReplaceAllString(name, "")
 		name = regexp.MustCompile(`(?i)\s+(GT-)?[N]\d{4}`).ReplaceAllString(name, "")
 
-		name = regexp.MustCompile(`(?i)Z\s*Flip\s*(\d+)`).ReplaceAllString(name, "Z Flip $1")
+		name = regexp.MustCompile(`(?i)Z\s*Flip\s*(\d+)`).ReplaceAllString(name, "Z Flip$1")
 		name = regexp.MustCompile(`(?i)Z\s*Fold\s*(\d+)`).ReplaceAllString(name, "Z Fold $1")
 		name = regexp.MustCompile(`Note\s*(\d+)`).ReplaceAllString(name, "Note$1")
 		name = regexp.MustCompile(`(?i)(Note\d+)\s+Plus`).ReplaceAllString(name, "$1+")
