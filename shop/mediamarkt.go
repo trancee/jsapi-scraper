@@ -13,10 +13,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MediamarktRegex = regexp.MustCompile(` - |\s+[2345]G|\s+((EE )?Enterprise Edition( CH)?)`)
+var MediamarktRegex = regexp.MustCompile(` - |\s+[2345]G|\s+CH$`)
 
 var MediamarktCleanFn = func(name string) string {
-	name = strings.NewReplacer("ONE PLUS", "ONEPLUS").Replace(name)
+	name = strings.NewReplacer("ONE PLUS", "ONEPLUS", "Enterprise Edition", "EE").Replace(name)
 
 	if loc := MediamarktRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

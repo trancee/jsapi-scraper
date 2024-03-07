@@ -192,7 +192,7 @@ var mediamarktNamesExpected = []string{
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A53",
 	"Samsung Galaxy A53",
-	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5 EE",
 	"Wiko Power U10",
 	"Wiko Y52",
 	"Wiko Y52",

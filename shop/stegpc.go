@@ -16,9 +16,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var StegRegex = regexp.MustCompile(` - |\s+\(?(\d+\/)?\d+\s*[GT]B|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Vegan Leather|\s+((EE )?Enterprise Edition( CH)?)`)
+var StegRegex = regexp.MustCompile(` - |\s+\(?(\d+\/)?\d+\s*[GT]B|\s+\(?\d+(\.\d+)?"|\s+\(?20[12]\d\)?|\s+\(?[2345]G\)?| Dual SIM| Vegan Leather|\s+CH$`)
 
 var StegCleanFn = func(name string) string {
+	name = strings.NewReplacer("Enterprise Edition", "EE").Replace(name)
+
 	name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
 
 	if loc := StegRegex.FindStringSubmatchIndex(name); loc != nil {

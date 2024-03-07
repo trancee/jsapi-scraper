@@ -167,7 +167,7 @@ var interdiscountNamesExpected = []string{
 	"Samsung Galaxy S23+",
 	"Samsung Galaxy S23+",
 	"Samsung Galaxy S23+",
-	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5 EE",
 	"Xiaomi Redmi 10 2022",
 	"Xiaomi Redmi Note 11",
 	"Xiaomi Redmi Note 11 Pro",

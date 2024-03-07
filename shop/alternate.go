@@ -13,9 +13,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?[^T])|\s+\(SM-A\d+\)| Enterprise Edition`)
+var AlternateRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?[^T])|\s+\(SM-A\d+\)`)
 
 var AlternateCleanFn = func(name string) string {
+	name = strings.NewReplacer("Enterprise Edition", "EE").Replace(name)
+
 	if loc := AlternateRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]

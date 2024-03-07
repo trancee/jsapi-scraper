@@ -15,9 +15,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var VenovaRegex = regexp.MustCompile(`(?i)[,-]? ?(6|8|16|32|64|128|256) ?([MG]B|BG)| \d"| [45]G|\d+(,\d+)? cm|(EE )?Enterprise( Edition)?( CH)?`)
+var VenovaRegex = regexp.MustCompile(`(?i)[,-]? ?(6|8|16|32|64|128|256) ?([MG]B|BG)| \d"| [45]G|\d+(,\d+)? cm|\s*CH$`)
 
 var VenovaCleanFn = func(name string) string {
+	name = strings.NewReplacer("Enterprise Edition", "EE").Replace(name)
+
 	if loc := VenovaRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]

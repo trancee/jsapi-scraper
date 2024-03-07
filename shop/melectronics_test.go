@@ -197,7 +197,7 @@ var melectronicsNamesExpected = []string{
 	"Samsung Galaxy S21 FE",
 	"Samsung Galaxy S21 FE",
 	"Samsung Galaxy S21 FE",
-	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5 EE",
 	"Samsung Galaxy Z Flip3",
 	"Xiaomi 11 Lite",
 	"Xiaomi 11T",

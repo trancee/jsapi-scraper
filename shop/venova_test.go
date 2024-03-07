@@ -33,7 +33,7 @@ var venovaNamesExpected = []string{
 	"Nokia 7.2",
 	"Samsung Galaxy A32",
 	"Samsung Galaxy A32",
-	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5 EE",
 	"Samsung Galaxy M13",
 	"Samsung Galaxy M13",
 	"Samsung Galaxy A13",

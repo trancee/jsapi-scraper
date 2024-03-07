@@ -15,10 +15,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM|(EE )?Enterprise Edition( CH)?`)
+var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM|\s*CH$`)
 
 var OrderflowCleanFn = func(name string) string {
-	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen", "Motorola Mobility ", "").Replace(name)
+	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen", "Motorola Mobility ", "", "Enterprise Edition", "EE").Replace(name)
 
 	if loc := OrderflowRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

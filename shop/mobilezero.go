@@ -13,11 +13,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MobilezeroRegex = regexp.MustCompile(`(?i),| - |\([^\d]|(\d+\/)?(2|4|6|8|16|32|64|128|256)GB|\(?[345]G\)?|Dual(-SIM)?| DS| Enterprise Editi?on| EE| EU$`)
+var MobilezeroRegex = regexp.MustCompile(`(?i),| - |\([^\d]|(\d+\/)?(2|4|6|8|16|32|64|128|256)GB|\(?[345]G\)?|Dual(-SIM)?| DS| EU$`)
 var MobilezeroExclusionRegex = regexp.MustCompile(`(?i)Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|^Core|\bCover\b|Earphones|Etui|Halterung|Hülle|Kopfhörer|Ladegerät|Ladestation|Magnet|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|SmartTag|Stand|Ständer|Stativ|Stylus|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var MobilezeroCleanFn = func(name string) string {
-	name = strings.NewReplacer("Appel", "Apple", "Blackshark", "Black Shark", "Motorla", "Motorola").Replace(name)
+	name = strings.NewReplacer("Appel", "Apple", "Blackshark", "Black Shark", "Motorla", "Motorola", "Enterprise Edition", "EE", "Enterprise Editon", "EE").Replace(name)
 	name = regexp.MustCompile(`(?i)\b(Black|Blau|Gold|Graphite Grey|Grau|Pale Grey|Pink)\b`).ReplaceAllString(name, "")
 	name = strings.TrimSpace(name)
 

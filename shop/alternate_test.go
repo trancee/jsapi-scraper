@@ -337,7 +337,7 @@ var alternateNamesExpected = []string{
 	"Samsung Galaxy A23",
 	"Samsung Galaxy A23",
 	"Samsung Galaxy A23",
-	"Samsung Galaxy A32",
+	"Samsung Galaxy A32 EE",
 	"Samsung Galaxy A33",
 	"Samsung Galaxy A33",
 	"Samsung Galaxy A52s",

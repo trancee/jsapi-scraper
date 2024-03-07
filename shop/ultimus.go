@@ -13,12 +13,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var UltimusRegex = regexp.MustCompile(`(?i)Refurbished|(Outdoor-|Robustes |Rugged )?Smartphone|(2|4|6|8|12)GB|[345]G|\s+((EE )?Enterprise Edition( CH)?)`)
+var UltimusRegex = regexp.MustCompile(`(?i)Refurbished|(Outdoor-|Robustes |Rugged )?Smartphone|(2|4|6|8|12)GB|[345]G|\s+CH$`)
 var UltimusExclusionRegex = regexp.MustCompile(`(?i)Adapter|Armband|Ch?inch|Christbaum|Etui|Flip-Phone|Halterung|Halter|Kfz|Kopfhörer|Ladegerät|Ladestation|Netzkabel|Objektiv|Robustes Smartphone$|Saugnapf|Schutzfolie|Smartphone mit 100MP Kamera|Speichererweiterung|Stativ|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum|Windschutzscheibe`)
 
 var UltimusCleanFn = func(name string) string {
-	name = strings.ReplaceAll(name, "Xioami", "Xiaomi")
-	name = strings.ReplaceAll(name, "Robustes Smartphone ", "")
+	name = strings.NewReplacer("Xioami", "Xiaomi", "Robustes Smartphone ", "", "Enterprise Edition", "EE").Replace(name)
 
 	if loc := UltimusRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

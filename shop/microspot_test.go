@@ -187,7 +187,7 @@ var microspotNamesExpected = []string{
 	"Samsung Galaxy S23+",
 	"Samsung Galaxy S23+",
 	"Samsung Galaxy S23+",
-	"Samsung Galaxy XCover 5",
+	"Samsung Galaxy XCover 5 EE",
 	"Xiaomi 12",
 	"Xiaomi 12T Pro",
 	"Xiaomi 13",

@@ -315,7 +315,7 @@ var stegNamesExpected = []string{
 	"Samsung Galaxy M33",
 	"Samsung Galaxy M33",
 	"Samsung Galaxy M33",
-	"Samsung Galaxy XCover 4S",
+	"Samsung Galaxy XCover 4S EE",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy XCover 5",
 	"Samsung Galaxy A14",

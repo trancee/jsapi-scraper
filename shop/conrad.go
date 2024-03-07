@@ -16,10 +16,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|EU |\d+\s*GB|\s*\d+G|\s+\(Version 20[12]\d\)|\s+\(Grade [A-Z]\)|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|((EE )?Enterprise Edition( CH)?)|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|Refurbished|\(PRODUCT\) RED™|Weiß)`)
+var ConradRegex = regexp.MustCompile(`\s*[-,]\s+|\W\+\s+|EU |\d+\s*GB|\s*\d+G|\s+\(Version 20[12]\d\)|\s+\(Grade [A-Z]\)|\s+(((Senioren-|senior |Industrie |Outdoor )?Smartphone)|\s*CH$|Satellite|Ex-geschütztes Handy|Fusion( Holiday Edition)?|Refurbished|\(PRODUCT\) RED™|Weiß)`)
 
 var ConradCleanFn = func(name string) string {
-	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Edge Neo 40", "Edge 40 Neo", "Samsung XCover", "Samsung Galaxy XCover", "Renewd® ", "", "refurbished", "", "5G Smartphone", "").Replace(name)
+	name = strings.NewReplacer(" Phones ", " ", " Mini iPhone", " Mini", "Edge20", "Edge 20", "Edge Neo 40", "Edge 40 Neo", "Samsung XCover", "Samsung Galaxy XCover", "Enterprise Edition", "EE", "Renewd® ", "", "refurbished", "", "5G Smartphone", "").Replace(name)
 
 	if loc := ConradRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

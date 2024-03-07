@@ -17,10 +17,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+(Enterprise Edition( CH)?)| Dual`)
+var ManorRegex = regexp.MustCompile(`, |\d\+\d+GB|\s+\(?[2345]G\)?|\d+(,\d)? cm| \d[.,]\d|(\d+\s*GB?)|(SM-)?[AFGMS]\d{3}[BFR]?(\/DSN?)?| XT\d{4}-\d+|\s+EE |\s+CH$| Dual`)
 
 var ManorCleanFn = func(name string) string {
-	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "NOKIA Nokia ", "Nokia ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ").Replace(name)
+	name = strings.NewReplacer(" NOK ", " ", " Smartphone Pack ", " ", " Smartphone Bundle ", " ", " Pack Smartphone Vivo", " ", "NOKIA Nokia ", "Nokia ", "OPPO OPPO ", "OPPO ", "OPPO Oppo ", "OPPO ", "Enterprise Edition", "EE").Replace(name)
 
 	name = regexp.MustCompile(`\s{2,}`).ReplaceAllString(name, " ")
 

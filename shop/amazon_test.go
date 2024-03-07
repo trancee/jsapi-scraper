@@ -470,7 +470,7 @@ var amazonNamesExpected = []string{
 	"Samsung Galaxy A05s",
 	"Samsung Galaxy A05s",
 	"Samsung Galaxy A05s",
-	"Samsung Galaxy XCover Pro",
+	"Samsung Galaxy XCover Pro EE",
 	"Samsung Galaxy XCover 6 Pro",
 	"Samsung Galaxy XCover 6 Pro",
 	"Samsung Galaxy A33",

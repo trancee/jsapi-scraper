@@ -192,7 +192,7 @@ var ultimusNamesExpected = []string{
 	"Samsung Galaxy A32",
 	"Samsung Galaxy A33",
 	"Samsung Galaxy A34",
-	"Samsung Galaxy A34",
+	"Samsung Galaxy A34 EE",
 	"Samsung Galaxy A53",
 	"Samsung Galaxy M13",
 	"Samsung Galaxy M23",

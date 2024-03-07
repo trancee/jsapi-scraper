@@ -15,9 +15,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| LTE| Enterprise Edition`)
+var MicrospotRegex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| LTE`)
 
 var MicrospotCleanFn = func(name string) string {
+	name = strings.NewReplacer("Enterprise Edition", "EE").Replace(name)
+
 	if loc := MicrospotRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]

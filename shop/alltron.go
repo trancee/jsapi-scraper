@@ -14,10 +14,10 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+((EE )?Enterprise Edition( CH)?)`)
+var AlltronRegex = regexp.MustCompile(`(\s*[-,]\s+)|(\d+\s*GB?)|\s+CH$`)
 
 var AlltronCleanFn = func(name string) string {
-	name = strings.NewReplacer(" Phones ", " ", "Recommerce Switzerland SA ", "", "3. Gen.", "(2022)").Replace(name)
+	name = strings.NewReplacer(" Phones ", " ", "Recommerce Switzerland SA ", "", "3. Gen.", "(2022)", "Enterprise Edition", "EE").Replace(name)
 
 	if loc := AlltronRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
