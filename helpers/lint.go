@@ -264,7 +264,8 @@ func Model(name string) string {
 	}
 
 	if s[0] == "Nothing" {
-		name = regexp.MustCompile(`-?\(?(\d+)\)?`).ReplaceAllString(name, "($1)")
+		name = regexp.MustCompile(`-?\(?(\d+[Aa]?)\)?`).ReplaceAllString(name, "($1)")
+		name = regexp.MustCompile(`\(\d+[Aa]?\)`).ReplaceAllStringFunc(name, strings.ToLower)
 	}
 
 	if s[0] == "Oukitel" {
