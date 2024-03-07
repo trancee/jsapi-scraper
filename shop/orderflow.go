@@ -15,7 +15,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM|\s*CH$`)
+var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM|, |\s*CH$`)
 
 var OrderflowCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen", "Motorola Mobility ", "", "Enterprise Edition", "EE").Replace(name)
@@ -214,7 +214,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 
 			results := traverse(doc, "div", "class", "ps-3")
 			if result, ok := text(results); ok {
-				if x := regexp.MustCompile(`(\d+)‐(\d+) \/ (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
+				if x := regexp.MustCompile(`(\d+)‐(\d+) / (\d+)`).FindStringSubmatch(result); x != nil && x[2] == x[3] {
 					break
 				}
 			}

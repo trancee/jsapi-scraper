@@ -19,11 +19,11 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var TechInnRegex = regexp.MustCompile(`(?i)(\d{1,2}\/)?\d{1,3}[GT]b|(\d\.)?\d{1,2}´´|[345]G|Grade [ABC]| LTE| Dual Sim| Refurbished`)
+var TechInnRegex = regexp.MustCompile(`(?i)(\d{1,2}/)?\d{1,3}[GT]b|(\d\.)?\d{1,2}´´|[345]G|Grade [ABC]| LTE| Dual Sim| Refurbished`)
 
 var TechInnCleanFn = func(name string) string {
 	name = strings.NewReplacer("Enterprise Edition", "EE").Replace(name)
-	// name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(\/DSN)?\)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
+	// name = regexp.MustCompile(`^Renewd | \(?(SM-)?[AGMS]\d{3}[A-Z]*(/DSN)?\)?| XT\d{4}-\d+`).ReplaceAllString(name, "")
 
 	if loc := TechInnRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)

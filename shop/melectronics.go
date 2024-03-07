@@ -14,7 +14,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?[2345]G\)?|\s*,?\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+CH$| DS`) // |\s+\(?20[12]\d\)?
+var MelectronicsRegex = regexp.MustCompile(` - |\s+\(?[2345]G\)?|,?\s*,?\(?(\d+( ?GB)?\+)?\d+ ?GB\)?|\s+CH$| DS`)
 
 var MelectronicsCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 3th ", " 3rd Gen. ", "A53 s", "A53s", "Enterprise Edition", "EE").Replace(name)
