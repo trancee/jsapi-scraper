@@ -71,7 +71,7 @@ func Title(name string) string {
 }
 
 func Lint(name string) string {
-	if loc := colorRegex.FindStringSubmatchIndex(strings.ReplaceAll(name, "ß", "ss")); loc != nil {
+	if loc := colorRegex.FindStringSubmatchIndex(strings.NewReplacer("ß", "ss", "é", "e").Replace(name)); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
 		name = name[:loc[0]]
 	}
