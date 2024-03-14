@@ -120,6 +120,10 @@ func XXX_alternate(isDryRun bool) IShop {
 
 			for item := productList.FirstChild.NextSibling; item != nil; item = item.NextSibling.NextSibling {
 				// fmt.Println(item)
+				for item.DataAtom.String() != "a" {
+					item = item.NextSibling.NextSibling
+					// fmt.Println(item)
+				}
 
 				_product := _Response{}
 
@@ -163,12 +167,12 @@ func XXX_alternate(isDryRun bool) IShop {
 				// fmt.Println(currentPrice)
 
 				price, _ := text(currentPrice)
-				price = strings.ReplaceAll(strings.TrimSpace(strings.TrimPrefix(price, "CHF")), ",", ".")
+				price = strings.TrimSpace(strings.TrimPrefix(price, "CHF"))
 				if _debug {
 					fmt.Println(price)
 				}
 
-				if _price, err := strconv.ParseFloat(strings.ReplaceAll(strings.ReplaceAll(price, ".-", ".00"), "'", ""), 32); err != nil {
+				if _price, err := strconv.ParseFloat(strings.NewReplacer(",", "", ".-", ".00", "'", "").Replace(price), 32); err != nil {
 					panic(err)
 				} else {
 					_product.oldPrice = float32(_price)
