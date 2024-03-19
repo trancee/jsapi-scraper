@@ -168,11 +168,12 @@ func XXX_alternate(isDryRun bool) IShop {
 
 				price, _ := text(currentPrice)
 				price = strings.TrimSpace(strings.TrimPrefix(price, "CHF"))
+				price = strings.NewReplacer(".", "", ",", ".", ".-", ".00", "'", "").Replace(price)
 				if _debug {
 					fmt.Println(price)
 				}
 
-				if _price, err := strconv.ParseFloat(strings.NewReplacer(",", "", ".-", ".00", "'", "").Replace(price), 32); err != nil {
+				if _price, err := strconv.ParseFloat(price, 32); err != nil {
 					panic(err)
 				} else {
 					_product.oldPrice = float32(_price)
