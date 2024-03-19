@@ -1,16 +1,15 @@
 package shop
 
 import (
+	"bytes"
 	"fmt"
-	"io"
 	"net/http"
+	"net/http/httputil"
 	"os"
+	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
-	"time"
-
-	"golang.org/x/net/http2"
 
 	helpers "jsapi-scraper/helpers"
 )
@@ -108,6 +107,22 @@ var AmazonCleanFn = func(name string) string {
 	return helpers.Lint(name)
 }
 
+type loggingTransport struct{}
+
+func (s *loggingTransport) RoundTrip(r *http.Request) (*http.Response, error) {
+	bytes, _ := httputil.DumpRequestOut(r, true)
+
+	resp, err := http.DefaultTransport.RoundTrip(r)
+	// err is returned after dumping the response
+
+	respBytes, _ := httputil.DumpResponse(resp, true)
+	bytes = append(bytes, respBytes...)
+
+	fmt.Printf("%s\n", bytes)
+
+	return resp, err
+}
+
 func XXX_amazon(isDryRun bool) IShop {
 	const _name = "Amazon"
 	// const _url = "https://www.amazon.de/s?k=SIM-Free+&+Unlocked+Mobile+Phones&i=electronics&rh=n:15326400031&s=price-asc-rank&c=ts&qid=1678973932&ts_id=15326400031&ref=sr_st_price-asc-rank&ds=v1:pfeFMDyZ0TLfvHopZLWOdvFgfEilJ0+V3TRCd10npNE"
@@ -117,6 +132,7 @@ func XXX_amazon(isDryRun bool) IShop {
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902993031&s=price-asc-rank&dc&c=ts&qid=1679414936&rnid=26902991031&page=%d"
 	// const _url = "https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_n_deal_type:26902994031,p_6:A3JWKAKR8XB7XF&s=price-asc-rank&dc&c=ts&qid=1680358125&rnid=26902991031&page=%d"
 	_url := fmt.Sprintf("https://www.amazon.de/s?k=Simlockfreie+Handys&i=electronics&rh=n:15326400031,p_n_free_shipping_eligible:20943778031,p_6:A3JWKAKR8XB7XF&dc=&c=ts&qid=1681744980&rnid=389294011&low-price=%.f&high-price=%.f&page=%%d", ValueMinimum, ValueMaximum)
+
 	const _debug = false
 
 	type _Response struct {
@@ -152,60 +168,99 @@ func XXX_amazon(isDryRun bool) IShop {
 		} else {
 			url := fmt.Sprintf(_url, p)
 
-			req, err := http.NewRequest(http.MethodGet, url, nil)
-			if err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, url)
-				return NewShop(
-					_name,
-					_url,
+			// req, err := http.NewRequest(http.MethodGet, url, nil)
+			// if err != nil {
+			// 	// panic(err)
+			// 	fmt.Printf("[%s] %s (%s)\n", _name, err, url)
+			// 	return NewShop(
+			// 		_name,
+			// 		_url,
 
-					nil,
-				)
+			// 		nil,
+			// 	)
+			// }
+
+			// // req.Header.Set("Host", "www.amazon.de")
+			// // req.Header.Set("User-Agent", "XX")
+			// req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+			// req.Header.Set("Accept", "*/*")
+			// // req.Header.Set("Accept-Encoding", "identity")
+			// // req.Header.Set("Connection", "Keep-Alive")
+
+			// // f, err := os.OpenFile(".sslkeylog", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+			// // if err != nil {
+			// // 	panic(err)
+			// // }
+			// // defer f.Close()
+
+			// client := &http.Client{
+			// 	Transport: &http2.Transport{
+			// 		DisableCompression:         true,
+			// 		AllowHTTP:                  true,
+			// 		StrictMaxConcurrentStreams: true,
+
+			// 		TLSClientConfig: &tls.Config{
+			// 			// KeyLogWriter:  f,
+			// 			Renegotiation: tls.RenegotiateFreelyAsClient,
+			// 		},
+			// 	},
+			// 	// Transport: &loggingTransport{},
+
+			// 	// Transport: &http2.Transport{},
+			// 	// Timeout:   10 * time.Second,
+			// }
+			// resp, err := client.Do(req)
+			// if err != nil {
+			// 	// panic(err)
+			// 	fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
+			// 	return NewShop(
+			// 		_name,
+			// 		_url,
+
+			// 		nil,
+			// 	)
+			// }
+			// defer resp.Body.Close()
+
+			// if resp.StatusCode != http.StatusOK {
+			// 	// panic(resp.StatusCode)
+			// 	fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
+			// 	return NewShop(
+			// 		_name,
+			// 		_url,
+
+			// 		nil,
+			// 	)
+			// }
+
+			// if body, err := io.ReadAll(resp.Body); err != nil {
+			// 	// panic(err)
+			// 	fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
+			// 	return NewShop(
+			// 		_name,
+			// 		_url,
+
+			// 		nil,
+			// 	)
+			// } else {
+			// 	_body = body
+			// }
+
+			cmd := exec.Command("curl", "--compressed", url)
+
+			cmdOutput := &bytes.Buffer{}
+			cmd.Stdout = cmdOutput
+
+			// if err := cmd.Start(); err != nil {
+			// 	panic(err)
+			// }
+			// cmd.Wait()
+
+			if err := cmd.Run(); err != nil {
+				panic(err)
 			}
 
-			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36")
-
-			client := &http.Client{
-				Transport: &http2.Transport{},
-				Timeout:   10 * time.Second,
-			}
-			resp, err := client.Do(req)
-			if err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, req.URL)
-				return NewShop(
-					_name,
-					_url,
-
-					nil,
-				)
-			}
-			defer resp.Body.Close()
-
-			if resp.StatusCode != http.StatusOK {
-				// panic(resp.StatusCode)
-				fmt.Printf("[%s] %d: %s (%s)\n", _name, resp.StatusCode, resp.Status, resp.Request.URL)
-				return NewShop(
-					_name,
-					_url,
-
-					nil,
-				)
-			}
-
-			if body, err := io.ReadAll(resp.Body); err != nil {
-				// panic(err)
-				fmt.Printf("[%s] %s (%s)\n", _name, err, resp.Request.URL)
-				return NewShop(
-					_name,
-					_url,
-
-					nil,
-				)
-			} else {
-				_body = body
-			}
+			_body = cmdOutput.Bytes()
 
 			os.WriteFile(path+fn, _body, 0664)
 		}
