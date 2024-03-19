@@ -26,7 +26,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Telekom-Aktion |Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 
@@ -224,7 +224,7 @@ func XXX_foletti(isDryRun bool) IShop {
 				}
 				_product.model = model
 
-				if brand != "o2" && !((brand == "Hua" || brand == "Huawei") && strings.HasPrefix(title, "Honor")) && !strings.HasPrefix(brand, "tecXL") {
+				if brand != "o2" && brand != "#GOECO" && !((brand == "Hua" || brand == "Huawei") && strings.HasPrefix(title, "Honor")) && !strings.HasPrefix(brand, "tecXL") {
 					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
 						_product.title = strings.ReplaceAll(brand, " Mobility", "") + " " + _product.title
 					}

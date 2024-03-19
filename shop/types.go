@@ -126,6 +126,7 @@ var _skips = map[string]bool{
 	"KONROW":          true,
 	"KONTAKT":         true,
 	"KRUGER":          true,
+	"KRUGER&MATZ":     true,
 	"KRÜGER&MATZ":     true,
 	"KXD":             true, // EXCLUDE
 	"LANCOM":          true,
