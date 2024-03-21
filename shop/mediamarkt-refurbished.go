@@ -156,13 +156,21 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 				title, _ := text(itemTitle)
 				// fmt.Println(title)
 
-				itemAttribute := traverse(product, "div", "class", "product-item-attribute")
-				// fmt.Println(itemAttribute)
+				if title == "" {
+					itemTitle := traverse(itemLink, "span", "class", "no-refurb")
+					// fmt.Println(itemTitle)
 
-				attribute, _ := text(itemAttribute)
-				// fmt.Println(attribute)
-				title += " " + attribute
-				// title = strings.TrimSpace(strings.Split(title, "(")[0])
+					title, _ = text(itemTitle)
+					// fmt.Println(title)
+				}
+
+				// itemAttribute := traverse(product, "div", "class", "product-item-attribute")
+				// // fmt.Println(itemAttribute)
+
+				// attribute, _ := text(itemAttribute)
+				// // fmt.Println(attribute)
+				// title += " " + attribute
+				// // title = strings.TrimSpace(strings.Split(title, "(")[0])
 				if _debug {
 					fmt.Println(title)
 				}
@@ -171,7 +179,7 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 				priceBox := traverse(product, "div", "class", "price-box")
 				// fmt.Println(priceBox)
 
-				productId, _ := attr(priceBox.Attr, "data-product-id")
+				productId, _ := attr(item.Attr, "data-product-id")
 				if _debug {
 					fmt.Println(productId)
 				}
@@ -181,7 +189,11 @@ func XXX_mediamarkt_refurbished(isDryRun bool) IShop {
 				if _item.Name == "" {
 					continue
 				}
-				_product.title = fmt.Sprintf("%s %s", _item.Category, _product.title)
+				if _item.Category == false {
+					_product.title = strings.ReplaceAll(_product.title, "Refurbished ", "")
+				} else {
+					_product.title = fmt.Sprintf("%s %s", _item.Category, _product.title)
+				}
 
 				model := MediamarktRefurbishedCleanFn(_product.title)
 				if _debug {
