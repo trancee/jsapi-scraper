@@ -26,7 +26,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Telekom-Aktion |Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Telekom-Aktion (Telekom-Aktion )?|Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 
