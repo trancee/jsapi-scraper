@@ -119,7 +119,7 @@ var TuttiCleanFn = func(name string) string {
 		name = regexp.MustCompile(`(?i)\b(\d{1,2})\s+([C])\b`).ReplaceAllString(name, "$1$2")
 	}
 	if s[0] == "Xiaomi" {
-		if s[1] == "9C" {
+		if len(s) > 1 && s[1] == "9C" {
 			name = strings.ReplaceAll(name, "9C", "Redmi 9C")
 		}
 
