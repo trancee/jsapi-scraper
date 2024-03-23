@@ -33,7 +33,7 @@ func XXX_alternate(isDryRun bool) IShop {
 	// const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_-2=true&filter_16536=5&s=price_asc&page=%d"
 	// const _url = "https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_16536=5&s=price_asc&page=%d"
 	// _url := fmt.Sprintf("https://www.alternate.ch/Smartphone/Smartphone-Marken?t=18356&filter_416=177&filter_16536=5&s=price_asc&pr1=%.f&pr2=%.f&page=%%d", ValueMinimum, ValueMaximum)
-	_url := fmt.Sprintf("https://www.alternate.ch/Alle-Smartphones?t=18352&s=price_asc&pr1=%.f&pr2=%.f&filter_-2=true&filter_16536=5&page=%%d", ValueMinimum, ValueMaximum)
+	_url := fmt.Sprintf("https://www.alternate.ch/Smartphone/Alle-Smartphones?t=18352&s=price_asc&pr1=%.f&pr2=%.f&filter_-2=true&filter_16536=5&page=%%d", ValueMinimum, ValueMaximum)
 
 	const _debug = false
 	const _tests = false
