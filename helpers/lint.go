@@ -240,7 +240,7 @@ func Model(name string) string {
 
 		// name = regexp.MustCompile(`(?i)motorola`).ReplaceAllStringFunc(name, strings.ToLower)
 
-		if len(s) > 1 && s[1] == "Moto" && s[2] == "Edge" {
+		if len(s) > 2 && s[1] == "Moto" && s[2] == "Edge" {
 			name = strings.ReplaceAll(name, "moto ", "")
 		}
 
