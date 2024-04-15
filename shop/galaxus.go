@@ -225,8 +225,9 @@ func XXX_galaxus(isDryRun bool) IShop {
 				)
 			}
 			req.Header.Set("Content-Type", "application/json")
-			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
+			req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36")
 			req.Header.Set("Origin", "https://www.galaxus.ch")
+			req.Header.Set("Referer", "https://www.galaxus.ch/de/s1/producttype/smartphone-24?so=5")
 
 			client := &http.Client{}
 			resp, err := client.Do(req)
