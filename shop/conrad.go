@@ -32,6 +32,10 @@ var ConradCleanFn = func(name string) string {
 		name = strings.ReplaceAll(name, " Gigaset", "")
 	}
 
+	if s[0] == "Xiaomi" {
+		name = strings.ReplaceAll(name, "Xiaomi 13 C", "Xiaomi Redmi 13C")
+	}
+
 	return helpers.Lint(name)
 }
 

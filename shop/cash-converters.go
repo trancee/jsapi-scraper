@@ -17,7 +17,7 @@ var CashConvertersRegex = regexp.MustCompile(`(?i),|(\d+/)?(2|4|6|8|16|32|64|128
 
 var CashConvertersCleanFn = func(name string) string {
 	name = strings.NewReplacer(" - ", " ").Replace(name)
-	name = regexp.MustCompile(`(?i)Portable|(Samsung )?Reconditionné|Rouge|Téléphone(\s*:\s*)?|: `).ReplaceAllString(name, "")
+	name = regexp.MustCompile(`(?i)Portable|(Samsung )?Reconditionné|\(?(Blanc|Rouge)\)?|Téléphone(\s*:\s*)?|: `).ReplaceAllString(name, "")
 	name = strings.TrimSpace(name)
 
 	if loc := CashConvertersRegex.FindStringSubmatchIndex(name); loc != nil {

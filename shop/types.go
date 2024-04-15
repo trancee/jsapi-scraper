@@ -95,6 +95,7 @@ var _skips = map[string]bool{
 	"CUBOT":           true, // EXCLUDE
 	"CUSTOM":          true,
 	"CYRUS":           true,
+	"DENSO":           true,
 	"DENVER":          true,
 	"DEUTSCHE":        true,
 	"DOOGEE":          true, // EXCLUDE
@@ -116,6 +117,7 @@ var _skips = map[string]bool{
 	"HAMMER":          true,
 	"HISENSE":         true,
 	"HOP":             true,
+	"HOTWAV":          true,
 	"HP":              true,
 	"I.SAFE":          true,
 	"IBASSO":          true,
@@ -164,6 +166,7 @@ var _skips = map[string]bool{
 	"PEAQ":            true,
 	"POLAROID":        true,
 	"POWERVISION":     true,
+	"PREMIER":         true,
 	"PRIMO":           true,
 	"PUNKT.":          true,
 	"QUBO":            true,

@@ -53,6 +53,8 @@ var TechInnCleanFn = func(name string) string {
 	}
 
 	if s[0] == "Samsung" {
+		name = strings.ReplaceAll(name, " DS", "")
+
 		if s[1] == "Z" {
 			name = strings.ReplaceAll(name, "Samsung ", "Samsung Galaxy ")
 		}

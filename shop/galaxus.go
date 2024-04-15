@@ -29,14 +29,18 @@ var GalaxusCleanFn = func(name string) string {
 		name = name[:loc[0]]
 	}
 
-	name = regexp.MustCompile(`\s+[2345]G(\s+EU|\s+\d)?(\s+NE)?(\s+Phone)?|\s+I9505|\s+I9195I|\s+[A]\d{3}[B]| XT\d{4}-\d+|/(2|4|6|8|12)/(64|128|256)|( Blackview| Graues)? Smart(fon|phone)( Blackview| oppo| ZTE)?|(realme)? Smartfon|^Vodafone |^TIM |^TE Connectivity |HON DS |OPP DS | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE( MOTOROLA)?|Motorola Smartfon | Handy| OEM| TCT| VoLTE| \+ Huawei| Outdoor| Bluetooth Speaker| Android| Limited|Telefon(as)?|Inapa|\(Snapdragon\)|( Porsche)? Design|Smaragdgrün| czarny| pomarańczowy|-puhelin| stříbrná| zielony| Supplier did not provide product name| UC$`).ReplaceAllString(name, "")
-	name = strings.NewReplacer("OPPO OPPO", "OPPO", "Redmit", "Redmi", "Xiaomi M5s", "Xiaomi POCO M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master", "SAM DS ", "SAMSUNG ", "GAL ", "GALAXY ", "HOT205G", "HOT 20 5G ", "SE2020", "SE 2020", "TCL 40 40SE", "TCL 40SE", "Xiaomi Xia ", "Xiaomi ", "Motorola 41", "Motorola Moto G41", "Motorola 22", "Motorola Moto G22", " CE3", " CE 3", "A57s 4", "A57s", "EE Enterprise Edition", "EE", "Enterprise Edition", "EE", "2nd Gen", "2020").Replace(name)
+	name = regexp.MustCompile(`\s+[2345]G(\s+EU|\s+\d)?(\s+NE)?(\s+Phone)?|\s+I9505|\s+I9195I|\s+[A]\d{3}[B]| XT\d{4}-\d+|/(2|4|6|8|12)/(64|128|256)|( Blackview| Graues)? Smart(fon|phone)( Blackview| oppo| ZTE)?|(realme)? Smartfon|^Vodafone |^(Xiaomi )?TIM |^TE Connectivity |HON DS |OPP DS | Snapdragon| Black| 2 ”| MOBILE PHONE| SMARTPHONE( MOTOROLA)?|Motorola Smartfon | Handy| OEM| TCT| VoLTE| \+ Huawei| Outdoor| Bluetooth Speaker| Android| Limited|Telefon(as)?|Inapa|\(Snapdragon\)|( Porsche)? Design|Smaragdgrün|Phone Recycle Solution | czarny| pomarańczowy|-puhelin| stříbrná| zielony| Supplier did not provide product name| UC$`).ReplaceAllString(name, "")
+	name = strings.NewReplacer("OPPO OPPO", "OPPO", "OPPO MOBILE", "OPPO", "Redmit", "Redmi", "Xiaomi M5s", "Xiaomi POCO M5s", "Note9", "Note 9", "Nokia Nokia ", "Nokia ", "Edge30", "Edge 30", "Rephone Rephone", "Rephone", "A1 Plus", "A1+", "Master Edition", "Master", "SAM DS ", "SAMSUNG ", "GAL ", "GALAXY ", "HOT205G", "HOT 20 5G ", "SE2020", "SE 2020", "TCL 40 40SE", "TCL 40SE", "Xiaomi Xia ", "Xiaomi ", "Motorola 41", "Motorola Moto G41", "Motorola 22", "Motorola Moto G22", " CE3", " CE 3", "A57s 4", "A57s", "EE Enterprise Edition", "EE", "Enterprise Edition", "EE", "2nd Gen", "2020").Replace(name)
 	name = strings.TrimSpace(name)
 
 	s := strings.Split(name, " ")
 
 	if s[0] == "Emporia" {
 		name = strings.NewReplacer("Super Easy", "SUPEREASY").Replace(name)
+	}
+
+	if s[0] == "Find" {
+		name = "OPPO " + name
 	}
 
 	if s[0] == "Honor" || s[0] == "HONOR" {

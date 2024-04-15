@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var UltimusRegex = regexp.MustCompile(`(?i)Refurbished|(Outdoor-|Robustes |Rugged )?Smartphone|(2|4|6|8|12)GB|[345]G|\s+CH$`)
+var UltimusRegex = regexp.MustCompile(`(?i)Refurbished|(Outdoor-|Robustes |Rugged )?Smartphone|( mit)? NFC|(2|4|6|8|12)GB|[345]G|\s+CH$`)
 var UltimusExclusionRegex = regexp.MustCompile(`(?i)Adapter|Armband|Ch?inch|Christbaum|Etui|Flip-Phone|Halterung|Halter|Kfz|Kopfhörer|Ladegerät|Ladestation|Netzkabel|Objektiv|Robustes Smartphone$|Saugnapf|Schutzfolie|Smartphone mit 100MP Kamera|Speichererweiterung|Stativ|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum|Windschutzscheibe`)
 
 var UltimusCleanFn = func(name string) string {

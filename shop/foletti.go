@@ -30,6 +30,10 @@ var FolettiCleanFn = func(name string) string {
 
 	s := strings.Split(name, " ")
 
+	if s[0] == "Motorola" {
+		name = strings.ReplaceAll(name, "PB180013SE", "")
+	}
+
 	if s[0] == "Nokia" {
 		name = strings.ReplaceAll(name, " X ", " ")
 	}
