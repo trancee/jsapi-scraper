@@ -62,6 +62,16 @@ func XXX_mobiledevice_v2(isDryRun bool) IShop {
 		} `json:"pagination"`
 	}
 
+	type _Body2 struct {
+		Products map[int]_Product `json:"products"`
+
+		Pagination struct {
+			CurrentPage int `json:"current_page"`
+			PagesCount  int `json:"pages_count"`
+			TotalItems  int `json:"total_items"`
+		} `json:"pagination"`
+	}
+
 	var _result []_Product
 	var _body []byte
 
@@ -140,11 +150,21 @@ func XXX_mobiledevice_v2(isDryRun bool) IShop {
 		// fmt.Println(BytesToString(_body))
 
 		var body _Body
+		var body2 _Body2
 		{
 			if err := sonnet.Unmarshal(_body, &body); err != nil {
-				panic(err)
+				if err := sonnet.Unmarshal(_body, &body2); err != nil {
+					panic(err)
+				}
+
+				for _, result := range body2.Products {
+					_result = append(_result, result)
+				}
+
+				body.Pagination = body2.Pagination
+			} else {
+				_result = append(_result, body.Products...)
 			}
-			_result = append(_result, body.Products...)
 		}
 		// fmt.Println(BytesToString(body))
 

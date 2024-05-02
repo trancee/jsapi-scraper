@@ -26,7 +26,6 @@ import (
 	"google.golang.org/api/option"
 	"google.golang.org/api/sheets/v4"
 
-	helpers "jsapi-scraper/helpers"
 	"jsapi-scraper/shop"
 )
 
@@ -68,9 +67,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	shop.EUR_CHF = helpers.EUR_CHF_v2()
-	fmt.Printf("EUR/CHF = %f\n", shop.EUR_CHF)
 
 	sheetId, err := strconv.Atoi(os.Getenv("SHEET_ID"))
 	if err != nil {
@@ -129,7 +125,8 @@ func main() {
 			shop.XXX_mobilezone(isDryRun),
 			shop.XXX_orderflow(isDryRun),
 			// shop.XXX_stegpc(isDryRun), // out of order
-			shop.XXX_techinn(isDryRun),
+			// shop.XXX_techinn(isDryRun),
+			shop.XXX_techinn_v2(isDryRun),
 			shop.XXX_tutti(isDryRun),
 			shop.XXX_ultimus(isDryRun),
 			shop.XXX_venova(isDryRun),
