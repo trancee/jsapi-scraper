@@ -48,7 +48,7 @@ func XXX_mobilezero(isDryRun bool) IShop {
 	const _count = 500
 	_url := fmt.Sprintf("https://www.mobilezero.ch/ajax/ProductLoader.aspx?mode=category&orderby=priceup&filterid=1549&searchterm=&skip=%%d&count=%d&languageId=2055&languageCode=de", _count)
 
-	const _debug = false
+	const _debug = true
 	const _tests = false
 
 	testCases := map[string]string{}
@@ -192,6 +192,10 @@ func XXX_mobilezero(isDryRun bool) IShop {
 
 				itemPrice := itemTitle.NextSibling.NextSibling.NextSibling.NextSibling.FirstChild
 				// fmt.Println(itemPrice)
+
+				if itemPrice.FirstChild.Data == "span" {
+					itemPrice = itemPrice.FirstChild
+				}
 
 				price, _ := text(itemPrice)
 				if _debug {
