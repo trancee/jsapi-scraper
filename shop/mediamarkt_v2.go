@@ -50,6 +50,8 @@ func XXX_mediamarkt_v2(isDryRun bool) IShop {
 
 		oldPrice float32
 		price    float32
+
+		discount float32
 	}
 
 	var _result []_Response
@@ -232,6 +234,12 @@ func XXX_mediamarkt_v2(isDryRun bool) IShop {
 					if _debug {
 						fmt.Println(discount)
 					}
+
+					if _discount, err := strconv.ParseFloat(discount, 32); err != nil {
+						panic(err)
+					} else {
+						_product.discount = float32(_discount)
+					}
 				}
 
 				if oldPrice := traverse(productPrice, "span", "class", "hdwkym"); oldPrice != nil {
@@ -305,7 +313,8 @@ func XXX_mediamarkt_v2(isDryRun bool) IShop {
 				_price = product.price
 			}
 			_savings := _price - _retailPrice
-			_discount := 100 - ((_price * 100) / _retailPrice)
+			// _discount := 100 - ((_price * 100) / _retailPrice)
+			_discount := product.discount
 
 			_link := s.ResolveURL(product.link).String()
 

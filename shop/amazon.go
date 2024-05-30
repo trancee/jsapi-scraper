@@ -52,7 +52,7 @@ var AmazonCleanFn = func(name string) string {
 		name = "Motorola " + name
 		s[0] = "Motorola"
 	}
-	if s[0] == "Motorola" || s[1] == "Motorola" {
+	if s[0] == "Motorola" || len(s) > 1 && s[1] == "Motorola" {
 		// XT2159-3
 		name = regexp.MustCompile(`(?i)[X][T]\d{4}-\d`).ReplaceAllString(name, "")
 		name = strings.NewReplacer("Moto Edge", "Edge", "Light", "Lite", " E ", " E", "Moto One", "one", "moto one", "one").Replace(name)

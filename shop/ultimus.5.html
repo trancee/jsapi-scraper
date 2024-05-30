@@ -9,368 +9,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-  <link media="all" href="https://ultimus.ch/wp-content/cache/autoptimize/css/autoptimize_00f69a2d7dca5e27675698ca947f3126.css" rel="stylesheet"><title>Smartphones &#8211; Seite 5 &#8211; ultimus.ch</title>
+  <link media="all" href="https://ultimus.ch/wp-content/cache/autoptimize/css/autoptimize_4ecf5f2da1d4eb4f727da6eec0e9944a.css" rel="stylesheet"><title>Smartphones &#8211; Seite 5 &#8211; ultimus.ch</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//static.klaviyo.com' />
 <link rel="alternate" type="application/rss+xml" title="ultimus.ch &raquo; Smartphones Kategorie Feed" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/feed/" />
-		<!-- This site uses the Google Analytics by MonsterInsights plugin v8.19.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
-							<script src="//www.googletagmanager.com/gtag/js?id=G-49JEBLHBXM"  data-cfasync="false" data-wpfc-render="false" type="text/javascript" async></script>
-			<script data-cfasync="false" data-wpfc-render="false" type="text/javascript">
-				var mi_version = '8.19.0';
-				var mi_track_user = true;
-				var mi_no_track_reason = '';
-				
-								var disableStrs = [
-										'ga-disable-G-49JEBLHBXM',
-									];
 
-				/* Function to detect opted out users */
-				function __gtagTrackerIsOptedOut() {
-					for (var index = 0; index < disableStrs.length; index++) {
-						if (document.cookie.indexOf(disableStrs[index] + '=true') > -1) {
-							return true;
-						}
-					}
 
-					return false;
-				}
 
-				/* Disable tracking if the opt-out cookie exists. */
-				if (__gtagTrackerIsOptedOut()) {
-					for (var index = 0; index < disableStrs.length; index++) {
-						window[disableStrs[index]] = true;
-					}
-				}
 
-				/* Opt-out function */
-				function __gtagTrackerOptout() {
-					for (var index = 0; index < disableStrs.length; index++) {
-						document.cookie = disableStrs[index] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-						window[disableStrs[index]] = true;
-					}
-				}
 
-				if ('undefined' === typeof gaOptout) {
-					function gaOptout() {
-						__gtagTrackerOptout();
-					}
-				}
-								window.dataLayer = window.dataLayer || [];
 
-				window.MonsterInsightsDualTracker = {
-					helpers: {},
-					trackers: {},
-				};
-				if (mi_track_user) {
-					function __gtagDataLayer() {
-						dataLayer.push(arguments);
-					}
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
 
-					function __gtagTracker(type, name, parameters) {
-						if (!parameters) {
-							parameters = {};
-						}
 
-						if (parameters.send_to) {
-							__gtagDataLayer.apply(null, arguments);
-							return;
-						}
-
-						if (type === 'event') {
-														parameters.send_to = monsterinsights_frontend.v4_id;
-							var hookName = name;
-							if (typeof parameters['event_category'] !== 'undefined') {
-								hookName = parameters['event_category'] + ':' + name;
-							}
-
-							if (typeof MonsterInsightsDualTracker.trackers[hookName] !== 'undefined') {
-								MonsterInsightsDualTracker.trackers[hookName](parameters);
-							} else {
-								__gtagDataLayer('event', name, parameters);
-							}
-							
-						} else {
-							__gtagDataLayer.apply(null, arguments);
-						}
-					}
-
-					__gtagTracker('js', new Date());
-					__gtagTracker('set', {
-						'developer_id.dZGIzZG': true,
-											});
-										__gtagTracker('config', 'G-49JEBLHBXM', {"forceSSL":"true","anonymize_ip":"true","link_attribution":"true"} );
-															window.gtag = __gtagTracker;										(function () {
-						/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
-						/* ga and __gaTracker compatibility shim. */
-						var noopfn = function () {
-							return null;
-						};
-						var newtracker = function () {
-							return new Tracker();
-						};
-						var Tracker = function () {
-							return null;
-						};
-						var p = Tracker.prototype;
-						p.get = noopfn;
-						p.set = noopfn;
-						p.send = function () {
-							var args = Array.prototype.slice.call(arguments);
-							args.unshift('send');
-							__gaTracker.apply(null, args);
-						};
-						var __gaTracker = function () {
-							var len = arguments.length;
-							if (len === 0) {
-								return;
-							}
-							var f = arguments[len - 1];
-							if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
-								if ('send' === arguments[0]) {
-									var hitConverted, hitObject = false, action;
-									if ('event' === arguments[1]) {
-										if ('undefined' !== typeof arguments[3]) {
-											hitObject = {
-												'eventAction': arguments[3],
-												'eventCategory': arguments[2],
-												'eventLabel': arguments[4],
-												'value': arguments[5] ? arguments[5] : 1,
-											}
-										}
-									}
-									if ('pageview' === arguments[1]) {
-										if ('undefined' !== typeof arguments[2]) {
-											hitObject = {
-												'eventAction': 'page_view',
-												'page_path': arguments[2],
-											}
-										}
-									}
-									if (typeof arguments[2] === 'object') {
-										hitObject = arguments[2];
-									}
-									if (typeof arguments[5] === 'object') {
-										Object.assign(hitObject, arguments[5]);
-									}
-									if ('undefined' !== typeof arguments[1].hitType) {
-										hitObject = arguments[1];
-										if ('pageview' === hitObject.hitType) {
-											hitObject.eventAction = 'page_view';
-										}
-									}
-									if (hitObject) {
-										action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
-										hitConverted = mapArgs(hitObject);
-										__gtagTracker('event', action, hitConverted);
-									}
-								}
-								return;
-							}
-
-							function mapArgs(args) {
-								var arg, hit = {};
-								var gaMap = {
-									'eventCategory': 'event_category',
-									'eventAction': 'event_action',
-									'eventLabel': 'event_label',
-									'eventValue': 'event_value',
-									'nonInteraction': 'non_interaction',
-									'timingCategory': 'event_category',
-									'timingVar': 'name',
-									'timingValue': 'value',
-									'timingLabel': 'event_label',
-									'page': 'page_path',
-									'location': 'page_location',
-									'title': 'page_title',
-								};
-								for (arg in args) {
-																		if (!(!args.hasOwnProperty(arg) || !gaMap.hasOwnProperty(arg))) {
-										hit[gaMap[arg]] = args[arg];
-									} else {
-										hit[arg] = args[arg];
-									}
-								}
-								return hit;
-							}
-
-							try {
-								f.hitCallback();
-							} catch (ex) {
-							}
-						};
-						__gaTracker.create = newtracker;
-						__gaTracker.getByName = newtracker;
-						__gaTracker.getAll = function () {
-							return [];
-						};
-						__gaTracker.remove = noopfn;
-						__gaTracker.loaded = true;
-						window['__gaTracker'] = __gaTracker;
-					})();
-									} else {
-										console.log("");
-					(function () {
-						function __gtagTracker() {
-							return null;
-						}
-
-						window['__gtagTracker'] = __gtagTracker;
-						window['gtag'] = __gtagTracker;
-					})();
-									}
-			</script>
-				<!-- / Google Analytics by MonsterInsights -->
-				<script data-cfasync="false" data-wpfc-render="false" type="text/javascript">
-			window.MonsterInsightsDualTracker.helpers.mapProductItem = function (uaItem) {
-				var prefixIndex, prefixKey, mapIndex;
-
-				var toBePrefixed = ['id', 'name', 'list_name', 'brand', 'category', 'variant'];
-
-				var item = {};
-
-				var fieldMap = {
-					'price': 'price',
-					'list_position': 'index',
-					'quantity': 'quantity',
-					'position': 'index',
-				};
-
-				for (mapIndex in fieldMap) {
-					if (uaItem.hasOwnProperty(mapIndex)) {
-						item[fieldMap[mapIndex]] = uaItem[mapIndex];
-					}
-				}
-
-				for (prefixIndex = 0; prefixIndex < toBePrefixed.length; prefixIndex++) {
-					prefixKey = toBePrefixed[prefixIndex];
-					if (typeof uaItem[prefixKey] !== 'undefined') {
-						item['item_' + prefixKey] = uaItem[prefixKey];
-					}
-				}
-
-				return item;
-			};
-
-			MonsterInsightsDualTracker.trackers['view_item_list'] = function (parameters) {
-				var items = parameters.items;
-				var listName, itemIndex, item, itemListName;
-				var lists = {
-					'_': {items: [], 'send_to': monsterinsights_frontend.v4_id},
-				};
-
-				for (itemIndex = 0; itemIndex < items.length; itemIndex++) {
-					item = MonsterInsightsDualTracker.helpers.mapProductItem(items[itemIndex]);
-
-					if (typeof item['item_list_name'] === 'undefined') {
-						lists['_'].items.push(item);
-					} else {
-						itemListName = item['item_list_name'];
-						if (typeof lists[itemListName] === 'undefined') {
-							lists[itemListName] = {
-								'items': [],
-								'item_list_name': itemListName,
-								'send_to': monsterinsights_frontend.v4_id,
-							};
-						}
-
-						lists[itemListName].items.push(item);
-					}
-				}
-
-				for (listName in lists) {
-					__gtagDataLayer('event', 'view_item_list', lists[listName]);
-				}
-			};
-
-			MonsterInsightsDualTracker.trackers['select_content'] = function (parameters) {
-				const items = parameters.items.map(MonsterInsightsDualTracker.helpers.mapProductItem);
-				__gtagDataLayer('event', 'select_item', {items: items, send_to: parameters.send_to});
-			};
-
-			MonsterInsightsDualTracker.trackers['view_item'] = function (parameters) {
-				const items = parameters.items.map(MonsterInsightsDualTracker.helpers.mapProductItem);
-				__gtagDataLayer('event', 'view_item', {items: items, send_to: parameters.send_to});
-			};
-		</script>
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script data-cfasync="false" data-wpfc-render="false" type="text/javascript" id='monsterinsights-frontend-script-js-extra'>/* <![CDATA[ */
-var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/ultimus.ch","hash_tracking":"false","v4_id":"G-49JEBLHBXM"};/* ]]> */
+<script type="text/javascript" id="wc-add-to-cart-js-extra">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Warenkorb anzeigen","cart_url":"https:\/\/ultimus.ch\/warenkorb\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
 </script>
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/jquery/jquery.min.js?ver=3.7.0' id='jquery-core-js'></script>
+
+
+<script type="text/javascript" id="woocommerce-js-extra">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2" id="wp-polyfill-inert-js"></script>
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.14.0" id="regenerator-runtime-js"></script>
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18" id="wp-hooks-js"></script>
+<script type="text/javascript" id="wpm-js-extra">
+/* <![CDATA[ */
+var wpm = {"ajax_url":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","root":"https:\/\/ultimus.ch\/wp-json\/","nonce_wp_rest":"7d7b0a0bd8","nonce_ajax":"a8714ff438"};
+/* ]]> */
+</script>
 
 <link rel="https://api.w.org/" href="https://ultimus.ch/wp-json/" /><link rel="alternate" type="application/json" href="https://ultimus.ch/wp-json/wp/v2/product_cat/144316" />
-<!-- Ultimus Global site tag (gtag.js) -->
-<script async src='https://www.googletagmanager.com/gtag/js?id=AW-723045735&l=__ultimusDataLayer'></script>
 		<script>
-		  window.__ultimusDataLayer = window.__ultimusDataLayer || [];
-		  function __ultimusGtag(){__ultimusDataLayer.push(arguments);}
-		  __ultimusGtag('js', new Date());
-		  __ultimusGtag('config', 'AW-723045735');
+		(function(h,o,t,j,a,r){
+			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			h._hjSettings={hjid:4940329,hjsv:5};
+			a=o.getElementsByTagName('head')[0];
+			r=o.createElement('script');r.async=1;
+			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 		</script>
 			<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
-	<link rel="icon" href="https://ultimus.ch/wp-content/uploads/2020/11/cropped-favicon-PSch-32x32.png" sizes="32x32" />
+	
+<!-- START Pixel Manager for WooCommerce -->
+
+		<script>
+
+			window.wpmDataLayer = window.wpmDataLayer || {}
+			window.wpmDataLayer = Object.assign(window.wpmDataLayer, {"cart":{},"cart_item_keys":{},"version":{"number":"1.43.1","pro":true,"eligible_for_updates":true,"distro":"fms","beta":false,"show":true},"pixels":{"google":{"linker":{"settings":null},"user_id":false,"ads":{"conversion_ids":{"AW-723045735":"LiwVCK_j6qcBEOea49gC"},"dynamic_remarketing":{"status":true,"id_type":"post_id","send_events_with_parent_ids":true},"google_business_vertical":"retail","phone_conversion_number":"","phone_conversion_label":""},"analytics":{"ga4":{"measurement_id":"G-49JEBLHBXM","parameters":{},"mp_active":true,"debug_mode":false,"page_load_time_tracking":false},"id_type":"post_id","eec":true},"tcf_support":false,"consent_mode":{"is_active":true,"wait_for_update":500,"ads_data_redaction":false,"url_passthrough":true},"enhanced_conversions":{"is_active":true}},"facebook":{"pixel_id":"1049322976343378","dynamic_remarketing":{"id_type":"post_id"},"capi":false,"advanced_matching":false,"exclusion_patterns":[],"fbevents_js_url":"https://connect.facebook.net/en_US/fbevents.js"}},"shop":{"list_name":"Product Category | Elektronik | Handy, Watch & Tablet | Smartphones","list_id":"product_category.elektronik.handy-watch-und-tablet.smartphones","page_type":"product_category","currency":"CHF","selectors":{"addToCart":[],"beginCheckout":[]},"order_duplication_prevention":true,"view_item_list_trigger":{"test_mode":false,"background_color":"green","opacity":0.5,"repeat":true,"timeout":1000,"threshold":0.8},"variations_output":true,"session_active":false},"page":{"id":2003427889,"title":"Motorola Moto G32 8GB","type":"product","categories":[],"parent":{"id":0,"title":"Motorola Moto G32 8GB","type":"product","categories":[]}},"general":{"user_logged_in":false,"scroll_tracking_thresholds":[],"page_id":2003427889,"exclude_domains":[],"server_2_server":{"active":false,"ip_exclude_list":[]},"consent_management":{"explicit_consent":false}}})
+
+		</script>
+
+		
+<!-- END Pixel Manager for WooCommerce -->
+<link rel="icon" href="https://ultimus.ch/wp-content/uploads/2020/11/cropped-favicon-PSch-32x32.png" sizes="32x32" />
 <link rel="icon" href="https://ultimus.ch/wp-content/uploads/2020/11/cropped-favicon-PSch-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://ultimus.ch/wp-content/uploads/2020/11/cropped-favicon-PSch-180x180.png" />
 <meta name="msapplication-TileImage" content="https://ultimus.ch/wp-content/uploads/2020/11/cropped-favicon-PSch-270x270.png" />
+<!-- <script data-jsd-embedded data-key="ee5ea4ae-bbef-4e36-857f-2d509aa58260" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script> -->
 </head>
 
 <body class="archive paged tax-product_cat term-smartphones term-144316 paged-5 theme-ultimus_v3 woocommerce woocommerce-page woocommerce-no-js">
   
-<script>
-  __ultimusGtag('event', 'view_item_list', {
-      'value': 6021.8,
-      'items': [{'id': 2002757180, 'google_business_vertical': 'retail'},{'id': 2002609526, 'google_business_vertical': 'retail'},{'id': 2002605254, 'google_business_vertical': 'retail'},{'id': 2002605086, 'google_business_vertical': 'retail'},{'id': 2002646821, 'google_business_vertical': 'retail'},{'id': 2002613955, 'google_business_vertical': 'retail'},{'id': 2002633331, 'google_business_vertical': 'retail'},{'id': 2002609680, 'google_business_vertical': 'retail'},{'id': 2002646828, 'google_business_vertical': 'retail'},{'id': 2002606122, 'google_business_vertical': 'retail'},{'id': 2002609644, 'google_business_vertical': 'retail'},{'id': 2002605230, 'google_business_vertical': 'retail'},{'id': 2002609246, 'google_business_vertical': 'retail'},{'id': 2002608573, 'google_business_vertical': 'retail'},{'id': 2002754962, 'google_business_vertical': 'retail'},{'id': 2002608980, 'google_business_vertical': 'retail'},{'id': 2002609271, 'google_business_vertical': 'retail'},{'id': 2002613278, 'google_business_vertical': 'retail'},{'id': 2002780652, 'google_business_vertical': 'retail'},{'id': 2002603397, 'google_business_vertical': 'retail'},{'id': 2002613968, 'google_business_vertical': 'retail'},{'id': 2002655388, 'google_business_vertical': 'retail'},{'id': 2002609661, 'google_business_vertical': 'retail'},{'id': 2002755324, 'google_business_vertical': 'retail'},
-]});</script>
   
   <div id="page" class="site">
 
     <aside id="top-bar" class="top-bar" role="complementary">
       <div>60 Tage Rückgabe</div>
       <div>Kauf auf Rechnung</div>
-      <div><a href="https://g.page/r/CXXAIg_n89EfEB0" title="Bewertet mit 4.8 basierend auf 115 Kundenbewertungen" target="_blank">
-        <div class="star-rating" role="img" aria-label="Bewertet mit 4.8 von 5"><span style="width:96%">Bewertet mit <strong class="rating">4.8</strong> von 5, basierend auf <span class="rating">115</span> Kundenbewertungen</span></div>        (4.8) 115 Kundenbewertungen</a>
+      <div><a href="https://g.page/r/CXXAIg_n89EfEB0" title="Bewertet mit 4.7 basierend auf 279 Kundenbewertungen" target="_blank">
+        <div class="star-rating" role="img" aria-label="Bewertet mit 4.7 von 5"><span style="width:94%">Bewertet mit <strong class="rating">4.7</strong> von 5, basierend auf <span class="rating">279</span> Kundenbewertungen</span></div>        (4.7) 279 Kundenbewertungen</a>
       </div>
         
     </aside>
@@ -417,8 +132,7 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
           <div class="main-header-buttonbar-cart-icon">
             <a id="ultimus_main_cart_link-0" class="ultimus_cart_icon_link" href="https://ultimus.ch/warenkorb/">
               <h2><i class="u-icon icon-cart"></i></h2>
-              <div id="ultimus-cart-count"></div>
-            </a>
+              <div id="ultimus-cart-count" class="empty"></div>            </a>
           </div>
         </div>
       </div>
@@ -427,17 +141,18 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
     <div id="site-container" class="site-container">
       <div id="primary" class="content-area">
         <main id="main" class="site-main">
-        <div class="ultimus-breadcrumb"><nav class="woocommerce-breadcrumb" aria-label="breadcrumbs"><a href="https://ultimus.ch">Startseite</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/">Elektronik</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/">Handy, Watch &amp; Tablet</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/">Smartphones</a><span class="breadcrumb-separator"> / </span>Seite 5</nav></div><header class="woocommerce-products-header">
+        
+<div class="ultimus-breadcrumb"><nav class="woocommerce-breadcrumb" aria-label="breadcrumbs"><a href="https://ultimus.ch">Startseite</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/">Elektronik</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/">Handy, Watch &amp; Tablet</a><span class="breadcrumb-separator"> / </span><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/">Smartphones</a><span class="breadcrumb-separator"> / </span>Seite 5</nav></div><header class="woocommerce-products-header">
 			<h1 class="woocommerce-products-header__title page-title">Smartphones</h1>
 	
 	</header>
-<div class="woocommerce-notices-wrapper"></div><div class="ultimus_product_archive_header"></div><div id="ultimus_product_filters" class="ultimus_product_filters">  <div id="ultimus_delivery_filter_widget" class="ultimus_filter_widget" data-min_delivery="1" data-max_delivery="30">
+<div class="woocommerce-notices-wrapper"></div><div class="ultimus_product_archive_header"></div><div id="ultimus_product_filters" class="ultimus_product_filters">  <div id="ultimus_delivery_filter_widget" class="ultimus_filter_widget" data-min_delivery="0" data-max_delivery="30">
     <div class="widget_title">Lieferzeit                        </div>
     <div class="widget_body">
       <div class="widget_sub_title"><strong>Lieferzeit</strong></div>
       <div id="ultimus_delivery_filter_widget_slider"></div>
       <div class="ultimus_filter_range" id="ultimus_delivery_filter_range">
-        <div id="ultimus_delivery_filter_range_min">1</div>
+        <div id="ultimus_delivery_filter_range_min">0</div>
         <div id="ultimus_delivery_filter_range_max">30</div>
       </div>
       <input type="hidden" id="ultimus_delivery_filter_input-0" value="">
@@ -465,118 +180,272 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
 	<input id="u_prod_sorting_input-0" type="hidden" name="orderby" value="" />
 	<input type="hidden" name="price_filter_min" value="0" /><input type="hidden" name="price_filter_max" value="350" /></form>
 <ul class="products columns-3">
-<li class="product type-product post-2002757180 status-publish first instock product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002757180">
+<li class="product type-product post-2003427889 status-publish first instock product_cat-motorola product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003427889">
+	<a href="https://ultimus.ch/product/motorola-moto-g32-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-149-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" fetchpriority="high" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-149-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-149-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-149.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-moto-g32-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Moto G32 8GB</h2></a><a href="https://ultimus.ch/product/motorola-moto-g32-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;198.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003427889">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003427889] = {"id":"2003427889","sku":"12.746960","price":201.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003427889","sku":"12.746960","gpf":"woocommerce_gpf_2003427889","gla":"gla_2003427889"},"is_variable":true,"type":"variable","name":"Motorola Moto G32 8GB","category":["Motorola","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003427889]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003624028 status-publish instock product_cat-oneplus product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003624028">
+	<a href="https://ultimus.ch/product/oneplus-nord-n30-se/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/02/oneplus-nord-n30-se-128gb-schwarz-2516614.webp.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oneplus-nord-n30-se/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">OnePlus Nord N30 SE</h2></a><a href="https://ultimus.ch/product/oneplus-nord-n30-se/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;218.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003624028">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003624028] = {"id":"2003624028","sku":"12.1132533","price":204.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003624028","sku":"12.1132533","gpf":"woocommerce_gpf_2003624028","gla":"gla_2003624028"},"is_variable":true,"type":"variable","name":"OnePlus Nord N30 SE","category":["OnePlus","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003624028]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002603397 status-publish last instock product_cat-apple product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002603397">
+	<a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-615-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-615-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-615.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Apple iPhone X Refurbished</h2></a><a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;208.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;284.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002603397">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002603397] = {"id":"2002603397","sku":"GO3715856398","price":208.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002603397","sku":"GO3715856398","gpf":"woocommerce_gpf_2002603397","gla":"gla_2002603397"},"is_variable":true,"type":"variable","name":"Apple iPhone X Refurbished","category":["Apple","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002603397]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003428472 status-publish first instock product_cat-nokia product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003428472">
+	<a href="https://ultimus.ch/product/nokia-g42-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-272-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-272-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-272-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-272.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/nokia-g42-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Nokia G42 6GB</h2></a><a href="https://ultimus.ch/product/nokia-g42-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;208.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;218.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003428472">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003428472] = {"id":"2003428472","sku":"12.645356","price":208.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003428472","sku":"12.645356","gpf":"woocommerce_gpf_2003428472","gla":"gla_2003428472"},"is_variable":true,"type":"variable","name":"Nokia G42 6GB","category":["Nokia","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003428472]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002609368 status-publish instock product_cat-motorola product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609368">
+	<a href="https://ultimus.ch/product/motorola-moto-g52-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-517-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-517-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-517-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-517.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-moto-g52-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Moto G52 6GB</h2></a><a href="https://ultimus.ch/product/motorola-moto-g52-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;215.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002609368">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002609368] = {"id":"2002609368","sku":"GO2294222349","price":212.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002609368","sku":"GO2294222349","gpf":"woocommerce_gpf_2002609368","gla":"gla_2002609368"},"is_variable":true,"type":"variable","name":"Motorola Moto G52 6GB","category":["Motorola","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002609368]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002611886 status-publish last instock product_cat-samsung product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002611886">
+	<a href="https://ultimus.ch/product/samsung-galaxy-a13-a136-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-525-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-525-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-525-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-525.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-a13-a136-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy A13 A136 5G</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-a13-a136-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;240.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;251.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002611886">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002611886] = {"id":"2002611886","sku":"GO8486843469","price":213.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002611886","sku":"GO8486843469","gpf":"woocommerce_gpf_2002611886","gla":"gla_2002611886"},"is_variable":true,"type":"variable","name":"Samsung Galaxy A13 A136 5G","category":["Samsung","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002611886]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003427978 status-publish first instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003427978">
+	<a href="https://ultimus.ch/product/xiaomi-redmi-note-12s-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-170-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-170-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-170-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-170.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-note-12s-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi Note 12S 8GB</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-note-12s-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;208.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;212.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003427978">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003427978] = {"id":"2003427978","sku":"12.624281","price":213.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003427978","sku":"12.624281","gpf":"woocommerce_gpf_2003427978","gla":"gla_2003427978"},"is_variable":true,"type":"variable","name":"Xiaomi Redmi Note 12S 8GB","category":["Smartphones","Xiaomi"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003427978]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003428229 status-publish instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003428229">
+	<a href="https://ultimus.ch/product/oppo-a78-4gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-223-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-223-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-223-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-223.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-a78-4gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">OPPO A78 4GB</h2></a><a href="https://ultimus.ch/product/oppo-a78-4gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;207.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003428229">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003428229] = {"id":"2003428229","sku":"12.289184","price":213.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003428229","sku":"12.289184","gpf":"woocommerce_gpf_2003428229","gla":"gla_2003428229"},"is_variable":true,"type":"variable","name":"OPPO A78 4GB","category":["Oppo","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003428229]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003591787 status-publish last instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003591787">
+	<a href="https://ultimus.ch/product/xiaomi-redmi-note-13-4g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/01/1-123-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/01/1-123-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/01/1-123-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/01/1-123.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-note-13-4g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi Note 13 4G 8GB</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-note-13-4g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;205.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;229.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003591787">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003591787] = {"id":"2003591787","sku":"12.901301","price":213.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003591787","sku":"12.901301","gpf":"woocommerce_gpf_2003591787","gla":"gla_2003591787"},"is_variable":true,"type":"variable","name":"Xiaomi Redmi Note 13 4G 8GB","category":["Smartphones","Xiaomi"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003591787]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003428502 status-publish first instock product_cat-oneplus product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003428502">
+	<a href="https://ultimus.ch/product/oneplus-nord-ce-3-lite-5g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-280-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-280-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-280-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-280.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oneplus-nord-ce-3-lite-5g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">OnePlus Nord CE 3 Lite 5G 8GB</h2></a><a href="https://ultimus.ch/product/oneplus-nord-ce-3-lite-5g-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;210.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003428502">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003428502] = {"id":"2003428502","sku":"12.432334","price":216.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003428502","sku":"12.432334","gpf":"woocommerce_gpf_2003428502","gla":"gla_2003428502"},"is_variable":true,"type":"variable","name":"OnePlus Nord CE 3 Lite 5G 8GB","category":["OnePlus","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003428502]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003624090 status-publish instock product_cat-oneplus product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003624090">
+	<a href="https://ultimus.ch/product/oneplus-nord/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/02/1-55-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/02/1-55-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/02/1-55-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/02/1-55.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oneplus-nord/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">OnePlus Nord</h2></a><a href="https://ultimus.ch/product/oneplus-nord/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;216.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003624090">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003624090] = {"id":"2003624090","sku":"12.685832","price":218.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003624090","sku":"12.685832","gpf":"woocommerce_gpf_2003624090","gla":"gla_2003624090"},"is_variable":true,"type":"variable","name":"OnePlus Nord","category":["OnePlus","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003624090]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003624080 status-publish last instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003624080">
+	<a href="https://ultimus.ch/product/oppo-a79-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/02/oppo-a79-5g-4gb-128gb-schwarz-2504613.webp.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-a79-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">OPPO A79 5G</h2></a><a href="https://ultimus.ch/product/oppo-a79-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;218.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;235.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003624080">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003624080] = {"id":"2003624080","sku":"12.1127877","price":219.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003624080","sku":"12.1127877","gpf":"woocommerce_gpf_2003624080","gla":"gla_2003624080"},"is_variable":true,"type":"variable","name":"OPPO A79 5G","category":["Oppo","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003624080]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002780573 status-publish first instock product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002780573">
+	<a href="https://ultimus.ch/product/xiaomi-redmi-10/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-324x324.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-324x324.jpg 324w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-300x300.jpg 300w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-150x150.jpg 150w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-768x768.jpg 768w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-416x416.jpg 416w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck-100x100.jpg 100w, https://ultimus.ch/wp-content/uploads/2023/04/Seda179c8beb7449db253b7059e0b349ck.jpg 800w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-10/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi 10</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-10/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;347.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;525.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 5-10 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002780573">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002780573] = {"id":"2002780573","sku":"p8EE3993AA14D7","price":220.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002780573","sku":"p8EE3993AA14D7","gpf":"woocommerce_gpf_2002780573","gla":"gla_2002780573"},"is_variable":true,"type":"variable","name":"Xiaomi Redmi 10","category":["Xiaomi"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002780573]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003999837 status-publish instock product_cat-honor product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003999837">
+	<a href="https://ultimus.ch/product/honor-90-smart/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/04/honor-90-smart-128gb-schwarz-2810945.webp.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/honor-90-smart/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Honor 90 Smart</h2></a><a href="https://ultimus.ch/product/honor-90-smart/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;189.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;221.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003999837">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003999837] = {"id":"2003999837","sku":"12.1230275","price":204.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003999837","sku":"12.1230275","gpf":"woocommerce_gpf_2003999837","gla":"gla_2003999837"},"is_variable":true,"type":"variable","name":"Honor 90 Smart","category":["Honor","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003999837]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002757180 status-publish last instock product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002757180">
 	<a href="https://ultimus.ch/product/cubot-p60-smartphone-mit-dual-sim/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/04/Sf809010ae98543af914e65d2031f0430E.png 1000w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/cubot-p60-smartphone-mit-dual-sim/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Cubot P60 Smartphone mit Dual SIM</h2></a><a href="https://ultimus.ch/product/cubot-p60-smartphone-mit-dual-sim/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;228.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;261.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 13-21 Tage</div></li>
-<li class="product type-product post-2002609526 status-publish instock product_cat-htc has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609526">
-	<a href="https://ultimus.ch/product/htc-desire-22-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-537-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-537-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-537-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-537.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/htc-desire-22-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">HTC Desire 22 Pro</h2></a><a href="https://ultimus.ch/product/htc-desire-22-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;229.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div></li>
-<li class="product type-product post-2002605254 status-publish last instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002605254">
-	<a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-498-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-498-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-498.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Oppo Reno 8 Lite</h2></a><a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;230.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;231.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;255.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;292.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 5-10 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002757180">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002757180] = {"id":"2002757180","sku":"p5D7D8B6156290","price":228.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002757180","sku":"p5D7D8B6156290","gpf":"woocommerce_gpf_2002757180","gla":"gla_2002757180"},"is_variable":true,"type":"variable","name":"Cubot P60 Smartphone mit Dual SIM","category":["Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002757180]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
 <li class="product type-product post-2002605086 status-publish first instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002605086">
 	<a href="https://ultimus.ch/product/xiaomi-redmi-note-11-pro-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-467-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-467-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-467-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-467.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-note-11-pro-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi Note 11 Pro 5G</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-note-11-pro-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;231.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;248.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div></li>
-<li class="product type-product post-2002646821 status-publish instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002646821">
-	<a href="https://ultimus.ch/product/xiaomi-redmi-note-12-pro-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-2624-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-2624-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-2624.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-note-12-pro-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi Note 12 Pro 6GB</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-note-12-pro-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;232.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;264.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 4 Tage</div></li>
-<li class="product type-product post-2002613955 status-publish last instock product_cat-motorola product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002613955">
-	<a href="https://ultimus.ch/product/motorola-edge-20-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-753-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-753-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-753-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-753.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-edge-20-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Edge 20 Lite 8GB</h2></a><a href="https://ultimus.ch/product/motorola-edge-20-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;233.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;253.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div></li>
-<li class="product type-product post-2002633331 status-publish first instock product_cat-honor product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002633331">
-	<a href="https://ultimus.ch/product/honor-magic5-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/filters3Aupscale2829-254-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/filters3Aupscale2829-254-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/filters3Aupscale2829-254-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/filters3Aupscale2829-254-100x100.png 100w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/honor-magic5-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Honor Magic5 Lite</h2></a><a href="https://ultimus.ch/product/honor-magic5-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;238.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;250.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002609680 status-publish instock product_cat-nokia product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609680">
-	<a href="https://ultimus.ch/product/nokia-g60-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-546-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-546-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-546-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-546.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/nokia-g60-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Nokia G60 5G</h2></a><a href="https://ultimus.ch/product/nokia-g60-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;239.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 4-5 Tage</div></li>
-<li class="product type-product post-2002646828 status-publish last instock product_cat-motorola product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002646828">
-	<a href="https://ultimus.ch/product/motorola-moto-g73/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-605-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-605-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-605-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-605.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-moto-g73/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Moto G73</h2></a><a href="https://ultimus.ch/product/motorola-moto-g73/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;241.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 14 Tage</div></li>
-<li class="product type-product post-2002606122 status-publish first instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002606122">
-	<a href="https://ultimus.ch/product/oppo-reno6-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-763-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-763-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-763-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-763.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-reno6-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Oppo Reno6 5G</h2></a><a href="https://ultimus.ch/product/oppo-reno6-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;242.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002609644 status-publish instock product_cat-motorola product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609644">
-	<a href="https://ultimus.ch/product/motorola-edge-30-neo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-545-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-545-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-545-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-545.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-edge-30-neo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Edge 30 Neo</h2></a><a href="https://ultimus.ch/product/motorola-edge-30-neo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;243.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;289.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002605230 status-publish last instock product_cat-samsung product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002605230">
-	<a href="https://ultimus.ch/product/samsung-galaxy-m23-5g-m236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-493-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-493-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-493-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-493.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-m23-5g-m236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy M23 5G M236</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-m23-5g-m236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;249.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;262.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002609246 status-publish first instock product_cat-motorola product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609246">
-	<a href="https://ultimus.ch/product/motorola-edge-20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-509-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-509-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-509-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-509.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-edge-20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Edge 20</h2></a><a href="https://ultimus.ch/product/motorola-edge-20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;251.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002608573 status-publish instock product_cat-oppo product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002608573">
-	<a href="https://ultimus.ch/product/oppo-a94/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-718-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-718-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-718-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-718.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-a94/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Oppo A94</h2></a><a href="https://ultimus.ch/product/oppo-a94/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;255.95</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;252.95</bdi></span></ins></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002754962 status-publish last instock product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002754962">
-	<a href="https://ultimus.ch/product/robustes-smartphone-blackview-bv5200/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-324x324.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-324x324.jpg 324w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-300x300.jpg 300w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-1024x1024.jpg 1024w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-150x150.jpg 150w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-768x768.jpg 768w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-416x416.jpg 416w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft-100x100.jpg 100w, https://ultimus.ch/wp-content/uploads/2023/04/Sb8567b70d7b34d3bacba30765729893ft.jpg 1200w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/robustes-smartphone-blackview-bv5200/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Robustes Smartphone Blackview BV5200</h2></a><a href="https://ultimus.ch/product/robustes-smartphone-blackview-bv5200/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;254.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;325.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 13-21 Tage</div></li>
-<li class="product type-product post-2002608980 status-publish first instock product_cat-samsung product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002608980">
-	<a href="https://ultimus.ch/product/samsung-galaxy-a33-5g-a336/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-326-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-326-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-326-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-326.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-a33-5g-a336/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy A33 5G A336</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-a33-5g-a336/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;262.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;289.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002609271 status-publish instock product_cat-motorola product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609271">
-	<a href="https://ultimus.ch/product/motorola-moto-g82-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-508-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-508-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-508-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-508.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-moto-g82-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Moto G82 5G</h2></a><a href="https://ultimus.ch/product/motorola-moto-g82-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;265.95</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;262.95</bdi></span></ins></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div></li>
-<li class="product type-product post-2002613278 status-publish last instock product_cat-motorola product_cat-smartphones has-post-thumbnail sale taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002613278">
-	<a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar">
-	<span class="onsale">Angebot!</span>
-	<div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-485-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-485-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-485.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Edge 30</h2></a><a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;265.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;271.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 14-15 Tage</div></li>
-<li class="product type-product post-2002780652 status-publish first instock product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002780652">
-	<a href="https://ultimus.ch/product/cubot-pocket-3-mini-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-324x324.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-324x324.jpg 324w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-300x300.jpg 300w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-150x150.jpg 150w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-768x768.jpg 768w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-416x416.jpg 416w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C-100x100.jpg 100w, https://ultimus.ch/wp-content/uploads/2023/04/Sea4215cc3d9c4572ae10fb8094dde2c0C.jpg 1000w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/cubot-pocket-3-mini-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Cubot Pocket 3: Mini-Smartphone</h2></a><a href="https://ultimus.ch/product/cubot-pocket-3-mini-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;266.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;303.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 13-21 Tage</div></li>
-<li class="product type-product post-2002603397 status-publish instock product_cat-apple has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002603397">
-	<a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-615-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-615-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-615-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-615.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Apple iPhone X Refurbished</h2></a><a href="https://ultimus.ch/product/apple-iphone-x-refurbished/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;268.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;304.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002613968 status-publish last instock product_cat-nokia product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002613968">
-	<a href="https://ultimus.ch/product/nokia-xr20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-752-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-752-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-752-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-752.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/nokia-xr20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Nokia XR20</h2></a><a href="https://ultimus.ch/product/nokia-xr20/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;268.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;313.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002655388 status-publish first instock product_cat-samsung product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002655388">
-	<a href="https://ultimus.ch/product/samsung-galaxy-a42-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-2706-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-2706-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-2706.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-a42-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy A42 5G</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-a42-5g/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;269.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;333.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1 Tag</div></li>
-<li class="product type-product post-2002609661 status-publish instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002609661">
-	<a href="https://ultimus.ch/product/xiaomi-12-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-543-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-543-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-543-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-543.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-12-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi 12 Lite 8GB</h2></a><a href="https://ultimus.ch/product/xiaomi-12-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;271.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;299.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div></li>
-<li class="product type-product post-2002755324 status-publish last instock product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002755324">
-	<a href="https://ultimus.ch/product/wasserdichtes-5-5-zoll-rugged-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-324x324.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-324x324.jpg 324w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-300x300.jpg 300w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-150x150.jpg 150w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-768x768.jpg 768w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-416x416.jpg 416w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o-100x100.jpg 100w, https://ultimus.ch/wp-content/uploads/2023/04/Sff1ffa623e0e4b2db7c1200c5ac22559o.jpg 800w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/wasserdichtes-5-5-zoll-rugged-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Wasserdichtes 5.5-Zoll Rugged Smartphone</h2></a><a href="https://ultimus.ch/product/wasserdichtes-5-5-zoll-rugged-smartphone/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;276.95</bdi></span></span>
-</a><div class="u_loop_item_delivery">Lieferzeit 13-21 Tage</div></li>
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;228.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;232.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002605086">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002605086] = {"id":"2002605086","sku":"GO8933854700","price":229.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002605086","sku":"GO8933854700","gpf":"woocommerce_gpf_2002605086","gla":"gla_2002605086"},"is_variable":true,"type":"variable","name":"Xiaomi Redmi Note 11 Pro 5G","category":["Smartphones","Xiaomi"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002605086]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002613249 status-publish instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002613249">
+	<a href="https://ultimus.ch/product/oppo-a96-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-481-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-481-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-481-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-481.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-a96-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Oppo A96 8GB</h2></a><a href="https://ultimus.ch/product/oppo-a96-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;223.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002613249">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002613249] = {"id":"2002613249","sku":"GO4264861460","price":229.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002613249","sku":"GO4264861460","gpf":"woocommerce_gpf_2002613249","gla":"gla_2002613249"},"is_variable":true,"type":"variable","name":"Oppo A96 8GB","category":["Oppo","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002613249]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002613278 status-publish last instock product_cat-motorola product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002613278">
+	<a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-485-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-485-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-485-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-485.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Motorola Edge 30</h2></a><a href="https://ultimus.ch/product/motorola-edge-30/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;229.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002613278">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002613278] = {"id":"2002613278","sku":"GO1547838593","price":231.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002613278","sku":"GO1547838593","gpf":"woocommerce_gpf_2002613278","gla":"gla_2002613278"},"is_variable":true,"type":"variable","name":"Motorola Edge 30","category":["Motorola","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002613278]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002605254 status-publish first instock product_cat-oppo product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002605254">
+	<a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-498-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-498-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-498-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-498.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Oppo Reno 8 Lite</h2></a><a href="https://ultimus.ch/product/oppo-reno-8-lite/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;227.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002605254">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002605254] = {"id":"2002605254","sku":"GO1456381081","price":232.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002605254","sku":"GO1456381081","gpf":"woocommerce_gpf_2002605254","gla":"gla_2002605254"},"is_variable":true,"type":"variable","name":"Oppo Reno 8 Lite","category":["Oppo","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002605254]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003617468 status-publish instock product_cat-smartphones product_cat-xiaomi has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003617468">
+	<a href="https://ultimus.ch/product/xiaomi-redmi-note-13-5g-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/02/1-32-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/02/1-32-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/02/1-32-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/02/1-32.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/xiaomi-redmi-note-13-5g-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Xiaomi Redmi Note 13 5G 6GB</h2></a><a href="https://ultimus.ch/product/xiaomi-redmi-note-13-5g-6gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;243.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;245.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003617468">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003617468] = {"id":"2003617468","sku":"12.901299","price":232.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003617468","sku":"12.901299","gpf":"woocommerce_gpf_2003617468","gla":"gla_2003617468"},"is_variable":true,"type":"variable","name":"Xiaomi Redmi Note 13 5G 6GB","category":["Smartphones","Xiaomi"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003617468]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003456537 status-publish last instock product_cat-samsung product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003456537">
+	<a href="https://ultimus.ch/product/samsung-galaxy-a25/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/01/1-13-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/01/1-13-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/01/1-13-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/01/1-13.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-a25/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy A25</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-a25/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;238.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;293.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003456537">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003456537] = {"id":"2003456537","sku":"12.858871","price":240.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003456537","sku":"12.858871","gpf":"woocommerce_gpf_2003456537","gla":"gla_2003456537"},"is_variable":true,"type":"variable","name":"Samsung Galaxy A25","category":["Samsung","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003456537]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003428391 status-publish first instock product_cat-honor product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003428391">
+	<a href="https://ultimus.ch/product/honor-magic5-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/12/1-257-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/12/1-257-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/12/1-257-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/12/1-257.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/honor-magic5-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Honor Magic5 Lite 8GB</h2></a><a href="https://ultimus.ch/product/honor-magic5-lite-8gb/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;241.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;262.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003428391">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003428391] = {"id":"2003428391","sku":"12.551692","price":244.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003428391","sku":"12.551692","gpf":"woocommerce_gpf_2003428391","gla":"gla_2003428391"},"is_variable":true,"type":"variable","name":"Honor Magic5 Lite 8GB","category":["Honor","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003428391]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2003610953 status-publish instock product_cat-poco product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2003610953">
+	<a href="https://ultimus.ch/product/poco-m6-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2024/02/1-3-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2024/02/1-3-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2024/02/1-3-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2024/02/1-3.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/poco-m6-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Poco M6 Pro</h2></a><a href="https://ultimus.ch/product/poco-m6-pro/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;250.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2003610953">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2003610953] = {"id":"2003610953","sku":"12.998637","price":244.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2003610953","sku":"12.998637","gpf":"woocommerce_gpf_2003610953","gla":"gla_2003610953"},"is_variable":true,"type":"variable","name":"Poco M6 Pro","category":["Poco","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2003610953]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
+<li class="product type-product post-2002605507 status-publish last instock product_cat-samsung product_cat-smartphones has-post-thumbnail taxable shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="2002605507">
+	<a href="https://ultimus.ch/product/samsung-galaxy-a23-a236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div class="ultimus_loop_item_top_bar"><div class="ultimus_loop_item_top_bar_item_space"><div><strong>Top Seller</strong></div></div></div><div class="ultimus_loop_item_thumb"><img width="324" height="324" src="https://ultimus.ch/wp-content/uploads/2023/03/1-526-324x324.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://ultimus.ch/wp-content/uploads/2023/03/1-526-324x324.png 324w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-300x300.png 300w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-1024x1024.png 1024w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-150x150.png 150w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-768x768.png 768w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-416x416.png 416w, https://ultimus.ch/wp-content/uploads/2023/03/1-526-100x100.png 100w, https://ultimus.ch/wp-content/uploads/2023/03/1-526.png 1198w" sizes="(max-width: 324px) 100vw, 324px" /></div></a><div class="product-archive-loop-item-catlink">&nbsp;</div><a href="https://ultimus.ch/product/samsung-galaxy-a23-a236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">Samsung Galaxy A23 A236</h2></a><a href="https://ultimus.ch/product/samsung-galaxy-a23-a236/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;245.95</bdi></span> &ndash; <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#67;&#72;&#70;</span>&nbsp;268.95</bdi></span></span>
+</a><div class="u_loop_item_delivery">Lieferzeit 1-2 Tage</div>			<input type="hidden" class="wpmProductId" data-id="2002605507">
+					<script>
+			(window.wpmDataLayer = window.wpmDataLayer || {}).products             = window.wpmDataLayer.products || {}
+			window.wpmDataLayer.products[2002605507] = {"id":"2002605507","sku":"GO6393082408","price":248.95,"brand":"","quantity":1,"dyn_r_ids":{"post_id":"2002605507","sku":"GO6393082408","gpf":"woocommerce_gpf_2002605507","gla":"gla_2002605507"},"is_variable":true,"type":"variable","name":"Samsung Galaxy A23 A236","category":["Samsung","Smartphones"],"is_variation":false};
+					window.pmw_product_position = window.pmw_product_position || 1;
+		window.wpmDataLayer.products[2002605507]['position'] = window.pmw_product_position++;
+				</script>
+		</li>
 </ul>
-<div class="ultimus_product_archive_footer"><div class="ultimus_product_archive_result_count"><span>140</span>&nbsp;<span>Produkte</span></div><nav class="ultimus_pagination"><a title="erste Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="prev-link nav-arrow first-page">erste Seite</a><a title="vorherige Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/4/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="prev-link nav-arrow prev-page">vorherige Seite</a><span>Seite 5 von 6</span><a title="nächste Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/6/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="next-link nav-arrow next-page">nächste Seite</a><a title="letzte Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/6/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="next-link nav-arrow last-page">letzte Seite</a></nav></div>          <div class="ultimus_after_content">
+<div class="ultimus_product_archive_footer"><div class="ultimus_product_archive_result_count"><span>159</span>&nbsp;<span>Produkte</span></div><nav class="ultimus_pagination"><a title="erste Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="prev-link nav-arrow first-page">erste Seite</a><a title="vorherige Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/4/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="prev-link nav-arrow prev-page">vorherige Seite</a><span>Seite 5 von 7</span><a title="nächste Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/6/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="next-link nav-arrow next-page">nächste Seite</a><a title="letzte Seite" href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/page/7/?orderby=price&#038;price_filter_min=0&#038;price_filter_max=350" class="next-link nav-arrow last-page">letzte Seite</a></nav></div>          <div class="ultimus_after_content">
             <div class="ultimus_slider_recommended_products_container" style="opacity: 0; height: 370px; overflow: hidden;"><div class="recommended_products-navigation"><div class="recommended_products-controls-container"></div></div></div><div class="ultimus_slider_last_visited_products_container" style="opacity: 0; height: 370px; overflow: hidden;"><div class="last_visited_products-navigation"><div class="last_visited_products-controls-container"></div></div></div>          </div>
         </main><!-- #main -->
       </div><!-- #primary -->
@@ -625,7 +494,6 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
 <li class="current"><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/">Smartphones</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartwatch/">Smartwatch</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/tablets/">Tablets</a></li>
-<li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/xiaomi-tablets/">Xiaomi Tablets</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/halterungen/">Halterungen</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/nintendo-switch-zubehoer/">Nintendo Switch Zubehör</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/reparatur/">Reparatur</a></li>
@@ -644,7 +512,6 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
         <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/alcatel/">Alcatel</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/apple/">Apple</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/asus/">Asus</a></li>
-<li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/cat/">Cat</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/crosscall/">Crosscall</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/doro/">Doro</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/emporia/">Emporia</a></li>
@@ -666,7 +533,6 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/samsung/">Samsung</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/sony/">Sony</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/tcl/">TCL</a></li>
-<li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/vivo/">Vivo</a></li>
 <li><a href="https://ultimus.ch/product-category/elektronik/handy-watch-und-tablet/smartphones/xiaomi/">Xiaomi</a></li>
 
       </ul>
@@ -681,20 +547,20 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
           <div id="ultimus-feed">
             <ul>
                                   <li>
-                      <span class="time">21:13</span>
-                      <span>T. aus Zurich hat soeben <a href='https://ultimus.ch/product/extraweiche-ellenbogenkissen-fuer-buerostuhl/'>Extraweiche Ellenbogenkissen für Bürostuhl</a> bestellt.</span>
+                      <span class="time">21:16</span>
+                      <span>J. aus Hauterive NE hat soeben <a href='https://ultimus.ch/product/nokia-g42-6gb/?attribute_pa_farbe=lila&amp;attribute_pa_speicherplatz=128gb'>Nokia G42 5G (128 GB, Purple, 6.56", Dual SIM, 50 Mpx, 5G)</a> bestellt.</span>
                     </li>
                                       <li>
-                      <span class="time">21:00</span>
-                      <span><a href='https://ultimus.ch/product/hunde-pulli-in-verschiedenen-farben/?attribute_pa_groesse=xxl-fuer-6-0-8-0kg&amp;attribute_pa_farbe=violett'>Hunde-Pulli in verschiedenen Farben - XXL für 6.0-8.0kg, Violett</a> wurde soeben an D. in Yvonand gesendet.</span>
+                      <span class="time">21:08</span>
+                      <span>G. aus Erschwil hat gerade <a href='https://ultimus.ch/product/motorola-moto-g24-power/?attribute_pa_farbe=blau&amp;attribute_pa_speicherplatz=256gb'>Motorola Moto G24 Power (256 GB, Glacier Blue, 6.56", Dual SIM, 50 Mpx, 4G)</a> zugestellt bekommen.</span>
                     </li>
                                       <li>
-                      <span class="time">20:48</span>
-                      <span>J. aus Puidoux hat soeben <a href='https://ultimus.ch/product/klapphuellen-mit-staenderfunktion-fuer-samsung-galaxy/?attribute_pa_modell=s21-ultra&amp;attribute_pa_farbe=blau'>Klapphüllen mit Ständerfunktion für Samsung Galaxy - S21 ULTRA, Blau</a> bestellt.</span>
+                      <span class="time">21:06</span>
+                      <span>L. aus Rotkreuz hat gerade <a href='https://ultimus.ch/?post_type=product&amp;p=2003212877'>Anker 737 (PowerCore 24K) (24000 mAh, 140 W, 88.80 Wh)</a> zugestellt bekommen.</span>
                     </li>
                                       <li>
-                      <span class="time">20:41</span>
-                      <span>S. aus Pfaffikon SZ hat soeben <a href='https://ultimus.ch/product/fliesenschneider-fuer-ecken-mit-abwinkelung/'>Fliesenschneider für Ecken mit Abwinkelung</a> bestellt.</span>
+                      <span class="time">21:06</span>
+                      <span>F. aus Dottikon hat gerade <a href='https://ultimus.ch/product/xiaomi-redmi-pad-se-8gb/?attribute_pa_farbe=gruen&amp;attribute_pa_speicherplatz=256gb'>Xiaomi Redmi Pad SE (11", 256 GB, Mint Green)</a> zugestellt bekommen.</span>
                     </li>
                               </ul>
           </div>
@@ -723,18 +589,19 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
             <p><strong>Kontakt</strong></p>
 
             <p><a href="mailto:gruezi@ultimus.ch">gruezi@ultimus.ch</a></p>
-	    <p><a href="tel:0415080531">041 508 05 31</a>
 
-	  	  Mo - Fr: 14:00 - 18:00
-	  
-</p>
+	    <p>
+                <a id="open-ultimus-contact" style="cursor:pointer;">Rückruf vereinbaren</a>
+
+           </p>
+
           </div>
 
           <div id="mfnav-kundenservice">
             <p><strong>Kundenservice</strong></p>
             <p>Kostenlose Lieferung</p>
             <p>Keine Gebühren</p>
-                        <!--<p>Zustellung i.d.R 13-21 Tage</p>-->
+                        <!--<p>Zustellung i.d.R 11-19 Tage</p>-->
             <p><a href="https://ultimus.ch/faq-hilfe/">FAQ & Hilfe</a></p>
             <p><a href="https://ultimus.ch/datenschutz/">Datenschutz</a></p>
             <p><a href="https://ultimus.ch/agbs/">AGBs</a></p>
@@ -775,7 +642,16 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
           </div>
         </div>
       </div>
-
+	<div id="ultimus-contact" style="display: none;">
+	    <div>
+		<p>
+		    Wenn Sie einen Rückruf wünschen, schreiben Sie bitte eine E-Mail an <a
+			href="mailto:gruezi@ultimus.ch"><b>gruezi@ultimus.ch</b></a> und nennen Sie Ihre Rufnummer und Ihr
+		    Anliegen.
+		    Wir sind bemüht, Sie innert 48 Stunden zurückzurufen.
+		</p>
+       	   </div>
+	</div>
       <div id="main-footer-payment-options">
         <div class="col-full mfpayopt-outer-container">
           <p><strong>Zahlungsarten</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Alle Preisangaben in CHF und ink. MwSt.</span></p>
@@ -796,8 +672,9 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
         <div class="col-full">
           <h3 class="main-footer-impressum__title">Impressum</h3>
           <div class="main-footer-impressum__body">
-            <p>ultimus.ch versendet von verschiedene Lager, in der Schweiz sowie vom Ausland. Betrieben durch: Elephant Fishing GmbH (CHE-248.380.647), Zürcherstrasse 37d, 8852 Altendorf, Schweiz (Keine Rücksendeadresse).</p>
-            <p class="ultimus-copyright-info">Copyright © ultimus.ch 2023 Alle Rechte vorbehalten</p>
+            <p>ultimus.ch versendet von verschiedenen Lagern, in der Schweiz sowie vom Ausland. Betrieben durch: Elephant Fishing GmbH (CHE-248.380.647), Zürcherstrasse 37d, 8852 Altendorf, Schweiz (Keine Rücksendeadresse).</p>
+	   <p>Tel.: 041 508 05 31</p> 
+<p class="ultimus-copyright-info">Copyright © ultimus.ch 2024 Alle Rechte vorbehalten</p>
           </div>
         </div>
       </div><!-- .main-footer-impressum -->
@@ -805,511 +682,69 @@ var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions
     </footer><!-- #main-footer -->
     
   </div>
-  <script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"name":"Startseite","@id":"https:\/\/ultimus.ch"}},{"@type":"ListItem","position":2,"item":{"name":"Elektronik","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/"}},{"@type":"ListItem","position":3,"item":{"name":"Handy, Watch &amp;amp; Tablet","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/"}},{"@type":"ListItem","position":4,"item":{"name":"Smartphones","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/smartphones\/"}},{"@type":"ListItem","position":5,"item":{"name":"Seite 5","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/smartphones\/page\/5\/?orderby=price&amp;price_filter_min=0&amp;price_filter_max=350"}}]}</script>	<script type="text/javascript">
+  <script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"name":"Startseite","@id":"https:\/\/ultimus.ch"}},{"@type":"ListItem","position":2,"item":{"name":"Elektronik","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/"}},{"@type":"ListItem","position":3,"item":{"name":"Handy, Watch &amp;amp; Tablet","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/"}},{"@type":"ListItem","position":4,"item":{"name":"Smartphones","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/smartphones\/"}},{"@type":"ListItem","position":5,"item":{"name":"Seite 5","@id":"https:\/\/ultimus.ch\/product-category\/elektronik\/handy-watch-und-tablet\/smartphones\/page\/5\/?orderby=price&amp;price_filter_min=0&amp;price_filter_max=350"}}]}</script>	<script type='text/javascript'>
 		(function () {
 			var c = document.body.className;
 			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
 			document.body.className = c;
 		})();
 	</script>
-	<script type="text/javascript">
-		/* MonsterInsights Scroll Tracking */
-		if ( typeof(jQuery) !== 'undefined' ) {
-		jQuery( document ).ready(function(){
-		function monsterinsights_scroll_tracking_load() {
-		if ( ( typeof(__gaTracker) !== 'undefined' && __gaTracker && __gaTracker.hasOwnProperty( "loaded" ) && __gaTracker.loaded == true ) || ( typeof(__gtagTracker) !== 'undefined' && __gtagTracker ) ) {
-		(function(factory) {
-		factory(jQuery);
-		}(function($) {
-
-		/* Scroll Depth */
-		"use strict";
-		var defaults = {
-		percentage: true
-		};
-
-		var $window = $(window),
-		cache = [],
-		scrollEventBound = false,
-		lastPixelDepth = 0;
-
-		/*
-		* Plugin
-		*/
-
-		$.scrollDepth = function(options) {
-
-		var startTime = +new Date();
-
-		options = $.extend({}, defaults, options);
-
-		/*
-		* Functions
-		*/
-
-		function sendEvent(action, label, scrollDistance, timing) {
-		if ( 'undefined' === typeof MonsterInsightsObject || 'undefined' === typeof MonsterInsightsObject.sendEvent ) {
-		return;
-		}
-			var paramName = action.toLowerCase();
-	var fieldsArray = {
-	send_to: 'G-49JEBLHBXM',
-	non_interaction: true
-	};
-	fieldsArray[paramName] = label;
-
-	if (arguments.length > 3) {
-	fieldsArray.scroll_timing = timing
-	MonsterInsightsObject.sendEvent('event', 'scroll_depth', fieldsArray);
-	} else {
-	MonsterInsightsObject.sendEvent('event', 'scroll_depth', fieldsArray);
-	}
-			}
-
-		function calculateMarks(docHeight) {
-		return {
-		'25%' : parseInt(docHeight * 0.25, 10),
-		'50%' : parseInt(docHeight * 0.50, 10),
-		'75%' : parseInt(docHeight * 0.75, 10),
-		/* Cushion to trigger 100% event in iOS */
-		'100%': docHeight - 5
-		};
-		}
-
-		function checkMarks(marks, scrollDistance, timing) {
-		/* Check each active mark */
-		$.each(marks, function(key, val) {
-		if ( $.inArray(key, cache) === -1 && scrollDistance >= val ) {
-		sendEvent('Percentage', key, scrollDistance, timing);
-		cache.push(key);
-		}
-		});
-		}
-
-		function rounded(scrollDistance) {
-		/* Returns String */
-		return (Math.floor(scrollDistance/250) * 250).toString();
-		}
-
-		function init() {
-		bindScrollDepth();
-		}
-
-		/*
-		* Public Methods
-		*/
-
-		/* Reset Scroll Depth with the originally initialized options */
-		$.scrollDepth.reset = function() {
-		cache = [];
-		lastPixelDepth = 0;
-		$window.off('scroll.scrollDepth');
-		bindScrollDepth();
-		};
-
-		/* Add DOM elements to be tracked */
-		$.scrollDepth.addElements = function(elems) {
-
-		if (typeof elems == "undefined" || !$.isArray(elems)) {
-		return;
-		}
-
-		$.merge(options.elements, elems);
-
-		/* If scroll event has been unbound from window, rebind */
-		if (!scrollEventBound) {
-		bindScrollDepth();
-		}
-
-		};
-
-		/* Remove DOM elements currently tracked */
-		$.scrollDepth.removeElements = function(elems) {
-
-		if (typeof elems == "undefined" || !$.isArray(elems)) {
-		return;
-		}
-
-		$.each(elems, function(index, elem) {
-
-		var inElementsArray = $.inArray(elem, options.elements);
-		var inCacheArray = $.inArray(elem, cache);
-
-		if (inElementsArray != -1) {
-		options.elements.splice(inElementsArray, 1);
-		}
-
-		if (inCacheArray != -1) {
-		cache.splice(inCacheArray, 1);
-		}
-
-		});
-
-		};
-
-		/*
-		* Throttle function borrowed from:
-		* Underscore.js 1.5.2
-		* http://underscorejs.org
-		* (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-		* Underscore may be freely distributed under the MIT license.
-		*/
-
-		function throttle(func, wait) {
-		var context, args, result;
-		var timeout = null;
-		var previous = 0;
-		var later = function() {
-		previous = new Date;
-		timeout = null;
-		result = func.apply(context, args);
-		};
-		return function() {
-		var now = new Date;
-		if (!previous) previous = now;
-		var remaining = wait - (now - previous);
-		context = this;
-		args = arguments;
-		if (remaining <= 0) {
-		clearTimeout(timeout);
-		timeout = null;
-		previous = now;
-		result = func.apply(context, args);
-		} else if (!timeout) {
-		timeout = setTimeout(later, remaining);
-		}
-		return result;
-		};
-		}
-
-		/*
-		* Scroll Event
-		*/
-
-		function bindScrollDepth() {
-
-		scrollEventBound = true;
-
-		$window.on('scroll.scrollDepth', throttle(function() {
-		/*
-		* We calculate document and window height on each scroll event to
-		* account for dynamic DOM changes.
-		*/
-
-		var docHeight = $(document).height(),
-		winHeight = window.innerHeight ? window.innerHeight : $window.height(),
-		scrollDistance = $window.scrollTop() + winHeight,
-
-		/* Recalculate percentage marks */
-		marks = calculateMarks(docHeight),
-
-		/* Timing */
-		timing = +new Date - startTime;
-
-		checkMarks(marks, scrollDistance, timing);
-		}, 500));
-
-		}
-
-		init();
-		};
-
-		/* UMD export */
-		return $.scrollDepth;
-
-		}));
-
-		jQuery.scrollDepth();
-		} else {
-		setTimeout(monsterinsights_scroll_tracking_load, 200);
-		}
-		}
-		monsterinsights_scroll_tracking_load();
-		});
-		}
-		/* End MonsterInsights Scroll Tracking */
-		
-</script>		<!-- MonsterInsights Enhanced eCommerce Impression JS -->
-				<script data-cfasync="false" data-wpfc-render="false" type="text/javascript">__gtagTracker('event', 'view_item_list', {items: [{"id":2002757180,"name":"Cubot P60 Smartphone mit Dual SIM","category":"Smartphones","price":"228.95","list_name":"Product category","list_position":1},{"id":2002609526,"name":"HTC Desire 22 Pro","category":"HTC","price":"229.95","list_name":"Product category","list_position":2},{"id":2002605254,"name":"Oppo Reno 8 Lite","category":"Oppo","price":"230.95","list_name":"Product category","list_position":3},{"id":2002605086,"name":"Xiaomi Redmi Note 11 Pro 5G","category":"Smartphones","price":"231.95","list_name":"Product category","list_position":4},{"id":2002646821,"name":"Xiaomi Redmi Note 12 Pro 6GB","category":"Smartphones","price":"232.95","list_name":"Product category","list_position":5},{"id":2002613955,"name":"Motorola Edge 20 Lite 8GB","category":"Motorola","price":"233.95","list_name":"Product category","list_position":6},{"id":2002633331,"name":"Honor Magic5 Lite","category":"Honor","price":"238.95","list_name":"Product category","list_position":7},{"id":2002609680,"name":"Nokia G60 5G","category":"Nokia","price":"239.95","list_name":"Product category","list_position":8},{"id":2002646828,"name":"Motorola Moto G73","category":"Motorola","price":"241.95","list_name":"Product category","list_position":9},{"id":2002606122,"name":"Oppo Reno6 5G","category":"Oppo","price":"242.95","list_name":"Product category","list_position":10},{"id":2002609644,"name":"Motorola Edge 30 Neo","category":"Motorola","price":"243.95","list_name":"Product category","list_position":11},{"id":2002605230,"name":"Samsung Galaxy M23 5G M236","category":"Samsung","price":"249.95","list_name":"Product category","list_position":12},{"id":2002609246,"name":"Motorola Edge 20","category":"Motorola","price":"251.95","list_name":"Product category","list_position":13},{"id":2002608573,"name":"Oppo A94","category":"Oppo","price":"252.95","list_name":"Product category","list_position":14},{"id":2002754962,"name":"Robustes Smartphone Blackview BV5200","category":"Smartphones","price":"254.95","list_name":"Product category","list_position":15},{"id":2002608980,"name":"Samsung Galaxy A33 5G A336","category":"Samsung","price":"262.95","list_name":"Product category","list_position":16},{"id":2002609271,"name":"Motorola Moto G82 5G","category":"Motorola","price":"262.95","list_name":"Product category","list_position":17},{"id":2002613278,"name":"Motorola Edge 30","category":"Motorola","price":"265.95","list_name":"Product category","list_position":18},{"id":2002780652,"name":"Cubot Pocket 3: Mini-Smartphone","category":"Smartphones","price":"266.95","list_name":"Product category","list_position":19},{"id":2002603397,"name":"Apple iPhone X Refurbished","category":"Apple","price":"268.95","list_name":"Product category","list_position":20},{"id":2002613968,"name":"Nokia XR20","category":"Nokia","price":"268.95","list_name":"Product category","list_position":21},{"id":2002655388,"name":"Samsung Galaxy A42 5G","category":"Samsung","price":"269.95","list_name":"Product category","list_position":22},{"id":2002609661,"name":"Xiaomi 12 Lite 8GB","category":"Smartphones","price":"271.95","list_name":"Product category","list_position":23},{"id":2002755324,"name":"Wasserdichtes 5.5-Zoll Rugged Smartphone","category":"Smartphones","price":"276.95","list_name":"Product category","list_position":24}] })</script>
-				<!-- / MonsterInsights Enhanced eCommerce Impression JS -->
-				<!-- MonsterInsights Enhanced eCommerce Event JS -->
-		<script data-cfasync="false" data-wpfc-render="false" type="text/javascript">
-			var element = document.querySelector( '.products .post-2002757180 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002757180,"name":"Cubot P60 Smartphone mit Dual SIM","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"228.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609526 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609526,"name":"HTC Desire 22 Pro","brand":"","category":"HTC","variant":"","quantity":1,"price":"229.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002605254 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002605254,"name":"Oppo Reno 8 Lite","brand":"","category":"Oppo","variant":"","quantity":1,"price":"230.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002605086 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002605086,"name":"Xiaomi Redmi Note 11 Pro 5G","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"231.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002646821 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002646821,"name":"Xiaomi Redmi Note 12 Pro 6GB","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"232.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002613955 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002613955,"name":"Motorola Edge 20 Lite 8GB","brand":"","category":"Motorola","variant":"","quantity":1,"price":"233.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002633331 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002633331,"name":"Honor Magic5 Lite","brand":"","category":"Honor","variant":"","quantity":1,"price":"238.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609680 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609680,"name":"Nokia G60 5G","brand":"","category":"Nokia","variant":"","quantity":1,"price":"239.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002646828 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002646828,"name":"Motorola Moto G73","brand":"","category":"Motorola","variant":"","quantity":1,"price":"241.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002606122 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002606122,"name":"Oppo Reno6 5G","brand":"","category":"Oppo","variant":"","quantity":1,"price":"242.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609644 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609644,"name":"Motorola Edge 30 Neo","brand":"","category":"Motorola","variant":"","quantity":1,"price":"243.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002605230 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002605230,"name":"Samsung Galaxy M23 5G M236","brand":"","category":"Samsung","variant":"","quantity":1,"price":"249.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609246 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609246,"name":"Motorola Edge 20","brand":"","category":"Motorola","variant":"","quantity":1,"price":"251.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002608573 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002608573,"name":"Oppo A94","brand":"","category":"Oppo","variant":"","quantity":1,"price":"252.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002754962 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002754962,"name":"Robustes Smartphone Blackview BV5200","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"254.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002608980 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002608980,"name":"Samsung Galaxy A33 5G A336","brand":"","category":"Samsung","variant":"","quantity":1,"price":"262.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609271 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609271,"name":"Motorola Moto G82 5G","brand":"","category":"Motorola","variant":"","quantity":1,"price":"262.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002613278 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002613278,"name":"Motorola Edge 30","brand":"","category":"Motorola","variant":"","quantity":1,"price":"265.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002780652 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002780652,"name":"Cubot Pocket 3: Mini-Smartphone","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"266.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002603397 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002603397,"name":"Apple iPhone X Refurbished","brand":"","category":"Apple","variant":"","quantity":1,"price":"268.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002613968 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002613968,"name":"Nokia XR20","brand":"","category":"Nokia","variant":"","quantity":1,"price":"268.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002655388 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002655388,"name":"Samsung Galaxy A42 5G","brand":"","category":"Samsung","variant":"","quantity":1,"price":"269.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002609661 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002609661,"name":"Xiaomi 12 Lite 8GB","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"271.95","list_position":""} ] } );
-				
-				
-			});
-var element = document.querySelector( '.products .post-2002755324 a' );
-			element && element.addEventListener('click', e => {
-				if ( element.classList.contains( 'add_to_cart_button' ) ) {
-					return;
-				};
-				__gtagTracker( 'event', 'select_content', { content_type : 'product', items: [ {"id":2002755324,"name":"Wasserdichtes 5.5-Zoll Rugged Smartphone","brand":"","category":"Smartphones","variant":"","quantity":1,"price":"276.95","list_position":""} ] } );
-				
-				
-			});
-		</script>
-		<!-- / MonsterInsights Enhanced eCommerce Event JS -->
-		<script async src='//static.klaviyo.com/onsite/js/klaviyo.js?company_id=XvkTs7&#038;ver=3.2.2'></script>
-<script type='text/javascript' id='contact-form-7-js-extra'>
+	
+<script async src='//static.klaviyo.com/onsite/js/klaviyo.js?company_id=XvkTs7&ver=3.3.5'></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
 /* <![CDATA[ */
 var wpcf7 = {"api":{"root":"https:\/\/ultimus.ch\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
 /* ]]> */
 </script>
 
 
-<script type='text/javascript' id='wp-util-js-extra'>
+<script type="text/javascript" id="wp-util-js-extra">
 /* <![CDATA[ */
 var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
 /* ]]> */
 </script>
 
-<script type='text/javascript' id='ultimus-plugin-js-js-extra'>
+<script type="text/javascript" id="ultimus-plugin-js-js-extra">
 /* <![CDATA[ */
-var ultimus_plugin_js_data = {"site_url":"https:\/\/ultimus.ch","ajaxurl":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","root":"https:\/\/ultimus.ch\/wp-json\/","plugin_js_dir":"https:\/\/ultimus.ch\/wp-content\/plugins\/ultimus_plugin\/js\/","nonce":"a394bb57fe","post_id":"0","u_nonce":"321be7d803","uc_nonce":"ff3c3ebc99","asset_url":"https:\/\/ultimus.ch\/wp-content\/plugins\/ultimus_plugin\/assets\/"};
+var ultimus_plugin_js_data = {"site_url":"https:\/\/ultimus.ch","ajaxurl":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","root":"https:\/\/ultimus.ch\/wp-json\/","plugin_js_dir":"https:\/\/ultimus.ch\/wp-content\/plugins\/ultimus_plugin\/js\/","nonce":"7d7b0a0bd8","post_id":"0","u_nonce":"3fed92a5a8","uc_nonce":"97996dbe17","asset_url":"https:\/\/ultimus.ch\/wp-content\/plugins\/ultimus_plugin\/assets\/"};
 /* ]]> */
 </script>
 
 
-<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+<script type="text/javascript" id="wc-order-attribution-js-extra">
 /* <![CDATA[ */
-var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Warenkorb anzeigen","cart_url":"https:\/\/ultimus.ch\/warenkorb\/","is_cart":"","cart_redirect_after_add":"no"};
+var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"ajaxurl":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
 /* ]]> */
 </script>
 
 
-<script type='text/javascript' id='woocommerce-js-extra'>
+<script type="text/javascript" src="https://ultimus.ch/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
 /* <![CDATA[ */
-var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
-/* ]]> */
-</script>
-
-
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.11' id='regenerator-runtime-js'></script>
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
-<script type='text/javascript' src='https://ultimus.ch/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef' id='wp-i18n-js'></script>
-<script id="wp-i18n-js-after" type="text/javascript">
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
 </script>
-<script type='text/javascript' id='utlimus-mainjs-js-extra'>
+<script type="text/javascript" id="wc-cart-fragments-js-extra">
 /* <![CDATA[ */
-var wp_js_data = {"theme_js_dir":"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/","home_url":"https:\/\/ultimus.ch","client_country":"CH","ajaxurl":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","post_id":"2002757180","u_nonce":"321be7d803","uc_nonce":"ff3c3ebc99","cur_tax":"product_cat","cur_tax_term":"smartphones","is_express_arch":"","ultimus_logo_html":"<img src=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo.png\" srcset=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo.png, https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo_2x.png 2x, https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo_3x.png 3x\" class=\"site-logo\" alt=\"Ultimus\" loading=\"lazy\">","rating_logo_html":"<img src=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/google_logo.png\" alt=\"Google\" loading=\"lazy\">","lang":"de"};
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_d1f84c873efe59028aba66fd78498a50","fragment_name":"wc_fragments_d1f84c873efe59028aba66fd78498a50","request_timeout":"5000"};
 /* ]]> */
 </script>
 
-<script type='text/javascript' id='kl-identify-browser-js-extra'>
+<script type="text/javascript" id="utlimus-mainjs-js-extra">
+/* <![CDATA[ */
+var wp_js_data = {"theme_js_dir":"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/","home_url":"https:\/\/ultimus.ch","client_country":"CH","ajaxurl":"https:\/\/ultimus.ch\/wp-admin\/admin-ajax.php","post_id":"2003427889","u_nonce":"3fed92a5a8","uc_nonce":"97996dbe17","cur_tax":"product_cat","cur_tax_term":"smartphones","is_express_arch":"","ultimus_logo_html":"<img src=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo.png\" srcset=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo.png, https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo_2x.png 2x, https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/ultimus-logo_3x.png 3x\" class=\"site-logo\" alt=\"Ultimus\" loading=\"lazy\">","rating_logo_html":"<img src=\"https:\/\/ultimus.ch\/wp-content\/themes\/ultimus_v3\/assets\/google_logo.png\" alt=\"Google\" loading=\"lazy\">","lang":"de"};
+/* ]]> */
+</script>
+
+<script type="text/javascript" id="kl-identify-browser-js-extra">
 /* <![CDATA[ */
 var klUser = {"current_user_email":"","commenter_email":""};
 /* ]]> */
 </script>
 
-<script defer src="https://ultimus.ch/wp-content/cache/autoptimize/js/autoptimize_c10418b5391b128cc45c2cfd44fc7ae1.js"></script></body>
+<script defer src="https://ultimus.ch/wp-content/cache/autoptimize/js/autoptimize_183b390f8b5e00bdeca7bc0e0fc9d606.js"></script></body>
 
 </html>
 
-<!-- Dynamic page generated in 3.870 seconds. -->
-<!-- Cached page generated by WP-Super-Cache on 2023-11-05 21:20:06 -->
+<!-- Dynamic page generated in 5.259 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2024-05-30 21:20:11 -->

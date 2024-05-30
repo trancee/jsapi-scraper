@@ -97,54 +97,62 @@ func main() {
 
 		_mutex := &sync.RWMutex{}
 
-		for _, _shop := range []shop.IShop{
-			// shop.XXX_ackermann(isDryRun),
-			shop.XXX_ackermann_v2(isDryRun),
-			shop.XXX_alltron(isDryRun),
-			shop.XXX_alternate(isDryRun),
-			shop.XXX_amazon(isDryRun),
-			// shop.XXX_bohnettrade(isDryRun),
-			shop.XXX_brack(isDryRun),
-			shop.XXX_cashconverters(isDryRun),
-			shop.XXX_conrad(isDryRun),
-			// shop.XXX_electronova(isDryRun),
-			shop.XXX_foletti(isDryRun),
-			shop.XXX_fust(isDryRun),
-			shop.XXX_galaxus(isDryRun),
-			shop.XXX_interdiscount(isDryRun),
-			shop.XXX_manor(isDryRun),
-			// shop.XXX_mediamarkt(isDryRun),
-			shop.XXX_mediamarkt_v2(isDryRun),
-			shop.XXX_mediamarkt_refurbished(isDryRun),
-			shop.XXX_melectronics(isDryRun),
-			shop.XXX_microspot(isDryRun),
-			// shop.XXX_mistore(isDryRun),
-			shop.XXX_mistore_v2(isDryRun),
-			// shop.XXX_mobiledevice(isDryRun),
-			shop.XXX_mobiledevice_v2(isDryRun),
-			shop.XXX_mobilezero(isDryRun),
-			shop.XXX_mobilezone(isDryRun),
-			shop.XXX_orderflow(isDryRun),
-			// shop.XXX_stegpc(isDryRun), // out of order
-			// shop.XXX_techinn(isDryRun),
-			shop.XXX_techinn_v2(isDryRun),
-			shop.XXX_tutti(isDryRun),
-			shop.XXX_ultimus(isDryRun),
-			shop.XXX_venova(isDryRun),
+		for _, _shopFn := range []func(isDryRun bool) shop.IShop{
+			// shop.XXX_ackermann,
+			shop.XXX_ackermann_v2,
+			shop.XXX_alltron,
+			shop.XXX_alternate,
+			shop.XXX_amazon,
+			// shop.XXX_bohnettrade,
+			shop.XXX_brack,
+			shop.XXX_cashconverters,
+			shop.XXX_conrad,
+			// shop.XXX_electronova,
+			shop.XXX_foletti,
+			shop.XXX_fust,
+			shop.XXX_galaxus,
+			shop.XXX_interdiscount,
+			shop.XXX_manor,
+			// shop.XXX_mediamarkt,
+			shop.XXX_mediamarkt_v2,
+			shop.XXX_mediamarkt_refurbished,
+			shop.XXX_melectronics,
+			shop.XXX_microspot,
+			// shop.XXX_mistore,
+			shop.XXX_mistore_v2,
+			// shop.XXX_mobiledevice,
+			shop.XXX_mobiledevice_v2,
+			shop.XXX_mobilezero,
+			shop.XXX_mobilezone,
+			shop.XXX_orderflow,
+			// shop.XXX_stegpc, // out of order
+			// shop.XXX_techinn,
+			shop.XXX_techinn_v2,
+			shop.XXX_tutti,
+			shop.XXX_ultimus,
+			shop.XXX_venova,
 		} {
-			_shops = append(_shops, _shop.Name())
+			wg.Add(1)
 
-			if _shop.CanFetch() {
-				wg.Add(1)
+			go func(func(isDryRun bool) shop.IShop) {
+				defer wg.Done()
 
-				go func(_shop shop.IShop) {
-					defer wg.Done()
+				_shop := _shopFn(isDryRun)
 
-					_mutex.Lock()
-					_products[_shop.Name()] = _shop.Fetch()
-					_mutex.Unlock()
-				}(_shop)
-			}
+				_shops = append(_shops, _shop.Name())
+
+				if _shop.CanFetch() {
+					wg.Add(1)
+
+					go func(_shop shop.IShop) {
+						defer wg.Done()
+
+						_mutex.Lock()
+						_products[_shop.Name()] = _shop.Fetch()
+						_mutex.Unlock()
+					}(_shop)
+				}
+			}(_shopFn)
 		}
 
 		wg.Wait()
