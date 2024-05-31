@@ -16,6 +16,7 @@ import (
 )
 
 var OrderflowRegex = regexp.MustCompile(`\s+\(?(\d\+)?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual SIM|, |\s*CH$`)
+var OrderflowExclusionRegex = regexp.MustCompile(`(?i)Kalender`)
 
 var OrderflowCleanFn = func(name string) string {
 	name = strings.NewReplacer(" 4G ", " ", " 3. Gen.", " 3rd Gen", "Motorola Mobility ", "", "Enterprise Edition", "EE").Replace(name)
@@ -145,7 +146,7 @@ func XXX_orderflow(isDryRun bool) IShop {
 				}
 				_product.title = title
 
-				if Skip(title) {
+				if Skip(title) || OrderflowExclusionRegex.MatchString(title) {
 					return
 				}
 

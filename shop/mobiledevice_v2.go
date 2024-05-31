@@ -17,6 +17,7 @@ import (
 )
 
 var MobileDeviceV2Regex = regexp.MustCompile(`\s+\(?\d+\s*GB?|\s+\(?\d+(\.\d+)?"|\s+\(?[2345]G\)?| Dual Sim| LTE`)
+var MobileDeviceV2ExclusionRegex = regexp.MustCompile(`(?i)Kalender`)
 
 var MobileDeviceV2CleanFn = func(name string) string {
 	name = regexp.MustCompile(` (SM-)?[AGMS]\d{3}[A-Z]*(/DSN)?| XT\d{4}-\d+| Master Edition`).ReplaceAllString(name, "")
@@ -189,7 +190,7 @@ func XXX_mobiledevice_v2(isDryRun bool) IShop {
 				fmt.Println(_model)
 			}
 
-			if Skip(_model) {
+			if Skip(_model) || MobileDeviceV2ExclusionRegex.MatchString(_title) {
 				if _debug {
 					fmt.Println()
 				}

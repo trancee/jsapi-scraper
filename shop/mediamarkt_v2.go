@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MediamarktV2Regex = regexp.MustCompile(` - |\s+[2345]G|\s+CH$`)
+var MediamarktV2Regex = regexp.MustCompile(` - |(64|128)\s*GB|\s+[2345]G|\s+CH$`)
 
 var MediamarktV2CleanFn = func(name string) string {
 	name = strings.NewReplacer("ONE PLUS", "ONEPLUS", "Enterprise Edition", "EE").Replace(name)

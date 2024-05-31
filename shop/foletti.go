@@ -18,7 +18,7 @@ var FolettiRegex = regexp.MustCompile(`(?i)\s*[-,]+\s+|\s*\(?(\d+(\s*GB)?[+/])?\
 var FolettiExclusionRegex = regexp.MustCompile(`(?i)Abdeckung|Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|Clamshell|^Core|\bCover\b|Earphones|Etui|Fernauslöser|Gimbal|Halterung|Handschuhe|HARDCASE|Headset|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Majestic|Näh(faden|garn)|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|Schutzglas|SmartTag|Stand|Ständer|Stativ|Stick|Stylus|Tastatur|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var FolettiCleanFn = func(name string) string {
-	name = strings.NewReplacer("Enterprise Edition", "EE", "Enterprise", "EE").Replace(name)
+	name = strings.NewReplacer("Hynix HMD", "HMD", "Enterprise Edition", "EE", "Enterprise", "EE").Replace(name)
 
 	if loc := FolettiRegex.FindStringSubmatchIndex(name); loc != nil {
 		// fmt.Printf("%v\t%-30s %s\n", loc, name[:loc[0]], name)
@@ -26,7 +26,7 @@ var FolettiCleanFn = func(name string) string {
 	}
 
 	// name = strings.ReplaceAll(strings.ReplaceAll(name, " Phones ", " "), " Mini iPhone", " Mini")
-	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Telekom-Aktion |Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
+	name = regexp.MustCompile(` XT\d{4}-\d+|PAYM\d{4}PL|Renewd\s*|Motorola Smartfon|Samsung Smartfon|SMARTPHONE\s*|Smartphone\s*|Smartfon\s*|Telekom-Aktion |Solutions |TIM | Mobility Motorola| Mobility| Outdoor| NE|o2-Aktion |#GOECO`).ReplaceAllString(name, "")
 
 	s := strings.Split(name, " ")
 
@@ -222,20 +222,21 @@ func XXX_foletti(isDryRun bool) IShop {
 					continue
 				}
 
-				model := FolettiCleanFn(_product.title)
+				model := _product.title
+				if brand != "o2" && brand != "#GOECO" && brand != "Telekom-Aktion" && !((brand == "Hua" || brand == "Huawei") && strings.HasPrefix(title, "Honor")) && !strings.HasPrefix(brand, "tecXL") {
+					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
+						model = strings.ReplaceAll(brand, " Mobility", "") + " " + model
+					}
+					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(model, " ")[0])) {
+						model = strings.ReplaceAll(brand, " Mobility", "") + " " + model
+					}
+				}
+
+				model = FolettiCleanFn(model)
 				if _debug {
 					fmt.Println(model)
 				}
 				_product.model = model
-
-				if brand != "o2" && brand != "#GOECO" && brand != "Telekom-Aktion" && !((brand == "Hua" || brand == "Huawei") && strings.HasPrefix(title, "Honor")) && !strings.HasPrefix(brand, "tecXL") {
-					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(title, " ")[0])) {
-						_product.title = strings.ReplaceAll(brand, " Mobility", "") + " " + _product.title
-					}
-					if !strings.EqualFold(strings.ToUpper(strings.Split(brand, " ")[0]), strings.ToUpper(strings.Split(model, " ")[0])) {
-						_product.model = strings.ReplaceAll(brand, " Mobility", "") + " " + _product.model
-					}
-				}
 
 				if FolettiExclusionRegex.MatchString(model) {
 					if _debug {

@@ -13,7 +13,7 @@ import (
 	helpers "jsapi-scraper/helpers"
 )
 
-var MiStoreV2Regex = regexp.MustCompile(`\s+(\d+/(GB)?)?\d+GB|\s+20[12]\d|\s+[2345]G`)
+var MiStoreV2Regex = regexp.MustCompile(`\s+(\d+/(GB)?)?\d+GB|\s+20[12]\d|\s+[2345]G| \| `)
 var MiStoreV2ExclusionRegex = regexp.MustCompile(`(?i)Abdeckung|Adapter|AirTag|Armband|Band|CABLE|Charger|Ch?inch|Christbaum|Clamshell|^Core|\bCover\b|Earphones|Etui|Fernauslöser|Gimbal|Halterung|Handschuhe|HARDCASE|Headset|Hülle|Kopfhörer|Ladegerät|Ladestation|Lautsprecher|Magnet|Majestic|Netzkabel|Objektiv|Reiselader|S Pen|Saugnapf|Schutzfolie|Schutzglas|SmartTag|Stand|Ständer|Stativ|Stick|Stylus|Tastatur|Virtual-Reality|Wasserdicht(es)?|Weihnachtsbaum`)
 
 var MiStoreV2CleanFn = func(name string) string {

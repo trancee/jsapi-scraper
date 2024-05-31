@@ -16,7 +16,7 @@ import (
 var CashConvertersRegex = regexp.MustCompile(`(?i),|(\d+/)?(2|4|6|8|16|32|64|128|256|512)\s*(GB|BG|GG|Go|G|B)|\d’|\(?[345]G\)?|NFC|LTE|Dual([- ]SIM)?|NEUF|\+? Boîte`)
 
 var CashConvertersCleanFn = func(name string) string {
-	name = strings.NewReplacer(" - ", " ").Replace(name)
+	name = strings.NewReplacer("One +", "OnePlus", " - ", " ").Replace(name)
 	name = regexp.MustCompile(`(?i)Portable|(Samsung )?Reconditionné|\(?(Blanc|Rouge)\)?|Téléphone(\s*:\s*)?|: `).ReplaceAllString(name, "")
 	name = strings.TrimSpace(name)
 

@@ -189,6 +189,7 @@ var _skips = map[string]bool{
 	"SWISSTONE":       true,
 	"SWISSVOICE":      true,
 	"SWITEL":          true,
+	"SYCO":            true,
 	"TCL":             true,
 	"TECNO":           true,
 	"TELECOM":         true,
@@ -197,6 +198,7 @@ var _skips = map[string]bool{
 	"TELEFUNKEN":      true,
 	"TELEKOM":         true,
 	"TELME":           true,
+	"TOPCO":           true,
 	"TREVI":           true,
 	"TTFONE":          true,
 	"ULEFONE":         true, // EXCLUDE
